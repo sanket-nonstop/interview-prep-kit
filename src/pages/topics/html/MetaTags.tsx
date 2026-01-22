@@ -1,4 +1,4 @@
-import { TopicLayout } from '@/components/TopicLayout';
+import { TopicLayout } from "@/components/TopicLayout";
 
 const metaTagsCode = `<!-- Meta Tags & SEO: Optimize for search engines and social media -->
 
@@ -8,26 +8,26 @@ const metaTagsCode = `<!-- Meta Tags & SEO: Optimize for search engines and soci
   <!-- ✅ Essential meta tags -->
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Frontend Interview Practice | Master React, JavaScript & CSS</title>
-  <meta name="description" content="Comprehensive frontend interview preparation with React hooks, JavaScript concepts, CSS layouts, and Next.js patterns. Practice with real-world examples.">
+  <title>Interview Practice | Master React, JavaScript & CSS</title>
+  <meta name="description" content="Comprehensive   interview preparation with React hooks, JavaScript concepts, CSS layouts, and Next.js patterns. Practice with real-world examples.">
   
   <!-- ✅ Open Graph (Facebook, LinkedIn) -->
   <meta property="og:type" content="website">
-  <meta property="og:title" content="Frontend Interview Practice System">
-  <meta property="og:description" content="Master frontend interviews with hands-on practice in React, JavaScript, CSS, and Next.js">
+  <meta property="og:title" content="Interview Practice System">
+  <meta property="og:description" content="Master interviews with hands-on practice in React, JavaScript, CSS, and Next.js">
   <meta property="og:image" content="https://example.com/og-image.jpg">
   <meta property="og:url" content="https://example.com">
   <meta property="og:site_name" content="Interview Ready">
   
   <!-- ✅ Twitter Cards -->
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Frontend Interview Practice System">
-  <meta name="twitter:description" content="Master frontend interviews with hands-on practice">
+  <meta name="twitter:title" content="Interview Practice System">
+  <meta name="twitter:description" content="Master   interviews with hands-on practice">
   <meta name="twitter:image" content="https://example.com/twitter-image.jpg">
   <meta name="twitter:creator" content="@yourhandle">
   
   <!-- ✅ SEO optimization -->
-  <meta name="keywords" content="frontend interview, react hooks, javascript, css grid, next.js">
+  <meta name="keywords" content="Interview, react hooks, javascript, css grid, next.js">
   <meta name="author" content="Your Name">
   <meta name="robots" content="index, follow">
   <link rel="canonical" href="https://example.com/current-page">
@@ -47,8 +47,8 @@ const metaTagsCode = `<!-- Meta Tags & SEO: Optimize for search engines and soci
   {
     "@context": "https://schema.org",
     "@type": "EducationalOrganization",
-    "name": "Frontend Interview Practice",
-    "description": "Interactive learning platform for frontend development interviews",
+    "name": "Interview Practice",
+    "description": "Interactive learning platform for development interviews",
     "url": "https://example.com",
     "sameAs": [
       "https://twitter.com/yourhandle",

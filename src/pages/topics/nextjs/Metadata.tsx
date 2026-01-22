@@ -7,10 +7,10 @@ import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
   title: {
-    template: '%s | Frontend Interview Practice',
-    default: 'Frontend Interview Practice'
+    template: '%s | Interview Practice',
+    default: 'Interview Practice'
   },
-  description: 'Master frontend interviews with React, JavaScript, CSS, and Next.js',
+  description: 'Master interviews with React, JavaScript, CSS, and Next.js',
   keywords: ['frontend', 'interview', 'react', 'javascript', 'css'],
   authors: [{ name: 'Your Name', url: 'https://yoursite.com' }],
   creator: 'Your Name',
@@ -30,21 +30,21 @@ export const metadata: Metadata = {
     type: 'website',
     locale: 'en_US',
     url: 'https://yoursite.com',
-    siteName: 'Frontend Interview Practice',
-    title: 'Frontend Interview Practice System',
+    siteName: 'Interview Practice',
+    title: 'Interview Practice System',
     description: 'Master frontend interviews with hands-on practice',
     images: [
       {
         url: 'https://yoursite.com/og-image.jpg',
         width: 1200,
         height: 630,
-        alt: 'Frontend Interview Practice',
+        alt: 'Interview Practice',
       },
     ],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Frontend Interview Practice',
+    title: 'Interview Practice',
     description: 'Master frontend interviews with hands-on practice',
     creator: '@yourhandle',
     images: ['https://yoursite.com/twitter-image.jpg'],

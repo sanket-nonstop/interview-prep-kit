@@ -64,7 +64,7 @@ const Promises = () => {
       explanation="Promises represent eventual completion/failure of async operations. async/await is syntactic sugar that makes Promise chains readable. Understanding when to use Promise.all vs allSettled vs race separates production code from tutorials."
       code={promisesCode}
       codeFilename="promises.ts"
-      whyItMatters="Every frontend app fetches data. Interviewers test: Can you handle errors properly? Do you know parallel vs sequential execution? Can you implement timeout patterns? This directly affects app reliability and performance."
+      whyItMatters="Every app fetches data. Interviewers test: Can you handle errors properly? Do you know parallel vs sequential execution? Can you implement timeout patterns? This directly affects app reliability and performance."
       mistakes={[
         "Missing try/catch: Unhandled rejections crash apps in production.",
         "Sequential awaits: await in loops runs serially. Use Promise.all for parallel.",

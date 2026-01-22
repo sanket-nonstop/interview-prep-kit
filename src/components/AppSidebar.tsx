@@ -30,7 +30,7 @@ export const AppSidebar = () => {
             <span className="text-primary font-bold">FE</span>
           </div>
           <span className="font-semibold text-foreground group-hover:text-primary transition-colors">
-            Frontend Prep
+            Interview Prep
           </span>
         </Link>
       </div>

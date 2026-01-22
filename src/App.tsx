@@ -20,6 +20,11 @@ import Modules from "./pages/topics/javascript/Modules";
 import Destructuring from "./pages/topics/javascript/Destructuring";
 import BrowserApis from "./pages/topics/javascript/BrowserApis";
 import PWA from "./pages/topics/javascript/PWA";
+import Debounce from "./pages/topics/javascript/Debounce";
+import Throttle from "./pages/topics/javascript/Throttle";
+import DeepClone from "./pages/topics/javascript/DeepClone";
+import FlattenArray from "./pages/topics/javascript/FlattenArray";
+import Memoization from "./pages/topics/javascript/Memoization";
 import Variables from "./pages/topics/javascript/Variables";
 import Functions from "./pages/topics/javascript/Functions";
 import ObjectsArrays from "./pages/topics/javascript/ObjectsArrays";
@@ -64,6 +69,18 @@ import DataFetching from "./pages/topics/nextjs/DataFetching";
 import Metadata from "./pages/topics/nextjs/Metadata";
 import Routing from "./pages/topics/nextjs/Routing";
 import ApiRoutes from "./pages/topics/nextjs/ApiRoutes";
+import AuthLayout from "./pages/topics/nextjs/AuthLayout";
+import ProtectedRoutes from "./pages/topics/nextjs/ProtectedRoutes";
+import ServerVsClient from "./pages/topics/nextjs/ServerVsClient";
+import Caching from "./pages/topics/nextjs/Caching";
+import WhatIsSeo from "./pages/topics/seo/WhatIsSeo";
+import SearchEngines from "./pages/topics/seo/SearchEngines";
+import TitleMeta from "./pages/topics/seo/TitleMeta";
+import Headings from "./pages/topics/seo/Headings";
+import ImageSeo from "./pages/topics/seo/ImageSeo";
+import CoreWebVitals from "./pages/topics/seo/CoreWebVitals";
+import NextjsMetadata from "./pages/topics/seo/NextjsMetadata";
+import ServerClientSeo from "./pages/topics/seo/ServerClientSeo";
 
 const queryClient = new QueryClient();
 
@@ -113,6 +130,11 @@ const App = () => (
             <Route path="/javascript/destructuring" element={<Destructuring />} />
             <Route path="/javascript/browser-apis" element={<BrowserApis />} />
             <Route path="/javascript/pwa" element={<PWA />} />
+            <Route path="/javascript/patterns/debounce" element={<Debounce />} />
+            <Route path="/javascript/patterns/throttle" element={<Throttle />} />
+            <Route path="/javascript/patterns/deep-clone" element={<DeepClone />} />
+            <Route path="/javascript/patterns/flatten-array" element={<FlattenArray />} />
+            <Route path="/javascript/patterns/memoization" element={<Memoization />} />
             <Route path="/javascript/*" element={<TopicNotFound />} />
             
             {/* TypeScript Topics */}
@@ -157,7 +179,22 @@ const App = () => (
             <Route path="/nextjs/metadata" element={<Metadata />} />
             <Route path="/nextjs/routing" element={<Routing />} />
             <Route path="/nextjs/api-routes" element={<ApiRoutes />} />
+            <Route path="/nextjs/patterns/auth-layout" element={<AuthLayout />} />
+            <Route path="/nextjs/patterns/protected-routes" element={<ProtectedRoutes />} />
+            <Route path="/nextjs/patterns/server-vs-client" element={<ServerVsClient />} />
+            <Route path="/nextjs/patterns/caching" element={<Caching />} />
             <Route path="/nextjs/*" element={<TopicNotFound />} />
+            
+            {/* SEO Topics */}
+            <Route path="/seo/basics/what-is-seo" element={<WhatIsSeo />} />
+            <Route path="/seo/basics/search-engines" element={<SearchEngines />} />
+            <Route path="/seo/on-page/title-meta" element={<TitleMeta />} />
+            <Route path="/seo/on-page/headings" element={<Headings />} />
+            <Route path="/seo/on-page/image-seo" element={<ImageSeo />} />
+            <Route path="/seo/technical/core-web-vitals" element={<CoreWebVitals />} />
+            <Route path="/seo/nextjs/metadata" element={<NextjsMetadata />} />
+            <Route path="/seo/nextjs/server-vs-client" element={<ServerClientSeo />} />
+            <Route path="/seo/*" element={<TopicNotFound />} />
             
             {/* Catch-all */}
             <Route path="*" element={<NotFound />} />

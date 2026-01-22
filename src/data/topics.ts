@@ -60,6 +60,11 @@ export const topicsData: TopicCategory[] = [
       { id: 'array-methods', title: 'Array Methods', route: '/javascript/array-methods', category: 'javascript' },
       { id: 'browser-apis', title: 'Browser APIs', route: '/javascript/browser-apis', category: 'javascript' },
       { id: 'pwa', title: 'PWA Fundamentals', route: '/javascript/pwa', category: 'javascript' },
+      { id: 'debounce', title: 'Debounce Pattern', route: '/javascript/patterns/debounce', category: 'javascript' },
+      { id: 'throttle', title: 'Throttle Pattern', route: '/javascript/patterns/throttle', category: 'javascript' },
+      { id: 'deep-clone', title: 'Deep Clone Pattern', route: '/javascript/patterns/deep-clone', category: 'javascript' },
+      { id: 'flatten-array', title: 'Flatten Array Pattern', route: '/javascript/patterns/flatten-array', category: 'javascript' },
+      { id: 'memoization', title: 'Memoization Pattern', route: '/javascript/patterns/memoization', category: 'javascript' },
     ],
   },
   {
@@ -128,6 +133,25 @@ export const topicsData: TopicCategory[] = [
       { id: 'metadata', title: 'Metadata & SEO', route: '/nextjs/metadata', category: 'nextjs' },
       { id: 'routing', title: 'Dynamic Routing', route: '/nextjs/routing', category: 'nextjs' },
       { id: 'api-routes', title: 'API Routes', route: '/nextjs/api-routes', category: 'nextjs' },
+      { id: 'auth-layout', title: 'Auth Layout Patterns', route: '/nextjs/patterns/auth-layout', category: 'nextjs' },
+      { id: 'protected-routes', title: 'Protected Routes', route: '/nextjs/patterns/protected-routes', category: 'nextjs' },
+      { id: 'server-vs-client', title: 'Server vs Client Components', route: '/nextjs/patterns/server-vs-client', category: 'nextjs' },
+      { id: 'caching', title: 'Caching Patterns', route: '/nextjs/patterns/caching', category: 'nextjs' },
+    ],
+  },
+  {
+    id: 'seo',
+    title: 'SEO',
+    icon: '🔍',
+    topics: [
+      { id: 'what-is-seo', title: 'What is SEO', route: '/seo/basics/what-is-seo', category: 'javascript' },
+      { id: 'search-engines', title: 'How Search Engines Work', route: '/seo/basics/search-engines', category: 'javascript' },
+      { id: 'title-meta', title: 'Title & Meta Tags', route: '/seo/on-page/title-meta', category: 'javascript' },
+      { id: 'headings', title: 'Headings Structure', route: '/seo/on-page/headings', category: 'javascript' },
+      { id: 'image-seo', title: 'Image SEO', route: '/seo/on-page/image-seo', category: 'javascript' },
+      { id: 'core-web-vitals', title: 'Core Web Vitals', route: '/seo/technical/core-web-vitals', category: 'javascript' },
+      { id: 'nextjs-metadata', title: 'Next.js Metadata API', route: '/seo/nextjs/metadata', category: 'javascript' },
+      { id: 'server-client-seo', title: 'Server vs Client & SEO', route: '/seo/nextjs/server-vs-client', category: 'javascript' },
     ],
   },
 ];
@@ -143,6 +167,7 @@ export const getCategoryColor = (category: string): string => {
     testing: 'bg-green-100 text-green-800 border-green-300',
     performance: 'bg-yellow-100 text-yellow-800 border-yellow-300',
     security: 'bg-red-100 text-red-800 border-red-300',
+    seo: 'bg-purple-100 text-purple-800 border-purple-300',
   };
   return colors[category] || '';
 };
