@@ -12,11 +12,58 @@ import TopicNotFound from "./pages/TopicNotFound";
 // Topic Pages
 import Closures from "./pages/topics/javascript/Closures";
 import Promises from "./pages/topics/javascript/Promises";
+import EventLoop from "./pages/topics/javascript/EventLoop";
+import ThisKeyword from "./pages/topics/javascript/ThisKeyword";
+import ArrayMethods from "./pages/topics/javascript/ArrayMethods";
+import Prototypes from "./pages/topics/javascript/Prototypes";
+import Modules from "./pages/topics/javascript/Modules";
+import Destructuring from "./pages/topics/javascript/Destructuring";
+import BrowserApis from "./pages/topics/javascript/BrowserApis";
+import PWA from "./pages/topics/javascript/PWA";
+import Variables from "./pages/topics/javascript/Variables";
+import Functions from "./pages/topics/javascript/Functions";
+import ObjectsArrays from "./pages/topics/javascript/ObjectsArrays";
+import DOM from "./pages/topics/javascript/DOM";
+import Hoisting from "./pages/topics/javascript/Hoisting";
+import ExecutionContext from "./pages/topics/javascript/ExecutionContext";
+import Memory from "./pages/topics/javascript/Memory";
+import TypeScript from "./pages/topics/typescript/Fundamentals";
 import UseState from "./pages/topics/react/UseState";
 import UseEffect from "./pages/topics/react/UseEffect";
+import UseRef from "./pages/topics/react/UseRef";
+import UseMemo from "./pages/topics/react/UseMemo";
+import Context from "./pages/topics/react/Context";
+import CustomHooks from "./pages/topics/react/CustomHooks";
+import Performance from "./pages/topics/react/Performance";
+import Patterns from "./pages/topics/react/Patterns";
+import StateManagement from "./pages/topics/react/StateManagement";
+import ErrorHandling from "./pages/topics/react/ErrorHandling";
+import Components from "./pages/topics/react/Components";
+import PropsState from "./pages/topics/react/PropsState";
+import EventHandling from "./pages/topics/react/EventHandling";
+import Lifecycle from "./pages/topics/react/Lifecycle";
+import JSXVirtualDOM from "./pages/topics/react/JSXVirtualDOM";
+import ConditionalRendering from "./pages/topics/react/ConditionalRendering";
+import Testing from "./pages/topics/testing/Fundamentals";
+import WebPerformance from "./pages/topics/performance/Optimization";
+import Security from "./pages/topics/security/Fundamentals";
 import Flexbox from "./pages/topics/css/Flexbox";
+import Grid from "./pages/topics/css/Grid";
+import Positioning from "./pages/topics/css/Positioning";
+import Animations from "./pages/topics/css/Animations";
+import Responsive from "./pages/topics/css/Responsive";
+import Specificity from "./pages/topics/css/Specificity";
 import Semantic from "./pages/topics/html/Semantic";
+import Forms from "./pages/topics/html/Forms";
+import Accessibility from "./pages/topics/html/Accessibility";
+import MetaTags from "./pages/topics/html/MetaTags";
+import WebApis from "./pages/topics/html/WebApis";
 import AppRouter from "./pages/topics/nextjs/AppRouter";
+import ServerComponents from "./pages/topics/nextjs/ServerComponents";
+import DataFetching from "./pages/topics/nextjs/DataFetching";
+import Metadata from "./pages/topics/nextjs/Metadata";
+import Routing from "./pages/topics/nextjs/Routing";
+import ApiRoutes from "./pages/topics/nextjs/ApiRoutes";
 
 const queryClient = new QueryClient();
 
@@ -33,24 +80,83 @@ const App = () => (
             
             {/* HTML Topics */}
             <Route path="/html/semantic" element={<Semantic />} />
+            <Route path="/html/forms" element={<Forms />} />
+            <Route path="/html/accessibility" element={<Accessibility />} />
+            <Route path="/html/meta-tags" element={<MetaTags />} />
+            <Route path="/html/web-apis" element={<WebApis />} />
             <Route path="/html/*" element={<TopicNotFound />} />
             
             {/* CSS Topics */}
             <Route path="/css/flexbox" element={<Flexbox />} />
+            <Route path="/css/grid" element={<Grid />} />
+            <Route path="/css/positioning" element={<Positioning />} />
+            <Route path="/css/animations" element={<Animations />} />
+            <Route path="/css/responsive" element={<Responsive />} />
+            <Route path="/css/specificity" element={<Specificity />} />
             <Route path="/css/*" element={<TopicNotFound />} />
             
             {/* JavaScript Topics */}
+            <Route path="/javascript/variables" element={<Variables />} />
+            <Route path="/javascript/functions" element={<Functions />} />
+            <Route path="/javascript/objects-arrays" element={<ObjectsArrays />} />
+            <Route path="/javascript/hoisting" element={<Hoisting />} />
+            <Route path="/javascript/execution-context" element={<ExecutionContext />} />
+            <Route path="/javascript/memory" element={<Memory />} />
+            <Route path="/javascript/dom" element={<DOM />} />
             <Route path="/javascript/closures" element={<Closures />} />
             <Route path="/javascript/promises" element={<Promises />} />
+            <Route path="/javascript/event-loop" element={<EventLoop />} />
+            <Route path="/javascript/this" element={<ThisKeyword />} />
+            <Route path="/javascript/array-methods" element={<ArrayMethods />} />
+            <Route path="/javascript/prototypes" element={<Prototypes />} />
+            <Route path="/javascript/modules" element={<Modules />} />
+            <Route path="/javascript/destructuring" element={<Destructuring />} />
+            <Route path="/javascript/browser-apis" element={<BrowserApis />} />
+            <Route path="/javascript/pwa" element={<PWA />} />
             <Route path="/javascript/*" element={<TopicNotFound />} />
             
+            {/* TypeScript Topics */}
+            <Route path="/typescript/fundamentals" element={<TypeScript />} />
+            <Route path="/typescript/*" element={<TopicNotFound />} />
+            
             {/* React Topics */}
+            <Route path="/react/components" element={<Components />} />
+            <Route path="/react/jsx-virtual-dom" element={<JSXVirtualDOM />} />
+            <Route path="/react/props-state" element={<PropsState />} />
+            <Route path="/react/conditional-rendering" element={<ConditionalRendering />} />
+            <Route path="/react/events" element={<EventHandling />} />
+            <Route path="/react/lifecycle" element={<Lifecycle />} />
             <Route path="/react/hooks/useState" element={<UseState />} />
             <Route path="/react/hooks/useEffect" element={<UseEffect />} />
+            <Route path="/react/hooks/useRef" element={<UseRef />} />
+            <Route path="/react/hooks/useMemo" element={<UseMemo />} />
+            <Route path="/react/context" element={<Context />} />
+            <Route path="/react/custom-hooks" element={<CustomHooks />} />
+            <Route path="/react/performance" element={<Performance />} />
+            <Route path="/react/patterns" element={<Patterns />} />
+            <Route path="/react/state-management" element={<StateManagement />} />
+            <Route path="/react/error-handling" element={<ErrorHandling />} />
             <Route path="/react/*" element={<TopicNotFound />} />
+            
+            {/* Testing Topics */}
+            <Route path="/testing/fundamentals" element={<Testing />} />
+            <Route path="/testing/*" element={<TopicNotFound />} />
+            
+            {/* Performance Topics */}
+            <Route path="/performance/optimization" element={<WebPerformance />} />
+            <Route path="/performance/*" element={<TopicNotFound />} />
+            
+            {/* Security Topics */}
+            <Route path="/security/fundamentals" element={<Security />} />
+            <Route path="/security/*" element={<TopicNotFound />} />
             
             {/* Next.js Topics */}
             <Route path="/nextjs/app-router" element={<AppRouter />} />
+            <Route path="/nextjs/server-components" element={<ServerComponents />} />
+            <Route path="/nextjs/data-fetching" element={<DataFetching />} />
+            <Route path="/nextjs/metadata" element={<Metadata />} />
+            <Route path="/nextjs/routing" element={<Routing />} />
+            <Route path="/nextjs/api-routes" element={<ApiRoutes />} />
             <Route path="/nextjs/*" element={<TopicNotFound />} />
             
             {/* Catch-all */}

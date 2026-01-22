@@ -43,6 +43,13 @@ export const topicsData: TopicCategory[] = [
     title: 'JavaScript',
     icon: '⚡',
     topics: [
+      { id: 'variables', title: 'Variables & Scope', route: '/javascript/variables', category: 'javascript' },
+      { id: 'functions', title: 'Functions', route: '/javascript/functions', category: 'javascript' },
+      { id: 'objects-arrays', title: 'Objects & Arrays', route: '/javascript/objects-arrays', category: 'javascript' },
+      { id: 'hoisting', title: 'Hoisting', route: '/javascript/hoisting', category: 'javascript' },
+      { id: 'execution-context', title: 'Execution Context', route: '/javascript/execution-context', category: 'javascript' },
+      { id: 'memory', title: 'Memory Management', route: '/javascript/memory', category: 'javascript' },
+      { id: 'dom', title: 'DOM Manipulation', route: '/javascript/dom', category: 'javascript' },
       { id: 'closures', title: 'Closures', route: '/javascript/closures', category: 'javascript' },
       { id: 'promises', title: 'Promises & Async/Await', route: '/javascript/promises', category: 'javascript' },
       { id: 'event-loop', title: 'Event Loop', route: '/javascript/event-loop', category: 'javascript' },
@@ -51,6 +58,16 @@ export const topicsData: TopicCategory[] = [
       { id: 'modules', title: 'ES Modules', route: '/javascript/modules', category: 'javascript' },
       { id: 'destructuring', title: 'Destructuring & Spread', route: '/javascript/destructuring', category: 'javascript' },
       { id: 'array-methods', title: 'Array Methods', route: '/javascript/array-methods', category: 'javascript' },
+      { id: 'browser-apis', title: 'Browser APIs', route: '/javascript/browser-apis', category: 'javascript' },
+      { id: 'pwa', title: 'PWA Fundamentals', route: '/javascript/pwa', category: 'javascript' },
+    ],
+  },
+  {
+    id: 'typescript',
+    title: 'TypeScript',
+    icon: '🔷',
+    topics: [
+      { id: 'fundamentals', title: 'TypeScript Fundamentals', route: '/typescript/fundamentals', category: 'javascript' },
     ],
   },
   {
@@ -58,6 +75,12 @@ export const topicsData: TopicCategory[] = [
     title: 'React',
     icon: '⚛️',
     topics: [
+      { id: 'components', title: 'Components Basics', route: '/react/components', category: 'react' },
+      { id: 'jsx-virtual-dom', title: 'JSX & Virtual DOM', route: '/react/jsx-virtual-dom', category: 'react' },
+      { id: 'props-state', title: 'Props & State', route: '/react/props-state', category: 'react' },
+      { id: 'conditional-rendering', title: 'Conditional Rendering', route: '/react/conditional-rendering', category: 'react' },
+      { id: 'events', title: 'Event Handling', route: '/react/events', category: 'react' },
+      { id: 'lifecycle', title: 'Lifecycle Methods', route: '/react/lifecycle', category: 'react' },
       { id: 'useState', title: 'useState Hook', route: '/react/hooks/useState', category: 'react' },
       { id: 'useEffect', title: 'useEffect Hook', route: '/react/hooks/useEffect', category: 'react' },
       { id: 'useRef', title: 'useRef Hook', route: '/react/hooks/useRef', category: 'react' },
@@ -66,6 +89,32 @@ export const topicsData: TopicCategory[] = [
       { id: 'custom-hooks', title: 'Custom Hooks', route: '/react/custom-hooks', category: 'react' },
       { id: 'performance', title: 'Performance Optimization', route: '/react/performance', category: 'react' },
       { id: 'patterns', title: 'React Patterns', route: '/react/patterns', category: 'react' },
+      { id: 'state-management', title: 'State Management', route: '/react/state-management', category: 'react' },
+      { id: 'error-handling', title: 'Error Handling', route: '/react/error-handling', category: 'react' },
+    ],
+  },
+  {
+    id: 'testing',
+    title: 'Testing',
+    icon: '🧪',
+    topics: [
+      { id: 'fundamentals', title: 'Testing Fundamentals', route: '/testing/fundamentals', category: 'javascript' },
+    ],
+  },
+  {
+    id: 'performance',
+    title: 'Performance',
+    icon: '⚡',
+    topics: [
+      { id: 'optimization', title: 'Web Performance', route: '/performance/optimization', category: 'javascript' },
+    ],
+  },
+  {
+    id: 'security',
+    title: 'Security',
+    icon: '🔒',
+    topics: [
+      { id: 'fundamentals', title: 'Web Security', route: '/security/fundamentals', category: 'javascript' },
     ],
   },
   {
@@ -90,6 +139,10 @@ export const getCategoryColor = (category: string): string => {
     javascript: 'bg-category-js/20 text-category-js border-category-js/30',
     react: 'bg-category-react/20 text-category-react border-category-react/30',
     nextjs: 'bg-category-nextjs/20 text-category-nextjs border-category-nextjs/30',
+    typescript: 'bg-blue-100 text-blue-800 border-blue-300',
+    testing: 'bg-green-100 text-green-800 border-green-300',
+    performance: 'bg-yellow-100 text-yellow-800 border-yellow-300',
+    security: 'bg-red-100 text-red-800 border-red-300',
   };
   return colors[category] || '';
 };
