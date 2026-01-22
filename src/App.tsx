@@ -1,86 +1,97 @@
-import { Toaster } from "@/components/ui/toaster";
+import { Layout } from "@/components/Layout";
 import { Toaster as Sonner } from "@/components/ui/sonner";
+import { Toaster } from "@/components/ui/toaster";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
-import { Layout } from "@/components/Layout";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Index from "./pages/Index";
-import Roadmap from "./pages/Roadmap";
 import NotFound from "./pages/NotFound";
+import Roadmap from "./pages/Roadmap";
 import TopicNotFound from "./pages/TopicNotFound";
 
 // Topic Pages
-import Closures from "./pages/topics/javascript/Closures";
-import Promises from "./pages/topics/javascript/Promises";
-import EventLoop from "./pages/topics/javascript/EventLoop";
-import ThisKeyword from "./pages/topics/javascript/ThisKeyword";
-import ArrayMethods from "./pages/topics/javascript/ArrayMethods";
-import Prototypes from "./pages/topics/javascript/Prototypes";
-import Modules from "./pages/topics/javascript/Modules";
-import Destructuring from "./pages/topics/javascript/Destructuring";
-import BrowserApis from "./pages/topics/javascript/BrowserApis";
-import PWA from "./pages/topics/javascript/PWA";
-import Debounce from "./pages/topics/javascript/Debounce";
-import Throttle from "./pages/topics/javascript/Throttle";
-import DeepClone from "./pages/topics/javascript/DeepClone";
-import FlattenArray from "./pages/topics/javascript/FlattenArray";
-import Memoization from "./pages/topics/javascript/Memoization";
-import Variables from "./pages/topics/javascript/Variables";
-import Functions from "./pages/topics/javascript/Functions";
-import ObjectsArrays from "./pages/topics/javascript/ObjectsArrays";
-import DOM from "./pages/topics/javascript/DOM";
-import Hoisting from "./pages/topics/javascript/Hoisting";
-import ExecutionContext from "./pages/topics/javascript/ExecutionContext";
-import Memory from "./pages/topics/javascript/Memory";
-import TypeScript from "./pages/topics/typescript/Fundamentals";
-import UseState from "./pages/topics/react/UseState";
-import UseEffect from "./pages/topics/react/UseEffect";
-import UseRef from "./pages/topics/react/UseRef";
-import UseMemo from "./pages/topics/react/UseMemo";
-import Context from "./pages/topics/react/Context";
-import CustomHooks from "./pages/topics/react/CustomHooks";
-import Performance from "./pages/topics/react/Performance";
-import Patterns from "./pages/topics/react/Patterns";
-import StateManagement from "./pages/topics/react/StateManagement";
-import ErrorHandling from "./pages/topics/react/ErrorHandling";
-import Components from "./pages/topics/react/Components";
-import PropsState from "./pages/topics/react/PropsState";
-import EventHandling from "./pages/topics/react/EventHandling";
-import Lifecycle from "./pages/topics/react/Lifecycle";
-import JSXVirtualDOM from "./pages/topics/react/JSXVirtualDOM";
-import ConditionalRendering from "./pages/topics/react/ConditionalRendering";
-import Testing from "./pages/topics/testing/Fundamentals";
-import WebPerformance from "./pages/topics/performance/Optimization";
-import Security from "./pages/topics/security/Fundamentals";
+import Animations from "./pages/topics/css/Animations";
 import Flexbox from "./pages/topics/css/Flexbox";
+import FlexboxWithPreview from "./pages/topics/css/FlexboxWithPreview";
 import Grid from "./pages/topics/css/Grid";
 import Positioning from "./pages/topics/css/Positioning";
-import Animations from "./pages/topics/css/Animations";
 import Responsive from "./pages/topics/css/Responsive";
 import Specificity from "./pages/topics/css/Specificity";
-import Semantic from "./pages/topics/html/Semantic";
 import Forms from "./pages/topics/html/Forms";
-import Accessibility from "./pages/topics/html/Accessibility";
+import FormsWithPreview from "./pages/topics/html/FormsWithPreview";
 import MetaTags from "./pages/topics/html/MetaTags";
+import Semantic from "./pages/topics/html/Semantic";
+import SemanticWithPreview from "./pages/topics/html/SemanticWithPreview";
 import WebApis from "./pages/topics/html/WebApis";
+import ArrayMethods from "./pages/topics/javascript/ArrayMethods";
+import BrowserApis from "./pages/topics/javascript/BrowserApis";
+import Closures from "./pages/topics/javascript/Closures";
+import Debounce from "./pages/topics/javascript/Debounce";
+import DeepClone from "./pages/topics/javascript/DeepClone";
+import Destructuring from "./pages/topics/javascript/Destructuring";
+import DOM from "./pages/topics/javascript/DOM";
+import EventLoop from "./pages/topics/javascript/EventLoop";
+import ExecutionContext from "./pages/topics/javascript/ExecutionContext";
+import FlattenArray from "./pages/topics/javascript/FlattenArray";
+import Functions from "./pages/topics/javascript/Functions";
+import Hoisting from "./pages/topics/javascript/Hoisting";
+import Memoization from "./pages/topics/javascript/Memoization";
+import Memory from "./pages/topics/javascript/Memory";
+import Modules from "./pages/topics/javascript/Modules";
+import ObjectsArrays from "./pages/topics/javascript/ObjectsArrays";
+import Promises from "./pages/topics/javascript/Promises";
+import Prototypes from "./pages/topics/javascript/Prototypes";
+import PWA from "./pages/topics/javascript/PWA";
+import ThisKeyword from "./pages/topics/javascript/ThisKeyword";
+import Throttle from "./pages/topics/javascript/Throttle";
+import Variables from "./pages/topics/javascript/Variables";
+import ApiRoutes from "./pages/topics/nextjs/ApiRoutes";
 import AppRouter from "./pages/topics/nextjs/AppRouter";
-import ServerComponents from "./pages/topics/nextjs/ServerComponents";
+import AuthLayout from "./pages/topics/nextjs/AuthLayout";
+import Caching from "./pages/topics/nextjs/Caching";
 import DataFetching from "./pages/topics/nextjs/DataFetching";
 import Metadata from "./pages/topics/nextjs/Metadata";
-import Routing from "./pages/topics/nextjs/Routing";
-import ApiRoutes from "./pages/topics/nextjs/ApiRoutes";
-import AuthLayout from "./pages/topics/nextjs/AuthLayout";
 import ProtectedRoutes from "./pages/topics/nextjs/ProtectedRoutes";
+import Routing from "./pages/topics/nextjs/Routing";
+import ServerComponents from "./pages/topics/nextjs/ServerComponents";
 import ServerVsClient from "./pages/topics/nextjs/ServerVsClient";
-import Caching from "./pages/topics/nextjs/Caching";
-import WhatIsSeo from "./pages/topics/seo/WhatIsSeo";
-import SearchEngines from "./pages/topics/seo/SearchEngines";
-import TitleMeta from "./pages/topics/seo/TitleMeta";
+import WebPerformance from "./pages/topics/performance/Optimization";
+import Accessibility from "./pages/topics/react/Accessibility";
+import Components from "./pages/topics/react/Components";
+import CompoundComponents from "./pages/topics/react/CompoundComponents";
+import ConditionalRendering from "./pages/topics/react/ConditionalRendering";
+import Context from "./pages/topics/react/Context";
+import ControlledUncontrolled from "./pages/topics/react/ControlledUncontrolled";
+import CustomHooks from "./pages/topics/react/CustomHooks";
+import ErrorHandling from "./pages/topics/react/ErrorHandling";
+import EventHandling from "./pages/topics/react/EventHandling";
+import FormsHandling from "./pages/topics/react/FormsHandling";
+import JSXVirtualDOM from "./pages/topics/react/JSXVirtualDOM";
+import Lifecycle from "./pages/topics/react/Lifecycle";
+import ListsKeys from "./pages/topics/react/ListsKeys";
+import Patterns from "./pages/topics/react/Patterns";
+import Performance from "./pages/topics/react/Performance";
+import PropsState from "./pages/topics/react/PropsState";
+import ReactMemoComponent from "./pages/topics/react/ReactMemo";
+import Reconciliation from "./pages/topics/react/Reconciliation";
+import StateColocation from "./pages/topics/react/StateColocation";
+import StateManagement from "./pages/topics/react/StateManagement";
+import UseEffect from "./pages/topics/react/UseEffect";
+import UseMemo from "./pages/topics/react/UseMemo";
+import UseReducer from "./pages/topics/react/UseReducer";
+import UseRef from "./pages/topics/react/UseRef";
+import UseState from "./pages/topics/react/UseState";
+import Security from "./pages/topics/security/Fundamentals";
+import CoreWebVitals from "./pages/topics/seo/CoreWebVitals";
 import Headings from "./pages/topics/seo/Headings";
 import ImageSeo from "./pages/topics/seo/ImageSeo";
-import CoreWebVitals from "./pages/topics/seo/CoreWebVitals";
 import NextjsMetadata from "./pages/topics/seo/NextjsMetadata";
+import SearchEngines from "./pages/topics/seo/SearchEngines";
 import ServerClientSeo from "./pages/topics/seo/ServerClientSeo";
+import TitleMeta from "./pages/topics/seo/TitleMeta";
+import WhatIsSeo from "./pages/topics/seo/WhatIsSeo";
+import Testing from "./pages/topics/testing/Fundamentals";
+import TypeScript from "./pages/topics/typescript/Fundamentals";
 
 const queryClient = new QueryClient();
 
@@ -97,7 +108,9 @@ const App = () => (
             
             {/* HTML Topics */}
             <Route path="/html/semantic" element={<Semantic />} />
+            <Route path="/html/semantic-preview" element={<SemanticWithPreview />} />
             <Route path="/html/forms" element={<Forms />} />
+            <Route path="/html/forms-preview" element={<FormsWithPreview />} />
             <Route path="/html/accessibility" element={<Accessibility />} />
             <Route path="/html/meta-tags" element={<MetaTags />} />
             <Route path="/html/web-apis" element={<WebApis />} />
@@ -105,6 +118,7 @@ const App = () => (
             
             {/* CSS Topics */}
             <Route path="/css/flexbox" element={<Flexbox />} />
+            <Route path="/css/flexbox-preview" element={<FlexboxWithPreview />} />
             <Route path="/css/grid" element={<Grid />} />
             <Route path="/css/positioning" element={<Positioning />} />
             <Route path="/css/animations" element={<Animations />} />
@@ -146,17 +160,26 @@ const App = () => (
             <Route path="/react/jsx-virtual-dom" element={<JSXVirtualDOM />} />
             <Route path="/react/props-state" element={<PropsState />} />
             <Route path="/react/conditional-rendering" element={<ConditionalRendering />} />
+            <Route path="/react/controlled-uncontrolled" element={<ControlledUncontrolled />} />
+            <Route path="/react/lists-keys" element={<ListsKeys />} />
             <Route path="/react/events" element={<EventHandling />} />
             <Route path="/react/lifecycle" element={<Lifecycle />} />
             <Route path="/react/hooks/useState" element={<UseState />} />
             <Route path="/react/hooks/useEffect" element={<UseEffect />} />
             <Route path="/react/hooks/useRef" element={<UseRef />} />
             <Route path="/react/hooks/useMemo" element={<UseMemo />} />
+            <Route path="/react/hooks/useReducer" element={<UseReducer />} />
             <Route path="/react/context" element={<Context />} />
             <Route path="/react/custom-hooks" element={<CustomHooks />} />
+            <Route path="/react/reconciliation" element={<Reconciliation />} />
+            <Route path="/react/react-memo" element={<ReactMemoComponent />} />
             <Route path="/react/performance" element={<Performance />} />
+            <Route path="/react/state-colocation" element={<StateColocation />} />
             <Route path="/react/patterns" element={<Patterns />} />
+            <Route path="/react/compound-components" element={<CompoundComponents />} />
             <Route path="/react/state-management" element={<StateManagement />} />
+            <Route path="/react/forms-handling" element={<FormsHandling />} />
+            <Route path="/react/accessibility" element={<Accessibility />} />
             <Route path="/react/error-handling" element={<ErrorHandling />} />
             <Route path="/react/*" element={<TopicNotFound />} />
             
