@@ -1,4 +1,5 @@
 import { TopicLayout } from '@/components/TopicLayout';
+import { MultiExampleEditor } from '@/components/MultiExampleEditor';
 
 const eventHandlingCode = `// React Event Handling: Managing user interactions
 
@@ -368,7 +369,140 @@ const EventHandling = () => {
         "Forgetting to handle keyboard accessibility - breaks screen reader navigation.",
       ]}
       practiceTask="Build an accessible dropdown menu with keyboard navigation (arrow keys, enter, escape), click outside to close, and proper ARIA attributes."
-    />
+    >
+      <MultiExampleEditor
+        title="🎯 Try It: Event Handling"
+        examples={[
+          {
+            title: "Form Events",
+            code: `<!DOCTYPE html>
+<html>
+<head>
+<style>
+  body { margin: 0; padding: 40px; font-family: system-ui; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; min-height: 100vh; }
+  .card { background: rgba(255,255,255,0.1); backdrop-filter: blur(10px); padding: 30px; border-radius: 12px; max-width: 500px; margin: 0 auto; }
+  input, textarea { width: 100%; padding: 12px; border: none; border-radius: 8px; margin: 10px 0; font-size: 16px; font-family: inherit; }
+  button { background: white; color: #667eea; border: none; padding: 12px 24px; border-radius: 8px; cursor: pointer; margin: 5px; font-weight: 600; }
+  button:hover { transform: scale(1.05); }
+  .output { background: rgba(255,255,255,0.2); padding: 15px; border-radius: 8px; margin: 15px 0; }
+</style>
+</head>
+<body>
+  <div class="card">
+    <h2>📝 Form Events</h2>
+    <form id="contactForm" onsubmit="handleSubmit(event)">
+      <input id="name" placeholder="Name" required />
+      <input id="email" type="email" placeholder="Email" required />
+      <textarea id="message" placeholder="Message" rows="4" required></textarea>
+      <button type="submit">Submit</button>
+      <button type="button" onclick="resetForm()">Reset</button>
+    </form>
+    <div id="output"></div>
+  </div>
+  
+  <script>
+    function handleSubmit(e) {
+      e.preventDefault();
+      const name = document.getElementById('name').value;
+      const email = document.getElementById('email').value;
+      const message = document.getElementById('message').value;
+      
+      document.getElementById('output').innerHTML = \`
+        <div class="output">
+          <strong>✅ Form Submitted!</strong><br>
+          Name: \${name}<br>
+          Email: \${email}<br>
+          Message: \${message}
+        </div>
+      \`;
+    }
+    
+    function resetForm() {
+      document.getElementById('contactForm').reset();
+      document.getElementById('output').innerHTML = '';
+    }
+  </script>
+</body>
+</html>`
+          },
+          {
+            title: "Keyboard Events",
+            code: `<!DOCTYPE html>
+<html>
+<head>
+<style>
+  body { margin: 0; padding: 40px; font-family: system-ui; background: #0f172a; color: #e2e8f0; }
+  .container { max-width: 500px; margin: 0 auto; }
+  input { width: 100%; padding: 15px; border: 2px solid #3b82f6; border-radius: 8px; font-size: 18px; background: #1e293b; color: white; }
+  .suggestions { background: #1e293b; border: 2px solid #3b82f6; border-top: none; border-radius: 0 0 8px 8px; margin-top: -10px; }
+  .suggestion { padding: 12px; cursor: pointer; border-bottom: 1px solid #334155; }
+  .suggestion:hover, .suggestion.selected { background: #334155; }
+  .hint { opacity: 0.6; font-size: 14px; margin: 10px 0; }
+</style>
+</head>
+<body>
+  <div class="container">
+    <h2>⌨️ Keyboard Navigation</h2>
+    <p class="hint">Use ↑↓ arrow keys, Enter to select, Esc to close</p>
+    <input id="search" placeholder="Type to search..." onkeydown="handleKeyDown(event)" oninput="handleInput()" />
+    <div id="suggestions"></div>
+  </div>
+  
+  <script>
+    const items = ['Apple', 'Banana', 'Cherry', 'Date', 'Elderberry', 'Fig', 'Grape'];
+    let filtered = [];
+    let selectedIndex = -1;
+    
+    function handleInput() {
+      const query = document.getElementById('search').value.toLowerCase();
+      filtered = query ? items.filter(item => item.toLowerCase().includes(query)) : [];
+      selectedIndex = -1;
+      render();
+    }
+    
+    function handleKeyDown(e) {
+      if (filtered.length === 0) return;
+      
+      if (e.key === 'ArrowDown') {
+        e.preventDefault();
+        selectedIndex = Math.min(selectedIndex + 1, filtered.length - 1);
+        render();
+      } else if (e.key === 'ArrowUp') {
+        e.preventDefault();
+        selectedIndex = Math.max(selectedIndex - 1, -1);
+        render();
+      } else if (e.key === 'Enter' && selectedIndex >= 0) {
+        e.preventDefault();
+        document.getElementById('search').value = filtered[selectedIndex];
+        filtered = [];
+        render();
+      } else if (e.key === 'Escape') {
+        filtered = [];
+        render();
+      }
+    }
+    
+    function render() {
+      document.getElementById('suggestions').innerHTML = filtered.length === 0 ? '' :
+        '<div class="suggestions">' + filtered.map((item, i) => \`
+          <div class="suggestion \${i === selectedIndex ? 'selected' : ''}" onclick="selectItem('\${item}')">
+            \${item}
+          </div>
+        \`).join('') + '</div>';
+    }
+    
+    function selectItem(item) {
+      document.getElementById('search').value = item;
+      filtered = [];
+      render();
+    }
+  </script>
+</body>
+</html>`
+          }
+        ]}
+      />
+    </TopicLayout>
   );
 };
 

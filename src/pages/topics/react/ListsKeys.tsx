@@ -1,4 +1,5 @@
 import { TopicLayout } from '@/components/TopicLayout';
+import { MultiExampleEditor } from '@/components/MultiExampleEditor';
 
 const listsKeysCode = `// Lists & Keys: Identity and reconciliation in React
 
@@ -142,7 +143,139 @@ const ListsKeys = () => {
         "No keys: React warns and uses index, but you should be explicit.",
       ]}
       practiceTask="Create a sortable todo list where each item has a checkbox and input field. Use proper keys. Test that sorting preserves checkbox state and input focus. Compare behavior with index keys vs ID keys."
-    />
+    >
+      <MultiExampleEditor
+        title="🎯 Try It: Lists & Keys"
+        examples={[
+          {
+            title: "Proper Keys",
+            code: `<!DOCTYPE html>
+<html>
+<head>
+<style>
+  body { margin: 0; padding: 40px; font-family: system-ui; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; min-height: 100vh; }
+  .container { max-width: 600px; margin: 0 auto; }
+  .card { background: rgba(255,255,255,0.1); backdrop-filter: blur(10px); padding: 30px; border-radius: 12px; }
+  button { background: white; color: #667eea; border: none; padding: 10px 20px; border-radius: 6px; cursor: pointer; margin: 5px; font-weight: 600; }
+  button:hover { transform: scale(1.05); }
+  .item { background: rgba(255,255,255,0.2); padding: 15px; border-radius: 8px; margin: 10px 0; display: flex; justify-content: space-between; align-items: center; }
+  .delete { background: #ef4444; color: white; }
+</style>
+</head>
+<body>
+  <div class="container">
+    <div class="card">
+      <h2>🔑 Keys Demo</h2>
+      <button onclick="addItem()">Add Item</button>
+      <button onclick="shuffleItems()">Shuffle</button>
+      <div id="list"></div>
+    </div>
+  </div>
+  
+  <script>
+    let items = [
+      { id: 1, text: 'Item 1' },
+      { id: 2, text: 'Item 2' },
+      { id: 3, text: 'Item 3' }
+    ];
+    
+    function addItem() {
+      items.push({ id: Date.now(), text: \`Item \${items.length + 1}\` });
+      render();
+    }
+    
+    function deleteItem(id) {
+      items = items.filter(item => item.id !== id);
+      render();
+    }
+    
+    function shuffleItems() {
+      items = items.sort(() => Math.random() - 0.5);
+      render();
+    }
+    
+    function render() {
+      document.getElementById('list').innerHTML = items.map(item => \`
+        <div class="item" data-key="\${item.id}">
+          <span>\${item.text} (ID: \${item.id})</span>
+          <button class="delete" onclick="deleteItem(\${item.id})">Delete</button>
+        </div>
+      \`).join('');
+    }
+    
+    render();
+  </script>
+</body>
+</html>`
+          },
+          {
+            title: "Index vs ID Keys",
+            code: `<!DOCTYPE html>
+<html>
+<head>
+<style>
+  body { margin: 0; padding: 40px; font-family: system-ui; background: #0f172a; color: #e2e8f0; }
+  .container { max-width: 700px; margin: 0 auto; }
+  .columns { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+  .column { background: #1e293b; padding: 20px; border-radius: 12px; }
+  button { background: #3b82f6; color: white; border: none; padding: 10px 20px; border-radius: 6px; cursor: pointer; margin: 5px; }
+  .item { background: #334155; padding: 10px; border-radius: 6px; margin: 8px 0; }
+  .bad { border-left: 4px solid #ef4444; }
+  .good { border-left: 4px solid #10b981; }
+</style>
+</head>
+<body>
+  <div class="container">
+    <h2>⚠️ Index vs ID Keys</h2>
+    <div class="columns">
+      <div class="column">
+        <h3>❌ Bad: Index Keys</h3>
+        <button onclick="addBad()">Add to Top</button>
+        <div id="badList"></div>
+      </div>
+      <div class="column">
+        <h3>✅ Good: ID Keys</h3>
+        <button onclick="addGood()">Add to Top</button>
+        <div id="goodList"></div>
+      </div>
+    </div>
+  </div>
+  
+  <script>
+    let badItems = ['A', 'B', 'C'];
+    let goodItems = [{ id: 1, text: 'A' }, { id: 2, text: 'B' }, { id: 3, text: 'C' }];
+    
+    function addBad() {
+      badItems.unshift('NEW');
+      renderBad();
+    }
+    
+    function addGood() {
+      goodItems.unshift({ id: Date.now(), text: 'NEW' });
+      renderGood();
+    }
+    
+    function renderBad() {
+      document.getElementById('badList').innerHTML = badItems.map((item, index) => \`
+        <div class="item bad">Index \${index}: \${item}</div>
+      \`).join('');
+    }
+    
+    function renderGood() {
+      document.getElementById('goodList').innerHTML = goodItems.map(item => \`
+        <div class="item good">ID \${item.id}: \${item.text}</div>
+      \`).join('');
+    }
+    
+    renderBad();
+    renderGood();
+  </script>
+</body>
+</html>`
+          }
+        ]}
+      />
+    </TopicLayout>
   );
 };
 

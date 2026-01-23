@@ -1,4 +1,5 @@
 import { TopicLayout } from '@/components/TopicLayout';
+import { MultiExampleEditor } from '@/components/MultiExampleEditor';
 
 const propsStateCode = `// React Props & State: Data flow and component communication
 
@@ -311,7 +312,118 @@ const PropsState = () => {
         "Not lifting state up when multiple components need the same data.",
       ]}
       practiceTask="Build a multi-step form where each step is a separate component. Manage form data in parent component and pass down as props. Include validation and the ability to go back/forward between steps."
-    />
+    >
+      <MultiExampleEditor
+        title="🎯 Try It: Props & State"
+        examples={[
+          {
+            title: "Props Flow",
+            code: `<!DOCTYPE html>
+<html>
+<head>
+<style>
+  body { margin: 0; padding: 40px; font-family: system-ui; background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%); color: white; min-height: 100vh; }
+  .app { max-width: 600px; margin: 0 auto; }
+  .card { background: rgba(255,255,255,0.1); backdrop-filter: blur(10px); padding: 20px; border-radius: 12px; margin: 15px 0; }
+  input { width: 100%; padding: 12px; border: none; border-radius: 8px; margin: 10px 0; font-size: 16px; }
+  .user { background: rgba(255,255,255,0.2); padding: 15px; border-radius: 8px; margin: 10px 0; }
+</style>
+</head>
+<body>
+  <div class="app">
+    <div class="card">
+      <h2>📤 Props: Parent to Child</h2>
+      <input id="nameInput" placeholder="Enter name..." oninput="updateName()" />
+      <div id="children"></div>
+    </div>
+  </div>
+  
+  <script>
+    let userName = 'Guest';
+    
+    function UserGreeting({ name }) {
+      return \`<div class="user">👋 Hello, \${name}!</div>\`;
+    }
+    
+    function UserProfile({ name }) {
+      return \`<div class="user">👤 Profile: \${name}</div>\`;
+    }
+    
+    function updateName() {
+      userName = document.getElementById('nameInput').value || 'Guest';
+      render();
+    }
+    
+    function render() {
+      document.getElementById('children').innerHTML = 
+        UserGreeting({ name: userName }) + 
+        UserProfile({ name: userName });
+    }
+    
+    render();
+  </script>
+</body>
+</html>`
+          },
+          {
+            title: "State Management",
+            code: `<!DOCTYPE html>
+<html>
+<head>
+<style>
+  body { margin: 0; padding: 40px; font-family: system-ui; background: #0f172a; color: #e2e8f0; }
+  .container { max-width: 500px; margin: 0 auto; }
+  .todo-input { width: 100%; padding: 12px; border: 2px solid #3b82f6; border-radius: 8px; margin: 10px 0; background: #1e293b; color: white; font-size: 16px; }
+  button { background: #3b82f6; color: white; border: none; padding: 10px 20px; border-radius: 6px; cursor: pointer; margin: 5px; }
+  .todo { background: #1e293b; padding: 12px; border-radius: 8px; margin: 10px 0; display: flex; justify-content: space-between; align-items: center; }
+  .delete { background: #ef4444; }
+</style>
+</head>
+<body>
+  <div class="container">
+    <h2>📋 State: Todo List</h2>
+    <input class="todo-input" id="todoInput" placeholder="Add todo..." onkeypress="if(event.key==='Enter') addTodo()" />
+    <button onclick="addTodo()">Add</button>
+    <div id="todos"></div>
+  </div>
+  
+  <script>
+    let todos = [];
+    
+    function addTodo() {
+      const input = document.getElementById('todoInput');
+      const text = input.value.trim();
+      if (!text) return;
+      
+      todos = [...todos, { id: Date.now(), text }];
+      input.value = '';
+      render();
+    }
+    
+    function deleteTodo(id) {
+      todos = todos.filter(t => t.id !== id);
+      render();
+    }
+    
+    function render() {
+      document.getElementById('todos').innerHTML = todos.length === 0
+        ? '<p style="opacity:0.6;">No todos yet!</p>'
+        : todos.map(todo => \`
+          <div class="todo">
+            <span>\${todo.text}</span>
+            <button class="delete" onclick="deleteTodo(\${todo.id})">Delete</button>
+          </div>
+        \`).join('');
+    }
+    
+    render();
+  </script>
+</body>
+</html>`
+          }
+        ]}
+      />
+    </TopicLayout>
   );
 };
 

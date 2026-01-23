@@ -1,4 +1,5 @@
 import { TopicLayout } from '@/components/TopicLayout';
+import { MultiExampleEditor } from '@/components/MultiExampleEditor';
 
 const componentsCode = `// React Components: Building blocks of React applications
 
@@ -288,7 +289,112 @@ const Components = () => {
         "Not handling edge cases like empty states or loading states.",
       ]}
       practiceTask="Build a reusable Modal component that accepts title, children, and onClose props. Include proper event handling, conditional rendering, and accessibility features."
-    />
+    >
+      <MultiExampleEditor
+        title="🎯 Try It: React Components"
+        examples={[
+          {
+            title: "Component Composition",
+            code: `<!DOCTYPE html>
+<html>
+<head>
+<style>
+  body { margin: 0; padding: 40px; font-family: system-ui; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; min-height: 100vh; }
+  .card { background: rgba(255,255,255,0.1); backdrop-filter: blur(10px); padding: 30px; border-radius: 12px; margin: 20px 0; }
+  .user-card { background: rgba(255,255,255,0.2); padding: 20px; border-radius: 8px; margin: 10px 0; }
+  button { background: white; color: #667eea; border: none; padding: 10px 20px; border-radius: 6px; cursor: pointer; margin: 5px; font-weight: 600; }
+  button:hover { transform: scale(1.05); }
+</style>
+</head>
+<body>
+  <div class="card">
+    <h2>🧩 Component Composition</h2>
+    <div id="root"></div>
+  </div>
+  
+  <script>
+    // Simulating React components
+    function UserCard({ name, email, role }) {
+      return \`
+        <div class="user-card">
+          <h3>👤 \${name}</h3>
+          <p>📧 \${email}</p>
+          <p>🎯 Role: \${role}</p>
+        </div>
+      \`;
+    }
+    
+    function UserList({ users }) {
+      return users.map(user => UserCard(user)).join('');
+    }
+    
+    const users = [
+      { name: 'Alice', email: 'alice@example.com', role: 'Admin' },
+      { name: 'Bob', email: 'bob@example.com', role: 'User' },
+      { name: 'Charlie', email: 'charlie@example.com', role: 'Editor' }
+    ];
+    
+    document.getElementById('root').innerHTML = UserList({ users });
+  </script>
+</body>
+</html>`
+          },
+          {
+            title: "State & Events",
+            code: `<!DOCTYPE html>
+<html>
+<head>
+<style>
+  body { margin: 0; padding: 40px; font-family: system-ui; background: #0f172a; color: #e2e8f0; }
+  .container { max-width: 500px; margin: 0 auto; text-align: center; }
+  .counter { background: #1e293b; padding: 40px; border-radius: 12px; margin: 20px 0; }
+  .count { font-size: 72px; font-weight: bold; color: #3b82f6; margin: 20px 0; }
+  button { background: #3b82f6; color: white; border: none; padding: 15px 30px; border-radius: 8px; cursor: pointer; margin: 5px; font-size: 16px; font-weight: 600; }
+  button:hover { background: #2563eb; }
+  .reset { background: #ef4444; }
+  .reset:hover { background: #dc2626; }
+</style>
+</head>
+<body>
+  <div class="container">
+    <h2>🔢 Counter Component</h2>
+    <div class="counter">
+      <div class="count" id="count">0</div>
+      <button onclick="increment()">+ Increment</button>
+      <button onclick="decrement()">- Decrement</button>
+      <button class="reset" onclick="reset()">Reset</button>
+    </div>
+  </div>
+  
+  <script>
+    // Component state
+    let count = 0;
+    
+    function increment() {
+      count++;
+      render();
+    }
+    
+    function decrement() {
+      count--;
+      render();
+    }
+    
+    function reset() {
+      count = 0;
+      render();
+    }
+    
+    function render() {
+      document.getElementById('count').textContent = count;
+    }
+  </script>
+</body>
+</html>`
+          }
+        ]}
+      />
+    </TopicLayout>
   );
 };
 

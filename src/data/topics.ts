@@ -28,7 +28,7 @@ export const topicsData: TopicCategory[] = [
   {
     id: 'css',
     title: 'CSS',
-    icon: '🎨',
+    icon: '🙀',
     topics: [
       { id: 'flexbox', title: 'Flexbox', route: '/css/flexbox', category: 'css' },
       { id: 'grid', title: 'CSS Grid', route: '/css/grid', category: 'css' },
@@ -67,15 +67,7 @@ export const topicsData: TopicCategory[] = [
       { id: 'memoization', title: 'Memoization Pattern', route: '/javascript/patterns/memoization', category: 'javascript' },
     ],
   },
-  {
-    id: 'typescript',
-    title: 'TypeScript',
-    icon: '🔷',
-    topics: [
-      { id: 'fundamentals', title: 'TypeScript Fundamentals', route: '/typescript/fundamentals', category: 'javascript' },
-    ],
-  },
-  {
+   {
     id: 'react',
     title: 'React',
     icon: '⚛️',
@@ -108,27 +100,11 @@ export const topicsData: TopicCategory[] = [
     ],
   },
   {
-    id: 'testing',
-    title: 'Testing',
-    icon: '🧪',
+    id: 'typescript',
+    title: 'TypeScript',
+    icon: '🔷',
     topics: [
-      { id: 'fundamentals', title: 'Testing Fundamentals', route: '/testing/fundamentals', category: 'javascript' },
-    ],
-  },
-  {
-    id: 'performance',
-    title: 'Performance',
-    icon: '⚡',
-    topics: [
-      { id: 'optimization', title: 'Web Performance', route: '/performance/optimization', category: 'javascript' },
-    ],
-  },
-  {
-    id: 'security',
-    title: 'Security',
-    icon: '🔒',
-    topics: [
-      { id: 'fundamentals', title: 'Web Security', route: '/security/fundamentals', category: 'javascript' },
+      { id: 'fundamentals', title: 'TypeScript Fundamentals', route: '/typescript/fundamentals', category: 'javascript' },
     ],
   },
   {
@@ -161,6 +137,30 @@ export const topicsData: TopicCategory[] = [
       { id: 'core-web-vitals', title: 'Core Web Vitals', route: '/seo/technical/core-web-vitals', category: 'javascript' },
       { id: 'nextjs-metadata', title: 'Next.js Metadata API', route: '/seo/nextjs/metadata', category: 'javascript' },
       { id: 'server-client-seo', title: 'Server vs Client & SEO', route: '/seo/nextjs/server-vs-client', category: 'javascript' },
+    ],
+  },
+  {
+    id: 'testing',
+    title: 'Testing',
+    icon: '🧪',
+    topics: [
+      { id: 'fundamentals', title: 'Testing Fundamentals', route: '/testing/fundamentals', category: 'javascript' },
+    ],
+  },
+  {
+    id: 'performance',
+    title: 'Performance',
+    icon: '⚡',
+    topics: [
+      { id: 'optimization', title: 'Web Performance', route: '/performance/optimization', category: 'javascript' },
+    ],
+  },
+  {
+    id: 'security',
+    title: 'Security',
+    icon: '🔒',
+    topics: [
+      { id: 'fundamentals', title: 'Web Security', route: '/security/fundamentals', category: 'javascript' },
     ],
   },
 ];

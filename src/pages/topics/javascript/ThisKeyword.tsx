@@ -1,4 +1,5 @@
 import { TopicLayout } from '@/components/TopicLayout';
+import { MultiExampleEditor } from '@/components/MultiExampleEditor';
 
 const thisKeywordCode = `// this Keyword: Context binding in JavaScript functions
 
@@ -107,7 +108,128 @@ const ThisKeyword = () => {
         "Not understanding that arrow functions inherit 'this' from enclosing scope, not call site.",
       ]}
       practiceTask="Create a Calculator class with add, subtract, multiply methods. Make it work both as calculator.add(5) and as const add = calculator.add; add(5). Handle 'this' binding correctly in both scenarios."
-    />
+    >
+      <MultiExampleEditor
+        title="🎯 Try It: 'this' Keyword"
+        examples={[
+          {
+            title: "Method Context",
+            code: `<!DOCTYPE html>
+<html>
+<head>
+<style>
+  body { margin: 0; padding: 40px; font-family: system-ui; background: #1e293b; color: #e2e8f0; }
+  button { background: #3b82f6; color: white; border: none; padding: 10px 20px; border-radius: 6px; cursor: pointer; margin: 5px; }
+  button:hover { background: #2563eb; }
+  .output { background: #334155; padding: 15px; border-radius: 8px; margin: 10px 0; border-left: 4px solid #10b981; }
+  .error { border-left-color: #ef4444; }
+</style>
+</head>
+<body>
+  <h2>🕹️ 'this' in Methods</h2>
+  <button onclick="testMethod()">Call Method</button>
+  <button onclick="testLostContext()">Lost Context</button>
+  <button onclick="testArrowFix()">Arrow Fix</button>
+  <div id="output"></div>
+  
+  <script>
+    const counter = {
+      count: 0,
+      increment: function() {
+        this.count++;
+        return 'Count: ' + this.count;
+      },
+      incrementArrow: function() {
+        setTimeout(() => {
+          this.count++;
+          show('Arrow preserves this: ' + this.count + ' ✅');
+        }, 100);
+      }
+    };
+    
+    function testMethod() {
+      show(counter.increment() + ' ✅<br>this = counter object');
+    }
+    
+    function testLostContext() {
+      const inc = counter.increment;
+      try {
+        inc();
+      } catch(e) {
+        show('Lost context! this = undefined ❌<br>' + e.message, true);
+      }
+    }
+    
+    function testArrowFix() {
+      show('Waiting...');
+      counter.incrementArrow();
+    }
+    
+    function show(msg, isError) {
+      document.getElementById('output').innerHTML = 
+        '<div class="output' + (isError ? ' error' : '') + '">' + msg + '</div>';
+    }
+  </script>
+</body>
+</html>`
+          },
+          {
+            title: "bind/call/apply",
+            code: `<!DOCTYPE html>
+<html>
+<head>
+<style>
+  body { margin: 0; padding: 40px; font-family: system-ui; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; }
+  button { background: white; color: #667eea; border: none; padding: 12px 24px; border-radius: 8px; cursor: pointer; margin: 5px; font-weight: 600; }
+  button:hover { transform: scale(1.05); }
+  .output { background: rgba(255,255,255,0.1); backdrop-filter: blur(10px); padding: 20px; border-radius: 12px; margin: 15px 0; }
+</style>
+</head>
+<body>
+  <h2>🔗 Explicit Binding</h2>
+  <button onclick="testCall()">call()</button>
+  <button onclick="testApply()">apply()</button>
+  <button onclick="testBind()">bind()</button>
+  <div id="output"></div>
+  
+  <script>
+    const person1 = { name: 'Alice' };
+    const person2 = { name: 'Bob' };
+    
+    function greet(greeting, punctuation) {
+      return greeting + ', I am ' + this.name + punctuation;
+    }
+    
+    function testCall() {
+      const msg1 = greet.call(person1, 'Hello', '!');
+      const msg2 = greet.call(person2, 'Hi', '.');
+      show('call() - pass args individually:<br>' + msg1 + '<br>' + msg2);
+    }
+    
+    function testApply() {
+      const msg1 = greet.apply(person1, ['Hey', '?']);
+      const msg2 = greet.apply(person2, ['Yo', '!']);
+      show('apply() - pass args as array:<br>' + msg1 + '<br>' + msg2);
+    }
+    
+    function testBind() {
+      const greetAlice = greet.bind(person1);
+      const greetBob = greet.bind(person2);
+      show('bind() - creates new function:<br>' + 
+           greetAlice('Hello', '!') + '<br>' + 
+           greetBob('Hi', '.'));
+    }
+    
+    function show(msg) {
+      document.getElementById('output').innerHTML = '<div class="output">' + msg + '</div>';
+    }
+  </script>
+</body>
+</html>`
+          }
+        ]}
+      />
+    </TopicLayout>
   );
 };
 

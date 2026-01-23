@@ -1,4 +1,5 @@
 import { TopicLayout } from '@/components/TopicLayout';
+import { LiveCodeEditor } from '@/components/LiveCodeEditor';
 
 const webApisCode = `// Web Storage APIs: Client-side data persistence
 
@@ -157,22 +158,72 @@ class CookieManager {
 
 const WebApis = () => {
   return (
-    <TopicLayout
-      title="Web Storage APIs"
-      route="/html/web-apis"
-      category="html"
-      explanation="Web Storage APIs provide client-side data persistence. localStorage persists across sessions, sessionStorage lasts only for the session, IndexedDB handles complex data, and cookies work across domains. Each has specific use cases and limitations."
-      code={webApisCode}
-      codeFilename="web-storage.ts"
-      whyItMatters="Client-side storage is essential for user experience and offline functionality. Interviewers test understanding of storage limitations, security considerations, and when to use each API. Critical for building responsive, user-friendly applications."
-      mistakes={[
-        "Not handling storage quota exceeded errors - can crash the application.",
-        "Storing sensitive data in localStorage - it's not secure and persists indefinitely.",
-        "Not checking for storage API availability - older browsers may not support them.",
-        "Storing large objects without considering performance impact on JSON parsing.",
-      ]}
-      practiceTask="Build an offline-capable todo app using localStorage for data persistence, sessionStorage for UI state, and implement proper error handling for storage quota limits."
-    />
+    <div className="space-y-8">
+      <TopicLayout
+        title="Web Storage APIs"
+        route="/html/web-apis"
+        category="html"
+        explanation="Web Storage APIs provide client-side data persistence. localStorage persists across sessions, sessionStorage lasts only for the session, IndexedDB handles complex data, and cookies work across domains. Each has specific use cases and limitations."
+        code={webApisCode}
+        codeFilename="web-storage.ts"
+        whyItMatters="Client-side storage is essential for user experience and offline functionality. Interviewers test understanding of storage limitations, security considerations, and when to use each API. Critical for building responsive, user-friendly applications."
+        mistakes={[
+          "Not handling storage quota exceeded errors - can crash the application.",
+          "Storing sensitive data in localStorage - it's not secure and persists indefinitely.",
+          "Not checking for storage API availability - older browsers may not support them.",
+          "Storing large objects without considering performance impact on JSON parsing.",
+        ]}
+        practiceTask="Build an offline-capable todo app using localStorage for data persistence, sessionStorage for UI state, and implement proper error handling for storage quota limits."
+      />
+
+      <div className="border-t pt-8">
+        <LiveCodeEditor
+          title="Try It Yourself: Web Storage"
+          initialCode={`<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    body { font-family: Arial, sans-serif; padding: 40px; background: #f5f5f5; }
+    .container { background: white; padding: 30px; border-radius: 12px; max-width: 600px; }
+    input { padding: 10px; border: 2px solid #D1D5DB; border-radius: 6px; width: 200px; margin-right: 10px; }
+    button { padding: 10px 20px; background: #3B82F6; color: white; border: none; border-radius: 6px; cursor: pointer; margin: 5px; }
+    button:hover { background: #2563EB; }
+    .output { margin-top: 20px; padding: 15px; background: #F3F4F6; border-radius: 6px; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>localStorage Demo</h2>
+    <input id="nameInput" placeholder="Enter your name">
+    <button onclick="saveName()">Save</button>
+    <button onclick="loadName()">Load</button>
+    <button onclick="clearName()">Clear</button>
+    <div class="output" id="output">Saved name will appear here</div>
+  </div>
+  
+  <script>
+    function saveName() {
+      const name = document.getElementById('nameInput').value;
+      localStorage.setItem('userName', name);
+      document.getElementById('output').textContent = 'Saved: ' + name;
+    }
+    
+    function loadName() {
+      const name = localStorage.getItem('userName');
+      document.getElementById('output').textContent = name ? 'Loaded: ' + name : 'No name saved';
+    }
+    
+    function clearName() {
+      localStorage.removeItem('userName');
+      document.getElementById('output').textContent = 'Cleared!';
+    }
+  </script>
+</body>
+</html>`}
+          height="500px"
+        />
+      </div>
+    </div>
   );
 };
 

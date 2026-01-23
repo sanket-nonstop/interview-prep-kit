@@ -1,4 +1,5 @@
 import { TopicLayout } from '@/components/TopicLayout';
+import { MultiExampleEditor } from '@/components/MultiExampleEditor';
 
 const destructuringCode = `// Destructuring & Spread: Modern JavaScript syntax for cleaner code
 
@@ -182,7 +183,109 @@ const Destructuring = () => {
         "Destructuring in wrong scope - can cause performance issues in render functions.",
       ]}
       practiceTask="Build a form component that uses destructuring for props and event handlers, spread operator for state updates, and rest parameters for flexible validation functions."
-    />
+    >
+      <MultiExampleEditor
+        title="🎯 Try It: Destructuring & Spread"
+        examples={[
+          {
+            title: "Array Destructuring",
+            code: `<!DOCTYPE html>
+<html>
+<head>
+<style>
+  body { margin: 0; padding: 40px; font-family: system-ui; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; }
+  .card { background: rgba(255,255,255,0.1); backdrop-filter: blur(10px); padding: 20px; border-radius: 12px; margin: 15px 0; border: 1px solid rgba(255,255,255,0.2); }
+  button { background: white; color: #667eea; border: none; padding: 10px 20px; border-radius: 6px; cursor: pointer; margin: 5px; font-weight: 600; }
+  button:hover { transform: scale(1.05); }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 4px; }
+</style>
+</head>
+<body>
+  <h2>📦 Array Destructuring</h2>
+  <button onclick="basicDestructure()">Basic</button>
+  <button onclick="skipElements()">Skip Elements</button>
+  <button onclick="restOperator()">Rest Operator</button>
+  <div id="output"></div>
+  
+  <script>
+    function basicDestructure() {
+      const colors = ['red', 'green', 'blue', 'yellow'];
+      const [first, second] = colors;
+      show(\`First: <code>\${first}</code><br>Second: <code>\${second}</code>\`);
+    }
+    
+    function skipElements() {
+      const colors = ['red', 'green', 'blue', 'yellow'];
+      const [first, , third] = colors;
+      show(\`First: <code>\${first}</code><br>Third: <code>\${third}</code><br>Skipped green!\`);
+    }
+    
+    function restOperator() {
+      const numbers = [1, 2, 3, 4, 5];
+      const [head, ...tail] = numbers;
+      show(\`Head: <code>\${head}</code><br>Tail: <code>[\${tail.join(', ')}]</code>\`);
+    }
+    
+    function show(msg) {
+      document.getElementById('output').innerHTML = '<div class="card">' + msg + '</div>';
+    }
+  </script>
+</body>
+</html>`
+          },
+          {
+            title: "Object Destructuring",
+            code: `<!DOCTYPE html>
+<html>
+<head>
+<style>
+  body { margin: 0; padding: 40px; font-family: system-ui; background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%); color: white; }
+  .card { background: rgba(255,255,255,0.15); backdrop-filter: blur(10px); padding: 20px; border-radius: 12px; margin: 15px 0; border: 1px solid rgba(255,255,255,0.3); }
+  button { background: white; color: #f5576c; border: none; padding: 10px 20px; border-radius: 6px; cursor: pointer; margin: 5px; font-weight: 600; }
+  button:hover { transform: scale(1.05); }
+  code { background: rgba(0,0,0,0.3); padding: 2px 6px; border-radius: 4px; font-family: 'Courier New'; }
+</style>
+</head>
+<body>
+  <h2>📦 Object Destructuring</h2>
+  <button onclick="basicObj()">Basic</button>
+  <button onclick="renameVars()">Rename</button>
+  <button onclick="nestedObj()">Nested</button>
+  <div id="output"></div>
+  
+  <script>
+    const user = {
+      name: 'Alice',
+      email: 'alice@example.com',
+      age: 28,
+      address: { city: 'NYC', country: 'USA' }
+    };
+    
+    function basicObj() {
+      const { name, email } = user;
+      show(\`Name: <code>\${name}</code><br>Email: <code>\${email}</code>\`);
+    }
+    
+    function renameVars() {
+      const { name: userName, email: userEmail } = user;
+      show(\`userName: <code>\${userName}</code><br>userEmail: <code>\${userEmail}</code>\`);
+    }
+    
+    function nestedObj() {
+      const { address: { city, country } } = user;
+      show(\`City: <code>\${city}</code><br>Country: <code>\${country}</code><br>Extracted from nested object!\`);
+    }
+    
+    function show(msg) {
+      document.getElementById('output').innerHTML = '<div class="card">' + msg + '</div>';
+    }
+  </script>
+</body>
+</html>`
+          }
+        ]}
+      />
+    </TopicLayout>
   );
 };
 

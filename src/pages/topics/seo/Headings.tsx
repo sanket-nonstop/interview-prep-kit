@@ -5,7 +5,7 @@ const headingsCode = `// Headings (H1-H6): Content hierarchy for SEO and accessi
 // ✅ Proper heading structure
 export default function ArticlePage() {
   return (
-    <article className="max-w-4xl mx-auto">
+    <article className="max-w-6xl mx-auto">
       {/* One H1 per page - main topic */}
       <h1 className="text-4xl font-bold mb-4">
         JavaScript Closures: Complete Guide

@@ -1,4 +1,5 @@
 import { TopicLayout } from '@/components/TopicLayout';
+import { MultiExampleEditor } from '@/components/MultiExampleEditor';
 
 const hoistingCode = `// JavaScript Hoisting: Variable and function declarations are moved to the top
 
@@ -286,7 +287,128 @@ const Hoisting = () => {
         "Confusing hoisting with scope - they're related but different concepts.",
       ]}
       practiceTask="Debug code with hoisting issues, explain the execution order of declarations and assignments, and refactor code to avoid hoisting-related bugs."
-    />
+    >
+      <MultiExampleEditor
+        title="🎯 Try It: Hoisting"
+        examples={[
+          {
+            title: "Variable Hoisting",
+            code: `<!DOCTYPE html>
+<html>
+<head>
+<style>
+  body { margin: 0; padding: 40px; font-family: 'Courier New', monospace; background: #0f172a; color: #e2e8f0; }
+  button { background: #3b82f6; color: white; border: none; padding: 10px 20px; border-radius: 6px; cursor: pointer; margin: 5px; }
+  button:hover { background: #2563eb; }
+  .output { background: #1e293b; padding: 15px; border-radius: 8px; margin: 10px 0; border-left: 4px solid #10b981; font-size: 14px; }
+  .error { border-left-color: #ef4444; }
+</style>
+</head>
+<body>
+  <h2>⬆️ Variable Hoisting</h2>
+  <button onclick="testVar()">var Hoisting</button>
+  <button onclick="testLet()">let TDZ</button>
+  <button onclick="testFunction()">Function Hoisting</button>
+  <div id="output"></div>
+  
+  <script>
+    function testVar() {
+      show('Before declaration: ' + typeof hoistedVar + '<br>');
+      var hoistedVar = 'I am hoisted';
+      show('After declaration: ' + hoistedVar + '<br><br>var is hoisted as undefined');
+    }
+    
+    function testLet() {
+      try {
+        show('Trying to access let before declaration...');
+        console.log(hoistedLet);
+        let hoistedLet = 'I am not accessible';
+      } catch(e) {
+        show('ReferenceError: ' + e.message + '<br><br>let/const in Temporal Dead Zone!', true);
+      }
+    }
+    
+    function testFunction() {
+      show('Calling before declaration: ' + hoistedFunc() + '<br><br>Function declarations are fully hoisted!');
+      
+      function hoistedFunc() {
+        return 'I work!';
+      }
+    }
+    
+    function show(msg, isError) {
+      const div = document.createElement('div');
+      div.className = 'output' + (isError ? ' error' : '');
+      div.innerHTML = msg;
+      document.getElementById('output').appendChild(div);
+    }
+  </script>
+</body>
+</html>`
+          },
+          {
+            title: "Function Hoisting",
+            code: `<!DOCTYPE html>
+<html>
+<head>
+<style>
+  body { margin: 0; padding: 40px; font-family: system-ui; background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%); color: white; }
+  button { background: white; color: #f5576c; border: none; padding: 12px 24px; border-radius: 8px; cursor: pointer; margin: 5px; font-weight: 600; }
+  button:hover { transform: scale(1.05); }
+  .output { background: rgba(255,255,255,0.15); backdrop-filter: blur(10px); padding: 20px; border-radius: 12px; margin: 15px 0; }
+  .error { border: 2px solid #fbbf24; }
+</style>
+</head>
+<body>
+  <h2>🎭 Function vs Expression</h2>
+  <button onclick="testDeclaration()">Declaration</button>
+  <button onclick="testExpression()">Expression</button>
+  <button onclick="testArrow()">Arrow</button>
+  <div id="output"></div>
+  
+  <script>
+    function testDeclaration() {
+      show('Function declaration works: ' + declaredFunc() + ' ✅<br>Fully hoisted!');
+      
+      function declaredFunc() {
+        return 'I am hoisted';
+      }
+    }
+    
+    function testExpression() {
+      try {
+        show('Trying function expression...');
+        expressionFunc();
+      } catch(e) {
+        show('TypeError: ' + e.message + ' ❌<br>Variable hoisted as undefined, not the function!', true);
+      }
+      
+      var expressionFunc = function() {
+        return 'I am not hoisted';
+      };
+    }
+    
+    function testArrow() {
+      try {
+        arrowFunc();
+      } catch(e) {
+        show('Arrow function: ' + e.message + ' ❌<br>Same as function expression!', true);
+      }
+      
+      var arrowFunc = () => 'Not hoisted';
+    }
+    
+    function show(msg, isError) {
+      document.getElementById('output').innerHTML = 
+        '<div class="output' + (isError ? ' error' : '') + '">' + msg + '</div>';
+    }
+  </script>
+</body>
+</html>`
+          }
+        ]}
+      />
+    </TopicLayout>
   );
 };
 

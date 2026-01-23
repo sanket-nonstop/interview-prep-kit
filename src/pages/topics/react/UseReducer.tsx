@@ -1,4 +1,5 @@
 import { TopicLayout } from '@/components/TopicLayout';
+import { MultiExampleEditor } from '@/components/MultiExampleEditor';
 
 const useReducerCode = `// useReducer: Complex state logic with actions
 
@@ -175,7 +176,151 @@ const UseReducer = () => {
         "Not using with Context: useReducer + Context is powerful for global state.",
       ]}
       practiceTask="Create a shopping cart with useReducer: add item, remove item, update quantity, apply coupon, calculate total. Use TypeScript for action types. Combine with Context to share cart state across components."
-    />
+    >
+      <MultiExampleEditor
+        title="🎯 Try It: useReducer Hook"
+        examples={[
+          {
+            title: "Counter with Actions",
+            code: `<!DOCTYPE html>
+<html>
+<head>
+<style>
+  body { margin: 0; padding: 40px; font-family: system-ui; background: #0f172a; color: #e2e8f0; }
+  .card { background: #1e293b; padding: 30px; border-radius: 12px; max-width: 400px; margin: 0 auto; text-align: center; }
+  .count { font-size: 72px; font-weight: bold; color: #3b82f6; margin: 20px 0; }
+  button { background: #3b82f6; color: white; border: none; padding: 12px 24px; border-radius: 8px; cursor: pointer; margin: 5px; font-weight: 600; }
+  button:hover { background: #2563eb; }
+  .reset { background: #ef4444; }
+  .reset:hover { background: #dc2626; }
+  .history { background: #334155; padding: 15px; border-radius: 8px; margin-top: 20px; text-align: left; font-size: 14px; }
+</style>
+</head>
+<body>
+  <div class="card">
+    <h2>🔢 useReducer Counter</h2>
+    <div class="count" id="count">0</div>
+    <button onclick="dispatch('increment')">+1</button>
+    <button onclick="dispatch('decrement')">-1</button>
+    <button onclick="dispatch('increment5')">+5</button>
+    <button class="reset" onclick="dispatch('reset')">Reset</button>
+    <div class="history" id="history"></div>
+  </div>
+  
+  <script>
+    let state = { count: 0, history: [] };
+    
+    function reducer(state, action) {
+      const newHistory = [...state.history, action].slice(-5);
+      
+      switch(action) {
+        case 'increment':
+          return { count: state.count + 1, history: newHistory };
+        case 'decrement':
+          return { count: state.count - 1, history: newHistory };
+        case 'increment5':
+          return { count: state.count + 5, history: newHistory };
+        case 'reset':
+          return { count: 0, history: [...newHistory] };
+        default:
+          return state;
+      }
+    }
+    
+    function dispatch(action) {
+      state = reducer(state, action);
+      render();
+    }
+    
+    function render() {
+      document.getElementById('count').textContent = state.count;
+      document.getElementById('history').innerHTML = 
+        '<strong>Action History:</strong><br>' + 
+        state.history.map(a => '• ' + a).join('<br>');
+    }
+    
+    render();
+  </script>
+</body>
+</html>`
+          },
+          {
+            title: "Todo with useReducer",
+            code: `<!DOCTYPE html>
+<html>
+<head>
+<style>
+  body { margin: 0; padding: 40px; font-family: system-ui; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; }
+  .card { background: rgba(255,255,255,0.1); backdrop-filter: blur(10px); padding: 30px; border-radius: 12px; max-width: 500px; margin: 0 auto; }
+  input { width: 100%; padding: 12px; border: none; border-radius: 8px; margin: 10px 0; font-size: 16px; }
+  button { background: white; color: #667eea; border: none; padding: 10px 20px; border-radius: 6px; cursor: pointer; margin: 5px; font-weight: 600; }
+  button:hover { transform: scale(1.05); }
+  .todo { background: rgba(255,255,255,0.2); padding: 12px; border-radius: 8px; margin: 10px 0; display: flex; justify-content: space-between; align-items: center; }
+  .todo.done { opacity: 0.6; text-decoration: line-through; }
+  .delete { background: #ef4444; color: white; }
+</style>
+</head>
+<body>
+  <div class="card">
+    <h2>✅ Todo with useReducer</h2>
+    <input id="todoInput" placeholder="Add a todo..." onkeypress="if(event.key==='Enter') dispatch({type:'add'})" />
+    <button onclick="dispatch({type:'add'})">Add Todo</button>
+    <div id="todos"></div>
+  </div>
+  
+  <script>
+    let state = { todos: [] };
+    
+    function reducer(state, action) {
+      switch(action.type) {
+        case 'add':
+          const text = document.getElementById('todoInput').value;
+          if (!text.trim()) return state;
+          return {
+            todos: [...state.todos, { id: Date.now(), text, done: false }]
+          };
+        case 'toggle':
+          return {
+            todos: state.todos.map(t => 
+              t.id === action.id ? {...t, done: !t.done} : t
+            )
+          };
+        case 'delete':
+          return {
+            todos: state.todos.filter(t => t.id !== action.id)
+          };
+        default:
+          return state;
+      }
+    }
+    
+    function dispatch(action) {
+      state = reducer(state, action);
+      if (action.type === 'add') document.getElementById('todoInput').value = '';
+      render();
+    }
+    
+    function render() {
+      document.getElementById('todos').innerHTML = state.todos.length === 0 
+        ? '<p>No todos yet!</p>'
+        : state.todos.map(todo => \`
+          <div class="todo \${todo.done ? 'done' : ''}">
+            <span onclick="dispatch({type:'toggle',id:\${todo.id}})" style="cursor:pointer;flex:1">
+              \${todo.done ? '✅' : '⚪'} \${todo.text}
+            </span>
+            <button class="delete" onclick="dispatch({type:'delete',id:\${todo.id}})">Delete</button>
+          </div>
+        \`).join('');
+    }
+    
+    render();
+  </script>
+</body>
+</html>`
+          }
+        ]}
+      />
+    </TopicLayout>
   );
 };
 

@@ -1,4 +1,5 @@
 import { TopicLayout } from '@/components/TopicLayout';
+import { LiveCodeEditor } from '@/components/LiveCodeEditor';
 
 const accessibilityCode = `<!-- Accessibility (a11y): Building inclusive web experiences -->
 
@@ -196,22 +197,62 @@ const useAnnouncer = () => {
 
 const Accessibility = () => {
   return (
-    <TopicLayout
-      title="Accessibility (a11y)"
-      route="/html/accessibility"
-      category="html"
-      explanation="Web accessibility ensures all users, including those with disabilities, can use your website. Use semantic HTML, ARIA attributes, proper focus management, keyboard navigation, and screen reader support. Follow WCAG guidelines for inclusive design."
-      code={accessibilityCode}
-      codeFilename="accessibility.html"
-      whyItMatters="Accessibility is legally required in many jurisdictions and morally essential for inclusive web experiences. Interviewers test understanding of ARIA, keyboard navigation, and screen reader compatibility. Critical for building products that serve all users."
-      mistakes={[
-        "Using div/span instead of semantic HTML - breaks screen reader navigation.",
-        "Missing alt text or using generic descriptions like 'image' - provide meaningful context.",
-        "Poor focus management in SPAs - users lose track of where they are.",
-        "Color-only information - always provide text or pattern alternatives.",
-      ]}
-      practiceTask="Build an accessible data dashboard with sortable tables, filterable charts, keyboard navigation, screen reader announcements, and proper focus management. Test with actual screen reader software."
-    />
+    <div className="space-y-8">
+      <TopicLayout
+        title="Accessibility (a11y)"
+        route="/html/accessibility"
+        category="html"
+        explanation="Web accessibility ensures all users, including those with disabilities, can use your website. Use semantic HTML, ARIA attributes, proper focus management, keyboard navigation, and screen reader support. Follow WCAG guidelines for inclusive design."
+        code={accessibilityCode}
+        codeFilename="accessibility.html"
+        whyItMatters="Accessibility is legally required in many jurisdictions and morally essential for inclusive web experiences. Interviewers test understanding of ARIA, keyboard navigation, and screen reader compatibility. Critical for building products that serve all users."
+        mistakes={[
+          "Using div/span instead of semantic HTML - breaks screen reader navigation.",
+          "Missing alt text or using generic descriptions like 'image' - provide meaningful context.",
+          "Poor focus management in SPAs - users lose track of where they are.",
+          "Color-only information - always provide text or pattern alternatives.",
+        ]}
+        practiceTask="Build an accessible data dashboard with sortable tables, filterable charts, keyboard navigation, screen reader announcements, and proper focus management. Test with actual screen reader software."
+      />
+
+      <div className="border-t pt-8">
+        <LiveCodeEditor
+          title="Try It Yourself: Accessible HTML"
+          initialCode={`<!DOCTYPE html>
+<html lang="en">
+<head>
+  <style>
+    body { font-family: Arial, sans-serif; padding: 40px; background: #f5f5f5; }
+    .skip-link { position: absolute; top: -40px; left: 0; background: #000; color: #fff; padding: 8px; }
+    .skip-link:focus { top: 0; }
+    button { padding: 10px 20px; background: #3B82F6; color: white; border: none; border-radius: 6px; cursor: pointer; }
+    button:focus { outline: 2px solid #1E40AF; outline-offset: 2px; }
+  </style>
+</head>
+<body>
+  <a href="#main" class="skip-link">Skip to main content</a>
+  
+  <header>
+    <h1>Accessible Page</h1>
+    <nav aria-label="Main navigation">
+      <a href="#home">Home</a>
+      <a href="#about">About</a>
+    </nav>
+  </header>
+  
+  <main id="main">
+    <article>
+      <h2>Article Title</h2>
+      <p>This page demonstrates accessibility features.</p>
+      <button aria-label="Like this article">👍</button>
+    </article>
+  </main>
+</body>
+</html>`}
+          height="500px"
+        />
+      </div>
+    </div>
   );
 };
 

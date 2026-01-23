@@ -1,4 +1,5 @@
 import { TopicLayout } from '@/components/TopicLayout';
+import { MultiExampleEditor } from '@/components/MultiExampleEditor';
 
 const animationsCode = `/* CSS Animations & Transitions: Smooth, performant UI animations */
 
@@ -198,7 +199,73 @@ const Animations = () => {
         "Using JavaScript for simple animations - CSS is more performant for basic transitions.",
       ]}
       practiceTask="Create a loading sequence with staggered card animations, a modal with smooth enter/exit transitions, and a button with hover effects. Ensure all animations respect reduced motion preferences."
-    />
+    >
+      <MultiExampleEditor
+        title="🎯 Try It: CSS Animations"
+        examples={[
+          {
+            title: "Button Transitions",
+            code: `<!DOCTYPE html>
+<html>
+<head>
+<style>
+  body { margin: 0; padding: 40px; font-family: system-ui; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); min-height: 100vh; display: flex; justify-content: center; align-items: center; }
+  .button-group { display: flex; gap: 20px; flex-wrap: wrap; }
+  .btn { padding: 15px 30px; border: none; border-radius: 8px; font-size: 16px; font-weight: 600; cursor: pointer; transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1); }
+  .btn-primary { background: #3b82f6; color: white; }
+  .btn-primary:hover { background: #2563eb; transform: translateY(-2px); box-shadow: 0 10px 20px rgba(59, 130, 246, 0.4); }
+  .btn-primary:active { transform: translateY(0); }
+  .btn-pulse { background: #10b981; color: white; animation: pulse 2s ease-in-out infinite; }
+  @keyframes pulse { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.05); box-shadow: 0 0 20px rgba(16, 185, 129, 0.6); } }
+  .btn-bounce { background: #f59e0b; color: white; }
+  .btn-bounce:hover { animation: bounce 0.6s; }
+  @keyframes bounce { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
+</style>
+</head>
+<body>
+  <div class="button-group">
+    <button class="btn btn-primary">Hover Me</button>
+    <button class="btn btn-pulse">Pulsing</button>
+    <button class="btn btn-bounce">Bounce</button>
+  </div>
+</body>
+</html>`
+          },
+          {
+            title: "Keyframe Animations",
+            code: `<!DOCTYPE html>
+<html>
+<head>
+<style>
+  body { margin: 0; padding: 40px; font-family: system-ui; background: #1e293b; color: white; }
+  .container { max-width: 800px; margin: 0 auto; }
+  h1 { text-align: center; margin-bottom: 40px; }
+  .cards { display: grid; gap: 20px; }
+  .card { background: #334155; padding: 20px; border-radius: 12px; opacity: 0; animation: fadeInUp 0.6s ease-out forwards; }
+  .card:nth-child(1) { animation-delay: 0.1s; }
+  .card:nth-child(2) { animation-delay: 0.2s; }
+  .card:nth-child(3) { animation-delay: 0.3s; }
+  @keyframes fadeInUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
+  .spinner { width: 40px; height: 40px; border: 4px solid #475569; border-top-color: #3b82f6; border-radius: 50%; animation: spin 1s linear infinite; margin: 20px auto; }
+  @keyframes spin { to { transform: rotate(360deg); } }
+</style>
+</head>
+<body>
+  <div class="container">
+    <h1>✨ Staggered Animations</h1>
+    <div class="cards">
+      <div class="card">🚀 Card 1 - Fades in first</div>
+      <div class="card">🎉 Card 2 - Then this one</div>
+      <div class="card">✨ Card 3 - Finally this one</div>
+    </div>
+    <div class="spinner"></div>
+  </div>
+</body>
+</html>`
+          }
+        ]}
+      />
+    </TopicLayout>
   );
 };
 

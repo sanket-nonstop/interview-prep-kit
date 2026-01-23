@@ -1,4 +1,5 @@
 import { TopicLayout } from '@/components/TopicLayout';
+import { MultiExampleEditor } from '@/components/MultiExampleEditor';
 
 const variablesCode = `// JavaScript Variables & Scope: var, let, const fundamentals
 
@@ -143,7 +144,130 @@ const Variables = () => {
         "Trying to reassign const variables - only the binding is immutable, not the value.",
       ]}
       practiceTask="Fix a buggy loop that uses var instead of let, explain why the bug occurs, and demonstrate the difference between const with primitives vs objects."
-    />
+    >
+      <MultiExampleEditor
+        title="🎯 Try It: Variables & Scope"
+        examples={[
+          {
+            title: "var vs let vs const",
+            code: `<!DOCTYPE html>
+<html>
+<head>
+<style>
+  body { margin: 0; padding: 40px; font-family: 'Courier New', monospace; background: #1e293b; color: #e2e8f0; }
+  button { background: #3b82f6; color: white; border: none; padding: 10px 20px; border-radius: 6px; cursor: pointer; margin: 5px; font-weight: 600; }
+  button:hover { background: #2563eb; }
+  .output { background: #334155; padding: 15px; border-radius: 8px; margin: 10px 0; border-left: 4px solid #10b981; font-size: 14px; }
+  .error { border-left-color: #ef4444; }
+</style>
+</head>
+<body>
+  <h2>🔍 var vs let vs const</h2>
+  <button onclick="testVar()">Test var</button>
+  <button onclick="testLet()">Test let</button>
+  <button onclick="testConst()">Test const</button>
+  <div id="output"></div>
+  
+  <script>
+    function testVar() {
+      var x = 1;
+      if (true) {
+        var x = 2; // Same variable!
+      }
+      show('var x after block: ' + x + ' (function scoped)');
+    }
+    
+    function testLet() {
+      let y = 1;
+      if (true) {
+        let y = 2; // Different variable!
+        show('let y inside block: ' + y);
+      }
+      show('let y after block: ' + y + ' (block scoped)');
+    }
+    
+    function testConst() {
+      const obj = { count: 0 };
+      obj.count++; // ✅ Allowed
+      show('const obj modified: ' + JSON.stringify(obj));
+      try {
+        obj = {}; // ❌ Error
+      } catch(e) {
+        show('Cannot reassign const: ' + e.message, true);
+      }
+    }
+    
+    function show(msg, isError) {
+      const div = document.createElement('div');
+      div.className = 'output' + (isError ? ' error' : '');
+      div.textContent = msg;
+      document.getElementById('output').appendChild(div);
+    }
+  </script>
+</body>
+</html>`
+          },
+          {
+            title: "Loop Closure Bug",
+            code: `<!DOCTYPE html>
+<html>
+<head>
+<style>
+  body { margin: 0; padding: 40px; font-family: system-ui; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; }
+  .container { max-width: 600px; margin: 0 auto; }
+  button { background: white; color: #667eea; border: none; padding: 12px 24px; border-radius: 8px; cursor: pointer; margin: 10px; font-weight: 600; }
+  button:hover { transform: scale(1.05); }
+  .output { background: rgba(255,255,255,0.1); backdrop-filter: blur(10px); padding: 20px; border-radius: 12px; margin: 15px 0; }
+  .bug { border: 2px solid #ef4444; }
+  .fixed { border: 2px solid #10b981; }
+</style>
+</head>
+<body>
+  <div class="container">
+    <h2>🐛 Classic Loop Closure Bug</h2>
+    <button onclick="buggyLoop()">Buggy (var)</button>
+    <button onclick="fixedLoop()">Fixed (let)</button>
+    <div id="output"></div>
+  </div>
+  
+  <script>
+    function buggyLoop() {
+      const output = [];
+      for (var i = 0; i < 3; i++) {
+        setTimeout(() => {
+          output.push('var i = ' + i);
+          if (output.length === 3) {
+            show(output.join('<br>'), true);
+          }
+        }, 100);
+      }
+    }
+    
+    function fixedLoop() {
+      const output = [];
+      for (let j = 0; j < 3; j++) {
+        setTimeout(() => {
+          output.push('let j = ' + j);
+          if (output.length === 3) {
+            show(output.join('<br>'), false);
+          }
+        }, 100);
+      }
+    }
+    
+    function show(msg, isBug) {
+      document.getElementById('output').innerHTML = 
+        '<div class="output ' + (isBug ? 'bug' : 'fixed') + '">' + 
+        (isBug ? '❌ Bug: All print 3!' : '✅ Fixed: Prints 0, 1, 2') + 
+        '<br><br>' + msg + '</div>';
+    }
+  </script>
+</body>
+</html>`
+          }
+        ]}
+      />
+    </TopicLayout>
   );
 };
 

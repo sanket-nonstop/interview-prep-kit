@@ -28,6 +28,7 @@ export const TopicLayout = ({
   whyItMatters,
   mistakes,
   practiceTask,
+  children,
 }: TopicLayoutProps) => {
   return (
     <div className="animate-fade-in">
@@ -50,6 +51,13 @@ export const TopicLayout = ({
         </h2>
         <p className="text-secondary-foreground leading-relaxed">{explanation}</p>
       </section>
+
+      {/* Interactive Examples (if provided) */}
+      {children && (
+        <section className="mb-8">
+          {children}
+        </section>
+      )}
 
       {/* Code Example */}
       <section className="mb-8">

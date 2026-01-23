@@ -1,4 +1,5 @@
 import { TopicLayout } from '@/components/TopicLayout';
+import { MultiExampleEditor } from '@/components/MultiExampleEditor';
 
 const eventLoopCode = `// Event Loop: How JavaScript handles async operations
 // Call Stack → Web APIs → Task Queue → Event Loop
@@ -94,7 +95,101 @@ const EventLoop = () => {
         "Mixing Promise.then with async/await inconsistently - stick to one pattern per function.",
       ]}
       practiceTask="Create a task scheduler that can queue both immediate (microtask) and delayed (macrotask) functions. Implement priority levels where high-priority tasks run before low-priority ones, even if queued later."
-    />
+    >
+      <MultiExampleEditor
+        title="🎯 Try It Yourself: Event Loop"
+        examples={[
+          {
+            title: "Execution Order",
+            code: `<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    body { font-family: Arial, sans-serif; padding: 40px; background: #f5f5f5; }
+    .container { background: white; padding: 30px; border-radius: 12px; max-width: 600px; margin: 0 auto; }
+    button { padding: 12px 24px; background: #3B82F6; color: white; border: none; border-radius: 8px; cursor: pointer; }
+    #log { margin-top: 20px; padding: 15px; background: #1F2937; color: #10B981; border-radius: 8px; font-family: monospace; font-size: 14px; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>⏱️ Event Loop Demo</h2>
+    <button onclick="testOrder()">Run Test</button>
+    <div id="log"></div>
+  </div>
+  <script>
+    function testOrder() {
+      const log = document.getElementById('log');
+      log.innerHTML = '';
+      
+      function add(msg) {
+        log.innerHTML += msg + '<br>';
+      }
+      
+      add('🟢 1: Sync Start');
+      
+      setTimeout(() => add('🔴 4: setTimeout (macrotask)'), 0);
+      
+      Promise.resolve().then(() => add('🟡 3: Promise (microtask)'));
+      
+      add('🟢 2: Sync End');
+      
+      // Order: Sync → Microtasks → Macrotasks
+    }
+  </script>
+</body>
+</html>`
+          },
+          {
+            title: "Microtask vs Macrotask",
+            code: `<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    body { font-family: Arial, sans-serif; padding: 40px; background: #f5f5f5; }
+    .container { background: white; padding: 30px; border-radius: 12px; max-width: 600px; margin: 0 auto; }
+    button { padding: 12px 24px; background: #10B981; color: white; border: none; border-radius: 8px; cursor: pointer; margin: 5px; }
+    #output { margin-top: 20px; padding: 15px; background: #F3F4F6; border-radius: 8px; font-family: monospace; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>🔄 Task Queue Demo</h2>
+    <button onclick="runMicrotask()">Microtask</button>
+    <button onclick="runMacrotask()">Macrotask</button>
+    <button onclick="runBoth()">Both</button>
+    <div id="output"></div>
+  </div>
+  <script>
+    function runMicrotask() {
+      document.getElementById('output').innerHTML = 'Running...';
+      Promise.resolve().then(() => {
+        document.getElementById('output').innerHTML = '✅ Microtask executed immediately after sync code';
+      });
+    }
+    
+    function runMacrotask() {
+      document.getElementById('output').innerHTML = 'Running...';
+      setTimeout(() => {
+        document.getElementById('output').innerHTML = '⏰ Macrotask executed after microtasks';
+      }, 0);
+    }
+    
+    function runBoth() {
+      const output = document.getElementById('output');
+      output.innerHTML = '';
+      
+      setTimeout(() => output.innerHTML += '3️⃣ Macrotask<br>', 0);
+      Promise.resolve().then(() => output.innerHTML += '2️⃣ Microtask<br>');
+      output.innerHTML = '1️⃣ Sync<br>';
+    }
+  </script>
+</body>
+</html>`
+          }
+        ]}
+      />
+    </TopicLayout>
   );
 };
 

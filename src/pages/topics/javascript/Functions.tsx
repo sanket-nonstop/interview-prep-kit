@@ -1,4 +1,5 @@
 import { TopicLayout } from '@/components/TopicLayout';
+import { MultiExampleEditor } from '@/components/MultiExampleEditor';
 
 const functionsCode = `// JavaScript Functions: Declaration, expression, arrow functions
 
@@ -180,7 +181,124 @@ const Functions = () => {
         "Confusing 'this' binding in different function types.",
       ]}
       practiceTask="Create a calculator object with methods using different function types, demonstrate 'this' binding issues, and fix them using appropriate function syntax."
-    />
+    >
+      <MultiExampleEditor
+        title="🎯 Try It: Functions"
+        examples={[
+          {
+            title: "Function Types",
+            code: `<!DOCTYPE html>
+<html>
+<head>
+<style>
+  body { margin: 0; padding: 40px; font-family: system-ui; background: #0f172a; color: #e2e8f0; }
+  button { background: #3b82f6; color: white; border: none; padding: 10px 20px; border-radius: 6px; cursor: pointer; margin: 5px; }
+  button:hover { background: #2563eb; }
+  .output { background: #1e293b; padding: 15px; border-radius: 8px; margin: 10px 0; border-left: 4px solid #10b981; }
+</style>
+</head>
+<body>
+  <h2>🔧 Function Declaration vs Expression vs Arrow</h2>
+  <button onclick="testDeclaration()">Declaration</button>
+  <button onclick="testExpression()">Expression</button>
+  <button onclick="testArrow()">Arrow</button>
+  <div id="output"></div>
+  
+  <script>
+    // Function Declaration (hoisted)
+    function greet(name) {
+      return 'Hello, ' + name + '!';
+    }
+    
+    // Function Expression (not hoisted)
+    const sayHi = function(name) {
+      return 'Hi, ' + name + '!';
+    };
+    
+    // Arrow Function (concise, lexical this)
+    const sayHey = (name) => 'Hey, ' + name + '!';
+    
+    function testDeclaration() {
+      show('Function Declaration: ' + greet('Alice') + '<br>Hoisted: Can call before definition');
+    }
+    
+    function testExpression() {
+      show('Function Expression: ' + sayHi('Bob') + '<br>Not hoisted: Must define before use');
+    }
+    
+    function testArrow() {
+      const nums = [1, 2, 3];
+      const doubled = nums.map(n => n * 2);
+      show('Arrow Function: ' + sayHey('Charlie') + '<br>Doubled: [' + doubled + ']<br>Concise syntax!');
+    }
+    
+    function show(msg) {
+      document.getElementById('output').innerHTML = '<div class="output">' + msg + '</div>';
+    }
+  </script>
+</body>
+</html>`
+          },
+          {
+            title: "'this' Binding",
+            code: `<!DOCTYPE html>
+<html>
+<head>
+<style>
+  body { margin: 0; padding: 40px; font-family: system-ui; background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%); color: white; }
+  button { background: white; color: #f5576c; border: none; padding: 12px 24px; border-radius: 8px; cursor: pointer; margin: 5px; font-weight: 600; }
+  button:hover { transform: scale(1.05); }
+  .output { background: rgba(255,255,255,0.15); backdrop-filter: blur(10px); padding: 20px; border-radius: 12px; margin: 15px 0; }
+  .error { border: 2px solid #fbbf24; }
+</style>
+</head>
+<body>
+  <h2>🎯 'this' Binding Demo</h2>
+  <button onclick="testRegular()">Regular Method</button>
+  <button onclick="testArrowMethod()">Arrow Method</button>
+  <button onclick="testCallback()">Callback Issue</button>
+  <div id="output"></div>
+  
+  <script>
+    const user = {
+      name: 'Alice',
+      regularMethod: function() {
+        return 'Regular: Hello, ' + this.name;
+      },
+      arrowMethod: () => {
+        return 'Arrow: Hello, ' + (typeof this.name === 'undefined' ? 'undefined' : this.name);
+      },
+      delayedGreeting: function() {
+        setTimeout(() => {
+          show('Arrow in callback: Hello, ' + this.name + ' ✅');
+        }, 100);
+      }
+    };
+    
+    function testRegular() {
+      show(user.regularMethod() + ' ✅<br>this = user object');
+    }
+    
+    function testArrowMethod() {
+      show(user.arrowMethod() + ' ❌<br>Arrow functions inherit this from parent scope', true);
+    }
+    
+    function testCallback() {
+      show('Waiting for callback...');
+      user.delayedGreeting();
+    }
+    
+    function show(msg, isError) {
+      document.getElementById('output').innerHTML = 
+        '<div class="output' + (isError ? ' error' : '') + '">' + msg + '</div>';
+    }
+  </script>
+</body>
+</html>`
+          }
+        ]}
+      />
+    </TopicLayout>
   );
 };
 

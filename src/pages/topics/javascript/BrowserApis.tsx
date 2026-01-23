@@ -1,4 +1,5 @@
 import { TopicLayout } from '@/components/TopicLayout';
+import { MultiExampleEditor } from '@/components/MultiExampleEditor';
 
 const browserApisCode = `// Browser APIs: Modern web platform capabilities
 
@@ -280,7 +281,123 @@ const BrowserApis = () => {
         "Not providing fallbacks - graceful degradation for unsupported features.",
       ]}
       practiceTask="Build a photo gallery with lazy loading (Intersection Observer), geolocation tagging, offline support (Service Worker), and file upload with drag-and-drop (File API)."
-    />
+    >
+      <MultiExampleEditor
+        title="🎯 Try It: Browser APIs"
+        examples={[
+          {
+            title: "Geolocation API",
+            code: `<!DOCTYPE html>
+<html>
+<head>
+<style>
+  body { margin: 0; padding: 40px; font-family: system-ui; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; min-height: 100vh; }
+  .card { background: rgba(255,255,255,0.1); backdrop-filter: blur(10px); padding: 30px; border-radius: 12px; max-width: 500px; margin: 0 auto; text-align: center; }
+  button { background: white; color: #667eea; border: none; padding: 15px 30px; border-radius: 8px; cursor: pointer; font-weight: 600; font-size: 16px; margin: 10px; }
+  button:hover { transform: scale(1.05); }
+  .location { background: rgba(255,255,255,0.2); padding: 20px; border-radius: 8px; margin: 20px 0; font-size: 18px; }
+  .loading { color: #fbbf24; }
+</style>
+</head>
+<body>
+  <div class="card">
+    <h2>🌍 Geolocation API</h2>
+    <button onclick="getLocation()">Get My Location</button>
+    <div id="output"></div>
+  </div>
+  
+  <script>
+    function getLocation() {
+      const output = document.getElementById('output');
+      
+      if (!navigator.geolocation) {
+        output.innerHTML = '<div class="location">❌ Geolocation not supported</div>';
+        return;
+      }
+      
+      output.innerHTML = '<div class="loading">⏳ Getting location...</div>';
+      
+      navigator.geolocation.getCurrentPosition(
+        (position) => {
+          const lat = position.coords.latitude.toFixed(4);
+          const lng = position.coords.longitude.toFixed(4);
+          output.innerHTML = \`
+            <div class="location">
+              <strong>✅ Location Found!</strong><br><br>
+              📍 Latitude: \${lat}<br>
+              📍 Longitude: \${lng}<br>
+              🎯 Accuracy: \${position.coords.accuracy.toFixed(0)}m
+            </div>
+          \`;
+        },
+        (error) => {
+          output.innerHTML = \`<div class="location">❌ Error: \${error.message}</div>\`;
+        }
+      );
+    }
+  </script>
+</body>
+</html>`
+          },
+          {
+            title: "Clipboard API",
+            code: `<!DOCTYPE html>
+<html>
+<head>
+<style>
+  body { margin: 0; padding: 40px; font-family: system-ui; background: #0f172a; color: #e2e8f0; }
+  .container { max-width: 500px; margin: 0 auto; }
+  textarea { width: 100%; padding: 15px; border: 2px solid #3b82f6; border-radius: 8px; font-size: 16px; font-family: inherit; background: #1e293b; color: white; min-height: 150px; }
+  button { background: #3b82f6; color: white; border: none; padding: 12px 24px; border-radius: 8px; cursor: pointer; margin: 5px; font-weight: 600; }
+  button:hover { background: #2563eb; }
+  .success { background: #10b981; }
+  .success:hover { background: #059669; }
+  .message { background: #1e293b; padding: 15px; border-radius: 8px; margin: 15px 0; border-left: 4px solid #10b981; }
+</style>
+</head>
+<body>
+  <div class="container">
+    <h2>📋 Clipboard API</h2>
+    <textarea id="text" placeholder="Type something...">Hello, World!</textarea>
+    <br>
+    <button onclick="copyText()">Copy to Clipboard</button>
+    <button class="success" onclick="pasteText()">Paste from Clipboard</button>
+    <div id="message"></div>
+  </div>
+  
+  <script>
+    async function copyText() {
+      const text = document.getElementById('text').value;
+      try {
+        await navigator.clipboard.writeText(text);
+        showMessage('✅ Copied to clipboard!');
+      } catch (err) {
+        showMessage('❌ Failed to copy: ' + err.message);
+      }
+    }
+    
+    async function pasteText() {
+      try {
+        const text = await navigator.clipboard.readText();
+        document.getElementById('text').value = text;
+        showMessage('✅ Pasted from clipboard!');
+      } catch (err) {
+        showMessage('❌ Failed to paste: ' + err.message);
+      }
+    }
+    
+    function showMessage(msg) {
+      const div = document.getElementById('message');
+      div.innerHTML = '<div class="message">' + msg + '</div>';
+      setTimeout(() => div.innerHTML = '', 3000);
+    }
+  </script>
+</body>
+</html>`
+          }
+        ]}
+      />
+    </TopicLayout>
   );
 };
 

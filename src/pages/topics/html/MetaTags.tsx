@@ -1,4 +1,5 @@
 import { TopicLayout } from "@/components/TopicLayout";
+import { LiveCodeEditor } from '@/components/LiveCodeEditor';
 
 const metaTagsCode = `<!-- Meta Tags & SEO: Optimize for search engines and social media -->
 
@@ -122,22 +123,60 @@ const ReactHooksPage = () => {
 
 const MetaTags = () => {
   return (
-    <TopicLayout
-      title="Meta Tags & SEO"
-      route="/html/meta-tags"
-      category="html"
-      explanation="Meta tags provide metadata about HTML documents for search engines, social media, and browsers. Include essential tags like title, description, Open Graph for social sharing, Twitter Cards, and structured data for better SEO and user experience."
-      code={metaTagsCode}
-      codeFilename="meta-tags.html"
-      whyItMatters="SEO and social media optimization are crucial for web visibility. Interviewers test understanding of meta tags, structured data, and performance optimization. Essential for building discoverable, shareable web applications."
-      mistakes={[
-        "Missing viewport meta tag - breaks mobile responsiveness and SEO rankings.",
-        "Duplicate or missing title/description tags - hurts search engine optimization.",
-        "Not implementing Open Graph tags - poor social media sharing experience.",
-        "Ignoring structured data - missing rich snippets and search features.",
-      ]}
-      practiceTask="Build a blog post page with complete SEO optimization: dynamic meta tags, Open Graph images, structured data for articles, and social media preview testing."
-    />
+    <div className="space-y-8">
+      <TopicLayout
+        title="Meta Tags & SEO"
+        route="/html/meta-tags"
+        category="html"
+        explanation="Meta tags provide metadata about HTML documents for search engines, social media, and browsers. Include essential tags like title, description, Open Graph for social sharing, Twitter Cards, and structured data for better SEO and user experience."
+        code={metaTagsCode}
+        codeFilename="meta-tags.html"
+        whyItMatters="SEO and social media optimization are crucial for web visibility. Interviewers test understanding of meta tags, structured data, and performance optimization. Essential for building discoverable, shareable web applications."
+        mistakes={[
+          "Missing viewport meta tag - breaks mobile responsiveness and SEO rankings.",
+          "Duplicate or missing title/description tags - hurts search engine optimization.",
+          "Not implementing Open Graph tags - poor social media sharing experience.",
+          "Ignoring structured data - missing rich snippets and search features.",
+        ]}
+        practiceTask="Build a blog post page with complete SEO optimization: dynamic meta tags, Open Graph images, structured data for articles, and social media preview testing."
+      />
+
+      <div className="border-t pt-8">
+        <LiveCodeEditor
+          title="Try It Yourself: Meta Tags"
+          initialCode={`<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Awesome Page | Website Name</title>
+  <meta name="description" content="Learn about meta tags and SEO optimization for better search rankings.">
+  
+  <!-- Open Graph -->
+  <meta property="og:title" content="My Awesome Page">
+  <meta property="og:description" content="Learn about meta tags and SEO.">
+  <meta property="og:image" content="https://example.com/image.jpg">
+  <meta property="og:url" content="https://example.com">
+  
+  <style>
+    body { font-family: Arial, sans-serif; padding: 40px; background: #f5f5f5; }
+    .meta-info { background: white; padding: 20px; border-radius: 8px; margin: 20px 0; }
+  </style>
+</head>
+<body>
+  <h1>Meta Tags Example</h1>
+  <div class="meta-info">
+    <h2>Page Information</h2>
+    <p><strong>Title:</strong> My Awesome Page</p>
+    <p><strong>Description:</strong> Learn about meta tags and SEO optimization.</p>
+    <p>View the page source to see all meta tags!</p>
+  </div>
+</body>
+</html>`}
+          height="500px"
+        />
+      </div>
+    </div>
   );
 };
 

@@ -1,4 +1,5 @@
 import { TopicLayout } from '@/components/TopicLayout';
+import { MultiExampleEditor } from '@/components/MultiExampleEditor';
 
 const specificityCode = `/* CSS Specificity & Cascade: Understanding CSS priority rules */
 
@@ -180,7 +181,86 @@ const Specificity = () => {
         "Mixing different CSS methodologies - creates inconsistent specificity patterns.",
       ]}
       practiceTask="Debug a stylesheet with conflicting styles, calculate specificity values for complex selectors, and refactor high-specificity CSS into a maintainable BEM or utility-first architecture."
-    />
+    >
+      <MultiExampleEditor
+        title="🎯 Try It: CSS Specificity"
+        examples={[
+          {
+            title: "Specificity Battle",
+            code: `<!DOCTYPE html>
+<html>
+<head>
+<style>
+  /* Type selector: 0,0,0,1 */
+  p { color: black; font-size: 16px; }
+  
+  /* Class selector: 0,0,1,0 - WINS over type */
+  .text-blue { color: blue; }
+  
+  /* ID selector: 0,1,0,0 - WINS over class */
+  #special { color: red; }
+  
+  /* Combined: 0,0,1,1 */
+  p.text-blue { color: green; font-weight: bold; }
+  
+  /* Multiple classes: 0,0,2,0 */
+  .text-blue.highlight { background: yellow; padding: 4px; }
+  
+  body { margin: 0; padding: 40px; font-family: system-ui; background: #f3f4f6; }
+  .container { max-width: 600px; margin: 0 auto; background: white; padding: 30px; border-radius: 12px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); }
+  h2 { color: #1f2937; margin-top: 0; }
+</style>
+</head>
+<body>
+  <div class="container">
+    <h2>🎯 Specificity Examples</h2>
+    <p>Black text (type selector)</p>
+    <p class="text-blue">Blue text (class wins)</p>
+    <p id="special">Red text (ID wins)</p>
+    <p class="text-blue">Green bold (p.class wins)</p>
+    <p class="text-blue highlight">Blue on yellow (2 classes)</p>
+  </div>
+</body>
+</html>`
+          },
+          {
+            title: "Cascade Order",
+            code: `<!DOCTYPE html>
+<html>
+<head>
+<style>
+  body { margin: 0; padding: 40px; font-family: system-ui; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); min-height: 100vh; }
+  .container { max-width: 600px; margin: 0 auto; }
+  
+  /* First declaration */
+  .btn { background: blue; color: white; padding: 15px 30px; border: none; border-radius: 8px; font-size: 16px; cursor: pointer; margin: 10px; }
+  
+  /* Same specificity - LATER WINS */
+  .btn { background: #10b981; }
+  
+  /* Modifier with same specificity level */
+  .btn-primary { background: #3b82f6; }
+  .btn-danger { background: #ef4444; }
+  
+  /* Source order matters! */
+  .btn-primary { box-shadow: 0 4px 12px rgba(59, 130, 246, 0.4); }
+  
+  h2 { color: white; text-align: center; }
+</style>
+</head>
+<body>
+  <div class="container">
+    <h2>📋 Cascade Order Demo</h2>
+    <button class="btn">Green (later rule wins)</button>
+    <button class="btn btn-primary">Blue (modifier)</button>
+    <button class="btn btn-danger">Red (modifier)</button>
+  </div>
+</body>
+</html>`
+          }
+        ]}
+      />
+    </TopicLayout>
   );
 };
 

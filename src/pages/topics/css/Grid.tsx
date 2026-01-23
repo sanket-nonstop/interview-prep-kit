@@ -1,4 +1,5 @@
 import { TopicLayout } from '@/components/TopicLayout';
+import { MultiExampleEditor } from '@/components/MultiExampleEditor';
 
 const gridCode = `// CSS Grid: 2D layout system for complex designs
 
@@ -105,7 +106,101 @@ const Grid = () => {
         "Overcomplicating with too many grid lines - use named areas and spans for clarity.",
       ]}
       practiceTask="Create a responsive blog layout with header, sidebar, main content, and footer. Use named grid areas and make it collapse to single column on mobile. Add a card grid for blog posts that auto-fits based on screen size."
-    />
+    >
+      <MultiExampleEditor
+        title="🎯 Try It Yourself: CSS Grid"
+        examples={[
+          {
+            title: "Card Grid",
+            code: `<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    body { margin: 0; font-family: Arial, sans-serif; background: #f5f5f5; padding: 20px; }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 20px;
+    }
+    .card {
+      background: white;
+      padding: 20px;
+      border-radius: 12px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+      transition: transform 0.2s;
+    }
+    .card:hover { transform: translateY(-5px); }
+    .card h3 { margin: 0 0 10px 0; color: #3B82F6; }
+    .card p { margin: 0; color: #666; font-size: 14px; }
+  </style>
+</head>
+<body>
+  <div class="grid">
+    <div class="card">
+      <h3>🚀 Card 1</h3>
+      <p>Auto-fit grid layout</p>
+    </div>
+    <div class="card">
+      <h3>🎨 Card 2</h3>
+      <p>Responsive design</p>
+    </div>
+    <div class="card">
+      <h3>✨ Card 3</h3>
+      <p>Hover effects</p>
+    </div>
+    <div class="card">
+      <h3>📊 Card 4</h3>
+      <p>Grid magic!</p>
+    </div>
+  </div>
+</body>
+</html>`
+          },
+          {
+            title: "Dashboard Layout",
+            code: `<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    body { margin: 0; font-family: Arial, sans-serif; }
+    .dashboard {
+      display: grid;
+      grid-template-areas:
+        "header header header"
+        "sidebar main main"
+        "sidebar main main";
+      grid-template-columns: 200px 1fr 1fr;
+      grid-template-rows: 60px 1fr 1fr;
+      gap: 15px;
+      height: 100vh;
+      padding: 15px;
+      background: #f5f5f5;
+    }
+    .header { grid-area: header; background: #1F2937; color: white; padding: 20px; border-radius: 8px; }
+    .sidebar { grid-area: sidebar; background: #374151; color: white; padding: 20px; border-radius: 8px; }
+    .main { grid-area: main; background: white; padding: 20px; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); }
+  </style>
+</head>
+<body>
+  <div class="dashboard">
+    <div class="header"><h2 style="margin:0">🏛️ Dashboard</h2></div>
+    <div class="sidebar">
+      <h3>Menu</h3>
+      <p>🏠 Home</p>
+      <p>📊 Analytics</p>
+      <p>⚙️ Settings</p>
+    </div>
+    <div class="main">
+      <h2>Main Content</h2>
+      <p>Grid template areas make layouts semantic and easy to understand!</p>
+    </div>
+  </div>
+</body>
+</html>`
+          }
+        ]}
+      />
+    </TopicLayout>
   );
 };
 

@@ -1,4 +1,5 @@
 import { TopicLayout } from '@/components/TopicLayout';
+import { MultiExampleEditor } from '@/components/MultiExampleEditor';
 
 const objectsArraysCode = `// JavaScript Objects & Arrays: Core data structures
 
@@ -187,7 +188,119 @@ const ObjectsArrays = () => {
         "Forgetting that array methods like map/filter return new arrays.",
       ]}
       practiceTask="Build a shopping cart that adds, removes, and updates items using immutable patterns. Implement search and filtering functionality using array methods."
-    />
+    >
+      <MultiExampleEditor
+        title="🎯 Try It: Objects & Arrays"
+        examples={[
+          {
+            title: "Array Methods",
+            code: `<!DOCTYPE html>
+<html>
+<head>
+<style>
+  body { margin: 0; padding: 40px; font-family: system-ui; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; min-height: 100vh; }
+  .card { background: rgba(255,255,255,0.1); backdrop-filter: blur(10px); padding: 30px; border-radius: 12px; max-width: 600px; margin: 0 auto; }
+  button { background: white; color: #667eea; border: none; padding: 10px 20px; border-radius: 6px; cursor: pointer; margin: 5px; font-weight: 600; }
+  button:hover { transform: scale(1.05); }
+  .result { background: rgba(255,255,255,0.2); padding: 15px; border-radius: 8px; margin: 15px 0; font-family: 'Courier New'; }
+</style>
+</head>
+<body>
+  <div class="card">
+    <h2>📦 Array Methods Demo</h2>
+    <p>Numbers: [1, 2, 3, 4, 5]</p>
+    <button onclick="testMap()">map (x2)</button>
+    <button onclick="testFilter()">filter (evens)</button>
+    <button onclick="testReduce()">reduce (sum)</button>
+    <div id="output"></div>
+  </div>
+  
+  <script>
+    const numbers = [1, 2, 3, 4, 5];
+    
+    function testMap() {
+      const doubled = numbers.map(n => n * 2);
+      show('map: [' + doubled.join(', ') + ']');
+    }
+    
+    function testFilter() {
+      const evens = numbers.filter(n => n % 2 === 0);
+      show('filter: [' + evens.join(', ') + ']');
+    }
+    
+    function testReduce() {
+      const sum = numbers.reduce((total, n) => total + n, 0);
+      show('reduce: ' + sum);
+    }
+    
+    function show(msg) {
+      document.getElementById('output').innerHTML = '<div class="result">' + msg + '</div>';
+    }
+  </script>
+</body>
+</html>`
+          },
+          {
+            title: "Object Manipulation",
+            code: `<!DOCTYPE html>
+<html>
+<head>
+<style>
+  body { margin: 0; padding: 40px; font-family: system-ui; background: #0f172a; color: #e2e8f0; }
+  .container { max-width: 600px; margin: 0 auto; }
+  button { background: #3b82f6; color: white; border: none; padding: 10px 20px; border-radius: 6px; cursor: pointer; margin: 5px; }
+  button:hover { background: #2563eb; }
+  .object { background: #1e293b; padding: 20px; border-radius: 8px; margin: 15px 0; border-left: 4px solid #10b981; }
+  .key { color: #fbbf24; }
+  .value { color: #10b981; }
+</style>
+</head>
+<body>
+  <div class="container">
+    <h2>📝 Object Operations</h2>
+    <button onclick="showKeys()">Object.keys()</button>
+    <button onclick="showValues()">Object.values()</button>
+    <button onclick="showEntries()">Object.entries()</button>
+    <button onclick="spreadDemo()">Spread {...}</button>
+    <div id="output"></div>
+  </div>
+  
+  <script>
+    const user = { name: 'Alice', age: 25, city: 'NYC' };
+    
+    function showKeys() {
+      const keys = Object.keys(user);
+      show('Keys: [' + keys.join(', ') + ']');
+    }
+    
+    function showValues() {
+      const values = Object.values(user);
+      show('Values: [' + values.join(', ') + ']');
+    }
+    
+    function showEntries() {
+      const entries = Object.entries(user);
+      const html = entries.map(([k, v]) => 
+        '<span class="key">' + k + '</span>: <span class="value">' + v + '</span>'
+      ).join('<br>');
+      show(html);
+    }
+    
+    function spreadDemo() {
+      const updated = { ...user, age: 26, country: 'USA' };
+      show('Updated: ' + JSON.stringify(updated, null, 2));
+    }
+    
+    function show(msg) {
+      document.getElementById('output').innerHTML = '<div class="object">' + msg + '</div>';
+    }
+  </script>
+</body>
+</html>`
+          }
+        ]}
+      />
+    </TopicLayout>
   );
 };
 

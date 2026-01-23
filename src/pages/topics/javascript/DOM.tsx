@@ -1,4 +1,5 @@
 import { TopicLayout } from '@/components/TopicLayout';
+import { MultiExampleEditor } from '@/components/MultiExampleEditor';
 
 const domCode = `// DOM Manipulation: Interacting with HTML elements
 
@@ -225,7 +226,123 @@ const DOM = () => {
         "Using old methods like getElementById when querySelector is more flexible.",
       ]}
       practiceTask="Build a dynamic todo list using vanilla JavaScript: add/remove items, toggle completion, filter by status, and persist data in localStorage."
-    />
+    >
+      <MultiExampleEditor
+        title="🎯 Try It: DOM Manipulation"
+        examples={[
+          {
+            title: "Dynamic Element Creation",
+            code: `<!DOCTYPE html>
+<html>
+<head>
+<style>
+  body { margin: 0; padding: 40px; font-family: system-ui; background: #0f172a; color: #e2e8f0; }
+  .container { max-width: 600px; margin: 0 auto; }
+  input { width: 100%; padding: 12px; border: 2px solid #3b82f6; border-radius: 8px; margin: 10px 0; font-size: 16px; background: #1e293b; color: white; }
+  button { background: #3b82f6; color: white; border: none; padding: 10px 20px; border-radius: 6px; cursor: pointer; margin: 5px; }
+  button:hover { background: #2563eb; }
+  .item { background: #1e293b; padding: 15px; border-radius: 8px; margin: 10px 0; display: flex; justify-content: space-between; align-items: center; border-left: 4px solid #10b981; }
+  .delete { background: #ef4444; }
+  .delete:hover { background: #dc2626; }
+</style>
+</head>
+<body>
+  <div class="container">
+    <h2>📦 DOM Element Creation</h2>
+    <input id="itemInput" placeholder="Enter item name..." />
+    <button onclick="addItem()">Add Item</button>
+    <div id="itemList"></div>
+  </div>
+  
+  <script>
+    function addItem() {
+      const input = document.getElementById('itemInput');
+      const text = input.value.trim();
+      if (!text) return;
+      
+      // Create elements
+      const item = document.createElement('div');
+      item.className = 'item';
+      
+      const span = document.createElement('span');
+      span.textContent = text;
+      
+      const deleteBtn = document.createElement('button');
+      deleteBtn.textContent = 'Delete';
+      deleteBtn.className = 'delete';
+      deleteBtn.onclick = () => item.remove();
+      
+      item.appendChild(span);
+      item.appendChild(deleteBtn);
+      
+      document.getElementById('itemList').appendChild(item);
+      input.value = '';
+    }
+  </script>
+</body>
+</html>`
+          },
+          {
+            title: "Event Delegation",
+            code: `<!DOCTYPE html>
+<html>
+<head>
+<style>
+  body { margin: 0; padding: 40px; font-family: system-ui; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; }
+  .card { background: rgba(255,255,255,0.1); backdrop-filter: blur(10px); padding: 30px; border-radius: 12px; max-width: 500px; margin: 0 auto; }
+  button { background: white; color: #667eea; border: none; padding: 10px 20px; border-radius: 6px; cursor: pointer; margin: 5px; font-weight: 600; }
+  button:hover { transform: scale(1.05); }
+  .todo { background: rgba(255,255,255,0.2); padding: 12px; border-radius: 8px; margin: 10px 0; display: flex; justify-content: space-between; align-items: center; }
+  .todo.done { opacity: 0.6; text-decoration: line-through; }
+  .toggle { background: #10b981; color: white; }
+  .delete { background: #ef4444; color: white; }
+</style>
+</head>
+<body>
+  <div class="card">
+    <h2>🎯 Event Delegation Demo</h2>
+    <button onclick="addTodo()">Add Random Todo</button>
+    <div id="todoList"></div>
+    <p style="font-size: 12px; opacity: 0.8;">Click todos to toggle, delete button to remove</p>
+  </div>
+  
+  <script>
+    const todos = ['Learn DOM', 'Build Project', 'Practice Coding'];
+    let counter = 0;
+    
+    // Event delegation - one listener for all todos
+    document.getElementById('todoList').addEventListener('click', (e) => {
+      const todo = e.target.closest('.todo');
+      if (!todo) return;
+      
+      if (e.target.classList.contains('delete')) {
+        todo.remove();
+      } else if (e.target.classList.contains('toggle') || e.target === todo) {
+        todo.classList.toggle('done');
+      }
+    });
+    
+    function addTodo() {
+      const text = todos[counter % todos.length] + ' ' + (++counter);
+      const html = \`
+        <div class="todo">
+          <span class="toggle" style="cursor:pointer;flex:1">\${text}</span>
+          <button class="delete">Delete</button>
+        </div>
+      \`;
+      document.getElementById('todoList').insertAdjacentHTML('beforeend', html);
+    }
+    
+    // Add initial todos
+    addTodo();
+    addTodo();
+  </script>
+</body>
+</html>`
+          }
+        ]}
+      />
+    </TopicLayout>
   );
 };
 

@@ -1,4 +1,5 @@
 import { TopicLayout } from '@/components/TopicLayout';
+import { MultiExampleEditor } from '@/components/MultiExampleEditor';
 
 const flexboxCode = `// Flexbox: One-dimensional layout (row OR column)
 
@@ -68,7 +69,103 @@ const Flexbox = () => {
         "Fixed widths everywhere: Let flexbox calculate sizes. Use flex-1 instead of width: 50%.",
       ]}
       practiceTask="Build a responsive navigation bar: Logo on left, centered nav links, and auth buttons on right. On mobile, collapse links into a hamburger menu. Use only Tailwind flexbox utilities."
-    />
+    >
+      <MultiExampleEditor
+        title="🎯 Try It Yourself: Flexbox"
+        examples={[
+          {
+            title: "Center Content",
+            code: `<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    body { margin: 0; font-family: Arial, sans-serif; }
+    .container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    }
+    .card {
+      background: white;
+      padding: 40px;
+      border-radius: 16px;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+      text-align: center;
+    }
+    h1 { margin: 0 0 10px 0; color: #333; }
+    p { margin: 0; color: #666; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="card">
+      <h1>🎉 Centered!</h1>
+      <p>Perfect vertical & horizontal centering</p>
+    </div>
+  </div>
+</body>
+</html>`
+          },
+          {
+            title: "Navbar Layout",
+            code: `<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    body { margin: 0; font-family: Arial, sans-serif; }
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px 40px;
+      background: #1F2937;
+      color: white;
+    }
+    .logo { font-size: 24px; font-weight: bold; }
+    .nav-links {
+      display: flex;
+      gap: 30px;
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+    .nav-links a {
+      color: white;
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+    .nav-links a:hover { color: #60A5FA; }
+    .btn {
+      background: #3B82F6;
+      color: white;
+      padding: 10px 20px;
+      border-radius: 6px;
+      text-decoration: none;
+    }
+  </style>
+</head>
+<body>
+  <nav>
+    <div class="logo">MyBrand</div>
+    <ul class="nav-links">
+      <li><a href="#">Home</a></li>
+      <li><a href="#">About</a></li>
+      <li><a href="#">Services</a></li>
+    </ul>
+    <a href="#" class="btn">Sign In</a>
+  </nav>
+  <div style="padding: 40px;">
+    <h1>Flexbox Navbar</h1>
+    <p>Logo left, links center, button right!</p>
+  </div>
+</body>
+</html>`
+          }
+        ]}
+      />
+    </TopicLayout>
   );
 };
 

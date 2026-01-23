@@ -1,4 +1,5 @@
 import { TopicLayout } from '@/components/TopicLayout';
+import { MultiExampleEditor } from '@/components/MultiExampleEditor';
 
 const arrayMethodsCode = `// Array Methods: Essential data manipulation in JavaScript
 
@@ -89,7 +90,105 @@ const ArrayMethods = () => {
         "Chaining too many methods - consider performance implications with large datasets.",
       ]}
       practiceTask="Build a product search function that filters by category, price range, and availability. Sort results by relevance score. Use method chaining and return both filtered products and summary statistics (count, average price, categories)."
-    />
+    >
+      <MultiExampleEditor
+        title="🎯 Try It Yourself: Array Methods"
+        examples={[
+          {
+            title: "Map & Filter",
+            code: `<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    body { font-family: Arial, sans-serif; padding: 40px; background: #f5f5f5; }
+    .container { background: white; padding: 30px; border-radius: 12px; max-width: 600px; margin: 0 auto; }
+    button { padding: 12px 24px; background: #3B82F6; color: white; border: none; border-radius: 8px; cursor: pointer; margin: 5px; }
+    .result { margin-top: 15px; padding: 15px; background: #F3F4F6; border-radius: 8px; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>🗺️ Array Methods</h2>
+    <button onclick="demoMap()">Map</button>
+    <button onclick="demoFilter()">Filter</button>
+    <button onclick="demoReduce()">Reduce</button>
+    <div id="result" class="result"></div>
+  </div>
+  <script>
+    const numbers = [1, 2, 3, 4, 5];
+    
+    function demoMap() {
+      const doubled = numbers.map(n => n * 2);
+      document.getElementById('result').innerHTML = 
+        \`Original: [\${numbers}]<br>Doubled: [\${doubled}]\`;
+    }
+    
+    function demoFilter() {
+      const evens = numbers.filter(n => n % 2 === 0);
+      document.getElementById('result').innerHTML = 
+        \`Original: [\${numbers}]<br>Evens: [\${evens}]\`;
+    }
+    
+    function demoReduce() {
+      const sum = numbers.reduce((acc, n) => acc + n, 0);
+      document.getElementById('result').innerHTML = 
+        \`Original: [\${numbers}]<br>Sum: \${sum}\`;
+    }
+  </script>
+</body>
+</html>`
+          },
+          {
+            title: "Find & Some",
+            code: `<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    body { font-family: Arial, sans-serif; padding: 40px; background: #f5f5f5; }
+    .container { background: white; padding: 30px; border-radius: 12px; max-width: 600px; margin: 0 auto; }
+    button { padding: 12px 24px; background: #10B981; color: white; border: none; border-radius: 8px; cursor: pointer; margin: 5px; }
+    .result { margin-top: 15px; padding: 15px; background: #F3F4F6; border-radius: 8px; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>🔍 Search Methods</h2>
+    <button onclick="demoFind()">Find</button>
+    <button onclick="demoSome()">Some</button>
+    <button onclick="demoEvery()">Every</button>
+    <div id="result" class="result"></div>
+  </div>
+  <script>
+    const users = [
+      { id: 1, name: 'Alice', age: 25 },
+      { id: 2, name: 'Bob', age: 30 },
+      { id: 3, name: 'Charlie', age: 35 }
+    ];
+    
+    function demoFind() {
+      const user = users.find(u => u.age > 28);
+      document.getElementById('result').innerHTML = 
+        \`Found: \${user.name} (age \${user.age})\`;
+    }
+    
+    function demoSome() {
+      const hasAdult = users.some(u => u.age >= 30);
+      document.getElementById('result').innerHTML = 
+        \`Has adult (30+)? \${hasAdult ? '✅ Yes' : '❌ No'}\`;
+    }
+    
+    function demoEvery() {
+      const allAdults = users.every(u => u.age >= 18);
+      document.getElementById('result').innerHTML = 
+        \`All adults (18+)? \${allAdults ? '✅ Yes' : '❌ No'}\`;
+    }
+  </script>
+</body>
+</html>`
+          }
+        ]}
+      />
+    </TopicLayout>
   );
 };
 

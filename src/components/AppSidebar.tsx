@@ -6,9 +6,7 @@ import { cn } from '@/lib/utils';
 
 export const AppSidebar = () => {
   const location = useLocation();
-  const [expandedCategories, setExpandedCategories] = useState<string[]>(
-    topicsData.map((c) => c.id)
-  );
+  const [expandedCategories, setExpandedCategories] = useState<string[]>([]);
   const [mobileOpen, setMobileOpen] = useState(false);
 
   const toggleCategory = (categoryId: string) => {
@@ -27,7 +25,7 @@ export const AppSidebar = () => {
       <div className="p-4 border-b border-sidebar-border">
         <Link to="/" className="flex items-center gap-2 group">
           <div className="w-8 h-8 rounded-lg bg-primary/20 flex items-center justify-center">
-            <span className="text-primary font-bold">FE</span>
+            <span className="text-primary font-bold">IP</span>
           </div>
           <span className="font-semibold text-foreground group-hover:text-primary transition-colors">
             Interview Prep
@@ -77,7 +75,7 @@ export const AppSidebar = () => {
               </button>
 
               {expandedCategories.includes(category.id) && (
-                <div className="ml-4 space-y-1 animate-slide-in">
+                <div className="ml-4 space-y-1">
                   {category.topics.map((topic) => (
                     <Link
                       key={topic.id}
@@ -136,7 +134,7 @@ export const AppSidebar = () => {
       {/* Mobile Sidebar */}
       <aside
         className={cn(
-          'fixed left-0 top-0 bottom-0 w-72 bg-sidebar border-r border-sidebar-border z-40 transform transition-transform duration-300 lg:hidden flex flex-col',
+          'fixed left-0 top-0 bottom-0 w-72 bg-sidebar border-r border-sidebar-border z-40 transform lg:hidden flex flex-col',
           mobileOpen ? 'translate-x-0' : '-translate-x-full'
         )}
       >
