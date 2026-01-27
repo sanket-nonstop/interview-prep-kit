@@ -118,52 +118,90 @@ const App = () => (
             <Route path="/roadmap" element={<Roadmap />} />
             
             {/* HTML Topics */}
+            <Route path="/html/fundamentals/semantic" element={<Semantic />} />
             <Route path="/html/semantic" element={<Semantic />} />
             <Route path="/html/semantic-preview" element={<SemanticWithPreview />} />
+            <Route path="/html/fundamentals/html5-features" element={<Html5Features />} />
             <Route path="/html/html5-features" element={<Html5Features />} />
+            <Route path="/html/fundamentals/forms" element={<Forms />} />
             <Route path="/html/forms" element={<Forms />} />
             <Route path="/html/forms-preview" element={<FormsWithPreview />} />
+            <Route path="/html/fundamentals/tables" element={<Tables />} />
             <Route path="/html/tables" element={<Tables />} />
+            <Route path="/html/advanced/data-attributes" element={<DataAttributes />} />
             <Route path="/html/data-attributes" element={<DataAttributes />} />
+            <Route path="/html/advanced/iframes" element={<Iframes />} />
             <Route path="/html/iframes" element={<Iframes />} />
+            <Route path="/html/advanced/entities" element={<HtmlEntities />} />
             <Route path="/html/entities" element={<HtmlEntities />} />
-            <Route path="/html/performance" element={<HtmlPerformance />} />
-            <Route path="/html/accessibility" element={<Accessibility />} />
-            <Route path="/html/meta-tags" element={<MetaTags />} />
+            <Route path="/html/advanced/web-apis" element={<WebApis />} />
             <Route path="/html/web-apis" element={<WebApis />} />
+            <Route path="/html/best-practices/performance" element={<HtmlPerformance />} />
+            <Route path="/html/performance" element={<HtmlPerformance />} />
+            <Route path="/html/best-practices/accessibility" element={<Accessibility />} />
+            <Route path="/html/accessibility" element={<Accessibility />} />
+            <Route path="/html/best-practices/meta-tags" element={<MetaTags />} />
+            <Route path="/html/meta-tags" element={<MetaTags />} />
             <Route path="/html/*" element={<TopicNotFound />} />
             
             {/* CSS Topics */}
+            <Route path="/css/layout/flexbox" element={<Flexbox />} />
             <Route path="/css/flexbox" element={<Flexbox />} />
             <Route path="/css/flexbox-preview" element={<FlexboxWithPreview />} />
+            <Route path="/css/layout/grid" element={<Grid />} />
             <Route path="/css/grid" element={<Grid />} />
+            <Route path="/css/layout/positioning" element={<Positioning />} />
             <Route path="/css/positioning" element={<Positioning />} />
+            <Route path="/css/styling/variables" element={<CssVariables />} />
             <Route path="/css/variables" element={<CssVariables />} />
-            <Route path="/css/transforms" element={<CssTransforms />} />
+            <Route path="/css/styling/pseudo-classes" element={<PseudoClasses />} />
             <Route path="/css/pseudo-classes" element={<PseudoClasses />} />
-            <Route path="/css/units" element={<CssUnits />} />
-            <Route path="/css/animations" element={<Animations />} />
-            <Route path="/css/responsive" element={<Responsive />} />
+            <Route path="/css/styling/specificity" element={<Specificity />} />
             <Route path="/css/specificity" element={<Specificity />} />
+            <Route path="/css/styling/units" element={<CssUnits />} />
+            <Route path="/css/units" element={<CssUnits />} />
+            <Route path="/css/advanced/transforms" element={<CssTransforms />} />
+            <Route path="/css/transforms" element={<CssTransforms />} />
+            <Route path="/css/advanced/animations" element={<Animations />} />
+            <Route path="/css/animations" element={<Animations />} />
+            <Route path="/css/advanced/responsive" element={<Responsive />} />
+            <Route path="/css/responsive" element={<Responsive />} />
             <Route path="/css/*" element={<TopicNotFound />} />
             
             {/* JavaScript Topics */}
+            <Route path="/javascript/fundamentals/variables" element={<Variables />} />
             <Route path="/javascript/variables" element={<Variables />} />
+            <Route path="/javascript/fundamentals/functions" element={<Functions />} />
             <Route path="/javascript/functions" element={<Functions />} />
+            <Route path="/javascript/fundamentals/objects-arrays" element={<ObjectsArrays />} />
             <Route path="/javascript/objects-arrays" element={<ObjectsArrays />} />
+            <Route path="/javascript/fundamentals/hoisting" element={<Hoisting />} />
             <Route path="/javascript/hoisting" element={<Hoisting />} />
-            <Route path="/javascript/execution-context" element={<ExecutionContext />} />
-            <Route path="/javascript/memory" element={<Memory />} />
-            <Route path="/javascript/dom" element={<DOM />} />
-            <Route path="/javascript/closures" element={<Closures />} />
-            <Route path="/javascript/promises" element={<Promises />} />
-            <Route path="/javascript/event-loop" element={<EventLoop />} />
-            <Route path="/javascript/this" element={<ThisKeyword />} />
-            <Route path="/javascript/array-methods" element={<ArrayMethods />} />
-            <Route path="/javascript/prototypes" element={<Prototypes />} />
-            <Route path="/javascript/modules" element={<Modules />} />
+            <Route path="/javascript/fundamentals/destructuring" element={<Destructuring />} />
             <Route path="/javascript/destructuring" element={<Destructuring />} />
+            <Route path="/javascript/fundamentals/array-methods" element={<ArrayMethods />} />
+            <Route path="/javascript/array-methods" element={<ArrayMethods />} />
+            <Route path="/javascript/advanced/closures" element={<Closures />} />
+            <Route path="/javascript/closures" element={<Closures />} />
+            <Route path="/javascript/advanced/prototypes" element={<Prototypes />} />
+            <Route path="/javascript/prototypes" element={<Prototypes />} />
+            <Route path="/javascript/advanced/execution-context" element={<ExecutionContext />} />
+            <Route path="/javascript/execution-context" element={<ExecutionContext />} />
+            <Route path="/javascript/advanced/this" element={<ThisKeyword />} />
+            <Route path="/javascript/this" element={<ThisKeyword />} />
+            <Route path="/javascript/advanced/memory" element={<Memory />} />
+            <Route path="/javascript/memory" element={<Memory />} />
+            <Route path="/javascript/advanced/modules" element={<Modules />} />
+            <Route path="/javascript/modules" element={<Modules />} />
+            <Route path="/javascript/async/promises" element={<Promises />} />
+            <Route path="/javascript/promises" element={<Promises />} />
+            <Route path="/javascript/async/event-loop" element={<EventLoop />} />
+            <Route path="/javascript/event-loop" element={<EventLoop />} />
+            <Route path="/javascript/browser/dom" element={<DOM />} />
+            <Route path="/javascript/dom" element={<DOM />} />
+            <Route path="/javascript/browser/browser-apis" element={<BrowserApis />} />
             <Route path="/javascript/browser-apis" element={<BrowserApis />} />
+            <Route path="/javascript/browser/pwa" element={<PWA />} />
             <Route path="/javascript/pwa" element={<PWA />} />
             <Route path="/javascript/patterns/debounce" element={<Debounce />} />
             <Route path="/javascript/patterns/throttle" element={<Throttle />} />
@@ -173,61 +211,93 @@ const App = () => (
             <Route path="/javascript/*" element={<TopicNotFound />} />
             
             {/* TypeScript Topics */}
+            <Route path="/typescript/basics/fundamentals" element={<TypeScript />} />
             <Route path="/typescript/fundamentals" element={<TypeScript />} />
             <Route path="/typescript/*" element={<TopicNotFound />} />
             
             {/* React Topics */}
+            <Route path="/react/fundamentals/components" element={<Components />} />
             <Route path="/react/components" element={<Components />} />
+            <Route path="/react/fundamentals/jsx-virtual-dom" element={<JSXVirtualDOM />} />
             <Route path="/react/jsx-virtual-dom" element={<JSXVirtualDOM />} />
+            <Route path="/react/fundamentals/props-state" element={<PropsState />} />
             <Route path="/react/props-state" element={<PropsState />} />
-            <Route path="/react/conditional-rendering" element={<ConditionalRendering />} />
-            <Route path="/react/controlled-uncontrolled" element={<ControlledUncontrolled />} />
-            <Route path="/react/lists-keys" element={<ListsKeys />} />
+            <Route path="/react/fundamentals/events" element={<EventHandling />} />
             <Route path="/react/events" element={<EventHandling />} />
+            <Route path="/react/fundamentals/conditional-rendering" element={<ConditionalRendering />} />
+            <Route path="/react/conditional-rendering" element={<ConditionalRendering />} />
+            <Route path="/react/fundamentals/lists-keys" element={<ListsKeys />} />
+            <Route path="/react/lists-keys" element={<ListsKeys />} />
+            <Route path="/react/fundamentals/controlled-uncontrolled" element={<ControlledUncontrolled />} />
+            <Route path="/react/controlled-uncontrolled" element={<ControlledUncontrolled />} />
+            <Route path="/react/fundamentals/lifecycle" element={<Lifecycle />} />
             <Route path="/react/lifecycle" element={<Lifecycle />} />
             <Route path="/react/hooks/useState" element={<UseState />} />
             <Route path="/react/hooks/useEffect" element={<UseEffect />} />
             <Route path="/react/hooks/useRef" element={<UseRef />} />
             <Route path="/react/hooks/useMemo" element={<UseMemo />} />
             <Route path="/react/hooks/useReducer" element={<UseReducer />} />
-            <Route path="/react/context" element={<Context />} />
+            <Route path="/react/hooks/custom-hooks" element={<CustomHooks />} />
             <Route path="/react/custom-hooks" element={<CustomHooks />} />
+            <Route path="/react/advanced/context" element={<Context />} />
+            <Route path="/react/context" element={<Context />} />
+            <Route path="/react/advanced/reconciliation" element={<Reconciliation />} />
             <Route path="/react/reconciliation" element={<Reconciliation />} />
+            <Route path="/react/advanced/react-memo" element={<ReactMemoComponent />} />
             <Route path="/react/react-memo" element={<ReactMemoComponent />} />
-            <Route path="/react/performance" element={<Performance />} />
-            <Route path="/react/state-colocation" element={<StateColocation />} />
-            <Route path="/react/patterns" element={<Patterns />} />
+            <Route path="/react/advanced/compound-components" element={<CompoundComponents />} />
             <Route path="/react/compound-components" element={<CompoundComponents />} />
-            <Route path="/react/state-management" element={<StateManagement />} />
-            <Route path="/react/forms-handling" element={<FormsHandling />} />
-            <Route path="/react/code-splitting" element={<CodeSplitting />} />
-            <Route path="/react/accessibility" element={<Accessibility />} />
+            <Route path="/react/advanced/error-handling" element={<ErrorHandling />} />
             <Route path="/react/error-handling" element={<ErrorHandling />} />
+            <Route path="/react/best-practices/performance" element={<Performance />} />
+            <Route path="/react/performance" element={<Performance />} />
+            <Route path="/react/best-practices/patterns" element={<Patterns />} />
+            <Route path="/react/patterns" element={<Patterns />} />
+            <Route path="/react/best-practices/state-management" element={<StateManagement />} />
+            <Route path="/react/state-management" element={<StateManagement />} />
+            <Route path="/react/best-practices/state-colocation" element={<StateColocation />} />
+            <Route path="/react/state-colocation" element={<StateColocation />} />
+            <Route path="/react/best-practices/forms-handling" element={<FormsHandling />} />
+            <Route path="/react/forms-handling" element={<FormsHandling />} />
+            <Route path="/react/best-practices/code-splitting" element={<CodeSplitting />} />
+            <Route path="/react/code-splitting" element={<CodeSplitting />} />
+            <Route path="/react/best-practices/accessibility" element={<Accessibility />} />
+            <Route path="/react/accessibility" element={<Accessibility />} />
             <Route path="/react/*" element={<TopicNotFound />} />
             
             {/* Testing Topics */}
+            <Route path="/testing/basics/fundamentals" element={<Testing />} />
             <Route path="/testing/fundamentals" element={<Testing />} />
             <Route path="/testing/*" element={<TopicNotFound />} />
             
             {/* Performance Topics */}
+            <Route path="/performance/web/optimization" element={<WebPerformance />} />
             <Route path="/performance/optimization" element={<WebPerformance />} />
             <Route path="/performance/*" element={<TopicNotFound />} />
             
             {/* Security Topics */}
+            <Route path="/security/basics/fundamentals" element={<Security />} />
             <Route path="/security/fundamentals" element={<Security />} />
             <Route path="/security/*" element={<TopicNotFound />} />
             
             {/* Next.js Topics */}
+            <Route path="/nextjs/fundamentals/app-router" element={<AppRouter />} />
             <Route path="/nextjs/app-router" element={<AppRouter />} />
-            <Route path="/nextjs/server-components" element={<ServerComponents />} />
-            <Route path="/nextjs/data-fetching" element={<DataFetching />} />
-            <Route path="/nextjs/metadata" element={<Metadata />} />
+            <Route path="/nextjs/fundamentals/routing" element={<Routing />} />
             <Route path="/nextjs/routing" element={<Routing />} />
+            <Route path="/nextjs/fundamentals/server-components" element={<ServerComponents />} />
+            <Route path="/nextjs/server-components" element={<ServerComponents />} />
+            <Route path="/nextjs/data/data-fetching" element={<DataFetching />} />
+            <Route path="/nextjs/data-fetching" element={<DataFetching />} />
+            <Route path="/nextjs/data/api-routes" element={<ApiRoutes />} />
             <Route path="/nextjs/api-routes" element={<ApiRoutes />} />
+            <Route path="/nextjs/data/caching" element={<Caching />} />
+            <Route path="/nextjs/patterns/caching" element={<Caching />} />
             <Route path="/nextjs/patterns/auth-layout" element={<AuthLayout />} />
             <Route path="/nextjs/patterns/protected-routes" element={<ProtectedRoutes />} />
             <Route path="/nextjs/patterns/server-vs-client" element={<ServerVsClient />} />
-            <Route path="/nextjs/patterns/caching" element={<Caching />} />
+            <Route path="/nextjs/patterns/metadata" element={<Metadata />} />
+            <Route path="/nextjs/metadata" element={<Metadata />} />
             <Route path="/nextjs/*" element={<TopicNotFound />} />
             
             {/* SEO Topics */}

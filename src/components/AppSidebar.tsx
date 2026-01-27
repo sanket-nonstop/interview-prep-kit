@@ -1,12 +1,13 @@
 import { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { ChevronDown, ChevronRight, Home, BookOpen, Menu, X, ChevronLeft } from 'lucide-react';
-import { topicsData, getCategoryColor } from '@/data/topics';
+import { topicsDataNew, getCategoryColor } from '@/data/topics-new';
 import { cn } from '@/lib/utils';
 
 export const AppSidebar = () => {
   const location = useLocation();
   const [expandedCategories, setExpandedCategories] = useState<string[]>([]);
+  const [expandedSubcategories, setExpandedSubcategories] = useState<string[]>([]);
   const [mobileOpen, setMobileOpen] = useState(false);
   const [collapsed, setCollapsed] = useState(false);
 
@@ -15,6 +16,14 @@ export const AppSidebar = () => {
       prev.includes(categoryId)
         ? prev.filter((id) => id !== categoryId)
         : [...prev, categoryId]
+    );
+  };
+
+  const toggleSubcategory = (subcategoryId: string) => {
+    setExpandedSubcategories((prev) =>
+      prev.includes(subcategoryId)
+        ? prev.filter((id) => id !== subcategoryId)
+        : [...prev, subcategoryId]
     );
   };
 
@@ -62,7 +71,7 @@ export const AppSidebar = () => {
 
         {/* Categories */}
         <div className="space-y-2">
-          {topicsData.map((category) => (
+          {topicsDataNew.map((category) => (
             <div key={category.id}>
               <button
                 onClick={() => toggleCategory(category.id)}
@@ -84,21 +93,40 @@ export const AppSidebar = () => {
               </button>
 
               {!collapsed && expandedCategories.includes(category.id) && (
-                <div className="ml-4 space-y-1">
-                  {category.topics.map((topic) => (
-                    <Link
-                      key={topic.id}
-                      to={topic.route}
-                      onClick={() => setMobileOpen(false)}
-                      className={cn(
-                        'block px-3 py-1.5 text-sm rounded-md transition-colors',
-                        isActive(topic.route)
-                          ? 'bg-primary/10 text-primary font-medium'
-                          : 'text-muted-foreground hover:text-foreground hover:bg-secondary/50'
+                <div className="ml-3 space-y-1 mt-1">
+                  {category.subcategories.map((subcategory) => (
+                    <div key={subcategory.id}>
+                      <button
+                        onClick={() => toggleSubcategory(`${category.id}-${subcategory.id}`)}
+                        className="w-full flex items-center justify-between px-2 py-1.5 text-xs font-medium text-muted-foreground hover:text-foreground transition-colors"
+                      >
+                        <span>{subcategory.title}</span>
+                        {expandedSubcategories.includes(`${category.id}-${subcategory.id}`) ? (
+                          <ChevronDown className="w-3 h-3" />
+                        ) : (
+                          <ChevronRight className="w-3 h-3" />
+                        )}
+                      </button>
+                      {expandedSubcategories.includes(`${category.id}-${subcategory.id}`) && (
+                        <div className="ml-3 space-y-0.5">
+                          {subcategory.topics.map((topic) => (
+                            <Link
+                              key={topic.id}
+                              to={topic.route}
+                              onClick={() => setMobileOpen(false)}
+                              className={cn(
+                                'block px-2 py-1 text-xs rounded-md transition-colors',
+                                isActive(topic.route)
+                                  ? 'bg-primary/10 text-primary font-medium'
+                                  : 'text-muted-foreground hover:text-foreground hover:bg-secondary/50'
+                              )}
+                            >
+                              {topic.title}
+                            </Link>
+                          ))}
+                        </div>
                       )}
-                    >
-                      {topic.title}
-                    </Link>
+                    </div>
                   ))}
                 </div>
               )}
@@ -145,7 +173,7 @@ export const AppSidebar = () => {
         <SidebarContent />
         <button
           onClick={() => setCollapsed(!collapsed)}
-          className="absolute -right-3 top-20 p-1 rounded-full bg-card border border-border hover:bg-secondary"
+          className="absolute -right-3 top-12 p-1 rounded-full bg-card border border-border hover:bg-secondary"
         >
           <ChevronLeft className={cn("w-4 h-4 transition-transform", collapsed && "rotate-180")} />
         </button>

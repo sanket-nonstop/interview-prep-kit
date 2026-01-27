@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { topicsData } from '@/data/topics';
+import { topicsDataNew } from '@/data/topics-new';
 import { ArrowRight, Zap, Code2, Target, BookOpen, TrendingUp } from 'lucide-react';
 
 const Index = () => {
@@ -30,13 +30,13 @@ const Index = () => {
         <div className="topic-card text-center p-6 hover:shadow-lg transition-shadow">
           <BookOpen className="w-8 h-8 text-primary mx-auto mb-2" />
           <div className="text-3xl font-bold text-primary mb-1">
-            {topicsData.reduce((acc, cat) => acc + cat.topics.length, 0)}+
+            {topicsDataNew.reduce((acc, cat) => acc + cat.subcategories.reduce((a, sub) => a + sub.topics.length, 0), 0)}+
           </div>
           <div className="text-sm text-muted-foreground">Topics Covered</div>
         </div>
         <div className="topic-card text-center p-6 hover:shadow-lg transition-shadow">
           <Code2 className="w-8 h-8 text-accent mx-auto mb-2" />
-          <div className="text-3xl font-bold text-accent mb-1">5</div>
+          <div className="text-3xl font-bold text-accent mb-1">{topicsDataNew.length}</div>
           <div className="text-sm text-muted-foreground">Categories</div>
         </div>
         <div className="topic-card text-center p-6 hover:shadow-lg transition-shadow">
@@ -53,10 +53,10 @@ const Index = () => {
           Explore Categories
         </h2>
         <div className="grid md:grid-cols-2 gap-3">
-          {topicsData.map((category) => (
+          {topicsDataNew.map((category) => (
             <Link
               key={category.id}
-              to={category.topics[0]?.route || '/'}
+              to={category.subcategories[0]?.topics[0]?.route || '/'}
               className="p-4 rounded-lg border border-border hover:border-primary hover:bg-primary/5 transition-all group"
             >
               <div className="flex items-center justify-between">
@@ -66,7 +66,9 @@ const Index = () => {
                     <h3 className="font-semibold text-foreground group-hover:text-primary transition-colors">
                       {category.title}
                     </h3>
-                    <p className="text-xs text-muted-foreground">{category.topics.length} topics</p>
+                    <p className="text-xs text-muted-foreground">
+                      {category.subcategories.reduce((acc, sub) => acc + sub.topics.length, 0)} topics
+                    </p>
                   </div>
                 </div>
                 <ArrowRight className="w-4 h-4 text-muted-foreground group-hover:text-primary group-hover:translate-x-1 transition-all" />
@@ -88,7 +90,7 @@ const Index = () => {
               Each topic includes: explanation → code → why it matters → common mistakes → practice task
             </p>
             <Link
-              to="/javascript/closures"
+              to="/javascript/advanced/closures"
               className="inline-flex items-center gap-2 text-sm font-medium text-primary hover:underline"
             >
               Start with Closures <ArrowRight className="w-4 h-4" />

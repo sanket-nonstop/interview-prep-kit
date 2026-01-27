@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { topicsData, getCategoryColor } from '@/data/topics';
+import { topicsDataNew, getCategoryColor } from '@/data/topics-new';
 import { ArrowRight, CheckCircle2, Map } from 'lucide-react';
 
 const Roadmap = () => {
@@ -22,32 +22,39 @@ const Roadmap = () => {
 
       {/* Categories */}
       <div className="space-y-4">
-        {topicsData.map((category) => (
+        {topicsDataNew.map((category) => (
           <div key={category.id} className="topic-card p-6">
             <div className="flex items-center gap-3 mb-4">
               <span className="text-2xl">{category.icon}</span>
               <div>
                 <h2 className="text-xl font-semibold text-foreground">{category.title}</h2>
-                <p className="text-sm text-muted-foreground">{category.topics.length} topics</p>
+                <p className="text-sm text-muted-foreground">
+                  {category.subcategories.reduce((acc, sub) => acc + sub.topics.length, 0)} topics
+                </p>
               </div>
             </div>
-            <div className="grid md:grid-cols-3 gap-2">
-              {category.topics.map((topic, idx) => (
-                <Link
-                  key={topic.id}
-                  to={topic.route}
-                  className="group flex items-center gap-3 p-3 rounded-lg hover:bg-secondary/50 border border-transparent hover:border-border transition-all"
-                >
-                  <div className="w-6 h-6 rounded-full bg-secondary flex items-center justify-center text-xs text-muted-foreground group-hover:bg-primary/20 group-hover:text-primary transition-colors flex-shrink-0">
-                    {idx + 1}
-                  </div>
-                  <span className="text-sm text-foreground group-hover:text-primary transition-colors flex-1">
-                    {topic.title}
-                  </span>
-                  <ArrowRight className="w-4 h-4 text-muted-foreground opacity-0 group-hover:opacity-100 transition-all flex-shrink-0" />
-                </Link>
-              ))}
-            </div>
+            {category.subcategories.map((subcategory) => (
+              <div key={subcategory.id} className="mb-4 last:mb-0">
+                <h3 className="text-sm font-semibold text-muted-foreground mb-2 px-3">{subcategory.title}</h3>
+                <div className="grid md:grid-cols-3 gap-2">
+                  {subcategory.topics.map((topic, idx) => (
+                    <Link
+                      key={topic.id}
+                      to={topic.route}
+                      className="group flex items-center gap-3 p-3 rounded-lg hover:bg-secondary/50 border border-transparent hover:border-border transition-all"
+                    >
+                      <div className="w-6 h-6 rounded-full bg-secondary flex items-center justify-center text-xs text-muted-foreground group-hover:bg-primary/20 group-hover:text-primary transition-colors flex-shrink-0">
+                        {idx + 1}
+                      </div>
+                      <span className="text-sm text-foreground group-hover:text-primary transition-colors flex-1">
+                        {topic.title}
+                      </span>
+                      <ArrowRight className="w-4 h-4 text-muted-foreground opacity-0 group-hover:opacity-100 transition-all flex-shrink-0" />
+                    </Link>
+                  ))}
+                </div>
+              </div>
+            ))}
           </div>
         ))}
       </div>
@@ -59,12 +66,14 @@ const Roadmap = () => {
           Preparation Summary
         </h3>
         <div className="grid grid-cols-2 md:grid-cols-5 gap-4">
-          {topicsData.map((category) => (
+          {topicsDataNew.map((category) => (
             <div key={category.id} className="text-center p-3 rounded-lg bg-secondary/30">
               <div className={`text-xs font-medium mb-2 ${getCategoryColor(category.id)}`}>
                 {category.title}
               </div>
-              <div className="text-2xl font-bold text-foreground">{category.topics.length}</div>
+              <div className="text-2xl font-bold text-foreground">
+                {category.subcategories.reduce((acc, sub) => acc + sub.topics.length, 0)}
+              </div>
             </div>
           ))}
         </div>
