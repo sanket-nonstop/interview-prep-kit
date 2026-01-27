@@ -3,6 +3,7 @@ import { Link, useLocation } from 'react-router-dom';
 import { ChevronDown, ChevronRight, Home, BookOpen, Menu, X, ChevronLeft } from 'lucide-react';
 import { topicsDataNew, getCategoryColor } from '@/data/topics-new';
 import { cn } from '@/lib/utils';
+import * as HoverCard from '@radix-ui/react-hover-card';
 
 export const AppSidebar = () => {
   const location = useLocation();
@@ -46,7 +47,7 @@ export const AppSidebar = () => {
       </div>
 
       {/* Navigation */}
-      <nav className="flex-1 overflow-y-auto scrollbar-thin p-3">
+      <nav className="flex-1 overflow-y-auto scrollbar-thin p-3 mt-4">
         {/* Home & Roadmap */}
         <div className="mb-4">
           <Link
@@ -74,15 +75,53 @@ export const AppSidebar = () => {
           {topicsDataNew.map((category) => (
             <div key={category.id}>
               {collapsed ? (
-                // Collapsed: Show icon only with tooltip
-                <Link
-                  to={category.subcategories[0]?.topics[0]?.route || '/'}
-                  className="w-full flex items-center justify-center px-2 py-2 text-lg text-muted-foreground hover:text-foreground hover:bg-secondary/50 transition-colors rounded-md"
-                  title={category.title}
-                  onClick={() => setMobileOpen(false)}
-                >
-                  <span>{category.icon}</span>
-                </Link>
+                // Collapsed: Show icon with hover menu
+                <HoverCard.Root openDelay={200} closeDelay={100}>
+                  <HoverCard.Trigger asChild>
+                    <button
+                      className="w-full flex items-center justify-center px-2 py-2 text-lg text-muted-foreground hover:text-foreground hover:bg-secondary/50 transition-colors rounded-md"
+                      title={category.title}
+                    >
+                      <span>{category.icon}</span>
+                    </button>
+                  </HoverCard.Trigger>
+                  <HoverCard.Portal>
+                    <HoverCard.Content
+                      side="right"
+                      align="start"
+                      sideOffset={8}
+                      className="z-50 w-64 bg-popover border border-border rounded-lg shadow-lg p-3 animate-in fade-in-0 zoom-in-95"
+                    >
+                      <div className="space-y-2">
+                        <h4 className="font-semibold text-sm text-foreground mb-3 pb-2 border-b border-border">{category.title}</h4>
+                        {category.subcategories.map((subcategory) => (
+                          <div key={subcategory.id} className="space-y-1">
+                            <div className="text-xs font-semibold text-foreground bg-secondary/50 px-2 py-1.5 rounded-md">
+                              {subcategory.title}
+                            </div>
+                            <div className="pl-2 space-y-0.5">
+                              {subcategory.topics.map((topic) => (
+                                <Link
+                                  key={topic.id}
+                                  to={topic.route}
+                                  onClick={() => setMobileOpen(false)}
+                                  className={cn(
+                                    'block px-2 py-1.5 text-xs rounded-md transition-colors',
+                                    isActive(topic.route)
+                                      ? 'bg-primary/10 text-primary font-medium'
+                                      : 'text-muted-foreground hover:text-foreground hover:bg-secondary/50'
+                                  )}
+                                >
+                                  {topic.title}
+                                </Link>
+                              ))}
+                            </div>
+                          </div>
+                        ))}
+                      </div>
+                    </HoverCard.Content>
+                  </HoverCard.Portal>
+                </HoverCard.Root>
               ) : (
                 // Expanded: Show full menu
                 <>
