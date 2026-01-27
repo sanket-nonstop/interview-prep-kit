@@ -11,6 +11,10 @@ import TopicNotFound from "./pages/TopicNotFound";
 
 // Topic Pages
 import Animations from "./pages/topics/css/Animations";
+import CssVariables from "./pages/topics/css/CssVariables";
+import CssTransforms from "./pages/topics/css/CssTransforms";
+import PseudoClasses from "./pages/topics/css/PseudoClasses";
+import CssUnits from "./pages/topics/css/CssUnits";
 import Flexbox from "./pages/topics/css/Flexbox";
 import FlexboxWithPreview from "./pages/topics/css/FlexboxWithPreview";
 import Grid from "./pages/topics/css/Grid";
@@ -19,6 +23,10 @@ import Responsive from "./pages/topics/css/Responsive";
 import Specificity from "./pages/topics/css/Specificity";
 import Forms from "./pages/topics/html/Forms";
 import Html5Features from "./pages/topics/html/Html5Features";
+import Tables from "./pages/topics/html/Tables";
+import Iframes from "./pages/topics/html/Iframes";
+import HtmlEntities from "./pages/topics/html/HtmlEntities";
+import HtmlPerformance from "./pages/topics/html/HtmlPerformance";
 import DataAttributes from "./pages/topics/html/DataAttributes";
 import FormsWithPreview from "./pages/topics/html/FormsWithPreview";
 import MetaTags from "./pages/topics/html/MetaTags";
@@ -115,7 +123,11 @@ const App = () => (
             <Route path="/html/html5-features" element={<Html5Features />} />
             <Route path="/html/forms" element={<Forms />} />
             <Route path="/html/forms-preview" element={<FormsWithPreview />} />
+            <Route path="/html/tables" element={<Tables />} />
             <Route path="/html/data-attributes" element={<DataAttributes />} />
+            <Route path="/html/iframes" element={<Iframes />} />
+            <Route path="/html/entities" element={<HtmlEntities />} />
+            <Route path="/html/performance" element={<HtmlPerformance />} />
             <Route path="/html/accessibility" element={<Accessibility />} />
             <Route path="/html/meta-tags" element={<MetaTags />} />
             <Route path="/html/web-apis" element={<WebApis />} />
@@ -126,6 +138,10 @@ const App = () => (
             <Route path="/css/flexbox-preview" element={<FlexboxWithPreview />} />
             <Route path="/css/grid" element={<Grid />} />
             <Route path="/css/positioning" element={<Positioning />} />
+            <Route path="/css/variables" element={<CssVariables />} />
+            <Route path="/css/transforms" element={<CssTransforms />} />
+            <Route path="/css/pseudo-classes" element={<PseudoClasses />} />
+            <Route path="/css/units" element={<CssUnits />} />
             <Route path="/css/animations" element={<Animations />} />
             <Route path="/css/responsive" element={<Responsive />} />
             <Route path="/css/specificity" element={<Specificity />} />

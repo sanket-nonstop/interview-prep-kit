@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { ChevronDown, ChevronRight, Home, BookOpen, Menu, X } from 'lucide-react';
+import { ChevronDown, ChevronRight, Home, BookOpen, Menu, X, ChevronLeft } from 'lucide-react';
 import { topicsData, getCategoryColor } from '@/data/topics';
 import { cn } from '@/lib/utils';
 
@@ -8,6 +8,7 @@ export const AppSidebar = () => {
   const location = useLocation();
   const [expandedCategories, setExpandedCategories] = useState<string[]>([]);
   const [mobileOpen, setMobileOpen] = useState(false);
+  const [collapsed, setCollapsed] = useState(false);
 
   const toggleCategory = (categoryId: string) => {
     setExpandedCategories((prev) =>
@@ -27,9 +28,11 @@ export const AppSidebar = () => {
           <div className="w-8 h-8 rounded-lg bg-primary/20 flex items-center justify-center">
             <span className="text-primary font-bold">IP</span>
           </div>
-          <span className="font-semibold text-foreground group-hover:text-primary transition-colors">
-            Interview Prep
-          </span>
+          {!collapsed && (
+            <span className="font-semibold text-foreground group-hover:text-primary transition-colors">
+              Interview Prep
+            </span>
+          )}
         </Link>
       </div>
 
@@ -39,19 +42,21 @@ export const AppSidebar = () => {
         <div className="mb-4">
           <Link
             to="/"
-            className={cn('nav-link', isActive('/') && 'active')}
+            className={cn('nav-link', collapsed && 'justify-center', isActive('/') && 'active')}
             onClick={() => setMobileOpen(false)}
+            title={collapsed ? 'Home' : ''}
           >
             <Home className="w-4 h-4" />
-            Home
+            {!collapsed && 'Home'}
           </Link>
           <Link
             to="/roadmap"
-            className={cn('nav-link', isActive('/roadmap') && 'active')}
+            className={cn('nav-link', collapsed && 'justify-center', isActive('/roadmap') && 'active')}
             onClick={() => setMobileOpen(false)}
+            title={collapsed ? 'Full Roadmap' : ''}
           >
             <BookOpen className="w-4 h-4" />
-            Full Roadmap
+            {!collapsed && 'Full Roadmap'}
           </Link>
         </div>
 
@@ -61,20 +66,24 @@ export const AppSidebar = () => {
             <div key={category.id}>
               <button
                 onClick={() => toggleCategory(category.id)}
-                className="w-full flex items-center justify-between px-3 py-2 text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
+                className={cn(
+                  "w-full flex items-center justify-between px-3 py-2 text-sm font-medium text-muted-foreground hover:text-foreground transition-colors",
+                  collapsed && "justify-center"
+                )}
+                title={collapsed ? category.title : ''}
               >
                 <span className="flex items-center gap-2">
                   <span>{category.icon}</span>
-                  {category.title}
+                  {!collapsed && category.title}
                 </span>
-                {expandedCategories.includes(category.id) ? (
+                {!collapsed && (expandedCategories.includes(category.id) ? (
                   <ChevronDown className="w-4 h-4" />
                 ) : (
                   <ChevronRight className="w-4 h-4" />
-                )}
+                ))}
               </button>
 
-              {expandedCategories.includes(category.id) && (
+              {!collapsed && expandedCategories.includes(category.id) && (
                 <div className="ml-4 space-y-1">
                   {category.topics.map((topic) => (
                     <Link
@@ -100,9 +109,11 @@ export const AppSidebar = () => {
 
       {/* Footer */}
       <div className="p-4 border-t border-sidebar-border">
-        <div className="text-xs text-muted-foreground text-center">
-          Built for interview prep 🚀
-        </div>
+        {!collapsed && (
+          <div className="text-xs text-muted-foreground text-center">
+            Built for interview prep 🚀
+          </div>
+        )}
       </div>
     </>
   );
@@ -127,8 +138,17 @@ export const AppSidebar = () => {
       )}
 
       {/* Desktop Sidebar */}
-      <aside className="hidden lg:flex w-64 flex-col bg-sidebar border-r border-sidebar-border h-screen sticky top-0">
+      <aside className={cn(
+        "hidden lg:flex flex-col bg-sidebar border-r border-sidebar-border h-screen sticky top-0 transition-all",
+        collapsed ? "w-16" : "w-64"
+      )}>
         <SidebarContent />
+        <button
+          onClick={() => setCollapsed(!collapsed)}
+          className="absolute -right-3 top-20 p-1 rounded-full bg-card border border-border hover:bg-secondary"
+        >
+          <ChevronLeft className={cn("w-4 h-4 transition-transform", collapsed && "rotate-180")} />
+        </button>
       </aside>
 
       {/* Mobile Sidebar */}
