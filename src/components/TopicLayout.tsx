@@ -33,14 +33,13 @@ export const TopicLayout = ({
   return (
     <div className="animate-fade-in max-w-7xl mx-auto">
       {/* Header */}
-      <div className="mb-8 flex gap-4 items-center justify-start">
-        <div className="flex items-center gap-3 mb-3">
-          <span className={`category-badge border ${getCategoryColor(category)}`}>
+      <div className="my-4 md:my-8 flex gap-4 items-center justify-start">
+        <h1 className="text-2xl font-bold text-foreground">{title}</h1>
+        <div className="flex items-center gap-3">
+          <span className={`category-badge border  ${getCategoryColor(category)}`}>
             {category.toUpperCase()}
-          </span>
-          {/* <span className="text-sm text-muted-foreground font-mono">{route}</span> */}
+          </span> 
         </div>
-        <h1 className="text-3xl font-bold text-foreground mb-2">{title}</h1>
       </div>
 
       {/* Explanation */}
