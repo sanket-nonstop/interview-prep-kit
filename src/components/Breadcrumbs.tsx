@@ -33,23 +33,29 @@ export const Breadcrumbs = () => {
   }
 
   return (
-    <nav className="flex items-center gap-2 text-sm text-muted-foreground mb-4 flex-wrap">
-      {breadcrumbs.map((crumb, index) => (
-        <div key={crumb.path} className="flex items-center gap-2">
-          {index > 0 && <ChevronRight className="w-4 h-4" />}
-          {index === breadcrumbs.length - 1 ? (
-            <span className="text-foreground font-medium">{crumb.label}</span>
-          ) : (
-            <Link
-              to={crumb.path}
-              className="hover:text-primary transition-colors flex items-center gap-1"
-            >
-              {index === 0 && <Home className="w-4 h-4" />}
-              {crumb.label}
-            </Link>
-          )}
-        </div>
-      ))}
+    <nav className="mb-6 p-3 bg-secondary/50 rounded-lg border border-border backdrop-blur-sm">
+      <div className="flex items-center gap-2 text-sm flex-wrap">
+        {breadcrumbs.map((crumb, index) => (
+          <div key={crumb.path} className="flex items-center gap-2">
+            {index > 0 && (
+              <ChevronRight className="w-4 h-4 text-muted-foreground/50" />
+            )}
+            {index === breadcrumbs.length - 1 ? (
+              <span className="px-3 py-1.5 bg-primary/10 text-primary font-medium rounded-md border border-primary/20">
+                {crumb.label}
+              </span>
+            ) : (
+              <Link
+                to={crumb.path}
+                className="px-3 py-1.5 text-muted-foreground hover:text-foreground hover:bg-background/80 rounded-md transition-all flex items-center gap-1.5 border border-transparent hover:border-border"
+              >
+                {index === 0 && <Home className="w-3.5 h-3.5" />}
+                {crumb.label}
+              </Link>
+            )}
+          </div>
+        ))}
+      </div>
     </nav>
   );
 };

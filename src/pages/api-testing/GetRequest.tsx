@@ -58,8 +58,13 @@ const GetRequest = () => {
         </h2>
         <div className="space-y-3 text-muted-foreground">
           <p className="text-base">
-            Think of GET like <strong className="text-foreground">reading a book from a library</strong>. You can look at the book, 
-            but you don't change anything. The book stays the same for everyone else.
+            <strong className="text-foreground">GET is the most common HTTP method</strong> - it's used to retrieve ("get") data from a server. 
+            Think of it like <strong className="text-foreground">reading a book from a library</strong>. You can look at the book and read its contents, 
+            but you don't change anything. The book stays exactly the same for everyone else who reads it after you.
+          </p>
+          <p className="text-sm">
+            Every time you visit a website, your browser sends dozens of GET requests to fetch HTML, CSS, JavaScript, images, and data. 
+            It's the foundation of how the web works - safe, simple, and designed purely for reading information.
           </p>
           <div className="grid md:grid-cols-3 gap-3 mt-4">
             <div className="p-3 bg-background/50 rounded-lg text-center">
@@ -205,6 +210,58 @@ const GetRequest = () => {
           </div>
         </div>
       )}
+
+      {/* How GET Works */}
+      <div className="topic-card p-6">
+        <h3 className="font-semibold mb-3 text-lg">🔍 How GET Requests Work (Behind the Scenes)</h3>
+        <div className="space-y-4">
+          <div className="p-4 bg-background/50 rounded-lg border border-border">
+            <div className="font-semibold text-foreground mb-2">Step 1: Browser Sends Request</div>
+            <div className="text-sm text-muted-foreground mb-2">Your browser creates an HTTP request with the GET method and sends it to the server's URL</div>
+            <div className="text-xs font-mono bg-secondary p-2 rounded">GET /posts HTTP/1.1<br/>Host: api.example.com</div>
+          </div>
+          <div className="p-4 bg-background/50 rounded-lg border border-border">
+            <div className="font-semibold text-foreground mb-2">Step 2: Server Processes Request</div>
+            <div className="text-sm text-muted-foreground">The server receives the request, queries its database, and prepares the data you asked for</div>
+          </div>
+          <div className="p-4 bg-background/50 rounded-lg border border-border">
+            <div className="font-semibold text-foreground mb-2">Step 3: Server Sends Response</div>
+            <div className="text-sm text-muted-foreground mb-2">Server sends back a response with status code (200 = success) and the data in JSON format</div>
+            <div className="text-xs font-mono bg-secondary p-2 rounded">HTTP/1.1 200 OK<br/>Content-Type: application/json<br/>{'{'}"id": 1, "title": "Post"{'}'}</div>
+          </div>
+          <div className="p-4 bg-background/50 rounded-lg border border-border">
+            <div className="font-semibold text-foreground mb-2">Step 4: Browser Displays Data</div>
+            <div className="text-sm text-muted-foreground">Your browser receives the data and displays it on the page (or your app processes it)</div>
+          </div>
+        </div>
+      </div>
+
+      {/* When to Use GET */}
+      <div className="topic-card p-6">
+        <h3 className="font-semibold mb-3 text-lg">✅ When to Use GET Requests</h3>
+        <div className="grid md:grid-cols-2 gap-3">
+          <div className="p-3 bg-green-500/10 rounded-lg border border-green-500/30">
+            <div className="font-semibold text-foreground text-sm mb-1">✓ Fetching Data</div>
+            <div className="text-xs text-muted-foreground">Retrieving user profiles, posts, products, search results</div>
+          </div>
+          <div className="p-3 bg-green-500/10 rounded-lg border border-green-500/30">
+            <div className="font-semibold text-foreground text-sm mb-1">✓ Loading Pages</div>
+            <div className="text-xs text-muted-foreground">Getting HTML, CSS, JavaScript files for websites</div>
+          </div>
+          <div className="p-3 bg-green-500/10 rounded-lg border border-green-500/30">
+            <div className="font-semibold text-foreground text-sm mb-1">✓ Search Queries</div>
+            <div className="text-xs text-muted-foreground">Searching products, filtering lists, querying databases</div>
+          </div>
+          <div className="p-3 bg-green-500/10 rounded-lg border border-green-500/30">
+            <div className="font-semibold text-foreground text-sm mb-1">✓ Reading Resources</div>
+            <div className="text-xs text-muted-foreground">Viewing articles, images, videos without modifying them</div>
+          </div>
+        </div>
+        <div className="mt-4 p-3 bg-red-500/10 rounded-lg border border-red-500/30">
+          <div className="font-semibold text-foreground text-sm mb-1">❌ When NOT to Use GET</div>
+          <div className="text-xs text-muted-foreground">Don't use GET for creating, updating, or deleting data. Don't send sensitive data (passwords) in URL parameters - they're visible in browser history!</div>
+        </div>
+      </div>
 
       {/* Key Points */}
       <div className="topic-card p-6">
