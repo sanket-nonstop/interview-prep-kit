@@ -19,7 +19,9 @@ export const topicsData: TopicCategory[] = [
     icon: '🏗️',
     topics: [
       { id: 'semantic-html', title: 'Semantic HTML', route: '/html/semantic', category: 'html' },
+      { id: 'html5-features', title: 'HTML5 New Features', route: '/html/html5-features', category: 'html' },
       { id: 'forms', title: 'Forms & Validation', route: '/html/forms', category: 'html' },
+      { id: 'data-attributes', title: 'Data Attributes', route: '/html/data-attributes', category: 'html' },
       { id: 'accessibility', title: 'Accessibility (a11y)', route: '/html/accessibility', category: 'html' },
       { id: 'meta-tags', title: 'Meta Tags & SEO', route: '/html/meta-tags', category: 'html' },
       { id: 'web-apis', title: 'Web Storage APIs', route: '/html/web-apis', category: 'html' },

@@ -18,6 +18,8 @@ import Positioning from "./pages/topics/css/Positioning";
 import Responsive from "./pages/topics/css/Responsive";
 import Specificity from "./pages/topics/css/Specificity";
 import Forms from "./pages/topics/html/Forms";
+import Html5Features from "./pages/topics/html/Html5Features";
+import DataAttributes from "./pages/topics/html/DataAttributes";
 import FormsWithPreview from "./pages/topics/html/FormsWithPreview";
 import MetaTags from "./pages/topics/html/MetaTags";
 import Semantic from "./pages/topics/html/Semantic";
@@ -110,8 +112,10 @@ const App = () => (
             {/* HTML Topics */}
             <Route path="/html/semantic" element={<Semantic />} />
             <Route path="/html/semantic-preview" element={<SemanticWithPreview />} />
+            <Route path="/html/html5-features" element={<Html5Features />} />
             <Route path="/html/forms" element={<Forms />} />
             <Route path="/html/forms-preview" element={<FormsWithPreview />} />
+            <Route path="/html/data-attributes" element={<DataAttributes />} />
             <Route path="/html/accessibility" element={<Accessibility />} />
             <Route path="/html/meta-tags" element={<MetaTags />} />
             <Route path="/html/web-apis" element={<WebApis />} />
