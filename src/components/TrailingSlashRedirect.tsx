@@ -8,11 +8,9 @@ export const TrailingSlashRedirect = () => {
   useEffect(() => {
     const { pathname, search, hash } = location;
     
-    // Skip if already has trailing slash or is root
-    if (pathname === '/' || pathname.endsWith('/')) return;
-    
-    // Add trailing slash and redirect
-    navigate(`${pathname}/${search}${hash}`, { replace: true });
+    if (pathname !== '/' && !pathname.endsWith('/')) {
+      navigate(`${pathname}/${search}${hash}`, { replace: true });
+    }
   }, [location, navigate]);
 
   return null;
