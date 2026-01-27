@@ -27,7 +27,7 @@ export function LiveCodeEditor({ initialCode, title = 'Live Code Editor', height
         </div>
       )}
 
-      <div className="grid lg:grid-cols-2 gap-4">
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
         {/* Code Editor */}
         <div className="space-y-2">
           <label className="text-sm font-medium text-white">HTML Code</label>

@@ -38,7 +38,7 @@ export const AppSidebar = () => {
             <span className="text-primary font-bold">IP</span>
           </div>
           {!collapsed && (
-            <span className="font-semibold text-foreground group-hover:text-primary transition-colors">
+            <span className="ms-4 font-semibold text-foreground group-hover:text-primary transition-colors">
               Interview Prep
             </span>
           )}

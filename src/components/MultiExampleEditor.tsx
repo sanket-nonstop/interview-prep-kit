@@ -34,7 +34,7 @@ export function MultiExampleEditor({
   };
 
   return (
-    <div className="max-h-[960px] h-full bg-gradient-to-br from-blue-50 to-indigo-50 p-6 rounded-xl border-2 border-blue-200">
+    <div className="max-h-[1200px] lg:max-h-[960px] h-full bg-gradient-to-br from-blue-50 to-indigo-50 p-6 rounded-xl border-2 border-blue-200">
       <div className="flex items-center justify-between mb-4">
         <h3 className="text-xl font-bold text-gray-800">{title}</h3>
         {/* <button
@@ -59,7 +59,7 @@ export function MultiExampleEditor({
       </div>
 
       {/* Tabs */}
-      <div className="flex gap-2 mb-4">
+      <div className="flex gap-2 mb-4 flex-wrap">
         {examples.map((example, index) => (
           <button
             key={index}

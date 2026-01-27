@@ -64,7 +64,7 @@ export const topicsDataNew: TopicCategory[] = [
   {
     id: 'css',
     title: 'CSS',
-    icon: '🎨',
+    icon: '🌈',
     description: 'Learn modern CSS layouts, styling, and animations',
     subcategories: [
       {
