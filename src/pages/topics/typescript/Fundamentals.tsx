@@ -3,18 +3,48 @@ import { MultiExampleEditor } from '@/components/MultiExampleEditor';
 
 const typescriptCode = `// TypeScript Fundamentals: Type safety for JavaScript
 
-// ✅ Basic types and interfaces
+// ✅ Basic Types
+let name: string = 'John';
+let age: number = 30;
+let isActive: boolean = true;
+let items: string[] = ['a', 'b', 'c'];
+let tuple: [string, number] = ['John', 30];
+
+// ✅ Interfaces vs Types
 interface User {
   id: string;
   name: string;
   email: string;
-  age?: number; // Optional property
-  readonly createdAt: Date; // Read-only property
+  age?: number; // Optional
+  readonly createdAt: Date; // Read-only
 }
 
-type UserRole = 'admin' | 'user' | 'moderator'; // Union types
+type UserRole = 'admin' | 'user' | 'moderator'; // Union
+type ID = string | number; // Union types
 
-// ✅ Generic types for reusability
+// ✅ Function Types
+function greet(name: string): string {
+  return \`Hello, \${name}\`;
+}
+
+const add = (a: number, b: number): number => a + b;
+
+// Function with optional and default params
+function createUser(
+  name: string,
+  age?: number,
+  role: UserRole = 'user'
+): User {
+  return {
+    id: Math.random().toString(),
+    name,
+    email: \`\${name}@example.com\`,
+    age,
+    createdAt: new Date()
+  };
+}
+
+// ✅ Generics - Reusable Type-Safe Code
 interface ApiResponse<T> {
   data: T;
   status: number;
@@ -29,7 +59,53 @@ function fetchData<T>(url: string): Promise<ApiResponse<T>> {
 const users = await fetchData<User[]>('/api/users');
 const user = await fetchData<User>('/api/users/1');
 
-// ✅ React component typing
+// Generic constraints
+function getProperty<T, K extends keyof T>(obj: T, key: K): T[K] {
+  return obj[key];
+}
+
+const user: User = { id: '1', name: 'John', email: 'john@example.com', createdAt: new Date() };
+const userName = getProperty(user, 'name'); // Type: string
+
+// ✅ Utility Types - Built-in Type Transformations
+type UserUpdate = Partial<User>; // All properties optional
+type UserRequired = Required<User>; // All properties required
+type UserSummary = Pick<User, 'id' | 'name'>; // Only id and name
+type UserWithoutEmail = Omit<User, 'email'>; // Exclude email
+type UserReadonly = Readonly<User>; // All properties readonly
+
+// ✅ Discriminated Unions - Type-Safe State
+type LoadingState = { status: 'loading' };
+type SuccessState<T> = { status: 'success'; data: T };
+type ErrorState = { status: 'error'; error: string };
+type AsyncState<T> = LoadingState | SuccessState<T> | ErrorState;
+
+function handleState<T>(state: AsyncState<T>) {
+  switch (state.status) {
+    case 'loading':
+      return 'Loading...';
+    case 'success':
+      return state.data; // TypeScript knows data exists
+    case 'error':
+      return state.error; // TypeScript knows error exists
+  }
+}
+
+// ✅ Type Guards - Runtime Type Checking
+function isUser(obj: any): obj is User {
+  return obj && 
+    typeof obj.id === 'string' && 
+    typeof obj.name === 'string' &&
+    typeof obj.email === 'string';
+}
+
+function processData(data: unknown) {
+  if (isUser(data)) {
+    console.log(data.name); // TypeScript knows it's User
+  }
+}
+
+// ✅ React + TypeScript
 interface ButtonProps {
   variant: 'primary' | 'secondary';
   size?: 'sm' | 'md' | 'lg';
@@ -56,37 +132,18 @@ const Button: React.FC<ButtonProps> = ({
   );
 };
 
-// ✅ Discriminated unions for type safety
-type LoadingState = { status: 'loading' };
-type SuccessState = { status: 'success'; data: User[] };
-type ErrorState = { status: 'error'; error: string };
-type AsyncState = LoadingState | SuccessState | ErrorState;
-
-const UserList: React.FC<{ state: AsyncState }> = ({ state }) => {
-  switch (state.status) {
-    case 'loading':
-      return <div>Loading...</div>;
-    case 'success':
-      return (
-        <div>
-          {state.data.map(user => (
-            <div key={user.id}>{user.name}</div>
-          ))}
-        </div>
-      );
-    case 'error':
-      return <div>Error: {state.error}</div>;
-  }
+// ✅ Advanced: Mapped Types
+type Nullable<T> = {
+  [K in keyof T]: T[K] | null;
 };
 
-// ✅ Utility types
-type UserUpdate = Partial<User>; // All properties optional
-type UserSummary = Pick<User, 'id' | 'name'>; // Only id and name
+type NullableUser = Nullable<User>;
+// Result: { id: string | null; name: string | null; ... }
 
-// ✅ Type guards
-function isUser(obj: any): obj is User {
-  return obj && typeof obj.id === 'string' && typeof obj.name === 'string';
-}`;
+// ✅ Advanced: Conditional Types
+type IsString<T> = T extends string ? true : false;
+type Test1 = IsString<string>; // true
+type Test2 = IsString<number>; // false`;
 
 const TypeScript = () => {
   return (
@@ -94,17 +151,18 @@ const TypeScript = () => {
       title="TypeScript Fundamentals"
       route="/typescript/fundamentals"
       category="javascript"
-      explanation="TypeScript adds static type checking to JavaScript, catching errors at compile time. Use interfaces for object shapes, generics for reusability, utility types for transformations, and discriminated unions for type-safe state management."
+      explanation="TypeScript adds static type checking to JavaScript. Master: basic types, interfaces, generics, utility types, discriminated unions, and type guards. These patterns catch bugs at compile time and improve code maintainability."
       code={typescriptCode}
       codeFilename="typescript.ts"
-      whyItMatters="TypeScript is standard in modern frontend development. Interviewers test understanding of type systems, generic programming, and how TypeScript improves code quality and developer experience. Essential for large-scale applications."
+      whyItMatters="TypeScript is mandatory in modern frontend. 80%+ of React jobs require it. Interviewers test: generic constraints, utility types, discriminated unions, and React integration. Shows you write production-quality, maintainable code."
       mistakes={[
-        "Using 'any' everywhere - defeats the purpose of TypeScript's type safety.",
-        "Not leveraging utility types - writing verbose type definitions manually.",
-        "Ignoring strict mode - missing many type safety benefits.",
-        "Over-engineering types - making simple things unnecessarily complex.",
+        "Using 'any' everywhere: Defeats type safety. Use 'unknown' and type guards instead",
+        "Not using strict mode: Missing null checks and implicit any errors",
+        "Ignoring utility types: Writing Partial<T>, Pick<T> manually is verbose",
+        "Wrong interface vs type: Use interface for objects, type for unions/primitives",
+        "Not leveraging type inference: Let TypeScript infer when obvious"
       ]}
-      practiceTask="Build a type-safe API client with generic CRUD operations, proper error handling types, and React components with full TypeScript integration."
+      practiceTask="Build a type-safe Todo app: Create interfaces for Todo, use discriminated unions for filter states (all/active/completed), implement generic CRUD functions, add React components with full TypeScript props, and use utility types for updates."
     >
       <MultiExampleEditor
         title="🎯 Try It: TypeScript"

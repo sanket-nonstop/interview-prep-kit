@@ -4,7 +4,7 @@ import { ArrowRight, CheckCircle2, Map } from 'lucide-react';
 
 const Roadmap = () => {
   return (
-    <div className="animate-fade-in max-w-6xl mx-auto">
+    <div className="animate-fade-in max-w-7xl mx-auto">
       {/* Header Card */}
       <div className="topic-card p-6 mb-6">
         <div className="flex items-start gap-4">

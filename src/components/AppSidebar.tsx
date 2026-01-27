@@ -33,12 +33,12 @@ export const AppSidebar = () => {
     <>
       {/* Logo */}
       <div className="p-4 border-b border-sidebar-border">
-        <Link to="/" className="flex items-center gap-2 group">
-          <div className="w-8 h-8 rounded-lg bg-primary/20 flex items-center justify-center">
+        <Link to="/" className="flex items-center gap-2 group" onClick={() => setMobileOpen(false)}>
+          <div className="w-8 h-8 rounded-lg bg-primary/20 flex items-center justify-center flex-shrink-0">
             <span className="text-primary font-bold">IP</span>
           </div>
           {!collapsed && (
-            <span className="ms-4 font-semibold text-foreground group-hover:text-primary transition-colors">
+            <span className="font-semibold text-foreground group-hover:text-primary transition-colors whitespace-nowrap overflow-hidden">
               Interview Prep
             </span>
           )}
@@ -73,62 +73,73 @@ export const AppSidebar = () => {
         <div className="space-y-2">
           {topicsDataNew.map((category) => (
             <div key={category.id}>
-              <button
-                onClick={() => toggleCategory(category.id)}
-                className={cn(
-                  "w-full flex items-center justify-between px-3 py-2 text-sm font-medium text-muted-foreground hover:text-foreground transition-colors",
-                  collapsed && "justify-center"
-                )}
-                title={collapsed ? category.title : ''}
-              >
-                <span className="flex items-center gap-2">
+              {collapsed ? (
+                // Collapsed: Show icon only with tooltip
+                <Link
+                  to={category.subcategories[0]?.topics[0]?.route || '/'}
+                  className="w-full flex items-center justify-center px-2 py-2 text-lg text-muted-foreground hover:text-foreground hover:bg-secondary/50 transition-colors rounded-md"
+                  title={category.title}
+                  onClick={() => setMobileOpen(false)}
+                >
                   <span>{category.icon}</span>
-                  {!collapsed && category.title}
-                </span>
-                {!collapsed && (expandedCategories.includes(category.id) ? (
-                  <ChevronDown className="w-4 h-4" />
-                ) : (
-                  <ChevronRight className="w-4 h-4" />
-                ))}
-              </button>
+                </Link>
+              ) : (
+                // Expanded: Show full menu
+                <>
+                  <button
+                    onClick={() => toggleCategory(category.id)}
+                    className="w-full flex items-center justify-between px-3 py-2 text-sm font-medium text-muted-foreground hover:text-foreground transition-colors rounded-md"
+                  >
+                    <span className="flex items-center gap-2">
+                      <span className="text-lg flex-shrink-0">{category.icon}</span>
+                      <span className="truncate">{category.title}</span>
+                    </span>
+                    {expandedCategories.includes(category.id) ? (
+                      <ChevronDown className="w-4 h-4 flex-shrink-0" />
+                    ) : (
+                      <ChevronRight className="w-4 h-4 flex-shrink-0" />
+                    )}
+                  </button>
 
-              {!collapsed && expandedCategories.includes(category.id) && (
-                <div className="ml-3 space-y-1 mt-1">
-                  {category.subcategories.map((subcategory) => (
-                    <div key={subcategory.id}>
-                      <button
-                        onClick={() => toggleSubcategory(`${category.id}-${subcategory.id}`)}
-                        className="w-full flex items-center justify-between px-2 py-1.5 text-xs font-medium text-muted-foreground hover:text-foreground transition-colors"
-                      >
-                        <span>{subcategory.title}</span>
-                        {expandedSubcategories.includes(`${category.id}-${subcategory.id}`) ? (
-                          <ChevronDown className="w-3 h-3" />
-                        ) : (
-                          <ChevronRight className="w-3 h-3" />
-                        )}
-                      </button>
-                      {expandedSubcategories.includes(`${category.id}-${subcategory.id}`) && (
-                        <div className="ml-3 space-y-0.5">
-                          {subcategory.topics.map((topic) => (
-                            <Link
-                              key={topic.id}
-                              to={topic.route}
-                              onClick={() => setMobileOpen(false)}
-                              className={cn(
-                                'block px-2 py-1 text-xs rounded-md transition-colors',
-                                isActive(topic.route)
-                                  ? 'bg-primary/10 text-primary font-medium'
-                                  : 'text-muted-foreground hover:text-foreground hover:bg-secondary/50'
-                              )}
-                            >
-                              {topic.title}
-                            </Link>
-                          ))}
+                  {expandedCategories.includes(category.id) && (
+                    <div className="ml-3 space-y-1 mt-1">
+                      {category.subcategories.map((subcategory) => (
+                        <div key={subcategory.id}>
+                          <button
+                            onClick={() => toggleSubcategory(`${category.id}-${subcategory.id}`)}
+                            className="w-full flex items-center justify-between px-2 py-1.5 text-xs font-medium text-muted-foreground hover:text-foreground transition-colors"
+                          >
+                            <span>{subcategory.title}</span>
+                            {expandedSubcategories.includes(`${category.id}-${subcategory.id}`) ? (
+                              <ChevronDown className="w-3 h-3" />
+                            ) : (
+                              <ChevronRight className="w-3 h-3" />
+                            )}
+                          </button>
+                          {expandedSubcategories.includes(`${category.id}-${subcategory.id}`) && (
+                            <div className="ml-3 space-y-0.5">
+                              {subcategory.topics.map((topic) => (
+                                <Link
+                                  key={topic.id}
+                                  to={topic.route}
+                                  onClick={() => setMobileOpen(false)}
+                                  className={cn(
+                                    'block px-2 py-1 text-xs rounded-md transition-colors',
+                                    isActive(topic.route)
+                                      ? 'bg-primary/10 text-primary font-medium'
+                                      : 'text-muted-foreground hover:text-foreground hover:bg-secondary/50'
+                                  )}
+                                >
+                                  {topic.title}
+                                </Link>
+                              ))}
+                            </div>
+                          )}
                         </div>
-                      )}
+                      ))}
                     </div>
-                  ))}
-                </div>
+                  )}
+                </>
               )}
             </div>
           ))}
@@ -167,22 +178,23 @@ export const AppSidebar = () => {
 
       {/* Desktop Sidebar */}
       <aside className={cn(
-        "hidden lg:flex flex-col bg-sidebar border-r border-sidebar-border h-screen sticky top-0 transition-all",
+        "hidden lg:flex flex-col bg-sidebar border-r border-sidebar-border h-screen sticky top-0 transition-all duration-300 ease-in-out",
         collapsed ? "w-16" : "w-64"
       )}>
         <SidebarContent />
         <button
           onClick={() => setCollapsed(!collapsed)}
-          className="absolute -right-3 top-12 p-1 rounded-full bg-card border border-border hover:bg-secondary"
+          className="absolute -right-3 top-12 p-1.5 rounded-full bg-card border border-border hover:bg-secondary shadow-md transition-all z-10"
+          aria-label={collapsed ? "Expand sidebar" : "Collapse sidebar"}
         >
-          <ChevronLeft className={cn("w-4 h-4 transition-transform", collapsed && "rotate-180")} />
+          <ChevronLeft className={cn("w-4 h-4 transition-transform duration-300", collapsed && "rotate-180")} />
         </button>
       </aside>
 
       {/* Mobile Sidebar */}
       <aside
         className={cn(
-          'fixed left-0 top-0 bottom-0 w-72 bg-sidebar border-r border-sidebar-border z-40 transform lg:hidden flex flex-col',
+          'fixed left-0 top-0 bottom-0 w-72 bg-sidebar border-r border-sidebar-border z-40 transform transition-transform duration-300 ease-in-out lg:hidden flex flex-col',
           mobileOpen ? 'translate-x-0' : '-translate-x-full'
         )}
       >

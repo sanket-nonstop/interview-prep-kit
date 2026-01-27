@@ -198,6 +198,11 @@ export const topicsDataNew: TopicCategory[] = [
           { id: 'react-memo', title: 'React.memo', route: '/react/advanced/react-memo', category: 'react', difficulty: 'intermediate' },
           { id: 'compound-components', title: 'Compound Components', route: '/react/advanced/compound-components', category: 'react', difficulty: 'advanced' },
           { id: 'error-handling', title: 'Error Handling', route: '/react/advanced/error-handling', category: 'react', difficulty: 'intermediate' },
+          { id: 'render-props', title: 'Render Props', route: '/react/advanced/render-props', category: 'react', difficulty: 'advanced' },
+          { id: 'hoc', title: 'Higher Order Components', route: '/react/advanced/hoc', category: 'react', difficulty: 'advanced' },
+          { id: 'portals', title: 'Portals', route: '/react/advanced/portals', category: 'react', difficulty: 'intermediate' },
+          { id: 'suspense-lazy', title: 'Suspense & Lazy Loading', route: '/react/advanced/suspense-lazy', category: 'react', difficulty: 'advanced' },
+          { id: 'concurrent-features', title: 'useTransition & useDeferredValue', route: '/react/advanced/concurrent-features', category: 'react', difficulty: 'advanced' },
         ],
       },
       {
@@ -226,6 +231,20 @@ export const topicsDataNew: TopicCategory[] = [
         title: 'Basics',
         topics: [
           { id: 'fundamentals', title: 'TypeScript Fundamentals', route: '/typescript/basics/fundamentals', category: 'typescript', difficulty: 'beginner' },
+        ],
+      },
+      {
+        id: 'advanced',
+        title: 'Advanced',
+        topics: [
+          { id: 'generics-mapped-types', title: 'Generics & Mapped Types', route: '/typescript/advanced/generics-mapped-types', category: 'typescript', difficulty: 'advanced' },
+        ],
+      },
+      {
+        id: 'react',
+        title: 'React + TypeScript',
+        topics: [
+          { id: 'patterns', title: 'React TypeScript Patterns', route: '/typescript/react/patterns', category: 'typescript', difficulty: 'intermediate' },
         ],
       },
     ],

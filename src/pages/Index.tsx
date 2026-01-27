@@ -4,7 +4,7 @@ import { ArrowRight, Zap, Code2, Target, BookOpen, TrendingUp } from 'lucide-rea
 
 const Index = () => {
   return (
-    <div className="animate-fade-in max-w-6xl mx-auto">
+    <div className="animate-fade-in max-w-7xl mx-auto">
       {/* Hero Card */}
       <div className="topic-card mb-8 p-8 bg-gradient-to-br from-primary/5 to-accent/5">
         <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 text-primary text-sm font-medium mb-4">

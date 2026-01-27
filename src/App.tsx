@@ -92,6 +92,11 @@ import UseMemo from "./pages/topics/react/UseMemo";
 import UseReducer from "./pages/topics/react/UseReducer";
 import UseRef from "./pages/topics/react/UseRef";
 import UseState from "./pages/topics/react/UseState";
+import RenderProps from "./pages/topics/react/RenderProps";
+import HOC from "./pages/topics/react/HOC";
+import Portal from "./pages/topics/react/Portal";
+import SuspenseLazy from "./pages/topics/react/SuspenseLazy";
+import ConcurrentFeatures from "./pages/topics/react/ConcurrentFeatures";
 import Security from "./pages/topics/security/Fundamentals";
 import CoreWebVitals from "./pages/topics/seo/CoreWebVitals";
 import Headings from "./pages/topics/seo/Headings";
@@ -103,6 +108,8 @@ import TitleMeta from "./pages/topics/seo/TitleMeta";
 import WhatIsSeo from "./pages/topics/seo/WhatIsSeo";
 import Testing from "./pages/topics/testing/Fundamentals";
 import TypeScript from "./pages/topics/typescript/Fundamentals";
+import AdvancedTypeScript from "./pages/topics/typescript/AdvancedTypeScript";
+import ReactTypeScript from "./pages/topics/typescript/ReactTypeScript";
 
 const queryClient = new QueryClient();
 
@@ -213,6 +220,8 @@ const App = () => (
             {/* TypeScript Topics */}
             <Route path="/typescript/basics/fundamentals" element={<TypeScript />} />
             <Route path="/typescript/fundamentals" element={<TypeScript />} />
+            <Route path="/typescript/advanced/generics-mapped-types" element={<AdvancedTypeScript />} />
+            <Route path="/typescript/react/patterns" element={<ReactTypeScript />} />
             <Route path="/typescript/*" element={<TopicNotFound />} />
             
             {/* React Topics */}
@@ -249,6 +258,11 @@ const App = () => (
             <Route path="/react/compound-components" element={<CompoundComponents />} />
             <Route path="/react/advanced/error-handling" element={<ErrorHandling />} />
             <Route path="/react/error-handling" element={<ErrorHandling />} />
+            <Route path="/react/advanced/render-props" element={<RenderProps />} />
+            <Route path="/react/advanced/hoc" element={<HOC />} />
+            <Route path="/react/advanced/portals" element={<Portal />} />
+            <Route path="/react/advanced/suspense-lazy" element={<SuspenseLazy />} />
+            <Route path="/react/advanced/concurrent-features" element={<ConcurrentFeatures />} />
             <Route path="/react/best-practices/performance" element={<Performance />} />
             <Route path="/react/performance" element={<Performance />} />
             <Route path="/react/best-practices/patterns" element={<Patterns />} />
