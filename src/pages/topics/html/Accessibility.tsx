@@ -197,28 +197,25 @@ const useAnnouncer = () => {
 
 const Accessibility = () => {
   return (
-    <div className="space-y-8">
-      <TopicLayout
-        title="Accessibility (a11y)"
-        route="/html/accessibility"
-        category="html"
-        explanation="Web accessibility ensures all users, including those with disabilities, can use your website. Use semantic HTML, ARIA attributes, proper focus management, keyboard navigation, and screen reader support. Follow WCAG guidelines for inclusive design."
-        code={accessibilityCode}
-        codeFilename="accessibility.html"
-        whyItMatters="Accessibility is legally required in many jurisdictions and morally essential for inclusive web experiences. Interviewers test understanding of ARIA, keyboard navigation, and screen reader compatibility. Critical for building products that serve all users."
-        mistakes={[
-          "Using div/span instead of semantic HTML - breaks screen reader navigation.",
-          "Missing alt text or using generic descriptions like 'image' - provide meaningful context.",
-          "Poor focus management in SPAs - users lose track of where they are.",
-          "Color-only information - always provide text or pattern alternatives.",
-        ]}
-        practiceTask="Build an accessible data dashboard with sortable tables, filterable charts, keyboard navigation, screen reader announcements, and proper focus management. Test with actual screen reader software."
-      />
-
-      <div className="border-t pt-8">
-        <LiveCodeEditor
-          title="Try It Yourself: Accessible HTML"
-          initialCode={`<!DOCTYPE html>
+    <TopicLayout
+      title="Accessibility (a11y)"
+      route="/html/accessibility"
+      category="html"
+      explanation="Web accessibility ensures all users, including those with disabilities, can use your website. Use semantic HTML, ARIA attributes, proper focus management, keyboard navigation, and screen reader support. Follow WCAG guidelines for inclusive design."
+      code={accessibilityCode}
+      codeFilename="accessibility.html"
+      whyItMatters="Accessibility is legally required in many jurisdictions and morally essential for inclusive web experiences. Interviewers test understanding of ARIA, keyboard navigation, and screen reader compatibility. Critical for building products that serve all users."
+      mistakes={[
+        "Using div/span instead of semantic HTML - breaks screen reader navigation.",
+        "Missing alt text or using generic descriptions like 'image' - provide meaningful context.",
+        "Poor focus management in SPAs - users lose track of where they are.",
+        "Color-only information - always provide text or pattern alternatives.",
+      ]}
+      practiceTask="Build an accessible data dashboard with sortable tables, filterable charts, keyboard navigation, screen reader announcements, and proper focus management. Test with actual screen reader software."
+    >
+      <LiveCodeEditor
+        title="Try It Yourself: Accessible HTML"
+        initialCode={`<!DOCTYPE html>
 <html lang="en">
 <head>
   <style>
@@ -249,10 +246,9 @@ const Accessibility = () => {
   </main>
 </body>
 </html>`}
-          height="500px"
-        />
-      </div>
-    </div>
+        height="500px"
+      />
+    </TopicLayout>
   );
 };
 

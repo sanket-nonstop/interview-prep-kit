@@ -66,6 +66,7 @@ import CustomHooks from "./pages/topics/react/CustomHooks";
 import ErrorHandling from "./pages/topics/react/ErrorHandling";
 import EventHandling from "./pages/topics/react/EventHandling";
 import FormsHandling from "./pages/topics/react/FormsHandling";
+import CodeSplitting from "./pages/topics/react/CodeSplitting";
 import JSXVirtualDOM from "./pages/topics/react/JSXVirtualDOM";
 import Lifecycle from "./pages/topics/react/Lifecycle";
 import ListsKeys from "./pages/topics/react/ListsKeys";
@@ -179,6 +180,7 @@ const App = () => (
             <Route path="/react/compound-components" element={<CompoundComponents />} />
             <Route path="/react/state-management" element={<StateManagement />} />
             <Route path="/react/forms-handling" element={<FormsHandling />} />
+            <Route path="/react/code-splitting" element={<CodeSplitting />} />
             <Route path="/react/accessibility" element={<Accessibility />} />
             <Route path="/react/error-handling" element={<ErrorHandling />} />
             <Route path="/react/*" element={<TopicNotFound />} />

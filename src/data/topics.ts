@@ -95,6 +95,7 @@ export const topicsData: TopicCategory[] = [
       { id: 'compound-components', title: 'Compound Components', route: '/react/compound-components', category: 'react' },
       { id: 'state-management', title: 'State Management', route: '/react/state-management', category: 'react' },
       { id: 'forms-handling', title: 'Forms Handling', route: '/react/forms-handling', category: 'react' },
+      { id: 'code-splitting', title: 'Code Splitting & Lazy Loading', route: '/react/code-splitting', category: 'react' },
       { id: 'accessibility', title: 'Accessibility (A11y)', route: '/react/accessibility', category: 'react' },
       { id: 'error-handling', title: 'Error Handling', route: '/react/error-handling', category: 'react' },
     ],

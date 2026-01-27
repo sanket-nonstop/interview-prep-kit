@@ -167,28 +167,25 @@ const ContactForm: React.FC = () => {
 
 const Forms = () => {
   return (
-    <div className="space-y-8">
-      <TopicLayout
-        title="Forms & Validation"
-        route="/html/forms"
-        category="html"
-        explanation="HTML forms collect user input with proper semantic structure, accessibility features, and validation. Use appropriate input types, labels, fieldsets, and ARIA attributes. Implement both client-side and server-side validation for security and user experience."
-        code={formsCode}
-        codeFilename="forms.html"
-        whyItMatters="Forms are critical for user interaction and data collection. Interviewers test understanding of accessibility, validation strategies, and security considerations. Essential for building usable, secure web applications that work for all users."
-        mistakes={[
-          "Missing labels or using placeholder as labels - breaks screen reader accessibility.",
-          "Client-side validation only - always validate on the server for security.",
-          "Not providing clear error messages - users need specific, actionable feedback.",
-          "Ignoring keyboard navigation - forms must be fully accessible via keyboard.",
-        ]}
-        practiceTask="Build a multi-step registration form with email verification, password strength validation, file upload, and proper error handling. Ensure full keyboard accessibility and screen reader support."
-      />
-
-      <div className="border-t pt-8">
-        <LiveCodeEditor
-          title="Try It Yourself: HTML Forms"
-          initialCode={`<!DOCTYPE html>
+    <TopicLayout
+      title="Forms & Validation"
+      route="/html/forms"
+      category="html"
+      explanation="HTML forms collect user input with proper semantic structure, accessibility features, and validation. Use appropriate input types, labels, fieldsets, and ARIA attributes. Implement both client-side and server-side validation for security and user experience."
+      code={formsCode}
+      codeFilename="forms.html"
+      whyItMatters="Forms are critical for user interaction and data collection. Interviewers test understanding of accessibility, validation strategies, and security considerations. Essential for building usable, secure web applications that work for all users."
+      mistakes={[
+        "Missing labels or using placeholder as labels - breaks screen reader accessibility.",
+        "Client-side validation only - always validate on the server for security.",
+        "Not providing clear error messages - users need specific, actionable feedback.",
+        "Ignoring keyboard navigation - forms must be fully accessible via keyboard.",
+      ]}
+      practiceTask="Build a multi-step registration form with email verification, password strength validation, file upload, and proper error handling. Ensure full keyboard accessibility and screen reader support."
+    >
+      <LiveCodeEditor
+        title="Try It Yourself: HTML Forms"
+        initialCode={`<!DOCTYPE html>
 <html>
 <head>
   <style>
@@ -225,10 +222,9 @@ const Forms = () => {
   </form>
 </body>
 </html>`}
-          height="500px"
-        />
-      </div>
-    </div>
+        height="500px"
+      />
+    </TopicLayout>
   );
 };
 

@@ -123,28 +123,25 @@ const ReactHooksPage = () => {
 
 const MetaTags = () => {
   return (
-    <div className="space-y-8">
-      <TopicLayout
-        title="Meta Tags & SEO"
-        route="/html/meta-tags"
-        category="html"
-        explanation="Meta tags provide metadata about HTML documents for search engines, social media, and browsers. Include essential tags like title, description, Open Graph for social sharing, Twitter Cards, and structured data for better SEO and user experience."
-        code={metaTagsCode}
-        codeFilename="meta-tags.html"
-        whyItMatters="SEO and social media optimization are crucial for web visibility. Interviewers test understanding of meta tags, structured data, and performance optimization. Essential for building discoverable, shareable web applications."
-        mistakes={[
-          "Missing viewport meta tag - breaks mobile responsiveness and SEO rankings.",
-          "Duplicate or missing title/description tags - hurts search engine optimization.",
-          "Not implementing Open Graph tags - poor social media sharing experience.",
-          "Ignoring structured data - missing rich snippets and search features.",
-        ]}
-        practiceTask="Build a blog post page with complete SEO optimization: dynamic meta tags, Open Graph images, structured data for articles, and social media preview testing."
-      />
-
-      <div className="border-t pt-8">
-        <LiveCodeEditor
-          title="Try It Yourself: Meta Tags"
-          initialCode={`<!DOCTYPE html>
+    <TopicLayout
+      title="Meta Tags & SEO"
+      route="/html/meta-tags"
+      category="html"
+      explanation="Meta tags provide metadata about HTML documents for search engines, social media, and browsers. Include essential tags like title, description, Open Graph for social sharing, Twitter Cards, and structured data for better SEO and user experience."
+      code={metaTagsCode}
+      codeFilename="meta-tags.html"
+      whyItMatters="SEO and social media optimization are crucial for web visibility. Interviewers test understanding of meta tags, structured data, and performance optimization. Essential for building discoverable, shareable web applications."
+      mistakes={[
+        "Missing viewport meta tag - breaks mobile responsiveness and SEO rankings.",
+        "Duplicate or missing title/description tags - hurts search engine optimization.",
+        "Not implementing Open Graph tags - poor social media sharing experience.",
+        "Ignoring structured data - missing rich snippets and search features.",
+      ]}
+      practiceTask="Build a blog post page with complete SEO optimization: dynamic meta tags, Open Graph images, structured data for articles, and social media preview testing."
+    >
+      <LiveCodeEditor
+        title="Try It Yourself: Meta Tags"
+        initialCode={`<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -173,10 +170,9 @@ const MetaTags = () => {
   </div>
 </body>
 </html>`}
-          height="500px"
-        />
-      </div>
-    </div>
+        height="500px"
+      />
+    </TopicLayout>
   );
 };
 

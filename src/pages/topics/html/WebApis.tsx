@@ -158,28 +158,25 @@ class CookieManager {
 
 const WebApis = () => {
   return (
-    <div className="space-y-8">
-      <TopicLayout
-        title="Web Storage APIs"
-        route="/html/web-apis"
-        category="html"
-        explanation="Web Storage APIs provide client-side data persistence. localStorage persists across sessions, sessionStorage lasts only for the session, IndexedDB handles complex data, and cookies work across domains. Each has specific use cases and limitations."
-        code={webApisCode}
-        codeFilename="web-storage.ts"
-        whyItMatters="Client-side storage is essential for user experience and offline functionality. Interviewers test understanding of storage limitations, security considerations, and when to use each API. Critical for building responsive, user-friendly applications."
-        mistakes={[
-          "Not handling storage quota exceeded errors - can crash the application.",
-          "Storing sensitive data in localStorage - it's not secure and persists indefinitely.",
-          "Not checking for storage API availability - older browsers may not support them.",
-          "Storing large objects without considering performance impact on JSON parsing.",
-        ]}
-        practiceTask="Build an offline-capable todo app using localStorage for data persistence, sessionStorage for UI state, and implement proper error handling for storage quota limits."
-      />
-
-      <div className="border-t pt-8">
-        <LiveCodeEditor
-          title="Try It Yourself: Web Storage"
-          initialCode={`<!DOCTYPE html>
+    <TopicLayout
+      title="Web Storage APIs"
+      route="/html/web-apis"
+      category="html"
+      explanation="Web Storage APIs provide client-side data persistence. localStorage persists across sessions, sessionStorage lasts only for the session, IndexedDB handles complex data, and cookies work across domains. Each has specific use cases and limitations."
+      code={webApisCode}
+      codeFilename="web-storage.ts"
+      whyItMatters="Client-side storage is essential for user experience and offline functionality. Interviewers test understanding of storage limitations, security considerations, and when to use each API. Critical for building responsive, user-friendly applications."
+      mistakes={[
+        "Not handling storage quota exceeded errors - can crash the application.",
+        "Storing sensitive data in localStorage - it's not secure and persists indefinitely.",
+        "Not checking for storage API availability - older browsers may not support them.",
+        "Storing large objects without considering performance impact on JSON parsing.",
+      ]}
+      practiceTask="Build an offline-capable todo app using localStorage for data persistence, sessionStorage for UI state, and implement proper error handling for storage quota limits."
+    >
+      <LiveCodeEditor
+        title="Try It Yourself: Web Storage"
+        initialCode={`<!DOCTYPE html>
 <html>
 <head>
   <style>
@@ -220,10 +217,9 @@ const WebApis = () => {
   </script>
 </body>
 </html>`}
-          height="500px"
-        />
-      </div>
-    </div>
+        height="500px"
+      />
+    </TopicLayout>
   );
 };
 
