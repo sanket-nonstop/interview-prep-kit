@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { ChevronDown, ChevronRight, Home, BookOpen, Menu, X, ChevronLeft } from 'lucide-react';
+import { ChevronDown, ChevronRight, Home, BookOpen, Menu, X, ChevronLeft, Code2 } from 'lucide-react';
 import { topicsDataNew, getCategoryColor } from '@/data/topics-new';
 import { cn } from '@/lib/utils';
 import * as HoverCard from '@radix-ui/react-hover-card';
@@ -78,7 +78,7 @@ export const AppSidebar = () => {
             onClick={() => setMobileOpen(false)}
             title={collapsed ? 'Home' : ''}
           >
-            <Home className="w-4 h-4" />
+            <Home className="w-4 h-4 flex-shrink-0" />
             {!collapsed && 'Home'}
           </Link>
           <Link
@@ -87,8 +87,17 @@ export const AppSidebar = () => {
             onClick={() => setMobileOpen(false)}
             title={collapsed ? 'Full Roadmap' : ''}
           >
-            <BookOpen className="w-4 h-4" />
+            <BookOpen className="w-4 h-4 flex-shrink-0" />
             {!collapsed && 'Full Roadmap'}
+          </Link>
+          <Link
+            to="/api-testing"
+            className={cn('nav-link', collapsed && 'justify-center', isActive('/api-testing') && 'active')}
+            onClick={() => setMobileOpen(false)}
+            title={collapsed ? 'API Testing' : ''}
+          >
+            <Code2 className="w-4 h-4 flex-shrink-0" />
+            {!collapsed && 'API Testing'}
           </Link>
         </div>
 

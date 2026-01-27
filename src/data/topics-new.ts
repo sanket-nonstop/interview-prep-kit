@@ -370,6 +370,57 @@ export const topicsDataNew: TopicCategory[] = [
       },
     ],
   },
+  {
+    id: 'miscellaneous',
+    title: 'Miscellaneous',
+    icon: '📦',
+    description: 'Additional essential topics for interviews',
+    subcategories: [
+      {
+        id: 'data-structures',
+        title: 'Data Structures',
+        topics: [
+          { id: 'arrays', title: 'Arrays', route: '/miscellaneous/data-structures/arrays', category: 'miscellaneous', difficulty: 'beginner' },
+          { id: 'linked-lists', title: 'Linked Lists', route: '/miscellaneous/data-structures/linked-lists', category: 'miscellaneous', difficulty: 'intermediate' },
+          { id: 'stacks-queues', title: 'Stacks & Queues', route: '/miscellaneous/data-structures/stacks-queues', category: 'miscellaneous', difficulty: 'intermediate' },
+          { id: 'trees', title: 'Trees & Binary Trees', route: '/miscellaneous/data-structures/trees', category: 'miscellaneous', difficulty: 'advanced' },
+          { id: 'hash-tables', title: 'Hash Tables', route: '/miscellaneous/data-structures/hash-tables', category: 'miscellaneous', difficulty: 'intermediate' },
+          { id: 'graphs', title: 'Graphs', route: '/miscellaneous/data-structures/graphs', category: 'miscellaneous', difficulty: 'advanced' },
+        ],
+      },
+      {
+        id: 'http-networking',
+        title: 'HTTP & Networking',
+        topics: [
+          { id: 'http-methods', title: 'HTTP Methods', route: '/miscellaneous/http-networking/http-methods', category: 'miscellaneous', difficulty: 'beginner' },
+          { id: 'status-codes', title: 'Status Codes', route: '/miscellaneous/http-networking/status-codes', category: 'miscellaneous', difficulty: 'beginner' },
+          { id: 'headers', title: 'Headers', route: '/miscellaneous/http-networking/headers', category: 'miscellaneous', difficulty: 'intermediate' },
+          { id: 'cors', title: 'CORS', route: '/miscellaneous/http-networking/cors', category: 'miscellaneous', difficulty: 'intermediate' },
+          { id: 'websockets', title: 'WebSockets', route: '/miscellaneous/http-networking/websockets', category: 'miscellaneous', difficulty: 'advanced' },
+          { id: 'rest-graphql', title: 'REST vs GraphQL', route: '/miscellaneous/http-networking/rest-graphql', category: 'miscellaneous', difficulty: 'intermediate' },
+        ],
+      },
+      {
+        id: 'git',
+        title: 'Git & Version Control',
+        topics: [
+          { id: 'fundamentals', title: 'Git Fundamentals', route: '/miscellaneous/git/fundamentals', category: 'miscellaneous', difficulty: 'beginner' },
+          { id: 'branching', title: 'Branching & Merging', route: '/miscellaneous/git/branching', category: 'miscellaneous', difficulty: 'beginner' },
+          { id: 'rebase', title: 'Rebase & Cherry-pick', route: '/miscellaneous/git/rebase', category: 'miscellaneous', difficulty: 'intermediate' },
+          { id: 'workflows', title: 'Git Workflows', route: '/miscellaneous/git/workflows', category: 'miscellaneous', difficulty: 'intermediate' },
+        ],
+      },
+      {
+        id: 'browser-tools',
+        title: 'Browser DevTools',
+        topics: [
+          { id: 'console', title: 'Console & Debugging', route: '/miscellaneous/browser-tools/console', category: 'miscellaneous', difficulty: 'beginner' },
+          { id: 'network', title: 'Network Tab', route: '/miscellaneous/browser-tools/network', category: 'miscellaneous', difficulty: 'intermediate' },
+          { id: 'performance', title: 'Performance Tab', route: '/miscellaneous/browser-tools/performance', category: 'miscellaneous', difficulty: 'intermediate' },
+        ],
+      },
+    ],
+  },
 ];
 
 // Helper function to get all topics in flat structure (for backward compatibility)
@@ -392,6 +443,7 @@ export const getCategoryColor = (category: string): string => {
     performance: 'bg-yellow-100 text-yellow-800 border-yellow-300',
     security: 'bg-red-100 text-red-800 border-red-300',
     seo: 'bg-purple-100 text-purple-800 border-purple-300',
+    miscellaneous: 'bg-gray-100 text-gray-800 border-gray-300',
   };
   return colors[category] || '';
 };

@@ -22,6 +22,60 @@
   }
 
   :root {
+    --background: 0 0% 100%;
+    --foreground: 222.2 84% 4.9%;
+
+    --card: 0 0% 100%;
+    --card-foreground: 222.2 84% 4.9%;
+
+    --popover: 0 0% 100%;
+    --popover-foreground: 222.2 84% 4.9%;
+
+    --primary: 142 70% 45%;
+    --primary-foreground: 0 0% 100%;
+
+    --secondary: 210 40% 96.1%;
+    --secondary-foreground: 222.2 47.4% 11.2%;
+
+    --muted: 210 40% 96.1%;
+    --muted-foreground: 215.4 16.3% 46.9%;
+
+    --accent: 200 95% 50%;
+    --accent-foreground: 0 0% 100%;
+
+    --destructive: 0 72% 51%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 214.3 31.8% 91.4%;
+    --input: 214.3 31.8% 91.4%;
+    --ring: 142 70% 45%;
+
+    --radius: 0.5rem;
+
+    --syntax-keyword: 280 80% 50%;
+    --syntax-string: 142 60% 40%;
+    --syntax-function: 200 90% 45%;
+    --syntax-variable: 35 90% 50%;
+    --syntax-comment: 215 15% 55%;
+    --syntax-number: 25 90% 50%;
+
+    --html-color: 15 85% 55%;
+    --css-color: 200 95% 55%;
+    --js-color: 50 95% 55%;
+    --react-color: 195 95% 65%;
+    --nextjs-color: 0 0% 0%;
+
+    --sidebar-background: 0 0% 98%;
+    --sidebar-foreground: 222.2 84% 4.9%;
+    --sidebar-primary: 142 70% 45%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 210 40% 96.1%;
+    --sidebar-accent-foreground: 222.2 47.4% 11.2%;
+    --sidebar-border: 214.3 31.8% 91.4%;
+    --sidebar-ring: 142 70% 45%;
+  }
+
+  .dark {
     --background: 220 20% 10%;
     --foreground: 210 20% 95%;
 
@@ -50,9 +104,6 @@
     --input: 220 14% 22%;
     --ring: 142 70% 50%;
 
-    --radius: 0.5rem;
-
-    /* Code syntax colors */
     --syntax-keyword: 280 80% 70%;
     --syntax-string: 142 60% 55%;
     --syntax-function: 200 90% 65%;
@@ -60,7 +111,6 @@
     --syntax-comment: 215 15% 45%;
     --syntax-number: 25 90% 60%;
 
-    /* Category colors */
     --html-color: 15 85% 55%;
     --css-color: 200 95% 55%;
     --js-color: 50 95% 55%;

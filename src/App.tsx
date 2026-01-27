@@ -110,6 +110,18 @@ import Testing from "./pages/topics/testing/Fundamentals";
 import TypeScript from "./pages/topics/typescript/Fundamentals";
 import AdvancedTypeScript from "./pages/topics/typescript/AdvancedTypeScript";
 import ReactTypeScript from "./pages/topics/typescript/ReactTypeScript";
+import Arrays from "./pages/topics/miscellaneous/Arrays";
+import ApiTestingMain from "./pages/ApiTestingMain";
+import GetRequest from "./pages/api-testing/GetRequest";
+import PostRequest from "./pages/api-testing/PostRequest";
+import { PutRequest, PatchRequest, DeleteRequest } from "./pages/api-testing/OtherRequests";
+import HttpMethods from "./pages/topics/miscellaneous/HttpMethods";
+import GitFundamentals from "./pages/topics/miscellaneous/GitFundamentals";
+import ConsoleDebugging from "./pages/topics/miscellaneous/ConsoleDebugging";
+import { LinkedLists, StacksQueues, Trees, HashTables, Graphs } from "./pages/topics/miscellaneous/DataStructures";
+import { StatusCodes, Headers, CORS, WebSockets, RESTvsGraphQL } from "./pages/topics/miscellaneous/Networking";
+import { GitBranching, GitRebase, GitWorkflows } from "./pages/topics/miscellaneous/Git";
+import { NetworkTab, PerformanceTab } from "./pages/topics/miscellaneous/BrowserTools";
 
 const queryClient = new QueryClient();
 
@@ -123,6 +135,12 @@ const App = () => (
           <Routes>
             <Route path="/" element={<Index />} />
             <Route path="/roadmap" element={<Roadmap />} />
+            <Route path="/api-testing" element={<ApiTestingMain />} />
+            <Route path="/api-testing/get" element={<GetRequest />} />
+            <Route path="/api-testing/post" element={<PostRequest />} />
+            <Route path="/api-testing/put" element={<PutRequest />} />
+            <Route path="/api-testing/patch" element={<PatchRequest />} />
+            <Route path="/api-testing/delete" element={<DeleteRequest />} />
             
             {/* HTML Topics */}
             <Route path="/html/fundamentals/semantic" element={<Semantic />} />
@@ -324,6 +342,28 @@ const App = () => (
             <Route path="/seo/nextjs/metadata" element={<NextjsMetadata />} />
             <Route path="/seo/nextjs/server-vs-client" element={<ServerClientSeo />} />
             <Route path="/seo/*" element={<TopicNotFound />} />
+            
+            {/* Miscellaneous Topics */}
+            <Route path="/miscellaneous/data-structures/arrays" element={<Arrays />} />
+            <Route path="/miscellaneous/data-structures/linked-lists" element={<LinkedLists />} />
+            <Route path="/miscellaneous/data-structures/stacks-queues" element={<StacksQueues />} />
+            <Route path="/miscellaneous/data-structures/trees" element={<Trees />} />
+            <Route path="/miscellaneous/data-structures/hash-tables" element={<HashTables />} />
+            <Route path="/miscellaneous/data-structures/graphs" element={<Graphs />} />
+            <Route path="/miscellaneous/http-networking/http-methods" element={<HttpMethods />} />
+            <Route path="/miscellaneous/http-networking/status-codes" element={<StatusCodes />} />
+            <Route path="/miscellaneous/http-networking/headers" element={<Headers />} />
+            <Route path="/miscellaneous/http-networking/cors" element={<CORS />} />
+            <Route path="/miscellaneous/http-networking/websockets" element={<WebSockets />} />
+            <Route path="/miscellaneous/http-networking/rest-graphql" element={<RESTvsGraphQL />} />
+            <Route path="/miscellaneous/git/fundamentals" element={<GitFundamentals />} />
+            <Route path="/miscellaneous/git/branching" element={<GitBranching />} />
+            <Route path="/miscellaneous/git/rebase" element={<GitRebase />} />
+            <Route path="/miscellaneous/git/workflows" element={<GitWorkflows />} />
+            <Route path="/miscellaneous/browser-tools/console" element={<ConsoleDebugging />} />
+            <Route path="/miscellaneous/browser-tools/network" element={<NetworkTab />} />
+            <Route path="/miscellaneous/browser-tools/performance" element={<PerformanceTab />} />
+            <Route path="/miscellaneous/*" element={<TopicNotFound />} />
             
             {/* Catch-all */}
             <Route path="*" element={<NotFound />} />
