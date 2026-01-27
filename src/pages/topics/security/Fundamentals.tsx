@@ -1,4 +1,5 @@
 import { TopicLayout } from '@/components/TopicLayout';
+import { MultiExampleEditor } from '@/components/MultiExampleEditor';
 
 const securityCode = `// Web Security: Frontend security best practices
 
@@ -219,7 +220,124 @@ const Security = () => {
         "Missing CSRF protection - enables cross-site request forgery.",
       ]}
       practiceTask="Secure a React app by implementing XSS prevention, CSRF protection, input validation, secure authentication flow, and Content Security Policy headers."
-    />
+    >
+      <MultiExampleEditor
+        title="🎯 Try It: Security"
+        examples={[
+          {
+            title: "XSS Prevention",
+            code: `<!DOCTYPE html>
+<html>
+<head>
+<style>
+  body { margin: 0; padding: 40px; font-family: system-ui; background: #0f172a; color: #e2e8f0; }
+  .card { background: #1e293b; padding: 30px; border-radius: 12px; max-width: 600px; margin: 0 auto; }
+  input { width: 100%; padding: 12px; border: 2px solid #3b82f6; border-radius: 8px; margin: 10px 0; font-size: 16px; background: #334155; color: white; }
+  button { background: #3b82f6; color: white; border: none; padding: 12px 24px; border-radius: 8px; cursor: pointer; margin: 5px; font-weight: 600; }
+  .safe { background: #14532d; border: 2px solid #10b981; padding: 15px; border-radius: 8px; margin: 15px 0; }
+  .unsafe { background: #7f1d1d; border: 2px solid #ef4444; padding: 15px; border-radius: 8px; margin: 15px 0; }
+</style>
+</head>
+<body>
+  <div class="card">
+    <h2>🔒 XSS Prevention</h2>
+    <input id="userInput" placeholder="Try entering <script>alert('XSS')</script>" />
+    <button onclick="renderSafe()">Render Safe (Escaped)</button>
+    <button onclick="renderUnsafe()">Render Unsafe (Dangerous)</button>
+    <div class="safe" id="safe"></div>
+    <div class="unsafe" id="unsafe"></div>
+  </div>
+  
+  <script>
+    function renderSafe() {
+      const input = document.getElementById('userInput').value;
+      // Safe: textContent escapes HTML
+      document.getElementById('safe').textContent = '✅ Safe: ' + input;
+    }
+    
+    function renderUnsafe() {
+      const input = document.getElementById('userInput').value;
+      // Unsafe: innerHTML can execute scripts
+      document.getElementById('unsafe').innerHTML = '⚠️ Unsafe: ' + input;
+    }
+  </script>
+</body>
+</html>`
+          },
+          {
+            title: "Input Validation",
+            code: `<!DOCTYPE html>
+<html>
+<head>
+<style>
+  body { margin: 0; padding: 40px; font-family: system-ui; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; min-height: 100vh; }
+  .card { background: rgba(255,255,255,0.1); backdrop-filter: blur(10px); padding: 30px; border-radius: 12px; max-width: 500px; margin: 0 auto; }
+  input { width: 100%; padding: 12px; border: 2px solid transparent; border-radius: 8px; margin: 10px 0; font-size: 16px; }
+  input.error { border-color: #ef4444; }
+  .error-msg { color: #fca5a5; font-size: 14px; margin: -5px 0 10px 0; }
+  button { background: white; color: #667eea; border: none; padding: 12px 24px; border-radius: 8px; cursor: pointer; font-weight: 600; width: 100%; margin-top: 10px; }
+  .success { background: rgba(16, 185, 129, 0.2); padding: 15px; border-radius: 8px; margin-top: 15px; border: 2px solid #10b981; }
+</style>
+</head>
+<body>
+  <div class="card">
+    <h2>✅ Input Validation</h2>
+    <form onsubmit="handleSubmit(event)">
+      <input id="email" type="text" placeholder="Email" />
+      <div class="error-msg" id="emailError"></div>
+      
+      <input id="password" type="password" placeholder="Password" />
+      <div class="error-msg" id="passwordError"></div>
+      
+      <button type="submit">Submit</button>
+    </form>
+    <div id="output"></div>
+  </div>
+  
+  <script>
+    function validateEmail(email) {
+      const pattern = /^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$/;
+      if (!email) return 'Email is required';
+      if (!pattern.test(email)) return 'Invalid email format';
+      if (email.length > 100) return 'Email too long';
+      return null;
+    }
+    
+    function validatePassword(password) {
+      if (!password) return 'Password is required';
+      if (password.length < 8) return 'Password must be at least 8 characters';
+      if (!/[A-Z]/.test(password)) return 'Must contain uppercase letter';
+      if (!/[0-9]/.test(password)) return 'Must contain number';
+      return null;
+    }
+    
+    function handleSubmit(e) {
+      e.preventDefault();
+      
+      const email = document.getElementById('email').value;
+      const password = document.getElementById('password').value;
+      
+      const emailError = validateEmail(email);
+      const passwordError = validatePassword(password);
+      
+      document.getElementById('emailError').textContent = emailError || '';
+      document.getElementById('passwordError').textContent = passwordError || '';
+      
+      document.getElementById('email').className = emailError ? 'error' : '';
+      document.getElementById('password').className = passwordError ? 'error' : '';
+      
+      if (!emailError && !passwordError) {
+        document.getElementById('output').innerHTML = 
+          '<div class="success">✅ Validation passed! Data is safe to submit.</div>';
+      }
+    }
+  </script>
+</body>
+</html>`
+          }
+        ]}
+      />
+    </TopicLayout>
   );
 };
 

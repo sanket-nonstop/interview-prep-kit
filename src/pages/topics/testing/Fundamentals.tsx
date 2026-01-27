@@ -1,4 +1,5 @@
 import { TopicLayout } from '@/components/TopicLayout';
+import { MultiExampleEditor } from '@/components/MultiExampleEditor';
 
 const testingCode = `// Testing Fundamentals: Unit and integration testing for React
 
@@ -179,7 +180,103 @@ const Testing = () => {
         "Ignoring accessibility in tests - missing important user experience issues.",
       ]}
       practiceTask="Write comprehensive tests for a todo app including component tests, custom hook tests, API integration tests with MSW, and accessibility testing with jest-axe."
-    />
+    >
+      <MultiExampleEditor
+        title="🎯 Try It: Testing"
+        examples={[
+          {
+            title: "Component Testing",
+            code: `<!DOCTYPE html>
+<html>
+<head>
+<style>
+  body { margin: 0; padding: 40px; font-family: system-ui; background: #0f172a; color: #e2e8f0; }
+  .card { background: #1e293b; padding: 30px; border-radius: 12px; max-width: 600px; margin: 0 auto; }
+  .test { background: #334155; padding: 15px; border-radius: 8px; margin: 15px 0; }
+  .pass { border-left: 4px solid #10b981; }
+  .fail { border-left: 4px solid #ef4444; }
+  button { background: #3b82f6; color: white; border: none; padding: 12px 24px; border-radius: 8px; cursor: pointer; margin: 5px; font-weight: 600; }
+  input { width: 100%; padding: 12px; border: 2px solid #3b82f6; border-radius: 8px; margin: 10px 0; background: #334155; color: white; }
+</style>
+</head>
+<body>
+  <div class="card">
+    <h2>✅ Component Testing Demo</h2>
+    <input id="testInput" placeholder="Type to test..." />
+    <button onclick="runTests()">Run Tests</button>
+    <div id="results"></div>
+  </div>
+  
+  <script>
+    function runTests() {
+      const input = document.getElementById('testInput');
+      const results = document.getElementById('results');
+      const tests = [];
+      
+      // Test 1: Input exists
+      tests.push({
+        name: 'Input element exists',
+        pass: input !== null
+      });
+      
+      // Test 2: Input has placeholder
+      tests.push({
+        name: 'Input has placeholder text',
+        pass: input.placeholder === 'Type to test...'
+      });
+      
+      // Test 3: Input accepts text
+      input.value = 'test';
+      tests.push({
+        name: 'Input accepts user input',
+        pass: input.value === 'test'
+      });
+      
+      results.innerHTML = tests.map(test => \`
+        <div class="test \${test.pass ? 'pass' : 'fail'}">
+          \${test.pass ? '✅' : '❌'} \${test.name}
+        </div>
+      \`).join('');
+    }
+  </script>
+</body>
+</html>`
+          },
+          {
+            title: "Test Coverage",
+            code: `<!DOCTYPE html>
+<html>
+<head>
+<style>
+  body { margin: 0; padding: 40px; font-family: system-ui; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; min-height: 100vh; }
+  .card { background: rgba(255,255,255,0.1); backdrop-filter: blur(10px); padding: 30px; border-radius: 12px; max-width: 600px; margin: 0 auto; }
+  .stats { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin: 20px 0; }
+  .stat { background: rgba(255,255,255,0.2); padding: 20px; border-radius: 8px; text-align: center; }
+  .value { font-size: 48px; font-weight: bold; color: #10b981; }
+  .label { font-size: 14px; opacity: 0.8; }
+</style>
+</head>
+<body>
+  <div class="card">
+    <h2>📊 Test Coverage</h2>
+    <div class="stats">
+      <div class="stat">
+        <div class="value">95%</div>
+        <div class="label">Code Coverage</div>
+      </div>
+      <div class="stat">
+        <div class="value">42</div>
+        <div class="label">Tests Passing</div>
+      </div>
+    </div>
+    <p style="font-size: 14px; opacity: 0.8;">✅ High test coverage ensures code reliability and prevents regressions</p>
+  </div>
+</body>
+</html>`
+          }
+        ]}
+      />
+    </TopicLayout>
   );
 };
 

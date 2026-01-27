@@ -1,4 +1,5 @@
 import { TopicLayout } from '@/components/TopicLayout';
+import { MultiExampleEditor } from '@/components/MultiExampleEditor';
 
 const lifecycleCode = `// React Lifecycle Methods: Class components and hooks equivalents
 

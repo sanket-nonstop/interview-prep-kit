@@ -1,4 +1,5 @@
 import { TopicLayout } from '@/components/TopicLayout';
+import { MultiExampleEditor } from '@/components/MultiExampleEditor';
 
 const performanceCode = `// React Performance: Optimization techniques for production apps
 import React, { memo, useMemo, useCallback, lazy, Suspense } from 'react';
@@ -163,7 +164,128 @@ const Performance = () => {
         "Ignoring bundle size - code splitting and tree shaking are equally important.",
       ]}
       practiceTask="Build a data table component that handles 10,000+ rows efficiently. Implement virtualization, search/filter with debouncing, sortable columns, and measure performance improvements with React DevTools Profiler."
-    />
+    >
+      <MultiExampleEditor
+        title="🎯 Try It: Performance"
+        examples={[
+          {
+            title: "React.memo Demo",
+            code: `<!DOCTYPE html>
+<html>
+<head>
+<style>
+  body { margin: 0; padding: 40px; font-family: system-ui; background: #0f172a; color: #e2e8f0; }
+  .container { max-width: 600px; margin: 0 auto; }
+  button { background: #3b82f6; color: white; border: none; padding: 12px 24px; border-radius: 8px; cursor: pointer; margin: 5px; font-weight: 600; }
+  button:hover { background: #2563eb; }
+  .stats { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin: 20px 0; }
+  .stat { background: #1e293b; padding: 20px; border-radius: 8px; text-align: center; }
+  .stat-value { font-size: 36px; font-weight: bold; color: #3b82f6; }
+  .list { background: #1e293b; padding: 15px; border-radius: 8px; margin: 15px 0; }
+  .item { padding: 10px; border-bottom: 1px solid #334155; }
+</style>
+</head>
+<body>
+  <div class="container">
+    <h2>⚡ React.memo Performance</h2>
+    <button onclick="increment()">Increment Counter</button>
+    <button onclick="addItem()">Add Item</button>
+    <div class="stats">
+      <div class="stat"><div class="stat-value" id="counter">0</div><div>Counter</div></div>
+      <div class="stat"><div class="stat-value" id="renders">0</div><div>List Renders</div></div>
+    </div>
+    <div class="list" id="list"></div>
+    <p style="opacity: 0.7; font-size: 14px;">✅ With React.memo, list only re-renders when items change, not when counter changes</p>
+  </div>
+  
+  <script>
+    let counter = 0;
+    let items = ['Item 1', 'Item 2', 'Item 3'];
+    let listRenders = 0;
+    let lastItems = JSON.stringify(items);
+    
+    function increment() {
+      counter++;
+      document.getElementById('counter').textContent = counter;
+      // List doesn't re-render (simulating React.memo)
+    }
+    
+    function addItem() {
+      items.push('Item ' + (items.length + 1));
+      renderList();
+    }
+    
+    function renderList() {
+      const currentItems = JSON.stringify(items);
+      if (currentItems !== lastItems) {
+        listRenders++;
+        lastItems = currentItems;
+      }
+      document.getElementById('list').innerHTML = items.map(item => 
+        '<div class="item">' + item + '</div>'
+      ).join('');
+      document.getElementById('renders').textContent = listRenders;
+    }
+    
+    renderList();
+  </script>
+</body>
+</html>`
+          },
+          {
+            title: "useMemo Optimization",
+            code: `<!DOCTYPE html>
+<html>
+<head>
+<style>
+  body { margin: 0; padding: 40px; font-family: system-ui; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; min-height: 100vh; }
+  .card { background: rgba(255,255,255,0.1); backdrop-filter: blur(10px); padding: 30px; border-radius: 12px; max-width: 600px; margin: 0 auto; }
+  input { width: 100%; padding: 12px; border: none; border-radius: 8px; margin: 10px 0; font-size: 16px; }
+  .stats { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 15px; margin: 20px 0; }
+  .stat { background: rgba(255,255,255,0.2); padding: 15px; border-radius: 8px; text-align: center; }
+  .stat-value { font-size: 28px; font-weight: bold; color: #fbbf24; }
+</style>
+</head>
+<body>
+  <div class="card">
+    <h2>🚀 useMemo Demo</h2>
+    <input id="filter" placeholder="Filter items..." oninput="updateFilter()" />
+    <div class="stats">
+      <div class="stat"><div class="stat-value" id="total">1000</div><div>Total Items</div></div>
+      <div class="stat"><div class="stat-value" id="filtered">1000</div><div>Filtered</div></div>
+      <div class="stat"><div class="stat-value" id="calcs">1</div><div>Calculations</div></div>
+    </div>
+    <p style="font-size: 14px; opacity: 0.8;">✅ useMemo caches expensive calculations - only recalculates when dependencies change</p>
+  </div>
+  
+  <script>
+    const items = Array.from({length: 1000}, (_, i) => 'Item ' + (i + 1));
+    let calcCount = 1;
+    let lastFilter = '';
+    let cachedResult = items;
+    
+    function expensiveFilter(items, filter) {
+      calcCount++;
+      document.getElementById('calcs').textContent = calcCount;
+      return items.filter(item => item.toLowerCase().includes(filter.toLowerCase()));
+    }
+    
+    function updateFilter() {
+      const filter = document.getElementById('filter').value;
+      // Memoization: only recalculate if filter changed
+      if (filter !== lastFilter) {
+        cachedResult = expensiveFilter(items, filter);
+        lastFilter = filter;
+      }
+      document.getElementById('filtered').textContent = cachedResult.length;
+    }
+  </script>
+</body>
+</html>`
+          }
+        ]}
+      />
+    </TopicLayout>
   );
 };
 

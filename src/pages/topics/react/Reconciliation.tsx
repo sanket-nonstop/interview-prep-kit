@@ -1,4 +1,5 @@
 import { TopicLayout } from '@/components/TopicLayout';
+import { MultiExampleEditor } from '@/components/MultiExampleEditor';
 
 const reconciliationCode = `// Reconciliation & Virtual DOM: How React updates efficiently
 

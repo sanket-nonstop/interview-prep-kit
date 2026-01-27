@@ -1,4 +1,5 @@
 import { TopicLayout } from '@/components/TopicLayout';
+import { MultiExampleEditor } from '@/components/MultiExampleEditor';
 
 const jsxVirtualDomCode = `// JSX & Virtual DOM: React's rendering system
 

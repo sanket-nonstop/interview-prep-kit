@@ -1,4 +1,5 @@
 import { TopicLayout } from '@/components/TopicLayout';
+import { MultiExampleEditor } from '@/components/MultiExampleEditor';
 
 const accessibilityCode = `// Accessibility (A11y) Basics in React
 
@@ -210,7 +211,125 @@ const Accessibility = () => {
         "Poor color contrast: Text must be readable for visually impaired users.",
       ]}
       practiceTask="Create an accessible modal dialog: trap focus inside, close on Escape, return focus to trigger button on close, add proper ARIA attributes (role, aria-modal, aria-labelledby). Test with keyboard only (no mouse)."
-    />
+    >
+      <MultiExampleEditor
+        title="🎯 Try It: Accessibility"
+        examples={[
+          {
+            title: "Semantic HTML & ARIA",
+            code: `<!DOCTYPE html>
+<html>
+<head>
+<style>
+  body { margin: 0; padding: 40px; font-family: system-ui; background: #0f172a; color: #e2e8f0; }
+  .container { max-width: 600px; margin: 0 auto; }
+  label { display: block; margin: 15px 0 5px; font-weight: 600; }
+  input { width: 100%; padding: 12px; border: 2px solid #3b82f6; border-radius: 8px; font-size: 16px; background: #1e293b; color: white; }
+  input:focus { outline: none; border-color: #10b981; box-shadow: 0 0 0 3px rgba(16, 185, 129, 0.1); }
+  button { background: #3b82f6; color: white; border: none; padding: 12px 24px; border-radius: 8px; cursor: pointer; margin: 15px 5px 0 0; font-weight: 600; }
+  button:hover { background: #2563eb; }
+  button:focus { outline: 2px solid #10b981; outline-offset: 2px; }
+  .icon-btn { width: 40px; height: 40px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; }
+  .output { background: #1e293b; padding: 15px; border-radius: 8px; margin-top: 20px; border-left: 4px solid #10b981; }
+</style>
+</head>
+<body>
+  <div class="container">
+    <h1>♿ Accessibility Demo</h1>
+    
+    <form onsubmit="handleSubmit(event)">
+      <label for="username">Username</label>
+      <input id="username" type="text" required aria-required="true" />
+      
+      <label for="email">Email</label>
+      <input id="email" type="email" required aria-required="true" />
+      
+      <button type="submit">Submit Form</button>
+      <button type="button" class="icon-btn" aria-label="Close form" onclick="closeForm()">✕</button>
+    </form>
+    
+    <div id="output" role="status" aria-live="polite"></div>
+  </div>
+  
+  <script>
+    function handleSubmit(e) {
+      e.preventDefault();
+      const username = document.getElementById('username').value;
+      const email = document.getElementById('email').value;
+      document.getElementById('output').innerHTML = 
+        '<div class="output">✅ Form submitted!<br>Username: ' + username + '<br>Email: ' + email + '</div>';
+    }
+    
+    function closeForm() {
+      document.getElementById('output').innerHTML = 
+        '<div class="output">❌ Form closed (icon button with aria-label)</div>';
+    }
+  </script>
+</body>
+</html>`
+          },
+          {
+            title: "Keyboard Navigation",
+            code: `<!DOCTYPE html>
+<html>
+<head>
+<style>
+  body { margin: 0; padding: 40px; font-family: system-ui; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; min-height: 100vh; }
+  .card { background: rgba(255,255,255,0.1); backdrop-filter: blur(10px); padding: 30px; border-radius: 12px; max-width: 500px; margin: 0 auto; }
+  .menu { background: rgba(255,255,255,0.2); border-radius: 8px; margin: 20px 0; }
+  .menu-item { padding: 15px; border-bottom: 1px solid rgba(255,255,255,0.1); cursor: pointer; }
+  .menu-item:last-child { border-bottom: none; }
+  .menu-item:hover, .menu-item:focus { background: rgba(255,255,255,0.2); outline: none; }
+  .menu-item:focus { box-shadow: inset 0 0 0 2px #fbbf24; }
+  button { background: white; color: #667eea; border: none; padding: 12px 24px; border-radius: 8px; cursor: pointer; font-weight: 600; }
+  button:focus { outline: 2px solid #fbbf24; outline-offset: 2px; }
+  .info { background: rgba(251, 191, 36, 0.2); padding: 15px; border-radius: 8px; margin-top: 20px; font-size: 14px; }
+</style>
+</head>
+<body>
+  <div class="card">
+    <h2>⌨️ Keyboard Navigation</h2>
+    <p>Use Tab to navigate, Enter to select</p>
+    
+    <button onclick="toggleMenu()">Toggle Menu</button>
+    
+    <div id="menu" role="menu" style="display: none;">
+      <div class="menu">
+        <div class="menu-item" role="menuitem" tabindex="0" onclick="select('Profile')" onkeypress="handleKey(event, 'Profile')">👤 Profile</div>
+        <div class="menu-item" role="menuitem" tabindex="0" onclick="select('Settings')" onkeypress="handleKey(event, 'Settings')">⚙️ Settings</div>
+        <div class="menu-item" role="menuitem" tabindex="0" onclick="select('Logout')" onkeypress="handleKey(event, 'Logout')">🚪 Logout</div>
+      </div>
+    </div>
+    
+    <div class="info" id="output">Press Tab to navigate between items</div>
+  </div>
+  
+  <script>
+    function toggleMenu() {
+      const menu = document.getElementById('menu');
+      menu.style.display = menu.style.display === 'none' ? 'block' : 'none';
+      if (menu.style.display === 'block') {
+        menu.querySelector('.menu-item').focus();
+      }
+    }
+    
+    function select(item) {
+      document.getElementById('output').textContent = '✅ Selected: ' + item;
+    }
+    
+    function handleKey(e, item) {
+      if (e.key === 'Enter' || e.key === ' ') {
+        e.preventDefault();
+        select(item);
+      }
+    }
+  </script>
+</body>
+</html>`
+          }
+        ]}
+      />
+    </TopicLayout>
   );
 };
 

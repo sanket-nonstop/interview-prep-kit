@@ -1,4 +1,5 @@
 import { TopicLayout } from '@/components/TopicLayout';
+import { MultiExampleEditor } from '@/components/MultiExampleEditor';
 
 const routingCode = `// Next.js Dynamic Routing: File-based routing with parameters
 
@@ -261,7 +262,94 @@ const Routing = () => {
         "Mixing client and server navigation incorrectly - can break user experience.",
       ]}
       practiceTask="Build a multi-level e-commerce site with category/subcategory/product routing, implement search with query parameters, add breadcrumb navigation, and optimize with static generation."
-    />
+    >
+      <MultiExampleEditor
+        title="🎯 Try It: Dynamic Routing"
+        examples={[
+          {
+            title: "Dynamic Route Demo",
+            code: `<!DOCTYPE html>
+<html>
+<head>
+<style>
+  body { margin: 0; padding: 40px; font-family: system-ui; background: #0f172a; color: #e2e8f0; }
+  .container { max-width: 800px; margin: 0 auto; }
+  .route { background: #1e293b; padding: 20px; border-radius: 8px; margin: 15px 0; border-left: 4px solid #3b82f6; }
+  .route-path { color: #3b82f6; font-weight: 600; font-size: 18px; }
+  .route-desc { color: #94a3b8; margin-top: 10px; }
+  code { background: #334155; padding: 2px 8px; border-radius: 4px; color: #fbbf24; }
+</style>
+</head>
+<body>
+  <div class="container">
+    <h2>🛣️ Next.js Dynamic Routing</h2>
+    
+    <div class="route">
+      <div class="route-path">/blog/[slug]</div>
+      <div class="route-desc">Dynamic route: <code>params.slug</code> captures the segment</div>
+    </div>
+    
+    <div class="route">
+      <div class="route-path">/blog/[category]/[slug]</div>
+      <div class="route-desc">Nested dynamic: <code>params.category</code> and <code>params.slug</code></div>
+    </div>
+    
+    <div class="route">
+      <div class="route-path">/docs/[...slug]</div>
+      <div class="route-desc">Catch-all: <code>params.slug</code> is an array of segments</div>
+    </div>
+    
+    <div class="route">
+      <div class="route-path">/shop/[[...slug]]</div>
+      <div class="route-desc">Optional catch-all: matches /shop and /shop/any/path</div>
+    </div>
+  </div>
+</body>
+</html>`
+          },
+          {
+            title: "Route Parameters",
+            code: `<!DOCTYPE html>
+<html>
+<head>
+<style>
+  body { margin: 0; padding: 40px; font-family: system-ui; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; min-height: 100vh; }
+  .card { background: rgba(255,255,255,0.1); backdrop-filter: blur(10px); padding: 30px; border-radius: 12px; max-width: 600px; margin: 0 auto; }
+  input { width: 100%; padding: 12px; border: none; border-radius: 8px; margin: 10px 0; font-size: 16px; }
+  button { background: white; color: #667eea; border: none; padding: 12px 24px; border-radius: 8px; cursor: pointer; font-weight: 600; width: 100%; margin-top: 10px; }
+  .output { background: rgba(255,255,255,0.2); padding: 15px; border-radius: 8px; margin-top: 15px; }
+</style>
+</head>
+<body>
+  <div class="card">
+    <h2>🔗 Route Parameters Demo</h2>
+    <input id="category" placeholder="Category (e.g., electronics)" />
+    <input id="product" placeholder="Product (e.g., laptop)" />
+    <button onclick="generateRoute()">Generate Route</button>
+    <div class="output" id="output"></div>
+  </div>
+  
+  <script>
+    function generateRoute() {
+      const category = document.getElementById('category').value || 'category';
+      const product = document.getElementById('product').value || 'product';
+      
+      document.getElementById('output').innerHTML = \`
+        <strong>Generated Routes:</strong><br><br>
+        <strong>File:</strong> /shop/[category]/[product]/page.tsx<br>
+        <strong>URL:</strong> /shop/\${category}/\${product}<br><br>
+        <strong>Params:</strong><br>
+        { category: "\${category}", product: "\${product}" }
+      \`;
+    }
+    generateRoute();
+  </script>
+</body>
+</html>`
+          }
+        ]}
+      />
+    </TopicLayout>
   );
 };
 

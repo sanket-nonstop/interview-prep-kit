@@ -1,4 +1,5 @@
 import { TopicLayout } from '@/components/TopicLayout';
+import { MultiExampleEditor } from '@/components/MultiExampleEditor';
 
 const performanceCode = `// Web Performance: Optimizing frontend applications
 
@@ -115,7 +116,93 @@ const Performance = () => {
         "Not cleaning up resources - causes memory leaks and performance degradation.",
       ]}
       practiceTask="Optimize a slow React app by implementing code splitting, virtual scrolling for large lists, image optimization, and Core Web Vitals monitoring. Measure improvements with Lighthouse."
-    />
+    >
+      <MultiExampleEditor
+        title="🎯 Try It: Performance"
+        examples={[
+          {
+            title: "Lazy Loading Images",
+            code: `<!DOCTYPE html>
+<html>
+<head>
+<style>
+  body { margin: 0; padding: 20px; font-family: system-ui; background: #0f172a; color: #e2e8f0; }
+  .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 20px; }
+  .card { background: #1e293b; border-radius: 8px; overflow: hidden; }
+  img { width: 100%; height: 200px; object-fit: cover; }
+  .loading { background: #334155; height: 200px; display: flex; align-items: center; justify-content: center; }
+</style>
+</head>
+<body>
+  <h2>🖼️ Lazy Loading Images</h2>
+  <div class="grid" id="grid"></div>
+  
+  <script>
+    const images = Array.from({length: 12}, (_, i) => 
+      \`https://picsum.photos/200/200?random=\${i}\`
+    );
+    
+    images.forEach((src, i) => {
+      const card = document.createElement('div');
+      card.className = 'card';
+      card.innerHTML = \`
+        <img src="\${src}" alt="Image \${i}" loading="lazy" />
+        <div style="padding: 10px;">Image \${i + 1}</div>
+      \`;
+      document.getElementById('grid').appendChild(card);
+    });
+  </script>
+</body>
+</html>`
+          },
+          {
+            title: "Virtual Scrolling",
+            code: `<!DOCTYPE html>
+<html>
+<head>
+<style>
+  body { margin: 0; padding: 40px; font-family: system-ui; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; min-height: 100vh; }
+  .card { background: rgba(255,255,255,0.1); backdrop-filter: blur(10px); padding: 30px; border-radius: 12px; max-width: 600px; margin: 0 auto; }
+  .list { height: 400px; overflow-y: auto; background: rgba(0,0,0,0.2); border-radius: 8px; padding: 10px; }
+  .item { padding: 15px; background: rgba(255,255,255,0.1); margin: 5px 0; border-radius: 6px; }
+  .stats { background: rgba(255,255,255,0.2); padding: 15px; border-radius: 8px; margin-bottom: 15px; }
+</style>
+</head>
+<body>
+  <div class="card">
+    <h2>📜 Virtual Scrolling Demo</h2>
+    <div class="stats">
+      <strong>Total Items:</strong> 1000<br>
+      <strong>Rendered:</strong> <span id="rendered">20</span>
+    </div>
+    <div class="list" id="list"></div>
+  </div>
+  
+  <script>
+    const totalItems = 1000;
+    const itemHeight = 60;
+    const visibleItems = 20;
+    
+    function renderItems() {
+      const list = document.getElementById('list');
+      list.innerHTML = '';
+      
+      for (let i = 0; i < visibleItems; i++) {
+        const item = document.createElement('div');
+        item.className = 'item';
+        item.textContent = \`Item \${i + 1} of \${totalItems}\`;
+        list.appendChild(item);
+      }
+    }
+    
+    renderItems();
+  </script>
+</body>
+</html>`
+          }
+        ]}
+      />
+    </TopicLayout>
   );
 };
 

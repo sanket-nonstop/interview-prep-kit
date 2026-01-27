@@ -1,4 +1,5 @@
 import { TopicLayout } from '@/components/TopicLayout';
+import { MultiExampleEditor } from '@/components/MultiExampleEditor';
 
 const dataFetchingCode = `// Next.js Data Fetching: Server-side and client-side patterns
 
@@ -181,7 +182,109 @@ const DataFetching = () => {
         "Not using parallel data fetching - sequential fetches slow down page loads.",
       ]}
       practiceTask="Build an e-commerce product page that fetches product data on the server, related products in parallel, and user reviews on the client. Implement proper caching, error handling, and loading states."
-    />
+    >
+      <MultiExampleEditor
+        title="🎯 Try It: Data Fetching"
+        examples={[
+          {
+            title: "Server-side Fetching",
+            code: `<!DOCTYPE html>
+<html>
+<head>
+<style>
+  body { margin: 0; padding: 40px; font-family: system-ui; background: #0f172a; color: #e2e8f0; }
+  .card { background: #1e293b; padding: 30px; border-radius: 12px; max-width: 600px; margin: 0 auto; }
+  button { background: #3b82f6; color: white; border: none; padding: 12px 24px; border-radius: 8px; cursor: pointer; margin: 5px; font-weight: 600; }
+  .loading { color: #f59e0b; }
+  .data { background: #334155; padding: 15px; border-radius: 8px; margin: 15px 0; }
+  .success { color: #10b981; }
+</style>
+</head>
+<body>
+  <div class="card">
+    <h2>🖥️ Server-side Data Fetching</h2>
+    <button onclick="fetchData()">Fetch User Data</button>
+    <div id="output"></div>
+  </div>
+  
+  <script>
+    async function fetchData() {
+      const output = document.getElementById('output');
+      output.innerHTML = '<p class="loading">Loading from server...</p>';
+      
+      try {
+        const response = await fetch('https://jsonplaceholder.typicode.com/users/1');
+        const data = await response.json();
+        output.innerHTML = \`
+          <div class="data">
+            <p class="success">✅ Fetched on server (no client JS needed)</p>
+            <strong>Name:</strong> \${data.name}<br>
+            <strong>Email:</strong> \${data.email}<br>
+            <strong>Company:</strong> \${data.company.name}
+          </div>
+        \`;
+      } catch (error) {
+        output.innerHTML = '<p style="color: #ef4444;">❌ Error: ' + error.message + '</p>';
+      }
+    }
+  </script>
+</body>
+</html>`
+          },
+          {
+            title: "Parallel Fetching",
+            code: `<!DOCTYPE html>
+<html>
+<head>
+<style>
+  body { margin: 0; padding: 40px; font-family: system-ui; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; min-height: 100vh; }
+  .card { background: rgba(255,255,255,0.1); backdrop-filter: blur(10px); padding: 30px; border-radius: 12px; max-width: 600px; margin: 0 auto; }
+  button { background: white; color: #667eea; border: none; padding: 12px 24px; border-radius: 8px; cursor: pointer; font-weight: 600; width: 100%; margin: 10px 0; }
+  .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin: 15px 0; }
+  .box { background: rgba(255,255,255,0.2); padding: 15px; border-radius: 8px; }
+  .time { background: rgba(251, 191, 36, 0.2); padding: 10px; border-radius: 6px; margin-top: 15px; text-align: center; }
+</style>
+</head>
+<body>
+  <div class="card">
+    <h2>⚡ Parallel Data Fetching</h2>
+    <button onclick="fetchParallel()">Fetch 3 Users in Parallel</button>
+    <div class="grid" id="grid"></div>
+    <div class="time" id="time"></div>
+  </div>
+  
+  <script>
+    async function fetchParallel() {
+      const grid = document.getElementById('grid');
+      const time = document.getElementById('time');
+      grid.innerHTML = '<div class="box">Loading...</div><div class="box">Loading...</div><div class="box">Loading...</div>';
+      
+      const start = Date.now();
+      
+      // Parallel fetching with Promise.all
+      const [user1, user2, user3] = await Promise.all([
+        fetch('https://jsonplaceholder.typicode.com/users/1').then(r => r.json()),
+        fetch('https://jsonplaceholder.typicode.com/users/2').then(r => r.json()),
+        fetch('https://jsonplaceholder.typicode.com/users/3').then(r => r.json())
+      ]);
+      
+      const elapsed = Date.now() - start;
+      
+      grid.innerHTML = \`
+        <div class="box"><strong>\${user1.name}</strong><br>\${user1.email}</div>
+        <div class="box"><strong>\${user2.name}</strong><br>\${user2.email}</div>
+        <div class="box"><strong>\${user3.name}</strong><br>\${user3.email}</div>
+      \`;
+      
+      time.innerHTML = \`⚡ Loaded 3 users in parallel: \${elapsed}ms\`;
+    }
+  </script>
+</body>
+</html>`
+          }
+        ]}
+      />
+    </TopicLayout>
   );
 };
 

@@ -1,4 +1,5 @@
 import { TopicLayout } from '@/components/TopicLayout';
+import { MultiExampleEditor } from '@/components/MultiExampleEditor';
 
 const serverComponentsCode = `// Next.js Server Components: React components that run on the server
 
@@ -169,7 +170,102 @@ const ServerComponents = () => {
         "Fetching data in Client Components when Server Components could do it more efficiently.",
       ]}
       practiceTask="Build a blog with Server Components for static content (posts, categories) and Client Components for interactive features (search, comments, likes). Implement streaming for slow data and server actions for form submissions."
-    />
+    >
+      <MultiExampleEditor
+        title="🎯 Try It: Server Components"
+        examples={[
+          {
+            title: "Server vs Client Components",
+            code: `<!DOCTYPE html>
+<html>
+<head>
+<style>
+  body { margin: 0; padding: 40px; font-family: system-ui; background: #0f172a; color: #e2e8f0; }
+  .comparison { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; max-width: 1000px; margin: 0 auto; }
+  .box { background: #1e293b; padding: 20px; border-radius: 12px; }
+  .server { border: 3px solid #10b981; }
+  .client { border: 3px solid #3b82f6; }
+  h3 { margin-top: 0; }
+  .feature { background: #334155; padding: 10px; margin: 8px 0; border-radius: 6px; font-size: 14px; }
+  .yes { color: #10b981; }
+  .no { color: #ef4444; }
+</style>
+</head>
+<body>
+  <h2 style="text-align: center;">⚡ Server vs Client Components</h2>
+  <div class="comparison">
+    <div class="box server">
+      <h3>🖥️ Server Components</h3>
+      <div class="feature"><span class="yes">✅</span> Direct database access</div>
+      <div class="feature"><span class="yes">✅</span> Access server-only APIs</div>
+      <div class="feature"><span class="yes">✅</span> Zero client JS bundle</div>
+      <div class="feature"><span class="yes">✅</span> SEO friendly</div>
+      <div class="feature"><span class="no">❌</span> No useState/useEffect</div>
+      <div class="feature"><span class="no">❌</span> No browser APIs</div>
+      <div class="feature"><span class="no">❌</span> No event handlers</div>
+    </div>
+    
+    <div class="box client">
+      <h3>💻 Client Components</h3>
+      <div class="feature"><span class="yes">✅</span> useState/useEffect</div>
+      <div class="feature"><span class="yes">✅</span> Event handlers</div>
+      <div class="feature"><span class="yes">✅</span> Browser APIs</div>
+      <div class="feature"><span class="yes">✅</span> Interactive UI</div>
+      <div class="feature"><span class="no">❌</span> Adds to JS bundle</div>
+      <div class="feature"><span class="no">❌</span> No direct DB access</div>
+      <div class="feature"><span class="no">❌</span> No server-only APIs</div>
+    </div>
+  </div>
+</body>
+</html>`
+          },
+          {
+            title: "'use client' Directive",
+            code: `<!DOCTYPE html>
+<html>
+<head>
+<style>
+  body { margin: 0; padding: 40px; font-family: system-ui; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; min-height: 100vh; }
+  .card { background: rgba(255,255,255,0.1); backdrop-filter: blur(10px); padding: 30px; border-radius: 12px; max-width: 600px; margin: 0 auto; }
+  .code { background: rgba(0,0,0,0.3); padding: 15px; border-radius: 8px; margin: 15px 0; font-family: 'Courier New'; font-size: 14px; }
+  .highlight { color: #fbbf24; font-weight: bold; }
+  button { background: white; color: #667eea; border: none; padding: 12px 24px; border-radius: 8px; cursor: pointer; font-weight: 600; margin: 10px 5px; }
+  .counter { font-size: 48px; font-weight: bold; text-align: center; margin: 20px 0; }
+</style>
+</head>
+<body>
+  <div class="card">
+    <h2>🎯 Client Component Demo</h2>
+    <div class="code">
+      <span class="highlight">'use client'</span><br><br>
+      function Counter() {<br>
+      &nbsp;&nbsp;const [count, setCount] = useState(0);<br>
+      &nbsp;&nbsp;return ...<br>
+      }
+    </div>
+    <div class="counter" id="count">0</div>
+    <button onclick="increment()">Increment</button>
+    <button onclick="decrement()">Decrement</button>
+    <p style="font-size: 14px; opacity: 0.8;">✅ This needs 'use client' because it uses useState and event handlers</p>
+  </div>
+  
+  <script>
+    let count = 0;
+    function increment() {
+      count++;
+      document.getElementById('count').textContent = count;
+    }
+    function decrement() {
+      count--;
+      document.getElementById('count').textContent = count;
+    }
+  </script>
+</body>
+</html>`
+          }
+        ]}
+      />
+    </TopicLayout>
   );
 };
 

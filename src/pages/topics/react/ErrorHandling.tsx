@@ -1,4 +1,5 @@
 import { TopicLayout } from '@/components/TopicLayout';
+import { MultiExampleEditor } from '@/components/MultiExampleEditor';
 
 const errorHandlingCode = `// Error Handling: Robust error management in React
 
@@ -253,7 +254,146 @@ const ErrorHandling = () => {
         "Not implementing error reporting - missing critical production issues.",
       ]}
       practiceTask="Build a form with comprehensive error handling: validation errors, API errors, network errors, and Error Boundaries. Implement error reporting and user-friendly error states."
-    />
+    >
+      <MultiExampleEditor
+        title="🎯 Try It: Error Handling"
+        examples={[
+          {
+            title: "Try-Catch Error Handling",
+            code: `<!DOCTYPE html>
+<html>
+<head>
+<style>
+  body { margin: 0; padding: 40px; font-family: system-ui; background: #0f172a; color: #e2e8f0; }
+  .container { max-width: 600px; margin: 0 auto; }
+  button { background: #3b82f6; color: white; border: none; padding: 12px 24px; border-radius: 8px; cursor: pointer; margin: 5px; font-weight: 600; }
+  button:hover { background: #2563eb; }
+  .error { background: #7f1d1d; border: 2px solid #ef4444; padding: 15px; border-radius: 8px; margin: 15px 0; }
+  .success { background: #14532d; border: 2px solid #10b981; padding: 15px; border-radius: 8px; margin: 15px 0; }
+  .loading { color: #f59e0b; }
+</style>
+</head>
+<body>
+  <div class="container">
+    <h2>⚠️ Error Handling Demo</h2>
+    <button onclick="fetchSuccess()">Successful Request</button>
+    <button onclick="fetchError()">Failed Request</button>
+    <button onclick="throwError()">Throw Error</button>
+    <div id="output"></div>
+  </div>
+  
+  <script>
+    async function fetchSuccess() {
+      const output = document.getElementById('output');
+      output.innerHTML = '<p class="loading">Loading...</p>';
+      
+      try {
+        const response = await fetch('https://jsonplaceholder.typicode.com/users/1');
+        if (!response.ok) throw new Error(\`HTTP \${response.status}\`);
+        const data = await response.json();
+        output.innerHTML = '<div class="success">✅ Success!<br>User: ' + data.name + '</div>';
+      } catch (error) {
+        output.innerHTML = '<div class="error">❌ Error: ' + error.message + '</div>';
+      }
+    }
+    
+    async function fetchError() {
+      const output = document.getElementById('output');
+      output.innerHTML = '<p class="loading">Loading...</p>';
+      
+      try {
+        const response = await fetch('https://jsonplaceholder.typicode.com/invalid');
+        if (!response.ok) throw new Error(\`HTTP \${response.status}: \${response.statusText}\`);
+        const data = await response.json();
+        output.innerHTML = '<div class="success">Success</div>';
+      } catch (error) {
+        output.innerHTML = '<div class="error">❌ Caught Error!<br>' + error.message + '<br><br>Always use try-catch with async/await!</div>';
+      }
+    }
+    
+    function throwError() {
+      const output = document.getElementById('output');
+      try {
+        throw new Error('Custom error thrown!');
+      } catch (error) {
+        output.innerHTML = '<div class="error">❌ Caught: ' + error.message + '</div>';
+      }
+    }
+  </script>
+</body>
+</html>`
+          },
+          {
+            title: "Form Validation Errors",
+            code: `<!DOCTYPE html>
+<html>
+<head>
+<style>
+  body { margin: 0; padding: 40px; font-family: system-ui; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; min-height: 100vh; }
+  .card { background: rgba(255,255,255,0.1); backdrop-filter: blur(10px); padding: 30px; border-radius: 12px; max-width: 500px; margin: 0 auto; }
+  input { width: 100%; padding: 12px; border: 2px solid transparent; border-radius: 8px; margin: 10px 0; font-size: 16px; }
+  input.error { border-color: #ef4444; }
+  .error-msg { color: #fca5a5; font-size: 14px; margin: -5px 0 10px 0; }
+  button { background: white; color: #667eea; border: none; padding: 12px 24px; border-radius: 8px; cursor: pointer; font-weight: 600; width: 100%; margin-top: 10px; }
+  button:hover { transform: scale(1.02); }
+  .success { background: rgba(16, 185, 129, 0.2); padding: 15px; border-radius: 8px; margin-top: 15px; border: 2px solid #10b981; }
+</style>
+</head>
+<body>
+  <div class="card">
+    <h2>📝 Form Validation</h2>
+    <form onsubmit="handleSubmit(event)">
+      <input id="email" type="text" placeholder="Email" />
+      <div class="error-msg" id="emailError"></div>
+      
+      <input id="password" type="password" placeholder="Password" />
+      <div class="error-msg" id="passwordError"></div>
+      
+      <button type="submit">Submit</button>
+    </form>
+    <div id="output"></div>
+  </div>
+  
+  <script>
+    function validateEmail(email) {
+      if (!email) return 'Email is required';
+      if (!email.includes('@')) return 'Invalid email format';
+      return null;
+    }
+    
+    function validatePassword(password) {
+      if (!password) return 'Password is required';
+      if (password.length < 6) return 'Password must be at least 6 characters';
+      return null;
+    }
+    
+    function handleSubmit(e) {
+      e.preventDefault();
+      
+      const email = document.getElementById('email').value;
+      const password = document.getElementById('password').value;
+      
+      const emailError = validateEmail(email);
+      const passwordError = validatePassword(password);
+      
+      document.getElementById('emailError').textContent = emailError || '';
+      document.getElementById('passwordError').textContent = passwordError || '';
+      
+      document.getElementById('email').className = emailError ? 'error' : '';
+      document.getElementById('password').className = passwordError ? 'error' : '';
+      
+      if (!emailError && !passwordError) {
+        document.getElementById('output').innerHTML = 
+          '<div class="success">✅ Form submitted successfully!</div>';
+      }
+    }
+  </script>
+</body>
+</html>`
+          }
+        ]}
+      />
+    </TopicLayout>
   );
 };
 

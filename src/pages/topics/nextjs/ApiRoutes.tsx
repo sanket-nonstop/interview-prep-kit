@@ -1,4 +1,5 @@
 import { TopicLayout } from '@/components/TopicLayout';
+import { MultiExampleEditor } from '@/components/MultiExampleEditor';
 
 const apiRoutesCode = `// Next.js API Routes: Full-stack development with App Router
 
@@ -333,7 +334,119 @@ const ApiRoutes = () => {
         "Ignoring rate limiting - APIs can be abused and overwhelmed.",
       ]}
       practiceTask="Build a complete CRUD API for a blog with authentication, file upload for images, search functionality, and webhook integration for payment processing. Include proper validation and error handling."
-    />
+    >
+      <MultiExampleEditor
+        title="🎯 Try It: API Routes"
+        examples={[
+          {
+            title: "GET & POST API",
+            code: `<!DOCTYPE html>
+<html>
+<head>
+<style>
+  body { margin: 0; padding: 40px; font-family: system-ui; background: #0f172a; color: #e2e8f0; }
+  .card { background: #1e293b; padding: 30px; border-radius: 12px; max-width: 600px; margin: 0 auto; }
+  button { background: #3b82f6; color: white; border: none; padding: 12px 24px; border-radius: 8px; cursor: pointer; margin: 5px; font-weight: 600; }
+  .response { background: #334155; padding: 15px; border-radius: 8px; margin: 15px 0; font-family: 'Courier New'; font-size: 14px; }
+  .success { border-left: 4px solid #10b981; }
+  .error { border-left: 4px solid #ef4444; }
+</style>
+</head>
+<body>
+  <div class="card">
+    <h2>🚀 API Routes Demo</h2>
+    <button onclick="getUsers()">GET /api/users</button>
+    <button onclick="createUser()">POST /api/users</button>
+    <div id="output"></div>
+  </div>
+  
+  <script>
+    async function getUsers() {
+      const output = document.getElementById('output');
+      output.innerHTML = '<div class="response">Loading...</div>';
+      
+      try {
+        const response = await fetch('https://jsonplaceholder.typicode.com/users?_limit=3');
+        const data = await response.json();
+        output.innerHTML = \`<div class="response success">
+          <strong>GET /api/users</strong><br>
+          Status: \${response.status}<br><br>
+          \${JSON.stringify(data, null, 2)}
+        </div>\`;
+      } catch (error) {
+        output.innerHTML = \`<div class="response error">Error: \${error.message}</div>\`;
+      }
+    }
+    
+    async function createUser() {
+      const output = document.getElementById('output');
+      output.innerHTML = '<div class="response">Creating...</div>';
+      
+      try {
+        const response = await fetch('https://jsonplaceholder.typicode.com/users', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ name: 'John Doe', email: 'john@example.com' })
+        });
+        const data = await response.json();
+        output.innerHTML = \`<div class="response success">
+          <strong>POST /api/users</strong><br>
+          Status: \${response.status}<br><br>
+          \${JSON.stringify(data, null, 2)}
+        </div>\`;
+      } catch (error) {
+        output.innerHTML = \`<div class="response error">Error: \${error.message}</div>\`;
+      }
+    }
+  </script>
+</body>
+</html>`
+          },
+          {
+            title: "HTTP Methods",
+            code: `<!DOCTYPE html>
+<html>
+<head>
+<style>
+  body { margin: 0; padding: 40px; font-family: system-ui; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; min-height: 100vh; }
+  .card { background: rgba(255,255,255,0.1); backdrop-filter: blur(10px); padding: 30px; border-radius: 12px; max-width: 600px; margin: 0 auto; }
+  .methods { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin: 20px 0; }
+  .method { background: rgba(255,255,255,0.2); padding: 20px; border-radius: 8px; text-align: center; }
+  .method-name { font-size: 24px; font-weight: bold; margin-bottom: 10px; }
+  .get { border-left: 4px solid #10b981; }
+  .post { border-left: 4px solid #3b82f6; }
+  .put { border-left: 4px solid #f59e0b; }
+  .delete { border-left: 4px solid #ef4444; }
+</style>
+</head>
+<body>
+  <div class="card">
+    <h2>🔧 HTTP Methods</h2>
+    <div class="methods">
+      <div class="method get">
+        <div class="method-name">GET</div>
+        <div>Read data</div>
+      </div>
+      <div class="method post">
+        <div class="method-name">POST</div>
+        <div>Create data</div>
+      </div>
+      <div class="method put">
+        <div class="method-name">PUT</div>
+        <div>Update data</div>
+      </div>
+      <div class="method delete">
+        <div class="method-name">DELETE</div>
+        <div>Delete data</div>
+      </div>
+    </div>
+  </div>
+</body>
+</html>`
+          }
+        ]}
+      />
+    </TopicLayout>
   );
 };
 
