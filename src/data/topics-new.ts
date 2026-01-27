@@ -297,6 +297,7 @@ export const topicsDataNew: TopicCategory[] = [
         topics: [
           { id: 'what-is-seo', title: 'What is SEO', route: '/seo/basics/what-is-seo', category: 'seo', difficulty: 'beginner' },
           { id: 'search-engines', title: 'How Search Engines Work', route: '/seo/basics/search-engines', category: 'seo', difficulty: 'beginner' },
+          { id: 'keywords', title: 'Keyword Research', route: '/seo/basics/keywords', category: 'seo', difficulty: 'beginner' },
         ],
       },
       {
@@ -306,6 +307,8 @@ export const topicsDataNew: TopicCategory[] = [
           { id: 'title-meta', title: 'Title & Meta Tags', route: '/seo/on-page/title-meta', category: 'seo', difficulty: 'beginner' },
           { id: 'headings', title: 'Headings Structure', route: '/seo/on-page/headings', category: 'seo', difficulty: 'beginner' },
           { id: 'image-seo', title: 'Image SEO', route: '/seo/on-page/image-seo', category: 'seo', difficulty: 'beginner' },
+          { id: 'url-structure', title: 'URL Structure', route: '/seo/on-page/url-structure', category: 'seo', difficulty: 'beginner' },
+          { id: 'internal-linking', title: 'Internal Linking', route: '/seo/on-page/internal-linking', category: 'seo', difficulty: 'intermediate' },
         ],
       },
       {
@@ -313,6 +316,10 @@ export const topicsDataNew: TopicCategory[] = [
         title: 'Technical SEO',
         topics: [
           { id: 'core-web-vitals', title: 'Core Web Vitals', route: '/seo/technical/core-web-vitals', category: 'seo', difficulty: 'intermediate' },
+          { id: 'sitemap-robots', title: 'Sitemap & Robots.txt', route: '/seo/technical/sitemap-robots', category: 'seo', difficulty: 'intermediate' },
+          { id: 'structured-data', title: 'Structured Data (Schema)', route: '/seo/technical/structured-data', category: 'seo', difficulty: 'advanced' },
+          { id: 'mobile-seo', title: 'Mobile SEO', route: '/seo/technical/mobile-seo', category: 'seo', difficulty: 'intermediate' },
+          { id: 'page-speed', title: 'Page Speed Optimization', route: '/seo/technical/page-speed', category: 'seo', difficulty: 'intermediate' },
         ],
       },
       {

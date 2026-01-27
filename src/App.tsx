@@ -4,6 +4,7 @@ import { Toaster } from "@/components/ui/toaster";
 import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { TrailingSlashRedirect } from "@/components/TrailingSlashRedirect";
 import Index from "./pages/Index";
 import NotFound from "./pages/NotFound";
 import Roadmap from "./pages/Roadmap";
@@ -106,6 +107,7 @@ import SearchEngines from "./pages/topics/seo/SearchEngines";
 import ServerClientSeo from "./pages/topics/seo/ServerClientSeo";
 import TitleMeta from "./pages/topics/seo/TitleMeta";
 import WhatIsSeo from "./pages/topics/seo/WhatIsSeo";
+import { Keywords, UrlStructure, InternalLinking, SitemapRobots, StructuredData, MobileSeo, PageSpeed } from "./pages/topics/seo/NewSeoTopics";
 import Testing from "./pages/topics/testing/Fundamentals";
 import TypeScript from "./pages/topics/typescript/Fundamentals";
 import AdvancedTypeScript from "./pages/topics/typescript/AdvancedTypeScript";
@@ -131,6 +133,7 @@ const App = () => (
       <Toaster />
       <Sonner />
       <BrowserRouter>
+        <TrailingSlashRedirect />
         <Layout>
           <Routes>
             <Route path="/" element={<Index />} />
@@ -335,10 +338,17 @@ const App = () => (
             {/* SEO Topics */}
             <Route path="/seo/basics/what-is-seo" element={<WhatIsSeo />} />
             <Route path="/seo/basics/search-engines" element={<SearchEngines />} />
+            <Route path="/seo/basics/keywords" element={<Keywords />} />
             <Route path="/seo/on-page/title-meta" element={<TitleMeta />} />
             <Route path="/seo/on-page/headings" element={<Headings />} />
             <Route path="/seo/on-page/image-seo" element={<ImageSeo />} />
+            <Route path="/seo/on-page/url-structure" element={<UrlStructure />} />
+            <Route path="/seo/on-page/internal-linking" element={<InternalLinking />} />
             <Route path="/seo/technical/core-web-vitals" element={<CoreWebVitals />} />
+            <Route path="/seo/technical/sitemap-robots" element={<SitemapRobots />} />
+            <Route path="/seo/technical/structured-data" element={<StructuredData />} />
+            <Route path="/seo/technical/mobile-seo" element={<MobileSeo />} />
+            <Route path="/seo/technical/page-speed" element={<PageSpeed />} />
             <Route path="/seo/nextjs/metadata" element={<NextjsMetadata />} />
             <Route path="/seo/nextjs/server-vs-client" element={<ServerClientSeo />} />
             <Route path="/seo/*" element={<TopicNotFound />} />
