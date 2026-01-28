@@ -99,6 +99,8 @@ import HOC from "./pages/topics/react/HOC";
 import Portal from "./pages/topics/react/Portal";
 import SuspenseLazy from "./pages/topics/react/SuspenseLazy";
 import ConcurrentFeatures from "./pages/topics/react/ConcurrentFeatures";
+import GsapAnimations from "./pages/topics/react/GsapAnimations";
+import ThreeJs from "./pages/topics/react/ThreeJs";
 import Security from "./pages/topics/security/Fundamentals";
 import CoreWebVitals from "./pages/topics/seo/CoreWebVitals";
 import Headings from "./pages/topics/seo/Headings";
@@ -349,6 +351,8 @@ const App = () => (
             <Route path="/react/code-splitting/" element={<CodeSplitting />} />
             <Route path="/react/best-practices/accessibility/" element={<Accessibility />} />
             <Route path="/react/accessibility/" element={<Accessibility />} />
+            <Route path="/react/animations/gsap/" element={<GsapAnimations />} />
+            <Route path="/react/animations/threejs/" element={<ThreeJs />} />
             <Route path="/react/*" element={<TopicNotFound />} />
             
             {/* Testing Topics */}

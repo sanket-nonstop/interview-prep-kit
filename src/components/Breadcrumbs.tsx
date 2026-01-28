@@ -6,7 +6,7 @@ export const Breadcrumbs = () => {
   const location = useLocation();
   const path = location.pathname;
 
-  if (path === '/' || path === '/roadmap') return null;
+  if (path === '/' || path === '/roadmap' || path.startsWith('/api-testing') || path.startsWith('/other-languages')) return null;
 
   const segments = path.split('/').filter(Boolean);
   const breadcrumbs = [{ label: 'Home', path: '/' }];
