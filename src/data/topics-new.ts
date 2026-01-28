@@ -286,6 +286,119 @@ export const topicsDataNew: TopicCategory[] = [
     ],
   },
   {
+    id: 'php',
+    title: 'PHP',
+    icon: '🐘',
+    description: 'Master PHP fundamentals and modern best practices',
+    subcategories: [
+      {
+        id: 'fundamentals',
+        title: 'Fundamentals',
+        topics: [
+          { id: 'syntax-basics', title: 'Syntax & Basics', route: '/php/fundamentals/syntax-basics', category: 'php', difficulty: 'beginner' },
+          { id: 'variables-types', title: 'Variables & Data Types', route: '/php/fundamentals/variables-types', category: 'php', difficulty: 'beginner' },
+          { id: 'functions', title: 'Functions', route: '/php/fundamentals/functions', category: 'php', difficulty: 'beginner' },
+          { id: 'arrays', title: 'Arrays & Array Functions', route: '/php/fundamentals/arrays', category: 'php', difficulty: 'beginner' },
+          { id: 'superglobals', title: 'Superglobals', route: '/php/fundamentals/superglobals', category: 'php', difficulty: 'beginner' },
+        ],
+      },
+      {
+        id: 'oop',
+        title: 'Object-Oriented PHP',
+        topics: [
+          { id: 'classes-objects', title: 'Classes & Objects', route: '/php/oop/classes-objects', category: 'php', difficulty: 'intermediate' },
+          { id: 'inheritance', title: 'Inheritance & Polymorphism', route: '/php/oop/inheritance', category: 'php', difficulty: 'intermediate' },
+          { id: 'interfaces-traits', title: 'Interfaces & Traits', route: '/php/oop/interfaces-traits', category: 'php', difficulty: 'intermediate' },
+          { id: 'namespaces', title: 'Namespaces & Autoloading', route: '/php/oop/namespaces', category: 'php', difficulty: 'intermediate' },
+          { id: 'magic-methods', title: 'Magic Methods', route: '/php/oop/magic-methods', category: 'php', difficulty: 'advanced' },
+        ],
+      },
+      {
+        id: 'advanced',
+        title: 'Advanced Concepts',
+        topics: [
+          { id: 'error-handling', title: 'Error & Exception Handling', route: '/php/advanced/error-handling', category: 'php', difficulty: 'intermediate' },
+          { id: 'sessions-cookies', title: 'Sessions & Cookies', route: '/php/advanced/sessions-cookies', category: 'php', difficulty: 'intermediate' },
+          { id: 'file-handling', title: 'File Handling', route: '/php/advanced/file-handling', category: 'php', difficulty: 'intermediate' },
+          { id: 'pdo-database', title: 'PDO & Database', route: '/php/advanced/pdo-database', category: 'php', difficulty: 'advanced' },
+          { id: 'composer', title: 'Composer & Dependencies', route: '/php/advanced/composer', category: 'php', difficulty: 'intermediate' },
+        ],
+      },
+      {
+        id: 'security',
+        title: 'Security',
+        topics: [
+          { id: 'sql-injection', title: 'SQL Injection Prevention', route: '/php/security/sql-injection', category: 'php', difficulty: 'advanced' },
+          { id: 'xss-csrf', title: 'XSS & CSRF Protection', route: '/php/security/xss-csrf', category: 'php', difficulty: 'advanced' },
+          { id: 'authentication', title: 'Authentication & Hashing', route: '/php/security/authentication', category: 'php', difficulty: 'advanced' },
+          { id: 'validation', title: 'Input Validation & Sanitization', route: '/php/security/validation', category: 'php', difficulty: 'intermediate' },
+        ],
+      },
+    ],
+  },
+  {
+    id: 'laravel',
+    title: 'Laravel',
+    icon: '🔺',
+    description: 'Build modern PHP applications with Laravel framework',
+    subcategories: [
+      {
+        id: 'fundamentals',
+        title: 'Fundamentals',
+        topics: [
+          { id: 'installation-setup', title: 'Installation & Setup', route: '/laravel/fundamentals/installation-setup', category: 'laravel', difficulty: 'beginner' },
+          { id: 'routing', title: 'Routing', route: '/laravel/fundamentals/routing', category: 'laravel', difficulty: 'beginner' },
+          { id: 'controllers', title: 'Controllers', route: '/laravel/fundamentals/controllers', category: 'laravel', difficulty: 'beginner' },
+          { id: 'views-blade', title: 'Views & Blade Templates', route: '/laravel/fundamentals/views-blade', category: 'laravel', difficulty: 'beginner' },
+          { id: 'middleware', title: 'Middleware', route: '/laravel/fundamentals/middleware', category: 'laravel', difficulty: 'intermediate' },
+        ],
+      },
+      {
+        id: 'eloquent',
+        title: 'Eloquent ORM',
+        topics: [
+          { id: 'models', title: 'Models & Migrations', route: '/laravel/eloquent/models', category: 'laravel', difficulty: 'beginner' },
+          { id: 'relationships', title: 'Relationships', route: '/laravel/eloquent/relationships', category: 'laravel', difficulty: 'intermediate' },
+          { id: 'query-builder', title: 'Query Builder', route: '/laravel/eloquent/query-builder', category: 'laravel', difficulty: 'intermediate' },
+          { id: 'accessors-mutators', title: 'Accessors & Mutators', route: '/laravel/eloquent/accessors-mutators', category: 'laravel', difficulty: 'intermediate' },
+          { id: 'scopes', title: 'Query Scopes', route: '/laravel/eloquent/scopes', category: 'laravel', difficulty: 'intermediate' },
+        ],
+      },
+      {
+        id: 'advanced',
+        title: 'Advanced Features',
+        topics: [
+          { id: 'authentication', title: 'Authentication (Sanctum/Passport)', route: '/laravel/advanced/authentication', category: 'laravel', difficulty: 'advanced' },
+          { id: 'authorization', title: 'Authorization (Gates/Policies)', route: '/laravel/advanced/authorization', category: 'laravel', difficulty: 'advanced' },
+          { id: 'validation', title: 'Form Validation', route: '/laravel/advanced/validation', category: 'laravel', difficulty: 'intermediate' },
+          { id: 'api-resources', title: 'API Resources', route: '/laravel/advanced/api-resources', category: 'laravel', difficulty: 'advanced' },
+          { id: 'events-listeners', title: 'Events & Listeners', route: '/laravel/advanced/events-listeners', category: 'laravel', difficulty: 'advanced' },
+          { id: 'queues-jobs', title: 'Queues & Jobs', route: '/laravel/advanced/queues-jobs', category: 'laravel', difficulty: 'advanced' },
+          { id: 'notifications', title: 'Notifications', route: '/laravel/advanced/notifications', category: 'laravel', difficulty: 'intermediate' },
+          { id: 'file-storage', title: 'File Storage', route: '/laravel/advanced/file-storage', category: 'laravel', difficulty: 'intermediate' },
+        ],
+      },
+      {
+        id: 'testing',
+        title: 'Testing',
+        topics: [
+          { id: 'phpunit', title: 'PHPUnit Testing', route: '/laravel/testing/phpunit', category: 'laravel', difficulty: 'advanced' },
+          { id: 'feature-tests', title: 'Feature Tests', route: '/laravel/testing/feature-tests', category: 'laravel', difficulty: 'advanced' },
+          { id: 'database-testing', title: 'Database Testing', route: '/laravel/testing/database-testing', category: 'laravel', difficulty: 'advanced' },
+        ],
+      },
+      {
+        id: 'deployment',
+        title: 'Deployment & Production',
+        topics: [
+          { id: 'optimization', title: 'Performance Optimization', route: '/laravel/deployment/optimization', category: 'laravel', difficulty: 'advanced' },
+          { id: 'caching', title: 'Caching Strategies', route: '/laravel/deployment/caching', category: 'laravel', difficulty: 'advanced' },
+          { id: 'deployment', title: 'Deployment Best Practices', route: '/laravel/deployment/deployment', category: 'laravel', difficulty: 'advanced' },
+        ],
+      },
+    ],
+  },
+  {
     id: 'seo',
     title: 'SEO',
     icon: '🔍',
@@ -446,6 +559,8 @@ export const getCategoryColor = (category: string): string => {
     react: 'bg-category-react/20 text-category-react border-category-react/30',
     nextjs: 'bg-category-nextjs/20 text-category-nextjs border-category-nextjs/30',
     typescript: 'bg-blue-100 text-blue-800 border-blue-300',
+    php: 'bg-indigo-100 text-indigo-800 border-indigo-300',
+    laravel: 'bg-red-100 text-red-800 border-red-300',
     testing: 'bg-green-100 text-green-800 border-green-300',
     performance: 'bg-yellow-100 text-yellow-800 border-yellow-300',
     security: 'bg-red-100 text-red-800 border-red-300',
