@@ -8,8 +8,7 @@ const Relationships = () => {
 
       <div className="topic-card p-6 mb-6">
         <h2 className="text-2xl font-bold text-foreground mb-4">👤 One to Many</h2>
-        <pre className="bg-secondary/50 p-4 rounded-lg overflow-x-auto">
-          <code>{`<?php
+        <pre className="bg-secondary/50 p-4 rounded-lg overflow-x-auto"><code>{`<?php
 // User has many posts
 class User extends Model {
     public function posts() {
@@ -26,14 +25,12 @@ class Post extends Model {
 
 // Usage
 $user = User::find(1);
-$posts = $user->posts;`}</code>
-        </pre>
+$posts = $user->posts;`}</code></pre>
       </div>
 
       <div className="topic-card p-6 mb-6">
         <h2 className="text-2xl font-bold text-foreground mb-4">🔗 Many to Many</h2>
-        <pre className="bg-secondary/50 p-4 rounded-lg overflow-x-auto">
-          <code>{`<?php
+        <pre className="bg-secondary/50 p-4 rounded-lg overflow-x-auto"><code>{`<?php
 class User extends Model {
     public function roles() {
         return $this->belongsToMany(Role::class);
@@ -48,8 +45,7 @@ class Role extends Model {
 
 // Usage
 $user->roles()->attach($roleId);
-$user->roles()->detach($roleId);`}</code>
-        </pre>
+$user->roles()->detach($roleId);`}</code></pre>
       </div>
 
       <div className="topic-card p-6 bg-gradient-to-r from-green-500/10 to-blue-500/10">

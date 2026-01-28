@@ -8,8 +8,7 @@ const PhpunitTesting = () => {
 
       <div className="topic-card p-6 mb-6">
         <h2 className="text-2xl font-bold text-foreground mb-4">🧪 Creating Test</h2>
-        <pre className="bg-secondary/50 p-4 rounded-lg overflow-x-auto">
-          <code>{`php artisan make:test UserTest --unit
+        <pre className="bg-secondary/50 p-4 rounded-lg overflow-x-auto"><code>{`php artisan make:test UserTest --unit
 
 class UserTest extends TestCase
 {
@@ -21,19 +20,16 @@ class UserTest extends TestCase
             'email' => $user->email
         ]);
     }
-}`}</code>
-        </pre>
+}`}</code></pre>
       </div>
 
       <div className="topic-card p-6 mb-6">
         <h2 className="text-2xl font-bold text-foreground mb-4">▶️ Running Tests</h2>
-        <pre className="bg-secondary/50 p-4 rounded-lg overflow-x-auto">
-          <code>{`# Run all tests
+        <pre className="bg-secondary/50 p-4 rounded-lg overflow-x-auto"><code>{`# Run all tests
 php artisan test
 
 # Run specific test
-php artisan test --filter UserTest`}</code>
-        </pre>
+php artisan test --filter UserTest`}</code></pre>
       </div>
 
       <div className="topic-card p-6 bg-gradient-to-r from-green-500/10 to-blue-500/10">

@@ -381,54 +381,55 @@ const App = () => (
             <Route path="/nextjs/metadata/" element={<Metadata />} />
             <Route path="/nextjs/*" element={<TopicNotFound />} />
             
-            {/* PHP Topics */}
-            <Route path="/php/fundamentals/syntax-basics/" element={<SyntaxBasics />} />
-            <Route path="/php/fundamentals/variables-types/" element={<VariablesTypes />} />
-            <Route path="/php/fundamentals/functions/" element={<PhpFunctions />} />
-            <Route path="/php/fundamentals/arrays/" element={<PhpArrays />} />
-            <Route path="/php/fundamentals/superglobals/" element={<Superglobals />} />
-            <Route path="/php/oop/classes-objects/" element={<ClassesObjects />} />
-            <Route path="/php/oop/inheritance/" element={<Inheritance />} />
-            <Route path="/php/oop/interfaces-traits/" element={<InterfacesTraits />} />
-            <Route path="/php/oop/namespaces/" element={<Namespaces />} />
-            <Route path="/php/oop/magic-methods/" element={<MagicMethods />} />
-            <Route path="/php/advanced/error-handling/" element={<PhpErrorHandling />} />
-            <Route path="/php/advanced/pdo-database/" element={<PdoDatabase />} />
-            <Route path="/php/advanced/sessions-cookies/" element={<SessionsCookies />} />
-            <Route path="/php/advanced/file-handling/" element={<FileHandling />} />
-            <Route path="/php/advanced/composer/" element={<Composer />} />
-            <Route path="/php/security/sql-injection/" element={<SqlInjection />} />
-            <Route path="/php/security/xss-csrf/" element={<XssCsrf />} />
-            <Route path="/php/security/authentication/" element={<PhpAuthentication />} />
-            <Route path="/php/security/validation/" element={<PhpValidation />} />
-            <Route path="/php/*" element={<TopicNotFound />} />
+            {/* Other Languages Topics */}
+            <Route path="/other-languages/php/fundamentals/syntax-basics/" element={<SyntaxBasics />} />
+            <Route path="/other-languages/php/fundamentals/variables-types/" element={<VariablesTypes />} />
+            <Route path="/other-languages/php/fundamentals/functions/" element={<PhpFunctions />} />
+            <Route path="/other-languages/php/fundamentals/arrays/" element={<PhpArrays />} />
+            <Route path="/other-languages/php/fundamentals/superglobals/" element={<Superglobals />} />
+            <Route path="/other-languages/php/oop/classes-objects/" element={<ClassesObjects />} />
+            <Route path="/other-languages/php/oop/inheritance/" element={<Inheritance />} />
+            <Route path="/other-languages/php/oop/interfaces-traits/" element={<InterfacesTraits />} />
+            <Route path="/other-languages/php/oop/namespaces/" element={<Namespaces />} />
+            <Route path="/other-languages/php/oop/magic-methods/" element={<MagicMethods />} />
+            <Route path="/other-languages/php/advanced/error-handling/" element={<PhpErrorHandling />} />
+            <Route path="/other-languages/php/advanced/pdo-database/" element={<PdoDatabase />} />
+            <Route path="/other-languages/php/advanced/sessions-cookies/" element={<SessionsCookies />} />
+            <Route path="/other-languages/php/advanced/file-handling/" element={<FileHandling />} />
+            <Route path="/other-languages/php/advanced/composer/" element={<Composer />} />
+            <Route path="/other-languages/php/security/sql-injection/" element={<SqlInjection />} />
+            <Route path="/other-languages/php/security/xss-csrf/" element={<XssCsrf />} />
+            <Route path="/other-languages/php/security/authentication/" element={<PhpAuthentication />} />
+            <Route path="/other-languages/php/security/validation/" element={<PhpValidation />} />
+            <Route path="/other-languages/laravel/fundamentals/installation-setup/" element={<InstallationSetup />} />
+            <Route path="/other-languages/laravel/fundamentals/routing/" element={<LaravelRouting />} />
+            <Route path="/other-languages/laravel/fundamentals/controllers/" element={<Controllers />} />
+            <Route path="/other-languages/laravel/fundamentals/views-blade/" element={<ViewsBlade />} />
+            <Route path="/other-languages/laravel/fundamentals/middleware/" element={<Middleware />} />
+            <Route path="/other-languages/laravel/eloquent/models/" element={<Models />} />
+            <Route path="/other-languages/laravel/eloquent/relationships/" element={<Relationships />} />
+            <Route path="/other-languages/laravel/eloquent/query-builder/" element={<QueryBuilder />} />
+            <Route path="/other-languages/laravel/eloquent/accessors-mutators/" element={<AccessorsMutators />} />
+            <Route path="/other-languages/laravel/eloquent/scopes/" element={<Scopes />} />
+            <Route path="/other-languages/laravel/advanced/validation/" element={<LaravelValidation />} />
+            <Route path="/other-languages/laravel/advanced/authentication/" element={<LaravelAuthentication />} />
+            <Route path="/other-languages/laravel/advanced/authorization/" element={<Authorization />} />
+            <Route path="/other-languages/laravel/advanced/api-resources/" element={<ApiResources />} />
+            <Route path="/other-languages/laravel/advanced/events-listeners/" element={<EventsListeners />} />
+            <Route path="/other-languages/laravel/advanced/queues-jobs/" element={<QueuesJobs />} />
+            <Route path="/other-languages/laravel/advanced/notifications/" element={<Notifications />} />
+            <Route path="/other-languages/laravel/advanced/file-storage/" element={<FileStorage />} />
+            <Route path="/other-languages/laravel/deployment/caching/" element={<LaravelCaching />} />
+            <Route path="/other-languages/laravel/deployment/optimization/" element={<Optimization />} />
+            <Route path="/other-languages/laravel/deployment/deployment/" element={<LaravelDeployment />} />
+            <Route path="/other-languages/laravel/testing/phpunit/" element={<PhpunitTesting />} />
+            <Route path="/other-languages/laravel/testing/feature-tests/" element={<FeatureTests />} />
+            <Route path="/other-languages/laravel/testing/database-testing/" element={<DatabaseTesting />} />
+            <Route path="/other-languages/*" element={<TopicNotFound />} />
             
-            {/* Laravel Topics */}
-            <Route path="/laravel/fundamentals/installation-setup/" element={<InstallationSetup />} />
-            <Route path="/laravel/fundamentals/routing/" element={<LaravelRouting />} />
-            <Route path="/laravel/fundamentals/controllers/" element={<Controllers />} />
-            <Route path="/laravel/fundamentals/views-blade/" element={<ViewsBlade />} />
-            <Route path="/laravel/fundamentals/middleware/" element={<Middleware />} />
-            <Route path="/laravel/eloquent/models/" element={<Models />} />
-            <Route path="/laravel/eloquent/relationships/" element={<Relationships />} />
-            <Route path="/laravel/eloquent/query-builder/" element={<QueryBuilder />} />
-            <Route path="/laravel/eloquent/accessors-mutators/" element={<AccessorsMutators />} />
-            <Route path="/laravel/eloquent/scopes/" element={<Scopes />} />
-            <Route path="/laravel/advanced/validation/" element={<LaravelValidation />} />
-            <Route path="/laravel/advanced/authentication/" element={<LaravelAuthentication />} />
-            <Route path="/laravel/advanced/authorization/" element={<Authorization />} />
-            <Route path="/laravel/advanced/api-resources/" element={<ApiResources />} />
-            <Route path="/laravel/advanced/events-listeners/" element={<EventsListeners />} />
-            <Route path="/laravel/advanced/queues-jobs/" element={<QueuesJobs />} />
-            <Route path="/laravel/advanced/notifications/" element={<Notifications />} />
-            <Route path="/laravel/advanced/file-storage/" element={<FileStorage />} />
-            <Route path="/laravel/deployment/caching/" element={<LaravelCaching />} />
-            <Route path="/laravel/deployment/optimization/" element={<Optimization />} />
-            <Route path="/laravel/deployment/deployment/" element={<LaravelDeployment />} />
-            <Route path="/laravel/testing/phpunit/" element={<PhpunitTesting />} />
-            <Route path="/laravel/testing/feature-tests/" element={<FeatureTests />} />
-            <Route path="/laravel/testing/database-testing/" element={<DatabaseTesting />} />
-            <Route path="/laravel/*" element={<TopicNotFound />} />
+            {/* Old PHP/Laravel routes - redirect to new paths */}
+            <Route path="/php/*" element={<Navigate to="/other-languages/php/fundamentals/syntax-basics/" replace />} />
+            <Route path="/laravel/*" element={<Navigate to="/other-languages/laravel/fundamentals/installation-setup/" replace />} />
             
             {/* SEO Topics */}
             <Route path="/seo/basics/what-is-seo/" element={<WhatIsSeo />} />

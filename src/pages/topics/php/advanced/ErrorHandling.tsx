@@ -8,8 +8,7 @@ const ErrorHandling = () => {
 
       <div className="topic-card p-6 mb-6">
         <h2 className="text-2xl font-bold text-foreground mb-4">🎯 Try-Catch</h2>
-        <pre className="bg-secondary/50 p-4 rounded-lg overflow-x-auto">
-          <code>{`<?php
+        <pre className="bg-secondary/50 p-4 rounded-lg overflow-x-auto"><code>{`<?php
 try {
     $result = 10 / 0;
 } catch (DivisionByZeroError $e) {
@@ -18,14 +17,12 @@ try {
     echo "Error: " . $e->getMessage();
 } finally {
     echo "This always runs";
-}`}</code>
-        </pre>
+}`}</code></pre>
       </div>
 
       <div className="topic-card p-6 mb-6">
         <h2 className="text-2xl font-bold text-foreground mb-4">🚨 Throwing Exceptions</h2>
-        <pre className="bg-secondary/50 p-4 rounded-lg overflow-x-auto">
-          <code>{`<?php
+        <pre className="bg-secondary/50 p-4 rounded-lg overflow-x-auto"><code>{`<?php
 function divide($a, $b) {
     if ($b === 0) {
         throw new Exception("Cannot divide by zero");
@@ -37,8 +34,7 @@ try {
     echo divide(10, 0);
 } catch (Exception $e) {
     echo $e->getMessage();
-}`}</code>
-        </pre>
+}`}</code></pre>
       </div>
 
       <div className="topic-card p-6 bg-gradient-to-r from-green-500/10 to-blue-500/10">

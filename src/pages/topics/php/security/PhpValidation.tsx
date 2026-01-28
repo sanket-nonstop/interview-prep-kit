@@ -8,8 +8,7 @@ const PhpValidation = () => {
 
       <div className="topic-card p-6 mb-6">
         <h2 className="text-2xl font-bold text-foreground mb-4">✅ Validation</h2>
-        <pre className="bg-secondary/50 p-4 rounded-lg overflow-x-auto">
-          <code>{`<?php
+        <pre className="bg-secondary/50 p-4 rounded-lg overflow-x-auto"><code>{`<?php
 $email = $_POST['email'];
 
 // Validate email
@@ -20,14 +19,12 @@ if (filter_var($email, FILTER_VALIDATE_EMAIL)) {
 // Validate integer
 if (filter_var($age, FILTER_VALIDATE_INT)) {
     echo "Valid integer";
-}`}</code>
-        </pre>
+}`}</code></pre>
       </div>
 
       <div className="topic-card p-6 mb-6">
         <h2 className="text-2xl font-bold text-foreground mb-4">🧹 Sanitization</h2>
-        <pre className="bg-secondary/50 p-4 rounded-lg overflow-x-auto">
-          <code>{`<?php
+        <pre className="bg-secondary/50 p-4 rounded-lg overflow-x-auto"><code>{`<?php
 // Sanitize email
 $email = filter_var($_POST['email'], FILTER_SANITIZE_EMAIL);
 
@@ -35,8 +32,7 @@ $email = filter_var($_POST['email'], FILTER_SANITIZE_EMAIL);
 $name = filter_var($_POST['name'], FILTER_SANITIZE_STRING);
 
 // Remove HTML tags
-$text = strip_tags($_POST['text']);`}</code>
-        </pre>
+$text = strip_tags($_POST['text']);`}</code></pre>
       </div>
 
       <div className="topic-card p-6 bg-gradient-to-r from-green-500/10 to-blue-500/10">

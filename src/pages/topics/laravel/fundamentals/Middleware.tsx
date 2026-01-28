@@ -8,16 +8,13 @@ const Middleware = () => {
 
       <div className="topic-card p-6 mb-6">
         <h2 className="text-2xl font-bold text-foreground mb-4">🎯 Creating Middleware</h2>
-        <pre className="bg-secondary/50 p-4 rounded-lg overflow-x-auto">
-          <code>{`# Create middleware
-php artisan make:middleware CheckAge`}</code>
-        </pre>
+        <pre className="bg-secondary/50 p-4 rounded-lg overflow-x-auto"><code>{`# Create middleware
+php artisan make:middleware CheckAge`}</code></pre>
       </div>
 
       <div className="topic-card p-6 mb-6">
         <h2 className="text-2xl font-bold text-foreground mb-4">📝 Middleware Example</h2>
-        <pre className="bg-secondary/50 p-4 rounded-lg overflow-x-auto">
-          <code>{`<?php
+        <pre className="bg-secondary/50 p-4 rounded-lg overflow-x-auto"><code>{`<?php
 namespace App\\Http\\Middleware;
 
 class CheckAge
@@ -30,14 +27,12 @@ class CheckAge
         
         return $next($request);
     }
-}`}</code>
-        </pre>
+}`}</code></pre>
       </div>
 
       <div className="topic-card p-6 mb-6">
         <h2 className="text-2xl font-bold text-foreground mb-4">🔗 Applying Middleware</h2>
-        <pre className="bg-secondary/50 p-4 rounded-lg overflow-x-auto">
-          <code>{`// On route
+        <pre className="bg-secondary/50 p-4 rounded-lg overflow-x-auto"><code>{`// On route
 Route::get('/admin', function () {
     //
 })->middleware('auth');
@@ -49,8 +44,7 @@ class UserController extends Controller
     {
         $this->middleware('auth');
     }
-}`}</code>
-        </pre>
+}`}</code></pre>
       </div>
 
       <div className="topic-card p-6 bg-gradient-to-r from-green-500/10 to-blue-500/10">

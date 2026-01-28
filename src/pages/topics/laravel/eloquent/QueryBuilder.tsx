@@ -8,8 +8,7 @@ const QueryBuilder = () => {
 
       <div className="topic-card p-6 mb-6">
         <h2 className="text-2xl font-bold text-foreground mb-4">🔍 Basic Queries</h2>
-        <pre className="bg-secondary/50 p-4 rounded-lg overflow-x-auto">
-          <code>{`use Illuminate\\Support\\Facades\\DB;
+        <pre className="bg-secondary/50 p-4 rounded-lg overflow-x-auto"><code>{`use Illuminate\\Support\\Facades\\DB;
 
 // Select all
 $users = DB::table('users')->get();
@@ -22,14 +21,12 @@ $users = DB::table('users')
 // Order by
 $users = DB::table('users')
     ->orderBy('name')
-    ->get();`}</code>
-        </pre>
+    ->get();`}</code></pre>
       </div>
 
       <div className="topic-card p-6 mb-6">
         <h2 className="text-2xl font-bold text-foreground mb-4">✏️ Insert & Update</h2>
-        <pre className="bg-secondary/50 p-4 rounded-lg overflow-x-auto">
-          <code>{`// Insert
+        <pre className="bg-secondary/50 p-4 rounded-lg overflow-x-auto"><code>{`// Insert
 DB::table('users')->insert([
     'name' => 'John',
     'email' => 'john@example.com'
@@ -38,8 +35,7 @@ DB::table('users')->insert([
 // Update
 DB::table('users')
     ->where('id', 1)
-    ->update(['name' => 'Jane']);`}</code>
-        </pre>
+    ->update(['name' => 'Jane']);`}</code></pre>
       </div>
 
       <div className="topic-card p-6 bg-gradient-to-r from-green-500/10 to-blue-500/10">

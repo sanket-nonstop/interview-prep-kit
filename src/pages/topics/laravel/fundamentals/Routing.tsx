@@ -24,8 +24,7 @@ const Routing = () => {
 
       <div className="topic-card p-6 mb-6">
         <h2 className="text-2xl font-bold text-foreground mb-4">📝 Basic Routes</h2>
-        <pre className="bg-secondary/50 p-4 rounded-lg overflow-x-auto">
-          <code>{`// routes/web.php
+        <pre className="bg-secondary/50 p-4 rounded-lg overflow-x-auto"><code>{`// routes/web.php
 
 Route::get('/', function () {
     return view('welcome');
@@ -37,8 +36,7 @@ Route::get('/about', function () {
 
 Route::get('/contact', function () {
     return view('contact');
-});`}</code>
-        </pre>
+});`}</code></pre>
       </div>
 
       <div className="topic-card p-6 mb-6">
@@ -65,8 +63,7 @@ Route::get('/contact', function () {
 
       <div className="topic-card p-6 mb-6">
         <h2 className="text-2xl font-bold text-foreground mb-4">🔗 Route Parameters</h2>
-        <pre className="bg-secondary/50 p-4 rounded-lg overflow-x-auto">
-          <code>{`// Required parameter
+        <pre className="bg-secondary/50 p-4 rounded-lg overflow-x-auto"><code>{`// Required parameter
 Route::get('/user/{id}', function ($id) {
     return "User ID: " . $id;
 });
@@ -79,14 +76,12 @@ Route::get('/post/{id?}', function ($id = null) {
 // Multiple parameters
 Route::get('/post/{category}/{id}', function ($category, $id) {
     return "Category: $category, Post: $id";
-});`}</code>
-        </pre>
+});`}</code></pre>
       </div>
 
       <div className="topic-card p-6 mb-6">
         <h2 className="text-2xl font-bold text-foreground mb-4">🏷️ Named Routes</h2>
-        <pre className="bg-secondary/50 p-4 rounded-lg overflow-x-auto">
-          <code>{`// Define named route
+        <pre className="bg-secondary/50 p-4 rounded-lg overflow-x-auto"><code>{`// Define named route
 Route::get('/profile', function () {
     return view('profile');
 })->name('profile');
@@ -95,8 +90,7 @@ Route::get('/profile', function () {
 $url = route('profile');
 
 // Redirect to named route
-return redirect()->route('profile');`}</code>
-        </pre>
+return redirect()->route('profile');`}</code></pre>
       </div>
 
       <div className="topic-card p-6 bg-gradient-to-r from-green-500/10 to-blue-500/10">

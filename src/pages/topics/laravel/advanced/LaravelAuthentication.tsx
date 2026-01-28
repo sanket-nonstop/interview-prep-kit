@@ -8,8 +8,7 @@ const LaravelAuthentication = () => {
 
       <div className="topic-card p-6 mb-6">
         <h2 className="text-2xl font-bold text-foreground mb-4">🔐 Laravel Sanctum</h2>
-        <pre className="bg-secondary/50 p-4 rounded-lg overflow-x-auto">
-          <code>{`// Install Sanctum
+        <pre className="bg-secondary/50 p-4 rounded-lg overflow-x-auto"><code>{`// Install Sanctum
 composer require laravel/sanctum
 
 // Generate token
@@ -18,14 +17,12 @@ $token = $user->createToken('token-name')->plainTextToken;
 // Protect routes
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
-});`}</code>
-        </pre>
+});`}</code></pre>
       </div>
 
       <div className="topic-card p-6 mb-6">
         <h2 className="text-2xl font-bold text-foreground mb-4">🎫 Login Example</h2>
-        <pre className="bg-secondary/50 p-4 rounded-lg overflow-x-auto">
-          <code>{`public function login(Request $request)
+        <pre className="bg-secondary/50 p-4 rounded-lg overflow-x-auto"><code>{`public function login(Request $request)
 {
     $credentials = $request->only('email', 'password');
     
@@ -37,8 +34,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     }
     
     return response()->json(['error' => 'Unauthorized'], 401);
-}`}</code>
-        </pre>
+}`}</code></pre>
       </div>
 
       <div className="topic-card p-6 bg-gradient-to-r from-green-500/10 to-blue-500/10">

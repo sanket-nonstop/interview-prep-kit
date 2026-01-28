@@ -9,16 +9,16 @@ const SyntaxBasics = () => {
       <div className="topic-card p-6 mb-6">
         <h2 className="text-2xl font-bold text-foreground mb-4">📝 PHP Tags</h2>
         <pre className="bg-secondary/50 p-4 rounded-lg overflow-x-auto"><code className="text-sm">{`<?php
-  echo "Hello, World!";
+echo "Hello, World!";
 ?>`}</code></pre>
       </div>
 
       <div className="topic-card p-6 mb-6">
         <h2 className="text-2xl font-bold text-foreground mb-4">🔤 Variables</h2>
         <pre className="bg-secondary/50 p-4 rounded-lg overflow-x-auto"><code className="text-sm">{`<?php
-  $name = "John";
-  $age = 25;
-  echo "My name is $name";
+$name = "John";
+$age = 25;
+echo "My name is $name";
 ?>`}</code></pre>
       </div>
 

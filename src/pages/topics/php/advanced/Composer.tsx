@@ -8,22 +8,19 @@ const Composer = () => {
 
       <div className="topic-card p-6 mb-6">
         <h2 className="text-2xl font-bold text-foreground mb-4">📦 Installing Packages</h2>
-        <pre className="bg-secondary/50 p-4 rounded-lg overflow-x-auto">
-          <code>{`# Install package
+        <pre className="bg-secondary/50 p-4 rounded-lg overflow-x-auto"><code>{`# Install package
 composer require vendor/package
 
 # Install all dependencies
 composer install
 
 # Update dependencies
-composer update`}</code>
-        </pre>
+composer update`}</code></pre>
       </div>
 
       <div className="topic-card p-6 mb-6">
         <h2 className="text-2xl font-bold text-foreground mb-4">📝 composer.json</h2>
-        <pre className="bg-secondary/50 p-4 rounded-lg overflow-x-auto">
-          <code>{`{
+        <pre className="bg-secondary/50 p-4 rounded-lg overflow-x-auto"><code>{`{
     "require": {
         "monolog/monolog": "^2.0"
     },
@@ -32,8 +29,7 @@ composer update`}</code>
             "App\\\\": "src/"
         }
     }
-}`}</code>
-        </pre>
+}`}</code></pre>
       </div>
 
       <div className="topic-card p-6 bg-gradient-to-r from-green-500/10 to-blue-500/10">

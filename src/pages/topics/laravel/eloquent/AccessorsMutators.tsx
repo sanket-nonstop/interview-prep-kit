@@ -8,8 +8,7 @@ const AccessorsMutators = () => {
 
       <div className="topic-card p-6 mb-6">
         <h2 className="text-2xl font-bold text-foreground mb-4">📖 Accessors (Get)</h2>
-        <pre className="bg-secondary/50 p-4 rounded-lg overflow-x-auto">
-          <code>{`use Illuminate\\Database\\Eloquent\\Casts\\Attribute;
+        <pre className="bg-secondary/50 p-4 rounded-lg overflow-x-auto"><code>{`use Illuminate\\Database\\Eloquent\\Casts\\Attribute;
 
 class User extends Model
 {
@@ -22,14 +21,12 @@ class User extends Model
 }
 
 // Usage
-$user->name; // Automatically capitalized`}</code>
-        </pre>
+$user->name; // Automatically capitalized`}</code></pre>
       </div>
 
       <div className="topic-card p-6 mb-6">
         <h2 className="text-2xl font-bold text-foreground mb-4">✏️ Mutators (Set)</h2>
-        <pre className="bg-secondary/50 p-4 rounded-lg overflow-x-auto">
-          <code>{`protected function name(): Attribute
+        <pre className="bg-secondary/50 p-4 rounded-lg overflow-x-auto"><code>{`protected function name(): Attribute
 {
     return Attribute::make(
         set: fn ($value) => strtolower($value),
@@ -37,8 +34,7 @@ $user->name; // Automatically capitalized`}</code>
 }
 
 // Usage
-$user->name = 'JOHN'; // Stored as 'john'`}</code>
-        </pre>
+$user->name = 'JOHN'; // Stored as 'john'`}</code></pre>
       </div>
 
       <div className="topic-card p-6 bg-gradient-to-r from-green-500/10 to-blue-500/10">

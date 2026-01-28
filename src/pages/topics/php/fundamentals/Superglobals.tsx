@@ -30,21 +30,18 @@ const Superglobals = () => {
 
       <div className="topic-card p-6 mb-6">
         <h2 className="text-2xl font-bold text-foreground mb-4">📝 $_GET Example</h2>
-        <pre className="bg-secondary/50 p-4 rounded-lg overflow-x-auto">
-          <code>{`<?php
+        <pre className="bg-secondary/50 p-4 rounded-lg overflow-x-auto"><code>{`<?php
 // URL: page.php?name=John&age=25
 
 $name = $_GET['name']; // John
 $age = $_GET['age'];   // 25
 
-echo "Hello, $name! You are $age years old.";`}</code>
-        </pre>
+echo "Hello, $name! You are $age years old.";`}</code></pre>
       </div>
 
       <div className="topic-card p-6 mb-6">
         <h2 className="text-2xl font-bold text-foreground mb-4">📮 $_POST Example</h2>
-        <pre className="bg-secondary/50 p-4 rounded-lg overflow-x-auto">
-          <code>{`<?php
+        <pre className="bg-secondary/50 p-4 rounded-lg overflow-x-auto"><code>{`<?php
 // Form submitted with POST method
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
@@ -52,8 +49,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   $password = $_POST['password'];
   
   // Process login
-}`}</code>
-        </pre>
+}`}</code></pre>
       </div>
 
       <div className="topic-card p-6 bg-gradient-to-r from-green-500/10 to-blue-500/10">

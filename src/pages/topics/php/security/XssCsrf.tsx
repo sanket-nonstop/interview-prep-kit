@@ -8,21 +8,18 @@ const XssCsrf = () => {
 
       <div className="topic-card p-6 mb-6">
         <h2 className="text-2xl font-bold text-foreground mb-4">🛡️ XSS Prevention</h2>
-        <pre className="bg-secondary/50 p-4 rounded-lg overflow-x-auto">
-          <code>{`<?php
+        <pre className="bg-secondary/50 p-4 rounded-lg overflow-x-auto"><code>{`<?php
 // Escape output
 $name = htmlspecialchars($_POST['name'], ENT_QUOTES, 'UTF-8');
 echo $name;
 
 // Or use htmlentities
-$comment = htmlentities($_POST['comment']);`}</code>
-        </pre>
+$comment = htmlentities($_POST['comment']);`}</code></pre>
       </div>
 
       <div className="topic-card p-6 mb-6">
         <h2 className="text-2xl font-bold text-foreground mb-4">🔒 CSRF Protection</h2>
-        <pre className="bg-secondary/50 p-4 rounded-lg overflow-x-auto">
-          <code>{`<?php
+        <pre className="bg-secondary/50 p-4 rounded-lg overflow-x-auto"><code>{`<?php
 // Generate token
 session_start();
 $_SESSION['csrf_token'] = bin2hex(random_bytes(32));
@@ -33,8 +30,7 @@ echo '<input type="hidden" name="csrf_token" value="' . $_SESSION['csrf_token'] 
 // Verify token
 if ($_POST['csrf_token'] !== $_SESSION['csrf_token']) {
     die('Invalid CSRF token');
-}`}</code>
-        </pre>
+}`}</code></pre>
       </div>
 
       <div className="topic-card p-6 bg-gradient-to-r from-green-500/10 to-blue-500/10">

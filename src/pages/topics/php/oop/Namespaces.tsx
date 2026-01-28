@@ -8,8 +8,7 @@ const Namespaces = () => {
 
       <div className="topic-card p-6 mb-6">
         <h2 className="text-2xl font-bold text-foreground mb-4">📦 Namespaces</h2>
-        <pre className="bg-secondary/50 p-4 rounded-lg overflow-x-auto">
-          <code>{`<?php
+        <pre className="bg-secondary/50 p-4 rounded-lg overflow-x-auto"><code>{`<?php
 namespace App\\Models;
 
 class User {
@@ -18,14 +17,12 @@ class User {
 
 // Using the class
 use App\\Models\\User;
-$user = new User();`}</code>
-        </pre>
+$user = new User();`}</code></pre>
       </div>
 
       <div className="topic-card p-6 mb-6">
         <h2 className="text-2xl font-bold text-foreground mb-4">🔄 Autoloading</h2>
-        <pre className="bg-secondary/50 p-4 rounded-lg overflow-x-auto">
-          <code>{`// composer.json
+        <pre className="bg-secondary/50 p-4 rounded-lg overflow-x-auto"><code>{`// composer.json
 {
     "autoload": {
         "psr-4": {
@@ -34,8 +31,7 @@ $user = new User();`}</code>
     }
 }
 
-// Run: composer dump-autoload`}</code>
-        </pre>
+// Run: composer dump-autoload`}</code></pre>
       </div>
 
       <div className="topic-card p-6 bg-gradient-to-r from-green-500/10 to-blue-500/10">

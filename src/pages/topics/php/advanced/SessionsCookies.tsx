@@ -8,8 +8,7 @@ const SessionsCookies = () => {
 
       <div className="topic-card p-6 mb-6">
         <h2 className="text-2xl font-bold text-foreground mb-4">🔐 Sessions</h2>
-        <pre className="bg-secondary/50 p-4 rounded-lg overflow-x-auto">
-          <code>{`<?php
+        <pre className="bg-secondary/50 p-4 rounded-lg overflow-x-auto"><code>{`<?php
 // Start session
 session_start();
 
@@ -21,14 +20,12 @@ $_SESSION['username'] = 'john';
 $userId = $_SESSION['user_id'];
 
 // Destroy session
-session_destroy();`}</code>
-        </pre>
+session_destroy();`}</code></pre>
       </div>
 
       <div className="topic-card p-6 mb-6">
         <h2 className="text-2xl font-bold text-foreground mb-4">🍪 Cookies</h2>
-        <pre className="bg-secondary/50 p-4 rounded-lg overflow-x-auto">
-          <code>{`<?php
+        <pre className="bg-secondary/50 p-4 rounded-lg overflow-x-auto"><code>{`<?php
 // Set cookie (expires in 1 day)
 setcookie('username', 'john', time() + 86400, '/');
 
@@ -36,8 +33,7 @@ setcookie('username', 'john', time() + 86400, '/');
 $username = $_COOKIE['username'];
 
 // Delete cookie
-setcookie('username', '', time() - 3600, '/');`}</code>
-        </pre>
+setcookie('username', '', time() - 3600, '/');`}</code></pre>
       </div>
 
       <div className="topic-card p-6 bg-gradient-to-r from-green-500/10 to-blue-500/10">

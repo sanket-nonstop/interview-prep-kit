@@ -8,8 +8,7 @@ const FeatureTests = () => {
 
       <div className="topic-card p-6 mb-6">
         <h2 className="text-2xl font-bold text-foreground mb-4">🎯 HTTP Tests</h2>
-        <pre className="bg-secondary/50 p-4 rounded-lg overflow-x-auto">
-          <code>{`php artisan make:test PostTest
+        <pre className="bg-secondary/50 p-4 rounded-lg overflow-x-auto"><code>{`php artisan make:test PostTest
 
 class PostTest extends TestCase
 {
@@ -27,18 +26,15 @@ class PostTest extends TestCase
             'title' => 'Test Post'
         ]);
     }
-}`}</code>
-        </pre>
+}`}</code></pre>
       </div>
 
       <div className="topic-card p-6 mb-6">
         <h2 className="text-2xl font-bold text-foreground mb-4">✅ Assertions</h2>
-        <pre className="bg-secondary/50 p-4 rounded-lg overflow-x-auto">
-          <code>{`$response->assertStatus(200);
+        <pre className="bg-secondary/50 p-4 rounded-lg overflow-x-auto"><code>{`$response->assertStatus(200);
 $response->assertJson(['success' => true]);
 $response->assertRedirect('/home');
-$response->assertSee('Welcome');`}</code>
-        </pre>
+$response->assertSee('Welcome');`}</code></pre>
       </div>
 
       <div className="topic-card p-6 bg-gradient-to-r from-green-500/10 to-blue-500/10">

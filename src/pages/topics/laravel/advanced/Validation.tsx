@@ -8,8 +8,7 @@ const Validation = () => {
 
       <div className="topic-card p-6 mb-6">
         <h2 className="text-2xl font-bold text-foreground mb-4">✅ Basic Validation</h2>
-        <pre className="bg-secondary/50 p-4 rounded-lg overflow-x-auto">
-          <code>{`<?php
+        <pre className="bg-secondary/50 p-4 rounded-lg overflow-x-auto"><code>{`<?php
 public function store(Request $request)
 {
     $validated = $request->validate([
@@ -20,8 +19,7 @@ public function store(Request $request)
     ]);
     
     // Data is valid, proceed
-}`}</code>
-        </pre>
+}`}</code></pre>
       </div>
 
       <div className="topic-card p-6 mb-6">

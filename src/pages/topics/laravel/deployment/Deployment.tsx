@@ -34,16 +34,14 @@ const Deployment = () => {
 
       <div className="topic-card p-6 mb-6">
         <h2 className="text-2xl font-bold text-foreground mb-4">🔒 Security</h2>
-        <pre className="bg-secondary/50 p-4 rounded-lg overflow-x-auto">
-          <code>{`# Generate app key
+        <pre className="bg-secondary/50 p-4 rounded-lg overflow-x-auto"><code>{`# Generate app key
 php artisan key:generate
 
 # Set proper permissions
 chmod -R 755 storage bootstrap/cache
 
 # Use HTTPS
-APP_URL=https://yourdomain.com`}</code>
-        </pre>
+APP_URL=https://yourdomain.com`}</code></pre>
       </div>
 
       <div className="topic-card p-6 bg-gradient-to-r from-green-500/10 to-blue-500/10">

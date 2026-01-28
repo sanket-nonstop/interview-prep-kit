@@ -8,16 +8,13 @@ const Controllers = () => {
 
       <div className="topic-card p-6 mb-6">
         <h2 className="text-2xl font-bold text-foreground mb-4">🎯 Creating a Controller</h2>
-        <pre className="bg-secondary/50 p-4 rounded-lg overflow-x-auto">
-          <code>{`# Create controller
-php artisan make:controller UserController`}</code>
-        </pre>
+        <pre className="bg-secondary/50 p-4 rounded-lg overflow-x-auto"><code>{`# Create controller
+php artisan make:controller UserController`}</code></pre>
       </div>
 
       <div className="topic-card p-6 mb-6">
         <h2 className="text-2xl font-bold text-foreground mb-4">📝 Basic Controller</h2>
-        <pre className="bg-secondary/50 p-4 rounded-lg overflow-x-auto">
-          <code>{`<?php
+        <pre className="bg-secondary/50 p-4 rounded-lg overflow-x-auto"><code>{`<?php
 namespace App\\Http\\Controllers;
 
 class UserController extends Controller
@@ -32,17 +29,14 @@ class UserController extends Controller
         $user = User::find($id);
         return view('users.show', compact('user'));
     }
-}`}</code>
-        </pre>
+}`}</code></pre>
       </div>
 
       <div className="topic-card p-6 mb-6">
         <h2 className="text-2xl font-bold text-foreground mb-4">🔗 Route to Controller</h2>
-        <pre className="bg-secondary/50 p-4 rounded-lg overflow-x-auto">
-          <code>{`// routes/web.php
+        <pre className="bg-secondary/50 p-4 rounded-lg overflow-x-auto"><code>{`// routes/web.php
 Route::get('/users', [UserController::class, 'index']);
-Route::get('/users/{id}', [UserController::class, 'show']);`}</code>
-        </pre>
+Route::get('/users/{id}', [UserController::class, 'show']);`}</code></pre>
       </div>
 
       <div className="topic-card p-6 bg-gradient-to-r from-green-500/10 to-blue-500/10">

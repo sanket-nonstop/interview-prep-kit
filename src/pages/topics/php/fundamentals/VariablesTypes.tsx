@@ -11,56 +11,44 @@ const VariablesTypes = () => {
         <div className="grid md:grid-cols-2 gap-4">
           <div className="bg-background/50 p-4 rounded-lg border border-border">
             <h3 className="font-semibold text-foreground mb-2">String</h3>
-            <pre className="text-sm bg-secondary/50 p-2 rounded">
-              <code>{`$name = "John";
-$city = 'New York';`}</code>
-            </pre>
+            <pre className="text-sm bg-secondary/50 p-2 rounded"><code>{`$name = "John";
+$city = 'New York';`}</code></pre>
           </div>
           <div className="bg-background/50 p-4 rounded-lg border border-border">
             <h3 className="font-semibold text-foreground mb-2">Integer</h3>
-            <pre className="text-sm bg-secondary/50 p-2 rounded">
-              <code>{`$age = 25;
-$year = 2024;`}</code>
-            </pre>
+            <pre className="text-sm bg-secondary/50 p-2 rounded"><code>{`$age = 25;
+$year = 2024;`}</code></pre>
           </div>
           <div className="bg-background/50 p-4 rounded-lg border border-border">
             <h3 className="font-semibold text-foreground mb-2">Float</h3>
-            <pre className="text-sm bg-secondary/50 p-2 rounded">
-              <code>{`$price = 19.99;
-$pi = 3.14159;`}</code>
-            </pre>
+            <pre className="text-sm bg-secondary/50 p-2 rounded"><code>{`$price = 19.99;
+$pi = 3.14159;`}</code></pre>
           </div>
           <div className="bg-background/50 p-4 rounded-lg border border-border">
             <h3 className="font-semibold text-foreground mb-2">Boolean</h3>
-            <pre className="text-sm bg-secondary/50 p-2 rounded">
-              <code>{`$isActive = true;
-$hasAccess = false;`}</code>
-            </pre>
+            <pre className="text-sm bg-secondary/50 p-2 rounded"><code>{`$isActive = true;
+$hasAccess = false;`}</code></pre>
           </div>
         </div>
       </div>
 
       <div className="topic-card p-6 mb-6">
         <h2 className="text-2xl font-bold text-foreground mb-4">🔍 Type Checking</h2>
-        <pre className="bg-secondary/50 p-4 rounded-lg overflow-x-auto">
-          <code>{`$value = "Hello";
+        <pre className="bg-secondary/50 p-4 rounded-lg overflow-x-auto"><code>{`$value = "Hello";
 
 var_dump($value);        // string(5) "Hello"
 gettype($value);         // "string"
 is_string($value);       // true
-is_int($value);          // false`}</code>
-        </pre>
+is_int($value);          // false`}</code></pre>
       </div>
 
       <div className="topic-card p-6 mb-6">
         <h2 className="text-2xl font-bold text-foreground mb-4">🔄 Type Casting</h2>
-        <pre className="bg-secondary/50 p-4 rounded-lg overflow-x-auto">
-          <code>{`$num = "123";
+        <pre className="bg-secondary/50 p-4 rounded-lg overflow-x-auto"><code>{`$num = "123";
 $int = (int)$num;        // 123
 $float = (float)$num;    // 123.0
 $bool = (bool)$num;      // true
-$str = (string)$int;     // "123"`}</code>
-        </pre>
+$str = (string)$int;     // "123"`}</code></pre>
       </div>
 
       <div className="topic-card p-6 bg-gradient-to-r from-green-500/10 to-blue-500/10">

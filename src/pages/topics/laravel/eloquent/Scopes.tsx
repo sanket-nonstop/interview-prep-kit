@@ -8,8 +8,7 @@ const Scopes = () => {
 
       <div className="topic-card p-6 mb-6">
         <h2 className="text-2xl font-bold text-foreground mb-4">🔍 Local Scopes</h2>
-        <pre className="bg-secondary/50 p-4 rounded-lg overflow-x-auto">
-          <code>{`class Post extends Model
+        <pre className="bg-secondary/50 p-4 rounded-lg overflow-x-auto"><code>{`class Post extends Model
 {
     public function scopeActive($query)
     {
@@ -23,21 +22,18 @@ const Scopes = () => {
 }
 
 // Usage
-$posts = Post::active()->popular()->get();`}</code>
-        </pre>
+$posts = Post::active()->popular()->get();`}</code></pre>
       </div>
 
       <div className="topic-card p-6 mb-6">
         <h2 className="text-2xl font-bold text-foreground mb-4">🎯 Dynamic Scopes</h2>
-        <pre className="bg-secondary/50 p-4 rounded-lg overflow-x-auto">
-          <code>{`public function scopeOfType($query, $type)
+        <pre className="bg-secondary/50 p-4 rounded-lg overflow-x-auto"><code>{`public function scopeOfType($query, $type)
 {
     return $query->where('type', $type);
 }
 
 // Usage
-$posts = Post::ofType('tutorial')->get();`}</code>
-        </pre>
+$posts = Post::ofType('tutorial')->get();`}</code></pre>
       </div>
 
       <div className="topic-card p-6 bg-gradient-to-r from-green-500/10 to-blue-500/10">

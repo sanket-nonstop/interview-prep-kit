@@ -8,8 +8,7 @@ const Notifications = () => {
 
       <div className="topic-card p-6 mb-6">
         <h2 className="text-2xl font-bold text-foreground mb-4">📧 Creating Notification</h2>
-        <pre className="bg-secondary/50 p-4 rounded-lg overflow-x-auto">
-          <code>{`php artisan make:notification InvoicePaid
+        <pre className="bg-secondary/50 p-4 rounded-lg overflow-x-auto"><code>{`php artisan make:notification InvoicePaid
 
 class InvoicePaid extends Notification
 {
@@ -24,19 +23,16 @@ class InvoicePaid extends Notification
             ->line('Invoice paid!')
             ->action('View Invoice', url('/'));
     }
-}`}</code>
-        </pre>
+}`}</code></pre>
       </div>
 
       <div className="topic-card p-6 mb-6">
         <h2 className="text-2xl font-bold text-foreground mb-4">🔔 Sending Notifications</h2>
-        <pre className="bg-secondary/50 p-4 rounded-lg overflow-x-auto">
-          <code>{`// Send to user
+        <pre className="bg-secondary/50 p-4 rounded-lg overflow-x-auto"><code>{`// Send to user
 $user->notify(new InvoicePaid($invoice));
 
 // Send to multiple users
-Notification::send($users, new InvoicePaid($invoice));`}</code>
-        </pre>
+Notification::send($users, new InvoicePaid($invoice));`}</code></pre>
       </div>
 
       <div className="topic-card p-6 bg-gradient-to-r from-green-500/10 to-blue-500/10">

@@ -8,19 +8,16 @@ const Models = () => {
 
       <div className="topic-card p-6 mb-6">
         <h2 className="text-2xl font-bold text-foreground mb-4">🎯 Creating Model & Migration</h2>
-        <pre className="bg-secondary/50 p-4 rounded-lg overflow-x-auto">
-          <code>{`# Create model with migration
+        <pre className="bg-secondary/50 p-4 rounded-lg overflow-x-auto"><code>{`# Create model with migration
 php artisan make:model Post -m
 
 # Create model with migration, controller, and factory
-php artisan make:model Post -mcf`}</code>
-        </pre>
+php artisan make:model Post -mcf`}</code></pre>
       </div>
 
       <div className="topic-card p-6 mb-6">
         <h2 className="text-2xl font-bold text-foreground mb-4">📝 Basic Model</h2>
-        <pre className="bg-secondary/50 p-4 rounded-lg overflow-x-auto">
-          <code>{`<?php
+        <pre className="bg-secondary/50 p-4 rounded-lg overflow-x-auto"><code>{`<?php
 namespace App\\Models;
 
 use Illuminate\\Database\\Eloquent\\Model;
@@ -33,14 +30,12 @@ class Post extends Model
     {
         return $this->belongsTo(User::class);
     }
-}`}</code>
-        </pre>
+}`}</code></pre>
       </div>
 
       <div className="topic-card p-6 mb-6">
         <h2 className="text-2xl font-bold text-foreground mb-4">🗄️ Migration</h2>
-        <pre className="bg-secondary/50 p-4 rounded-lg overflow-x-auto">
-          <code>{`<?php
+        <pre className="bg-secondary/50 p-4 rounded-lg overflow-x-auto"><code>{`<?php
 public function up()
 {
     Schema::create('posts', function (Blueprint $table) {
@@ -50,14 +45,12 @@ public function up()
         $table->foreignId('user_id')->constrained();
         $table->timestamps();
     });
-}`}</code>
-        </pre>
+}`}</code></pre>
       </div>
 
       <div className="topic-card p-6 mb-6">
         <h2 className="text-2xl font-bold text-foreground mb-4">🔍 Querying Data</h2>
-        <pre className="bg-secondary/50 p-4 rounded-lg overflow-x-auto">
-          <code>{`// Get all posts
+        <pre className="bg-secondary/50 p-4 rounded-lg overflow-x-auto"><code>{`// Get all posts
 $posts = Post::all();
 
 // Find by ID
@@ -70,8 +63,7 @@ $posts = Post::where('user_id', 1)->get();
 Post::create([
     'title' => 'My Post',
     'content' => 'Content here'
-]);`}</code>
-        </pre>
+]);`}</code></pre>
       </div>
 
       <div className="topic-card p-6 bg-gradient-to-r from-green-500/10 to-blue-500/10">

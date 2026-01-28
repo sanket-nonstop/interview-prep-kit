@@ -8,8 +8,7 @@ const QueuesJobs = () => {
 
       <div className="topic-card p-6 mb-6">
         <h2 className="text-2xl font-bold text-foreground mb-4">🎯 Creating Job</h2>
-        <pre className="bg-secondary/50 p-4 rounded-lg overflow-x-auto">
-          <code>{`php artisan make:job ProcessVideo
+        <pre className="bg-secondary/50 p-4 rounded-lg overflow-x-auto"><code>{`php artisan make:job ProcessVideo
 
 class ProcessVideo implements ShouldQueue
 {
@@ -21,22 +20,19 @@ class ProcessVideo implements ShouldQueue
     {
         // Process video
     }
-}`}</code>
-        </pre>
+}`}</code></pre>
       </div>
 
       <div className="topic-card p-6 mb-6">
         <h2 className="text-2xl font-bold text-foreground mb-4">🚀 Dispatching Jobs</h2>
-        <pre className="bg-secondary/50 p-4 rounded-lg overflow-x-auto">
-          <code>{`// Dispatch to queue
+        <pre className="bg-secondary/50 p-4 rounded-lg overflow-x-auto"><code>{`// Dispatch to queue
 ProcessVideo::dispatch($video);
 
 // Dispatch with delay
 ProcessVideo::dispatch($video)->delay(now()->addMinutes(10));
 
 // Run queue worker
-php artisan queue:work`}</code>
-        </pre>
+php artisan queue:work`}</code></pre>
       </div>
 
       <div className="topic-card p-6 bg-gradient-to-r from-green-500/10 to-blue-500/10">

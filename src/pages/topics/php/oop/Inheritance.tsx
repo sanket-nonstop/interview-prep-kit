@@ -8,8 +8,7 @@ const Inheritance = () => {
 
       <div className="topic-card p-6 mb-6">
         <h2 className="text-2xl font-bold text-foreground mb-4">🔗 Basic Inheritance</h2>
-        <pre className="bg-secondary/50 p-4 rounded-lg overflow-x-auto">
-          <code>{`<?php
+        <pre className="bg-secondary/50 p-4 rounded-lg overflow-x-auto"><code>{`<?php
 class Animal {
   public $name;
   
@@ -25,14 +24,12 @@ class Dog extends Animal {
 }
 
 $dog = new Dog();
-echo $dog->makeSound(); // Woof!`}</code>
-        </pre>
+echo $dog->makeSound(); // Woof!`}</code></pre>
       </div>
 
       <div className="topic-card p-6 mb-6">
         <h2 className="text-2xl font-bold text-foreground mb-4">👨‍👦 Parent Keyword</h2>
-        <pre className="bg-secondary/50 p-4 rounded-lg overflow-x-auto">
-          <code>{`<?php
+        <pre className="bg-secondary/50 p-4 rounded-lg overflow-x-auto"><code>{`<?php
 class Vehicle {
   protected $brand;
   
@@ -48,8 +45,7 @@ class Car extends Vehicle {
     parent::__construct($brand);
     $this->model = $model;
   }
-}`}</code>
-        </pre>
+}`}</code></pre>
       </div>
 
       <div className="topic-card p-6 bg-gradient-to-r from-green-500/10 to-blue-500/10">

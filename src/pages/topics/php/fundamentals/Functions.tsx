@@ -8,20 +8,17 @@ const Functions = () => {
 
       <div className="topic-card p-6 mb-6">
         <h2 className="text-2xl font-bold text-foreground mb-4">📝 Basic Function</h2>
-        <pre className="bg-secondary/50 p-4 rounded-lg overflow-x-auto">
-          <code>{`<?php
+        <pre className="bg-secondary/50 p-4 rounded-lg overflow-x-auto"><code>{`<?php
 function greet() {
   echo "Hello, World!";
 }
 
-greet(); // Hello, World!`}</code>
-        </pre>
+greet(); // Hello, World!`}</code></pre>
       </div>
 
       <div className="topic-card p-6 mb-6">
         <h2 className="text-2xl font-bold text-foreground mb-4">🎯 Parameters & Arguments</h2>
-        <pre className="bg-secondary/50 p-4 rounded-lg overflow-x-auto">
-          <code>{`<?php
+        <pre className="bg-secondary/50 p-4 rounded-lg overflow-x-auto"><code>{`<?php
 function greet($name) {
   return "Hello, $name!";
 }
@@ -33,14 +30,12 @@ function greet($name = "Guest") {
   return "Hello, $name!";
 }
 
-echo greet(); // Hello, Guest!`}</code>
-        </pre>
+echo greet(); // Hello, Guest!`}</code></pre>
       </div>
 
       <div className="topic-card p-6 mb-6">
         <h2 className="text-2xl font-bold text-foreground mb-4">🔄 Return Values</h2>
-        <pre className="bg-secondary/50 p-4 rounded-lg overflow-x-auto">
-          <code>{`<?php
+        <pre className="bg-secondary/50 p-4 rounded-lg overflow-x-auto"><code>{`<?php
 function add($a, $b) {
   return $a + $b;
 }
@@ -53,8 +48,7 @@ function isAdult($age) {
     return true;
   }
   return false;
-}`}</code>
-        </pre>
+}`}</code></pre>
       </div>
 
       <div className="topic-card p-6 bg-gradient-to-r from-green-500/10 to-blue-500/10">

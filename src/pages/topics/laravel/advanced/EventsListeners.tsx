@@ -8,22 +8,19 @@ const EventsListeners = () => {
 
       <div className="topic-card p-6 mb-6">
         <h2 className="text-2xl font-bold text-foreground mb-4">📢 Creating Event</h2>
-        <pre className="bg-secondary/50 p-4 rounded-lg overflow-x-auto">
-          <code>{`php artisan make:event UserRegistered
+        <pre className="bg-secondary/50 p-4 rounded-lg overflow-x-auto"><code>{`php artisan make:event UserRegistered
 
 class UserRegistered
 {
     public function __construct(public User $user)
     {
     }
-}`}</code>
-        </pre>
+}`}</code></pre>
       </div>
 
       <div className="topic-card p-6 mb-6">
         <h2 className="text-2xl font-bold text-foreground mb-4">👂 Creating Listener</h2>
-        <pre className="bg-secondary/50 p-4 rounded-lg overflow-x-auto">
-          <code>{`php artisan make:listener SendWelcomeEmail
+        <pre className="bg-secondary/50 p-4 rounded-lg overflow-x-auto"><code>{`php artisan make:listener SendWelcomeEmail
 
 class SendWelcomeEmail
 {
@@ -34,8 +31,7 @@ class SendWelcomeEmail
 }
 
 // Dispatch event
-event(new UserRegistered($user));`}</code>
-        </pre>
+event(new UserRegistered($user));`}</code></pre>
       </div>
 
       <div className="topic-card p-6 bg-gradient-to-r from-green-500/10 to-blue-500/10">

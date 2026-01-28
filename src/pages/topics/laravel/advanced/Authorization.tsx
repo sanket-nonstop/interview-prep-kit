@@ -8,8 +8,7 @@ const Authorization = () => {
 
       <div className="topic-card p-6 mb-6">
         <h2 className="text-2xl font-bold text-foreground mb-4">🚪 Gates</h2>
-        <pre className="bg-secondary/50 p-4 rounded-lg overflow-x-auto">
-          <code>{`// Define gate
+        <pre className="bg-secondary/50 p-4 rounded-lg overflow-x-auto"><code>{`// Define gate
 Gate::define('update-post', function ($user, $post) {
     return $user->id === $post->user_id;
 });
@@ -20,14 +19,12 @@ if (Gate::allows('update-post', $post)) {
 }
 
 // In controller
-$this->authorize('update-post', $post);`}</code>
-        </pre>
+$this->authorize('update-post', $post);`}</code></pre>
       </div>
 
       <div className="topic-card p-6 mb-6">
         <h2 className="text-2xl font-bold text-foreground mb-4">📋 Policies</h2>
-        <pre className="bg-secondary/50 p-4 rounded-lg overflow-x-auto">
-          <code>{`// Create policy
+        <pre className="bg-secondary/50 p-4 rounded-lg overflow-x-auto"><code>{`// Create policy
 php artisan make:policy PostPolicy
 
 class PostPolicy
@@ -39,8 +36,7 @@ class PostPolicy
 }
 
 // Use in controller
-$this->authorize('update', $post);`}</code>
-        </pre>
+$this->authorize('update', $post);`}</code></pre>
       </div>
 
       <div className="topic-card p-6 bg-gradient-to-r from-green-500/10 to-blue-500/10">

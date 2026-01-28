@@ -50,7 +50,7 @@ export const CodeBlock = ({ code, language = 'tsx', filename }: CodeBlockProps) 
       
       {/* Code */}
       <pre className="p-4 overflow-x-auto scrollbar-thin">
-        <code className="text-sm font-mono text-foreground/90 leading-relaxed whitespace-pre">
+        <code className="text-sm font-mono text-foreground/90 leading-relaxed whitespace-pre px-10">
           {code}
         </code>
       </pre>
