@@ -8,8 +8,7 @@ const ClassesObjects = () => {
 
       <div className="topic-card p-6 mb-6">
         <h2 className="text-2xl font-bold text-foreground mb-4">📝 Creating a Class</h2>
-        <pre className="bg-secondary/50 p-4 rounded-lg overflow-x-auto">
-          <code>{`<?php
+        <pre className="bg-secondary/50 p-4 rounded-lg overflow-x-auto"><code>{`<?php
 class Car {
   public $brand;
   public $color;
@@ -23,18 +22,15 @@ class Car {
     return "$this->color $this->brand";
   }
 }
-?>`}</code>
-        </pre>
+?>`}</code></pre>
       </div>
 
       <div className="topic-card p-6 mb-6">
         <h2 className="text-2xl font-bold text-foreground mb-4">🎯 Creating Objects</h2>
-        <pre className="bg-secondary/50 p-4 rounded-lg overflow-x-auto">
-          <code>{`<?php
+        <pre className="bg-secondary/50 p-4 rounded-lg overflow-x-auto"><code>{`<?php
 $car1 = new Car("Toyota", "Red");
 echo $car1->getInfo(); // Red Toyota
-?>`}</code>
-        </pre>
+?>`}</code></pre>
       </div>
 
       <div className="topic-card p-6 bg-gradient-to-r from-green-500/10 to-blue-500/10">
