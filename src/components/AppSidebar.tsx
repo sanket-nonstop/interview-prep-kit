@@ -277,7 +277,7 @@ export const AppSidebar = () => {
       {/* Desktop Sidebar */}
       <aside className={cn(
         "hidden lg:flex flex-col bg-sidebar border-r border-sidebar-border h-screen sticky top-0 transition-all duration-300 ease-in-out",
-        collapsed ? "w-16" : "w-64"
+        collapsed ? "w-16" : "w-80"
       )}>
         <SidebarContent />
         <button

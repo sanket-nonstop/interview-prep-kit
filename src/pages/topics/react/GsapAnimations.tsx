@@ -1,8 +1,79 @@
 import { useEffect, useRef, useState } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
+import { MotionPathPlugin } from 'gsap/MotionPathPlugin';
 
-gsap.registerPlugin(ScrollTrigger);
+gsap.registerPlugin(ScrollTrigger, MotionPathPlugin);
+
+const PlaneAnimation = () => {
+  const pathRef = useRef<SVGPathElement>(null);
+  const planeRef = useRef<SVGGElement>(null);
+
+  useEffect(() => {
+    if (!pathRef.current || !planeRef.current) return;
+
+    const path = pathRef.current;
+    const plane = planeRef.current;
+    const length = path.getTotalLength();
+
+    gsap.set(path, {
+      strokeDasharray: length,
+      strokeDashoffset: length
+    });
+
+    const tl = gsap.timeline({
+      repeat: -1,
+      defaults: { ease: 'none' }
+    });
+
+    tl.to(path, {
+      strokeDashoffset: 0,
+      duration: 6
+    });
+
+    tl.to(plane, {
+      duration: 6,
+      motionPath: {
+        path: path,
+        align: path,
+        autoRotate: true,
+        alignOrigin: [0.5, 0.5]
+      }
+    }, 0);
+
+    tl.set(path, { strokeDashoffset: length });
+    tl.set(plane, { motionPath: { start: 0 } });
+
+    return () => {
+      tl.kill();
+    };
+  }, []);
+
+  return (
+    <div className="flex justify-center p-8 bg-[#0e100f] rounded-lg">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="-40 -180 1250 1100" className="w-full max-w-2xl">
+        <path
+          ref={pathRef}
+          className="fill-none stroke-[4] stroke-linecap-round"
+          style={{ stroke: 'url(#grad)', filter: 'drop-shadow(0 0 6px rgba(255, 140, 50, 0.5))' }}
+          d="M-92 17.713c154.32 237.253 348.7 486.913 585.407 466.93 137.542-17.257 247.733-123.595 279.259-239.307 27.368-100.43-21.323-229.59-140.017-241.76-118.693-12.172-208.268 98.897-231.122 199.803-34.673 151.333 12.324 312.301 125.096 429.074C639.395 749.225 815.268 819.528 995 819"
+        />
+        <g ref={planeRef} style={{ transformOrigin: 'center', filter: 'drop-shadow(0 0 8px rgba(255, 200, 255, 0.4))' }}>
+          <path fill="url(#grad)" opacity="0.3" d="m82.8 35 215.9 94.6L79 92l3.8-57Z" />
+          <path fill="url(#grad)" d="m82.8 35 52-23.5 163.9 118.1-216-94.5Z" />
+          <path fill="url(#grad)" opacity="0.3" d="m76.8 107.1 214.4 19.6L74.7 131l2.1-23.9Z" />
+          <path fill="url(#grad)" d="M298.8 130.4 1.9 103.3l54-45 242.9 72.1Z" />
+        </g>
+        <defs>
+          <linearGradient id="grad" x1="0" x2="1" y1="0" y2="1">
+            <stop offset="0%" stopColor="#ff8709" />
+            <stop offset="100%" stopColor="#f7bdf8" />
+          </linearGradient>
+        </defs>
+      </svg>
+    </div>
+  );
+};
 
 const GsapAnimations = () => {
   const boxRef = useRef<HTMLDivElement>(null);
@@ -216,12 +287,41 @@ const Component = () => {
 };`}</code></pre>
       </div>
 
+      <div className="topic-card p-6 mb-6 bg-gradient-to-br from-orange-500/10 to-pink-500/10">
+        <h2 className="text-2xl font-bold text-foreground mb-4">✈️ Motion Path Demo</h2>
+        <PlaneAnimation />
+      </div>
+
+      <div className="topic-card p-6 mb-6">
+        <h2 className="text-2xl font-bold text-foreground mb-4">🛤️ Motion Path Code</h2>
+        <pre className="bg-secondary/50 p-4 rounded-lg overflow-x-auto"><code>{`import gsap from 'gsap';
+import { MotionPathPlugin } from 'gsap/MotionPathPlugin';
+
+gsap.registerPlugin(MotionPathPlugin);
+
+const path = document.querySelector(".path");
+const plane = document.querySelector(".plane");
+
+const tl = gsap.timeline({ repeat: -1 });
+
+tl.to(plane, {
+  duration: 6,
+  motionPath: {
+    path: path,
+    align: path,
+    autoRotate: true,
+    alignOrigin: [0.5, 0.5]
+  }
+});`}</code></pre>
+      </div>
+
       <div ref={textRef} className="topic-card p-6 bg-gradient-to-r from-green-500/10 to-blue-500/10">
         <h2 className="text-xl font-bold text-foreground mb-3">🎓 Key Takeaways</h2>
         <ul className="space-y-2 text-muted-foreground">
           <li>• GSAP provides high-performance animations</li>
           <li>• Use timelines for complex sequences</li>
           <li>• ScrollTrigger for scroll-based effects</li>
+          <li>• MotionPath for complex path animations</li>
           <li>• Always cleanup animations in React</li>
         </ul>
       </div>

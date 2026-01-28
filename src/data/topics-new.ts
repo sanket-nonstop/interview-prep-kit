@@ -218,6 +218,14 @@ export const topicsDataNew: TopicCategory[] = [
           { id: 'accessibility', title: 'Accessibility', route: '/react/best-practices/accessibility', category: 'react', difficulty: 'intermediate' },
         ],
       },
+      {
+        id: 'animations',
+        title: 'Animations & 3D',
+        topics: [
+          { id: 'gsap', title: 'GSAP Animations', route: '/react/animations/gsap/', category: 'react', difficulty: 'advanced' },
+          { id: 'threejs', title: 'Three.js in React', route: '/react/animations/threejs/', category: 'react', difficulty: 'advanced' },
+        ],
+      },
     ],
   },
   {
