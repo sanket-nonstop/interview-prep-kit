@@ -286,6 +286,110 @@ export const topicsDataNew: TopicCategory[] = [
     ],
   },
   {
+    id: 'seo',
+    title: 'SEO',
+    icon: '🔍',
+    description: 'Optimize your website for search engines',
+    subcategories: [
+      {
+        id: 'basics',
+        title: 'SEO Basics',
+        topics: [
+          { id: 'what-is-seo', title: 'What is SEO', route: '/seo/basics/what-is-seo', category: 'seo', difficulty: 'beginner' },
+          { id: 'search-engines', title: 'How Search Engines Work', route: '/seo/basics/search-engines', category: 'seo', difficulty: 'beginner' },
+          { id: 'keywords', title: 'Keyword Research', route: '/seo/basics/keywords', category: 'seo', difficulty: 'beginner' },
+        ],
+      },
+      {
+        id: 'on-page',
+        title: 'On-Page SEO',
+        topics: [
+          { id: 'title-meta', title: 'Title & Meta Tags', route: '/seo/on-page/title-meta', category: 'seo', difficulty: 'beginner' },
+          { id: 'headings', title: 'Headings Structure', route: '/seo/on-page/headings', category: 'seo', difficulty: 'beginner' },
+          { id: 'image-seo', title: 'Image SEO', route: '/seo/on-page/image-seo', category: 'seo', difficulty: 'beginner' },
+          { id: 'url-structure', title: 'URL Structure', route: '/seo/on-page/url-structure', category: 'seo', difficulty: 'beginner' },
+          { id: 'internal-linking', title: 'Internal Linking', route: '/seo/on-page/internal-linking', category: 'seo', difficulty: 'intermediate' },
+        ],
+      },
+      {
+        id: 'technical',
+        title: 'Technical SEO',
+        topics: [
+          { id: 'core-web-vitals', title: 'Core Web Vitals', route: '/seo/technical/core-web-vitals', category: 'seo', difficulty: 'intermediate' },
+          { id: 'sitemap-robots', title: 'Sitemap & Robots.txt', route: '/seo/technical/sitemap-robots', category: 'seo', difficulty: 'intermediate' },
+          { id: 'structured-data', title: 'Structured Data (Schema)', route: '/seo/technical/structured-data', category: 'seo', difficulty: 'advanced' },
+          { id: 'mobile-seo', title: 'Mobile SEO', route: '/seo/technical/mobile-seo', category: 'seo', difficulty: 'intermediate' },
+          { id: 'page-speed', title: 'Page Speed Optimization', route: '/seo/technical/page-speed', category: 'seo', difficulty: 'intermediate' },
+        ],
+      },
+      {
+        id: 'nextjs',
+        title: 'Next.js SEO',
+        topics: [
+          { id: 'nextjs-metadata', title: 'Next.js Metadata API', route: '/seo/nextjs/metadata', category: 'seo', difficulty: 'intermediate' },
+          { id: 'server-client-seo', title: 'Server vs Client & SEO', route: '/seo/nextjs/server-vs-client', category: 'seo', difficulty: 'intermediate' },
+        ],
+      },
+      {
+        id: 'modern-seo',
+        title: 'Modern SEO',
+        topics: [
+          { id: 'ai-seo', title: 'AI & SEO', route: '/seo/modern/ai-seo', category: 'seo', difficulty: 'advanced' },
+          { id: 'voice-search', title: 'Voice Search Optimization', route: '/seo/modern/voice-search', category: 'seo', difficulty: 'intermediate' },
+          { id: 'local-seo', title: 'Local SEO', route: '/seo/modern/local-seo', category: 'seo', difficulty: 'intermediate' },
+          { id: 'sem-ppc', title: 'SEM & PPC', route: '/seo/modern/sem-ppc', category: 'seo', difficulty: 'intermediate' },
+          { id: 'content-marketing', title: 'Content Marketing & SEO', route: '/seo/modern/content-marketing', category: 'seo', difficulty: 'intermediate' },
+        ],
+      },
+    ],
+  },
+  {
+    id: 'performance',
+    title: 'Performance',
+    icon: '⚡',
+    description: 'Optimize web application performance',
+    subcategories: [
+      {
+        id: 'web',
+        title: 'Web Performance',
+        topics: [
+          { id: 'optimization', title: 'Performance Optimization', route: '/performance/web/optimization', category: 'performance', difficulty: 'intermediate' },
+        ],
+      },
+    ],
+  },
+  {
+    id: 'security',
+    title: 'Security',
+    icon: '🔒',
+    description: 'Secure your web applications',
+    subcategories: [
+      {
+        id: 'basics',
+        title: 'Security Basics',
+        topics: [
+          { id: 'fundamentals', title: 'Web Security Fundamentals', route: '/security/basics/fundamentals', category: 'security', difficulty: 'intermediate' },
+        ],
+      },
+    ],
+  },
+  {
+    id: 'testing',
+    title: 'Testing',
+    icon: '🧪',
+    description: 'Test your applications effectively',
+    subcategories: [
+      {
+        id: 'basics',
+        title: 'Testing Basics',
+        topics: [
+          { id: 'fundamentals', title: 'Testing Fundamentals', route: '/testing/basics/fundamentals', category: 'testing', difficulty: 'intermediate' },
+        ],
+      },
+    ],
+  },
+  ,
+  {
     id: 'other-languages',
     title: 'Other Languages',
     icon: '🌐',
@@ -386,98 +490,6 @@ export const topicsDataNew: TopicCategory[] = [
           { id: 'optimization', title: 'Performance Optimization', route: '/other-languages/laravel/deployment/optimization', category: 'other-languages', difficulty: 'advanced' },
           { id: 'caching', title: 'Caching Strategies', route: '/other-languages/laravel/deployment/caching', category: 'other-languages', difficulty: 'advanced' },
           { id: 'deployment', title: 'Deployment Best Practices', route: '/other-languages/laravel/deployment/deployment', category: 'other-languages', difficulty: 'advanced' },
-        ],
-      },
-    ],
-  },
-  {
-    id: 'seo',
-    title: 'SEO',
-    icon: '🔍',
-    description: 'Optimize your website for search engines',
-    subcategories: [
-      {
-        id: 'basics',
-        title: 'SEO Basics',
-        topics: [
-          { id: 'what-is-seo', title: 'What is SEO', route: '/seo/basics/what-is-seo', category: 'seo', difficulty: 'beginner' },
-          { id: 'search-engines', title: 'How Search Engines Work', route: '/seo/basics/search-engines', category: 'seo', difficulty: 'beginner' },
-          { id: 'keywords', title: 'Keyword Research', route: '/seo/basics/keywords', category: 'seo', difficulty: 'beginner' },
-        ],
-      },
-      {
-        id: 'on-page',
-        title: 'On-Page SEO',
-        topics: [
-          { id: 'title-meta', title: 'Title & Meta Tags', route: '/seo/on-page/title-meta', category: 'seo', difficulty: 'beginner' },
-          { id: 'headings', title: 'Headings Structure', route: '/seo/on-page/headings', category: 'seo', difficulty: 'beginner' },
-          { id: 'image-seo', title: 'Image SEO', route: '/seo/on-page/image-seo', category: 'seo', difficulty: 'beginner' },
-          { id: 'url-structure', title: 'URL Structure', route: '/seo/on-page/url-structure', category: 'seo', difficulty: 'beginner' },
-          { id: 'internal-linking', title: 'Internal Linking', route: '/seo/on-page/internal-linking', category: 'seo', difficulty: 'intermediate' },
-        ],
-      },
-      {
-        id: 'technical',
-        title: 'Technical SEO',
-        topics: [
-          { id: 'core-web-vitals', title: 'Core Web Vitals', route: '/seo/technical/core-web-vitals', category: 'seo', difficulty: 'intermediate' },
-          { id: 'sitemap-robots', title: 'Sitemap & Robots.txt', route: '/seo/technical/sitemap-robots', category: 'seo', difficulty: 'intermediate' },
-          { id: 'structured-data', title: 'Structured Data (Schema)', route: '/seo/technical/structured-data', category: 'seo', difficulty: 'advanced' },
-          { id: 'mobile-seo', title: 'Mobile SEO', route: '/seo/technical/mobile-seo', category: 'seo', difficulty: 'intermediate' },
-          { id: 'page-speed', title: 'Page Speed Optimization', route: '/seo/technical/page-speed', category: 'seo', difficulty: 'intermediate' },
-        ],
-      },
-      {
-        id: 'nextjs',
-        title: 'Next.js SEO',
-        topics: [
-          { id: 'nextjs-metadata', title: 'Next.js Metadata API', route: '/seo/nextjs/metadata', category: 'seo', difficulty: 'intermediate' },
-          { id: 'server-client-seo', title: 'Server vs Client & SEO', route: '/seo/nextjs/server-vs-client', category: 'seo', difficulty: 'intermediate' },
-        ],
-      },
-    ],
-  },
-  {
-    id: 'performance',
-    title: 'Performance',
-    icon: '⚡',
-    description: 'Optimize web application performance',
-    subcategories: [
-      {
-        id: 'web',
-        title: 'Web Performance',
-        topics: [
-          { id: 'optimization', title: 'Performance Optimization', route: '/performance/web/optimization', category: 'performance', difficulty: 'intermediate' },
-        ],
-      },
-    ],
-  },
-  {
-    id: 'security',
-    title: 'Security',
-    icon: '🔒',
-    description: 'Secure your web applications',
-    subcategories: [
-      {
-        id: 'basics',
-        title: 'Security Basics',
-        topics: [
-          { id: 'fundamentals', title: 'Web Security Fundamentals', route: '/security/basics/fundamentals', category: 'security', difficulty: 'intermediate' },
-        ],
-      },
-    ],
-  },
-  {
-    id: 'testing',
-    title: 'Testing',
-    icon: '🧪',
-    description: 'Test your applications effectively',
-    subcategories: [
-      {
-        id: 'basics',
-        title: 'Testing Basics',
-        topics: [
-          { id: 'fundamentals', title: 'Testing Fundamentals', route: '/testing/basics/fundamentals', category: 'testing', difficulty: 'intermediate' },
         ],
       },
     ],

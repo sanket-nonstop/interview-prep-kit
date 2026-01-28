@@ -109,6 +109,11 @@ import ServerClientSeo from "./pages/topics/seo/ServerClientSeo";
 import TitleMeta from "./pages/topics/seo/TitleMeta";
 import WhatIsSeo from "./pages/topics/seo/WhatIsSeo";
 import { Keywords, UrlStructure, InternalLinking, SitemapRobots, StructuredData, MobileSeo, PageSpeed } from "./pages/topics/seo/NewSeoTopics";
+import AiSeo from "./pages/topics/seo/AiSeo";
+import VoiceSearch from "./pages/topics/seo/VoiceSearch";
+import LocalSeo from "./pages/topics/seo/LocalSeo";
+import SemPpc from "./pages/topics/seo/SemPpc";
+import ContentMarketing from "./pages/topics/seo/ContentMarketing";
 import Testing from "./pages/topics/testing/Fundamentals";
 import TypeScript from "./pages/topics/typescript/Fundamentals";
 import AdvancedTypeScript from "./pages/topics/typescript/AdvancedTypeScript";
@@ -447,6 +452,11 @@ const App = () => (
             <Route path="/seo/technical/page-speed/" element={<PageSpeed />} />
             <Route path="/seo/nextjs/metadata/" element={<NextjsMetadata />} />
             <Route path="/seo/nextjs/server-vs-client/" element={<ServerClientSeo />} />
+            <Route path="/seo/modern/ai-seo/" element={<AiSeo />} />
+            <Route path="/seo/modern/voice-search/" element={<VoiceSearch />} />
+            <Route path="/seo/modern/local-seo/" element={<LocalSeo />} />
+            <Route path="/seo/modern/sem-ppc/" element={<SemPpc />} />
+            <Route path="/seo/modern/content-marketing/" element={<ContentMarketing />} />
             <Route path="/seo/*" element={<TopicNotFound />} />
             
             {/* Miscellaneous Topics */}
