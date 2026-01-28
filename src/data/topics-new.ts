@@ -396,7 +396,6 @@ export const topicsDataNew: TopicCategory[] = [
       },
     ],
   },
-  ,
   {
     id: 'other-languages',
     title: 'Other Languages',
