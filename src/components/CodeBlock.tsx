@@ -13,21 +13,22 @@ const CodeBlock = ({ code, language = 'javascript' }: CodeBlockProps) => {
   const codeRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    if (codeRef.current) {
-      if (isExpanded) {
-        gsap.fromTo(
-          codeRef.current,
-          { height: 0, opacity: 0 },
-          { height: 'auto', opacity: 1, duration: 0.4, ease: 'power2.out' }
-        );
-      } else {
-        gsap.to(codeRef.current, {
-          height: 0,
-          opacity: 0,
-          duration: 0.3,
-          ease: 'power2.in'
-        });
-      }
+    if (!codeRef.current) return;
+    
+    if (isExpanded) {
+      gsap.to(codeRef.current, {
+        height: 'auto',
+        opacity: 1,
+        duration: 0.4,
+        ease: 'power2.out'
+      });
+    } else {
+      gsap.to(codeRef.current, {
+        height: 0,
+        opacity: 0,
+        duration: 0.3,
+        ease: 'power2.in'
+      });
     }
   }, [isExpanded]);
 
@@ -54,7 +55,11 @@ const CodeBlock = ({ code, language = 'javascript' }: CodeBlockProps) => {
         />
       </button>
 
-      <div ref={codeRef} className="overflow-hidden" style={{ height: 0, opacity: 0 }}>
+      <div 
+        ref={codeRef} 
+        className="overflow-hidden transition-all"
+        style={{ height: isExpanded ? 'auto' : 0, opacity: isExpanded ? 1 : 0 }}
+      >
         <div className="relative">
           <button
             onClick={handleCopy}
