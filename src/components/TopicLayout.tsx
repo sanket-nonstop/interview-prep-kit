@@ -64,7 +64,7 @@ export const TopicLayout = ({
           <Target className="w-5 h-5 text-accent" />
           Production-Ready Code
         </h2>
-        <CodeBlock code={code} language={codeLanguage} filename={codeFilename} />
+        <CodeBlock code={code} language={codeLanguage} />
       </section>
 
       {/* Why Interviewers Care */}

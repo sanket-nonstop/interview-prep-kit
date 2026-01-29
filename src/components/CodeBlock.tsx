@@ -8,7 +8,7 @@ interface CodeBlockProps {
 }
 
 const CodeBlock = ({ code, language = 'javascript' }: CodeBlockProps) => {
-  const [isExpanded, setIsExpanded] = useState(false);
+  const [isExpanded, setIsExpanded] = useState(true);
   const [copied, setCopied] = useState(false);
   const codeRef = useRef<HTMLDivElement>(null);
 
