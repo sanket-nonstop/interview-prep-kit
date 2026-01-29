@@ -317,7 +317,7 @@ const PropsState = () => {
         title="🎯 Try It: Props & State"
         examples={[
           {
-            title: "Props Flow",
+            title: "Props: Parent → Child",
             code: `<!DOCTYPE html>
 <html>
 <head>
@@ -327,40 +327,124 @@ const PropsState = () => {
   .card { background: rgba(255,255,255,0.1); backdrop-filter: blur(10px); padding: 20px; border-radius: 12px; margin: 15px 0; }
   input { width: 100%; padding: 12px; border: none; border-radius: 8px; margin: 10px 0; font-size: 16px; }
   .user { background: rgba(255,255,255,0.2); padding: 15px; border-radius: 8px; margin: 10px 0; }
+  .flow { text-align: center; font-size: 40px; margin: 20px 0; animation: pulse 2s infinite; }
+  @keyframes pulse { 0%, 100% { opacity: 0.5; } 50% { opacity: 1; } }
+  .parent { background: rgba(255,255,255,0.3); padding: 20px; border-radius: 12px; border: 3px dashed white; }
+  .children { margin-top: 20px; }
 </style>
 </head>
 <body>
   <div class="app">
     <div class="card">
-      <h2>📤 Props: Parent to Child</h2>
-      <input id="nameInput" placeholder="Enter name..." oninput="updateName()" />
-      <div id="children"></div>
+      <h2>📤 Props Flow: Parent → Child</h2>
+      <div class="parent">
+        <strong>👨‍👩‍👧 PARENT COMPONENT</strong>
+        <input id="nameInput" placeholder="Enter name..." oninput="updateName()" />
+        <input id="ageInput" type="number" placeholder="Enter age..." oninput="updateName()" />
+      </div>
+      <div class="flow">⬇️</div>
+      <div class="children" id="children"></div>
     </div>
   </div>
   
   <script>
     let userName = 'Guest';
+    let userAge = 25;
     
-    function UserGreeting({ name }) {
-      return \`<div class="user">👋 Hello, \${name}!</div>\`;
+    function UserGreeting({ name, age }) {
+      return \`<div class="user">👋 Hello, \${name}! (Age: \${age})</div>\`;
     }
     
-    function UserProfile({ name }) {
-      return \`<div class="user">👤 Profile: \${name}</div>\`;
+    function UserProfile({ name, age }) {
+      return \`<div class="user">👤 Profile: \${name}, \${age} years old</div>\`;
     }
     
     function updateName() {
       userName = document.getElementById('nameInput').value || 'Guest';
+      userAge = document.getElementById('ageInput').value || 25;
       render();
     }
     
     function render() {
       document.getElementById('children').innerHTML = 
-        UserGreeting({ name: userName }) + 
-        UserProfile({ name: userName });
+        '<strong>👶 CHILD COMPONENTS (receiving props)</strong>' +
+        UserGreeting({ name: userName, age: userAge }) + 
+        UserProfile({ name: userName, age: userAge });
     }
     
     render();
+  </script>
+</body>
+</html>`
+          },
+          {
+            title: "Child → Parent (Lifting State)",
+            code: `<!DOCTYPE html>
+<html>
+<head>
+<style>
+  body { margin: 0; padding: 40px; font-family: system-ui; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; min-height: 100vh; }
+  .app { max-width: 600px; margin: 0 auto; }
+  .card { background: rgba(255,255,255,0.1); backdrop-filter: blur(10px); padding: 20px; border-radius: 12px; margin: 15px 0; }
+  .parent { background: rgba(255,255,255,0.3); padding: 20px; border-radius: 12px; border: 3px dashed white; margin-top: 20px; }
+  .child { background: rgba(255,255,255,0.2); padding: 15px; border-radius: 8px; margin: 10px 0; border: 2px solid white; }
+  button { background: white; color: #667eea; border: none; padding: 12px 24px; border-radius: 8px; cursor: pointer; margin: 5px; font-weight: bold; }
+  .flow { text-align: center; font-size: 40px; margin: 10px 0; animation: bounce 1s infinite; }
+  @keyframes bounce { 0%, 100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
+  .total { font-size: 32px; font-weight: bold; margin: 15px 0; }
+</style>
+</head>
+<body>
+  <div class="app">
+    <div class="card">
+      <h2>📥 Child → Parent: Lifting State Up</h2>
+      <div class="child">
+        <strong>👶 CHILD 1: Product A</strong>
+        <div>Price: $50</div>
+        <button onclick="addToCart('Product A', 50)">Add to Cart</button>
+      </div>
+      <div class="child">
+        <strong>👶 CHILD 2: Product B</strong>
+        <div>Price: $30</div>
+        <button onclick="addToCart('Product B', 30)">Add to Cart</button>
+      </div>
+      <div class="child">
+        <strong>👶 CHILD 3: Product C</strong>
+        <div>Price: $20</div>
+        <button onclick="addToCart('Product C', 20)">Add to Cart</button>
+      </div>
+      <div class="flow">⬆️</div>
+      <div class="parent">
+        <strong>👨‍👩‍👧 PARENT: Shopping Cart</strong>
+        <div class="total">Total: $<span id="total">0</span></div>
+        <div id="items">Cart is empty</div>
+        <button onclick="clearCart()" style="background: #ef4444; color: white; margin-top: 10px;">Clear Cart</button>
+      </div>
+    </div>
+  </div>
+  
+  <script>
+    let cart = [];
+    let total = 0;
+    
+    function addToCart(name, price) {
+      cart.push({ name, price });
+      total += price;
+      render();
+    }
+    
+    function clearCart() {
+      cart = [];
+      total = 0;
+      render();
+    }
+    
+    function render() {
+      document.getElementById('total').textContent = total;
+      document.getElementById('items').innerHTML = cart.length === 0
+        ? 'Cart is empty'
+        : cart.map((item, i) => \`<div>\${i + 1}. \${item.name} - $\${item.price}</div>\`).join('');
+    }
   </script>
 </body>
 </html>`
@@ -377,6 +461,7 @@ const PropsState = () => {
   button { background: #3b82f6; color: white; border: none; padding: 10px 20px; border-radius: 6px; cursor: pointer; margin: 5px; }
   .todo { background: #1e293b; padding: 12px; border-radius: 8px; margin: 10px 0; display: flex; justify-content: space-between; align-items: center; }
   .delete { background: #ef4444; }
+  .stats { background: #1e293b; padding: 15px; border-radius: 8px; margin: 15px 0; display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
 </style>
 </head>
 <body>
@@ -384,6 +469,10 @@ const PropsState = () => {
     <h2>📋 State: Todo List</h2>
     <input class="todo-input" id="todoInput" placeholder="Add todo..." onkeypress="if(event.key==='Enter') addTodo()" />
     <button onclick="addTodo()">Add</button>
+    <div class="stats">
+      <div>Total: <strong id="totalCount">0</strong></div>
+      <div>Completed: <strong id="completedCount">0</strong></div>
+    </div>
     <div id="todos"></div>
   </div>
   
@@ -395,8 +484,13 @@ const PropsState = () => {
       const text = input.value.trim();
       if (!text) return;
       
-      todos = [...todos, { id: Date.now(), text }];
+      todos = [...todos, { id: Date.now(), text, completed: false }];
       input.value = '';
+      render();
+    }
+    
+    function toggleTodo(id) {
+      todos = todos.map(t => t.id === id ? {...t, completed: !t.completed} : t);
       render();
     }
     
@@ -406,17 +500,157 @@ const PropsState = () => {
     }
     
     function render() {
+      const completed = todos.filter(t => t.completed).length;
+      document.getElementById('totalCount').textContent = todos.length;
+      document.getElementById('completedCount').textContent = completed;
+      
       document.getElementById('todos').innerHTML = todos.length === 0
         ? '<p style="opacity:0.6;">No todos yet!</p>'
         : todos.map(todo => \`
-          <div class="todo">
-            <span>\${todo.text}</span>
+          <div class="todo" style="opacity: \${todo.completed ? 0.5 : 1}; text-decoration: \${todo.completed ? 'line-through' : 'none'};">
+            <span onclick="toggleTodo(\${todo.id})" style="cursor: pointer;">\${todo.completed ? '✅' : '⭕'} \${todo.text}</span>
             <button class="delete" onclick="deleteTodo(\${todo.id})">Delete</button>
           </div>
         \`).join('');
     }
     
     render();
+  </script>
+</body>
+</html>`
+          },
+          {
+            title: "Counter with Step",
+            code: `<!DOCTYPE html>
+<html>
+<head>
+<style>
+  body { margin: 0; padding: 40px; font-family: system-ui; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; min-height: 100vh; display: flex; align-items: center; justify-content: center; }
+  .counter { background: rgba(255,255,255,0.1); backdrop-filter: blur(10px); padding: 40px; border-radius: 20px; text-align: center; }
+  .count { font-size: 80px; font-weight: bold; margin: 20px 0; }
+  button { background: white; color: #667eea; border: none; padding: 15px 30px; border-radius: 10px; font-size: 18px; cursor: pointer; margin: 5px; font-weight: bold; }
+  input { width: 80px; padding: 10px; border: none; border-radius: 8px; text-align: center; font-size: 18px; margin: 10px; }
+</style>
+</head>
+<body>
+  <div class="counter">
+    <h2>🔢 Counter</h2>
+    <div class="count" id="count">0</div>
+    <div>
+      <button onclick="decrement()">-</button>
+      <button onclick="increment()">+</button>
+    </div>
+    <div>
+      <label>Step: <input type="number" id="step" value="1" min="1" /></label>
+    </div>
+    <button onclick="reset()" style="background: #ef4444; color: white; margin-top: 20px;">Reset</button>
+  </div>
+  
+  <script>
+    let count = 0;
+    
+    function getStep() {
+      return parseInt(document.getElementById('step').value) || 1;
+    }
+    
+    function increment() {
+      count += getStep();
+      render();
+    }
+    
+    function decrement() {
+      count -= getStep();
+      render();
+    }
+    
+    function reset() {
+      count = 0;
+      render();
+    }
+    
+    function render() {
+      document.getElementById('count').textContent = count;
+    }
+  </script>
+</body>
+</html>`
+          },
+          {
+            title: "Form State with Preview",
+            code: `<!DOCTYPE html>
+<html>
+<head>
+<style>
+  body { margin: 0; padding: 40px; font-family: system-ui; background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%); color: #eee; min-height: 100vh; }
+  .form-container { max-width: 600px; margin: 0 auto; background: rgba(255,255,255,0.05); backdrop-filter: blur(10px); padding: 30px; border-radius: 15px; border: 2px solid rgba(255,255,255,0.1); }
+  input, select { width: 100%; padding: 14px; border: 2px solid #0f3460; border-radius: 8px; margin: 8px 0; background: #0f3460; color: white; font-size: 16px; box-sizing: border-box; }
+  input:focus, select:focus { outline: none; border-color: #e94560; }
+  button { width: 100%; background: linear-gradient(135deg, #e94560 0%, #d63447 100%); color: white; border: none; padding: 16px; border-radius: 8px; font-size: 18px; cursor: pointer; margin-top: 15px; font-weight: bold; }
+  button:hover { transform: scale(1.02); }
+  .output { background: rgba(15, 52, 96, 0.5); padding: 20px; border-radius: 8px; margin-top: 20px; border: 2px solid #0f3460; min-height: 100px; }
+  .label { font-size: 14px; color: #aaa; margin-top: 10px; display: block; }
+  h2 { margin-top: 0; }
+</style>
+</head>
+<body>
+  <div class="form-container">
+    <h2>📝 Form State with Live Preview</h2>
+    <label class="label">Name</label>
+    <input id="name" placeholder="Enter your name" oninput="updatePreview()" />
+    
+    <label class="label">Email</label>
+    <input id="email" type="email" placeholder="Enter your email" oninput="updatePreview()" />
+    
+    <label class="label">Role</label>
+    <select id="role" onchange="updatePreview()">
+      <option value="">Select your role</option>
+      <option value="developer">👨‍💻 Developer</option>
+      <option value="designer">🎨 Designer</option>
+      <option value="manager">👔 Manager</option>
+      <option value="student">🎓 Student</option>
+    </select>
+    
+    <button onclick="submit()">Submit Form</button>
+    
+    <div class="output" id="preview">
+      <strong>📋 Live Preview:</strong><br><br>
+      Fill the form to see preview...
+    </div>
+  </div>
+  
+  <script>
+    function updatePreview() {
+      const name = document.getElementById('name').value;
+      const email = document.getElementById('email').value;
+      const role = document.getElementById('role').value;
+      const roleText = document.getElementById('role').selectedOptions[0]?.text || '(not selected)';
+      
+      document.getElementById('preview').innerHTML = \`
+        <strong>📋 Live Preview:</strong><br><br>
+        <strong>Name:</strong> \${name || '<em style="opacity:0.5;">(empty)</em>'}<br>
+        <strong>Email:</strong> \${email || '<em style="opacity:0.5;">(empty)</em>'}<br>
+        <strong>Role:</strong> \${role ? roleText : '<em style="opacity:0.5;">(not selected)</em>'}
+      \`;
+    }
+    
+    function submit() {
+      const name = document.getElementById('name').value;
+      const email = document.getElementById('email').value;
+      const role = document.getElementById('role').value;
+      
+      if (!name || !email || !role) {
+        alert('⚠️ Please fill all fields!');
+        return;
+      }
+      
+      alert(\`✅ Form Submitted Successfully!\n\nName: \${name}\nEmail: \${email}\nRole: \${document.getElementById('role').selectedOptions[0].text}\`);
+      
+      // Reset form
+      document.getElementById('name').value = '';
+      document.getElementById('email').value = '';
+      document.getElementById('role').value = '';
+      updatePreview();
+    }
   </script>
 </body>
 </html>`
