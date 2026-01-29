@@ -1,14 +1,35 @@
-import { useState } from 'react';
-import { Check, Copy } from 'lucide-react';
+import { useState, useRef, useEffect } from 'react';
+import gsap from 'gsap';
+import { Code, Copy, Check, ChevronDown } from 'lucide-react';
 
 interface CodeBlockProps {
   code: string;
   language?: string;
-  filename?: string;
 }
 
-export const CodeBlock = ({ code, language = 'tsx', filename }: CodeBlockProps) => {
+const CodeBlock = ({ code, language = 'javascript' }: CodeBlockProps) => {
+  const [isExpanded, setIsExpanded] = useState(false);
   const [copied, setCopied] = useState(false);
+  const codeRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (codeRef.current) {
+      if (isExpanded) {
+        gsap.fromTo(
+          codeRef.current,
+          { height: 0, opacity: 0 },
+          { height: 'auto', opacity: 1, duration: 0.4, ease: 'power2.out' }
+        );
+      } else {
+        gsap.to(codeRef.current, {
+          height: 0,
+          opacity: 0,
+          duration: 0.3,
+          ease: 'power2.in'
+        });
+      }
+    }
+  }, [isExpanded]);
 
   const handleCopy = async () => {
     await navigator.clipboard.writeText(code);
@@ -17,43 +38,42 @@ export const CodeBlock = ({ code, language = 'tsx', filename }: CodeBlockProps) 
   };
 
   return (
-    <div className="relative group rounded-lg overflow-hidden border border-border bg-secondary/30">
-      {/* Header */}
-      <div className="flex items-center justify-between px-4 py-2 bg-secondary/50 border-b border-border">
-        <div className="flex items-center gap-2">
-          <div className="flex gap-1.5">
-            <div className="w-3 h-3 rounded-full bg-destructive/60" />
-            <div className="w-3 h-3 rounded-full bg-category-js/60" />
-            <div className="w-3 h-3 rounded-full bg-primary/60" />
-          </div>
-          {filename && (
-            <span className="text-xs text-muted-foreground font-mono ml-2">
-              {filename}
-            </span>
-          )}
-        </div>
-        <div className="flex items-center gap-2">
-          <span className="text-xs text-muted-foreground uppercase">{language}</span>
+    <div className="border border-border rounded-lg overflow-hidden">
+      <button
+        onClick={() => setIsExpanded(!isExpanded)}
+        className="w-full flex items-center justify-between px-4 py-3 bg-secondary/30 hover:bg-secondary/50 transition-colors"
+      >
+        <span className="flex items-center gap-2 text-sm font-medium">
+          <Code className="w-4 h-4" />
+          View Code
+        </span>
+        <ChevronDown
+          className={`w-4 h-4 transition-transform duration-300 ${
+            isExpanded ? 'rotate-180' : ''
+          }`}
+        />
+      </button>
+
+      <div ref={codeRef} className="overflow-hidden" style={{ height: 0, opacity: 0 }}>
+        <div className="relative">
           <button
             onClick={handleCopy}
-            className="p-1.5 rounded-md hover:bg-muted transition-colors"
-            aria-label="Copy code"
+            className="absolute top-2 right-2 p-2 bg-background/80 hover:bg-background rounded-md transition-colors z-10"
+            title="Copy code"
           >
             {copied ? (
-              <Check className="w-4 h-4 text-primary" />
+              <Check className="w-4 h-4 text-green-500" />
             ) : (
-              <Copy className="w-4 h-4 text-muted-foreground" />
+              <Copy className="w-4 h-4" />
             )}
           </button>
+          <pre className="bg-secondary/50 p-4 overflow-x-auto text-sm">
+            <code>{code}</code>
+          </pre>
         </div>
       </div>
-      
-      {/* Code */}
-      <pre className="p-4 overflow-x-auto scrollbar-thin">
-        <code className="text-sm font-mono text-foreground/90 leading-relaxed whitespace-pre px-10">
-          {code}
-        </code>
-      </pre>
     </div>
   );
 };
+
+export default CodeBlock;

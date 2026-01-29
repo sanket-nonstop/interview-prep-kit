@@ -100,6 +100,8 @@ import Portal from "./pages/topics/react/Portal";
 import SuspenseLazy from "./pages/topics/react/SuspenseLazy";
 import ConcurrentFeatures from "./pages/topics/react/ConcurrentFeatures";
 import GsapAnimations from "./pages/topics/react/GsapAnimations";
+import AdvancedGsapShowcase from "./pages/topics/react/AdvancedGsapShowcase";
+import CreativeGsapEffects from "./pages/topics/react/CreativeGsapEffects";
 import ThreeJs from "./pages/topics/react/ThreeJs";
 import Security from "./pages/topics/security/Fundamentals";
 import CoreWebVitals from "./pages/topics/seo/CoreWebVitals";
@@ -352,8 +354,17 @@ const App = () => (
             <Route path="/react/best-practices/accessibility/" element={<Accessibility />} />
             <Route path="/react/accessibility/" element={<Accessibility />} />
             <Route path="/react/animations/gsap/" element={<GsapAnimations />} />
+            <Route path="/react/gsap-animations/" element={<GsapAnimations />} />
+            <Route path="/react/advanced-gsap/" element={<AdvancedGsapShowcase />} />
+            <Route path="/react/creative-gsap/" element={<CreativeGsapEffects />} />
             <Route path="/react/animations/threejs/" element={<ThreeJs />} />
             <Route path="/react/*" element={<TopicNotFound />} />
+            
+            {/* Animations & 3D Topics */}
+            <Route path="/animations/gsap-animations/" element={<GsapAnimations />} />
+            <Route path="/animations/advanced-gsap/" element={<AdvancedGsapShowcase />} />
+            <Route path="/animations/creative-gsap/" element={<CreativeGsapEffects />} />
+            <Route path="/animations/*" element={<TopicNotFound />} />
             
             {/* Testing Topics */}
             <Route path="/testing/basics/fundamentals/" element={<Testing />} />

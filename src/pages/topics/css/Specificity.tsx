@@ -257,6 +257,173 @@ const Specificity = () => {
   </div>
 </body>
 </html>`
+          },
+          {
+            title: "BEM Methodology",
+            code: `<!DOCTYPE html>
+<html>
+<head>
+<style>
+  body { margin: 0; padding: 40px; font-family: system-ui; background: #f5f5f5; }
+  
+  /* Block */
+  .card { background: white; border-radius: 12px; padding: 20px; margin-bottom: 20px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); max-width: 600px; margin: 20px auto; }
+  
+  /* Element */
+  .card__header { padding-bottom: 15px; border-bottom: 2px solid #e5e7eb; margin-bottom: 15px; }
+  .card__title { font-size: 1.5rem; color: #1f2937; margin: 0; }
+  .card__body { color: #6b7280; line-height: 1.6; }
+  .card__footer { padding-top: 15px; border-top: 1px solid #e5e7eb; margin-top: 15px; display: flex; gap: 10px; }
+  
+  /* Modifier */
+  .card--featured { border: 3px solid #3b82f6; box-shadow: 0 8px 24px rgba(59, 130, 246, 0.2); }
+  .card--featured .card__title { color: #3b82f6; }
+  
+  .card--dark { background: #1f2937; color: white; }
+  .card--dark .card__title { color: white; }
+  .card--dark .card__body { color: #d1d5db; }
+  
+  /* Button variations */
+  .btn { padding: 10px 20px; border: none; border-radius: 6px; cursor: pointer; font-weight: 600; }
+  .btn--primary { background: #3b82f6; color: white; }
+  .btn--secondary { background: #6b7280; color: white; }
+  
+  .info { background: #dbeafe; padding: 20px; border-radius: 8px; border-left: 4px solid #3b82f6; margin: 20px auto; max-width: 600px; }
+</style>
+</head>
+<body>
+  <div class="info">
+    <strong>BEM (Block Element Modifier)</strong><br>
+    Low specificity (all classes) = Easy to override<br>
+    Consistent naming = Easy to maintain
+  </div>
+  
+  <div class="card">
+    <div class="card__header">
+      <h2 class="card__title">Normal Card</h2>
+    </div>
+    <div class="card__body">
+      This is a standard card using BEM methodology.
+    </div>
+    <div class="card__footer">
+      <button class="btn btn--primary">Primary</button>
+      <button class="btn btn--secondary">Secondary</button>
+    </div>
+  </div>
+  
+  <div class="card card--featured">
+    <div class="card__header">
+      <h2 class="card__title">Featured Card</h2>
+    </div>
+    <div class="card__body">
+      Modified with .card--featured for special styling.
+    </div>
+    <div class="card__footer">
+      <button class="btn btn--primary">Action</button>
+    </div>
+  </div>
+  
+  <div class="card card--dark">
+    <div class="card__header">
+      <h2 class="card__title">Dark Card</h2>
+    </div>
+    <div class="card__body">
+      Modified with .card--dark for dark theme.
+    </div>
+    <div class="card__footer">
+      <button class="btn btn--primary">Action</button>
+    </div>
+  </div>
+</body>
+</html>`
+          },
+          {
+            title: "Specificity Debugging",
+            code: `<!DOCTYPE html>
+<html>
+<head>
+<style>
+  body { margin: 0; padding: 40px; font-family: system-ui; background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); min-height: 100vh; }
+  .container { max-width: 800px; margin: 0 auto; }
+  h1 { color: white; text-align: center; margin-bottom: 30px; }
+  
+  .card { background: white; border-radius: 12px; padding: 30px; margin-bottom: 20px; }
+  
+  /* Specificity: 0,0,0,1 */
+  p { color: black; background: #f3f4f6; padding: 10px; border-radius: 4px; }
+  
+  /* Specificity: 0,0,1,0 - WINS */
+  .text-blue { color: blue; background: #dbeafe; }
+  
+  /* Specificity: 0,0,1,1 - WINS over .text-blue */
+  p.text-blue { color: green; background: #d1fae5; font-weight: bold; }
+  
+  /* Specificity: 0,1,0,0 - WINS over everything */
+  #special { color: red; background: #fee2e2; }
+  
+  .specificity-table { width: 100%; border-collapse: collapse; margin-top: 20px; }
+  .specificity-table th, .specificity-table td { padding: 12px; text-align: left; border-bottom: 1px solid #e5e7eb; }
+  .specificity-table th { background: #f3f4f6; font-weight: 600; }
+  .specificity-table tr:hover { background: #f9fafb; }
+  
+  .code { background: #1f2937; color: #10b981; padding: 2px 6px; border-radius: 4px; font-family: 'Courier New', monospace; font-size: 0.875rem; }
+</style>
+</head>
+<body>
+  <div class="container">
+    <h1>🔍 Specificity Debugging</h1>
+    
+    <div class="card">
+      <h2>Live Examples</h2>
+      <p>Black text (p selector)</p>
+      <p class="text-blue">Green text (p.text-blue wins)</p>
+      <p id="special" class="text-blue">Red text (ID wins all)</p>
+      
+      <table class="specificity-table">
+        <thead>
+          <tr>
+            <th>Selector</th>
+            <th>Specificity</th>
+            <th>Winner</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><span class="code">p</span></td>
+            <td>0,0,0,1</td>
+            <td>❌ Loses</td>
+          </tr>
+          <tr>
+            <td><span class="code">.text-blue</span></td>
+            <td>0,0,1,0</td>
+            <td>❌ Loses to p.text-blue</td>
+          </tr>
+          <tr>
+            <td><span class="code">p.text-blue</span></td>
+            <td>0,0,1,1</td>
+            <td>✅ Wins (higher than class alone)</td>
+          </tr>
+          <tr>
+            <td><span class="code">#special</span></td>
+            <td>0,1,0,0</td>
+            <td>✅ Wins (ID beats everything)</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    
+    <div class="card">
+      <h3>💡 Debugging Tips</h3>
+      <ul style="line-height: 2;">
+        <li>Use browser DevTools to see computed styles</li>
+        <li>Look for crossed-out rules (overridden)</li>
+        <li>Check specificity calculator tools</li>
+        <li>Avoid !important unless absolutely necessary</li>
+      </ul>
+    </div>
+  </div>
+</body>
+</html>`
           }
         ]}
       />

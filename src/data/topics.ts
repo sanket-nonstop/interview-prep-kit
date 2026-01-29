@@ -111,6 +111,16 @@ export const topicsData: TopicCategory[] = [
     ],
   },
   {
+    id: 'animations-3d',
+    title: 'Animations & 3D',
+    icon: '🎨',
+    topics: [
+      { id: 'gsap-animations', title: 'GSAP Animations', route: '/animations/gsap-animations', category: 'react' },
+      { id: 'advanced-gsap', title: 'Advanced GSAP Showcase', route: '/animations/advanced-gsap', category: 'react' },
+      { id: 'creative-gsap', title: 'Creative GSAP Effects', route: '/animations/creative-gsap', category: 'react' },
+    ],
+  },
+  {
     id: 'typescript',
     title: 'TypeScript',
     icon: '🔷',

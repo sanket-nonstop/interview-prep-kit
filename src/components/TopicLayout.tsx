@@ -1,5 +1,5 @@
 import { ReactNode } from 'react';
-import { CodeBlock } from './CodeBlock';
+import CodeBlock from './CodeBlock';
 import { getCategoryColor } from '@/data/topics';
 import { AlertTriangle, CheckCircle2, Target, Lightbulb } from 'lucide-react';
 

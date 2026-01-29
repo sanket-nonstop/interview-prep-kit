@@ -218,6 +218,96 @@ const Responsive = () => {
   </div>
 </body>
 </html>`
+          },
+          {
+            title: "E-commerce Product Page",
+            code: `<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: system-ui; background: #f5f5f5; }
+  .container { max-width: 1200px; margin: 0 auto; padding: 20px; }
+  .product-layout { display: grid; grid-template-columns: 1fr; gap: 30px; }
+  .product-image { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); border-radius: 12px; height: 300px; display: flex; align-items: center; justify-content: center; font-size: 5rem; }
+  .product-info { background: white; padding: 30px; border-radius: 12px; }
+  .product-title { font-size: 1.5rem; margin-bottom: 10px; }
+  .product-price { font-size: 2rem; color: #3b82f6; font-weight: bold; margin: 20px 0; }
+  .btn-buy { background: #10b981; color: white; padding: 15px 30px; border: none; border-radius: 8px; font-size: 1rem; font-weight: 600; cursor: pointer; width: 100%; margin-top: 20px; }
+  
+  @media (min-width: 768px) {
+    .product-layout { grid-template-columns: 1fr 1fr; }
+    .product-image { height: 400px; }
+    .btn-buy { width: auto; }
+  }
+  
+  @media (min-width: 1024px) {
+    .product-layout { grid-template-columns: 1.5fr 1fr; }
+    .product-image { height: 500px; }
+  }
+</style>
+</head>
+<body>
+  <div class="container">
+    <div class="product-layout">
+      <div class="product-image">👟</div>
+      <div class="product-info">
+        <h1 class="product-title">Premium Running Shoes</h1>
+        <div class="product-price">$89.99</div>
+        <p style="color: #6b7280; line-height: 1.6; margin-bottom: 20px;">Professional-grade running shoes with advanced cushioning technology. Perfect for marathon training and daily runs.</p>
+        <button class="btn-buy">🛒 Add to Cart</button>
+      </div>
+    </div>
+  </div>
+</body>
+</html>`
+          },
+          {
+            title: "Responsive Sidebar",
+            code: `<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: system-ui; }
+  .layout { display: flex; flex-direction: column; min-height: 100vh; }
+  .header { background: #1f2937; color: white; padding: 20px; display: flex; justify-content: space-between; align-items: center; }
+  .menu-toggle { background: #3b82f6; border: none; color: white; padding: 10px 20px; border-radius: 6px; cursor: pointer; }
+  .content-wrapper { display: flex; flex: 1; flex-direction: column; }
+  .sidebar { background: #374151; color: white; padding: 20px; }
+  .sidebar-item { padding: 12px; border-radius: 6px; margin-bottom: 5px; cursor: pointer; }
+  .sidebar-item:hover { background: #4b5563; }
+  .main-content { flex: 1; padding: 20px; background: #f9fafb; }
+  
+  @media (min-width: 768px) {
+    .menu-toggle { display: none; }
+    .content-wrapper { flex-direction: row; }
+    .sidebar { width: 250px; min-height: calc(100vh - 60px); }
+  }
+</style>
+</head>
+<body>
+  <div class="layout">
+    <header class="header">
+      <div>🚀 Dashboard</div>
+      <button class="menu-toggle">☰ Menu</button>
+    </header>
+    <div class="content-wrapper">
+      <aside class="sidebar">
+        <div class="sidebar-item">🏠 Home</div>
+        <div class="sidebar-item">📊 Analytics</div>
+        <div class="sidebar-item">⚙️ Settings</div>
+      </aside>
+      <main class="main-content">
+        <h1>Main Content</h1>
+        <p>Sidebar stacks on mobile, shows beside on desktop</p>
+      </main>
+    </div>
+  </div>
+</body>
+</html>`
           }
         ]}
       />

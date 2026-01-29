@@ -82,6 +82,15 @@ const GsapAnimations = () => {
   const demoBoxRef = useRef<HTMLDivElement>(null);
   const rotateBoxRef = useRef<HTMLDivElement>(null);
   const bounceBoxRef = useRef<HTMLDivElement>(null);
+  const scaleBoxRef = useRef<HTMLDivElement>(null);
+  const morphBoxRef = useRef<HTMLDivElement>(null);
+  const staggerBoxesRef = useRef<HTMLDivElement>(null);
+  const flipBoxRef = useRef<HTMLDivElement>(null);
+  const waveTextRef = useRef<HTMLDivElement>(null);
+  const spiralBoxRef = useRef<HTMLDivElement>(null);
+  const elasticBoxRef = useRef<HTMLDivElement>(null);
+  const colorBoxRef = useRef<HTMLDivElement>(null);
+  const skewBoxRef = useRef<HTMLDivElement>(null);
   const [isAnimating, setIsAnimating] = useState(false);
 
   useEffect(() => {
@@ -159,6 +168,115 @@ const GsapAnimations = () => {
     }
   };
 
+  const handleScale = () => {
+    if (scaleBoxRef.current) {
+      gsap.to(scaleBoxRef.current, {
+        scale: 1.5,
+        duration: 0.3,
+        ease: 'back.out(2)',
+        yoyo: true,
+        repeat: 1
+      });
+    }
+  };
+
+  const handleMorph = () => {
+    if (morphBoxRef.current) {
+      gsap.to(morphBoxRef.current, {
+        borderRadius: '50%',
+        backgroundColor: '#ec4899',
+        duration: 0.5,
+        ease: 'power2.inOut',
+        yoyo: true,
+        repeat: 1
+      });
+    }
+  };
+
+  const handleStagger = () => {
+    if (staggerBoxesRef.current) {
+      const boxes = staggerBoxesRef.current.querySelectorAll('.stagger-box');
+      gsap.fromTo(boxes,
+        { y: 0, opacity: 1 },
+        { y: -50, opacity: 0.3, duration: 0.4, stagger: 0.1, yoyo: true, repeat: 1 }
+      );
+    }
+  };
+
+  const handleFlip = () => {
+    if (flipBoxRef.current) {
+      gsap.to(flipBoxRef.current, {
+        rotationY: 180,
+        duration: 0.6,
+        ease: 'power2.inOut',
+        yoyo: true,
+        repeat: 1
+      });
+    }
+  };
+
+  const handleWave = () => {
+    if (waveTextRef.current) {
+      const letters = waveTextRef.current.querySelectorAll('.letter');
+      gsap.fromTo(letters,
+        { y: 0 },
+        { y: -20, duration: 0.3, stagger: 0.05, yoyo: true, repeat: 1, ease: 'power1.inOut' }
+      );
+    }
+  };
+
+  const handleSpiral = () => {
+    if (spiralBoxRef.current) {
+      gsap.to(spiralBoxRef.current, {
+        rotation: 720,
+        scale: 0.2,
+        duration: 1,
+        ease: 'power2.in',
+        yoyo: true,
+        repeat: 1
+      });
+    }
+  };
+
+  const handleElastic = () => {
+    if (elasticBoxRef.current) {
+      gsap.to(elasticBoxRef.current, {
+        x: 200,
+        duration: 1.5,
+        ease: 'elastic.out(1, 0.3)'
+      });
+      gsap.to(elasticBoxRef.current, {
+        x: 0,
+        duration: 1.5,
+        delay: 1.5,
+        ease: 'elastic.out(1, 0.3)'
+      });
+    }
+  };
+
+  const handleColor = () => {
+    if (colorBoxRef.current) {
+      gsap.to(colorBoxRef.current, {
+        backgroundColor: '#' + Math.floor(Math.random()*16777215).toString(16),
+        duration: 0.5,
+        ease: 'power2.inOut'
+      });
+    }
+  };
+
+  const handleSkew = () => {
+    if (skewBoxRef.current) {
+      gsap.to(skewBoxRef.current, {
+        skewX: 20,
+        x: 100,
+        duration: 0.5,
+        ease: 'power2.out',
+        yoyo: true,
+        repeat: 1
+      });
+    }
+  };
+
   return (
     <div className="max-w-7xl mx-auto">
       <div className="mb-6">
@@ -166,54 +284,252 @@ const GsapAnimations = () => {
         <p className="text-lg text-muted-foreground">Professional animations with GreenSock Animation Platform</p>
       </div>
 
-      <div className="topic-card p-6 mb-6 bg-gradient-to-br from-purple-500/10 to-pink-500/10">
-        <h2 className="text-2xl font-bold text-foreground mb-4">🎮 Interactive Demos</h2>
-        <div className="grid md:grid-cols-3 gap-6">
-          <div className="text-center">
-            <div ref={demoBoxRef} className="w-20 h-20 bg-primary rounded-lg mx-auto mb-4"></div>
+      <div className="topic-card p-6 mb-6">
+        <h2 className="text-2xl font-bold text-foreground mb-4">🎮 1. Slide Animation</h2>
+        <div className="grid md:grid-cols-2 gap-6">
+          <div className="flex flex-col items-center justify-center bg-secondary/30 rounded-lg p-6">
+            <div ref={demoBoxRef} className="w-20 h-20 bg-primary rounded-lg mb-4"></div>
             <button onClick={handleAnimate} disabled={isAnimating} className="px-4 py-2 bg-primary text-primary-foreground rounded-md hover:bg-primary/90 disabled:opacity-50">
-              Slide Animation
+              Slide
             </button>
           </div>
-          <div className="text-center">
-            <div ref={rotateBoxRef} className="w-20 h-20 bg-blue-500 rounded-lg mx-auto mb-4"></div>
+          <pre className="bg-secondary/50 p-4 rounded-lg overflow-x-auto text-sm"><code>{`gsap.to(box, {
+  x: 300,
+  duration: 1,
+  ease: 'power2.out'
+});`}</code></pre>
+        </div>
+      </div>
+
+      <div className="topic-card p-6 mb-6">
+        <h2 className="text-2xl font-bold text-foreground mb-4">🔄 2. Rotate 360°</h2>
+        <div className="grid md:grid-cols-2 gap-6">
+          <div className="flex flex-col items-center justify-center bg-secondary/30 rounded-lg p-6">
+            <div ref={rotateBoxRef} className="w-20 h-20 bg-blue-500 rounded-lg mb-4"></div>
             <button onClick={handleRotate} className="px-4 py-2 bg-blue-500 text-white rounded-md hover:bg-blue-600">
-              Rotate 360°
+              Rotate
             </button>
           </div>
-          <div className="text-center">
-            <div ref={bounceBoxRef} className="w-20 h-20 bg-green-500 rounded-lg mx-auto mb-4"></div>
+          <pre className="bg-secondary/50 p-4 rounded-lg overflow-x-auto text-sm"><code>{`gsap.to(box, {
+  rotation: '+=360',
+  duration: 1,
+  ease: 'power2.inOut'
+});`}</code></pre>
+        </div>
+      </div>
+
+      <div className="topic-card p-6 mb-6">
+        <h2 className="text-2xl font-bold text-foreground mb-4">⬆️ 3. Bounce</h2>
+        <div className="grid md:grid-cols-2 gap-6">
+          <div className="flex flex-col items-center justify-center bg-secondary/30 rounded-lg p-6">
+            <div ref={bounceBoxRef} className="w-20 h-20 bg-green-500 rounded-lg mb-4"></div>
             <button onClick={handleBounce} className="px-4 py-2 bg-green-500 text-white rounded-md hover:bg-green-600">
               Bounce
             </button>
           </div>
+          <pre className="bg-secondary/50 p-4 rounded-lg overflow-x-auto text-sm"><code>{`gsap.to(box, {
+  y: -100,
+  duration: 0.5,
+  ease: 'power2.out',
+  yoyo: true,
+  repeat: 1
+});`}</code></pre>
         </div>
       </div>
 
-      <div ref={boxRef} className="topic-card p-6 mb-6">
-        <h2 className="text-2xl font-bold text-foreground mb-4">🎬 Basic Animation</h2>
-        <pre className="bg-secondary/50 p-4 rounded-lg overflow-x-auto"><code>{`import gsap from 'gsap';
-
-// Simple animation
-gsap.to('.box', {
-  x: 100,
-  duration: 1,
-  ease: 'power2.out'
-});
-
-// From animation
-gsap.from('.element', {
-  opacity: 0,
-  y: 50,
-  duration: 1
-});
-
-// FromTo animation
-gsap.fromTo('.item',
-  { scale: 0 },
-  { scale: 1, duration: 0.5 }
-);`}</code></pre>
+      <div className="topic-card p-6 mb-6">
+        <h2 className="text-2xl font-bold text-foreground mb-4">💫 4. Scale Pulse</h2>
+        <div className="grid md:grid-cols-2 gap-6">
+          <div className="flex flex-col items-center justify-center bg-secondary/30 rounded-lg p-6">
+            <div ref={scaleBoxRef} className="w-20 h-20 bg-purple-500 rounded-lg mb-4"></div>
+            <button onClick={handleScale} className="px-4 py-2 bg-purple-500 text-white rounded-md hover:bg-purple-600">
+              Scale
+            </button>
+          </div>
+          <pre className="bg-secondary/50 p-4 rounded-lg overflow-x-auto text-sm"><code>{`gsap.to(box, {
+  scale: 1.5,
+  duration: 0.3,
+  ease: 'back.out(2)',
+  yoyo: true,
+  repeat: 1
+});`}</code></pre>
+        </div>
       </div>
+
+      <div className="topic-card p-6 mb-6">
+        <h2 className="text-2xl font-bold text-foreground mb-4">🔮 5. Morph Shape</h2>
+        <div className="grid md:grid-cols-2 gap-6">
+          <div className="flex flex-col items-center justify-center bg-secondary/30 rounded-lg p-6">
+            <div ref={morphBoxRef} className="w-20 h-20 bg-cyan-500 rounded-lg mb-4"></div>
+            <button onClick={handleMorph} className="px-4 py-2 bg-cyan-500 text-white rounded-md hover:bg-cyan-600">
+              Morph
+            </button>
+          </div>
+          <pre className="bg-secondary/50 p-4 rounded-lg overflow-x-auto text-sm"><code>{`gsap.to(box, {
+  borderRadius: '50%',
+  backgroundColor: '#ec4899',
+  duration: 0.5,
+  yoyo: true,
+  repeat: 1
+});`}</code></pre>
+        </div>
+      </div>
+
+      <div className="topic-card p-6 mb-6">
+        <h2 className="text-2xl font-bold text-foreground mb-4">🔄 6. 3D Flip</h2>
+        <div className="grid md:grid-cols-2 gap-6">
+          <div className="flex flex-col items-center justify-center bg-secondary/30 rounded-lg p-6">
+            <div ref={flipBoxRef} className="w-20 h-20 bg-orange-500 rounded-lg mb-4 flex items-center justify-center text-white font-bold text-2xl" style={{ transformStyle: 'preserve-3d' }}>A</div>
+            <button onClick={handleFlip} className="px-4 py-2 bg-orange-500 text-white rounded-md hover:bg-orange-600">
+              Flip
+            </button>
+          </div>
+          <pre className="bg-secondary/50 p-4 rounded-lg overflow-x-auto text-sm"><code>{`gsap.to(card, {
+  rotationY: 180,
+  duration: 0.6,
+  ease: 'power2.inOut',
+  yoyo: true,
+  repeat: 1
+});`}</code></pre>
+        </div>
+      </div>
+
+      <div className="topic-card p-6 mb-6">
+        <h2 className="text-2xl font-bold text-foreground mb-4">🌊 7. Stagger Wave</h2>
+        <div className="grid md:grid-cols-2 gap-6">
+          <div className="flex flex-col items-center justify-center bg-secondary/30 rounded-lg p-6">
+            <div ref={staggerBoxesRef} className="flex justify-center gap-2 mb-4 h-20 items-end">
+              <div className="stagger-box w-12 h-12 bg-red-500 rounded"></div>
+              <div className="stagger-box w-12 h-16 bg-yellow-500 rounded"></div>
+              <div className="stagger-box w-12 h-20 bg-green-500 rounded"></div>
+              <div className="stagger-box w-12 h-16 bg-blue-500 rounded"></div>
+              <div className="stagger-box w-12 h-12 bg-indigo-500 rounded"></div>
+            </div>
+            <button onClick={handleStagger} className="px-4 py-2 bg-gradient-to-r from-red-500 to-indigo-500 text-white rounded-md hover:opacity-90">
+              Wave
+            </button>
+          </div>
+          <pre className="bg-secondary/50 p-4 rounded-lg overflow-x-auto text-sm"><code>{`gsap.fromTo(boxes,
+  { y: 0, opacity: 1 },
+  {
+    y: -50,
+    opacity: 0.3,
+    stagger: 0.1,
+    yoyo: true,
+    repeat: 1
+  }
+);`}</code></pre>
+        </div>
+      </div>
+
+      <div className="topic-card p-6 mb-6">
+        <h2 className="text-2xl font-bold text-foreground mb-4">📝 8. Text Wave</h2>
+        <div className="grid md:grid-cols-2 gap-6">
+          <div className="flex flex-col items-center justify-center bg-secondary/30 rounded-lg p-6">
+            <div ref={waveTextRef} className="flex justify-center gap-1 mb-4 h-20 items-center text-3xl font-bold">
+              <span className="letter text-pink-500">G</span>
+              <span className="letter text-purple-500">S</span>
+              <span className="letter text-blue-500">A</span>
+              <span className="letter text-cyan-500">P</span>
+            </div>
+            <button onClick={handleWave} className="px-4 py-2 bg-gradient-to-r from-pink-500 to-cyan-500 text-white rounded-md hover:opacity-90">
+              Wave
+            </button>
+          </div>
+          <pre className="bg-secondary/50 p-4 rounded-lg overflow-x-auto text-sm"><code>{`gsap.fromTo(letters,
+  { y: 0 },
+  {
+    y: -20,
+    duration: 0.3,
+    stagger: 0.05,
+    yoyo: true,
+    repeat: 1
+  }
+);`}</code></pre>
+        </div>
+      </div>
+
+      <div className="topic-card p-6 mb-6">
+        <h2 className="text-2xl font-bold text-foreground mb-4">🌀 9. Spiral Shrink</h2>
+        <div className="grid md:grid-cols-2 gap-6">
+          <div className="flex flex-col items-center justify-center bg-secondary/30 rounded-lg p-6">
+            <div ref={spiralBoxRef} className="w-20 h-20 bg-rose-500 rounded-lg mb-4"></div>
+            <button onClick={handleSpiral} className="px-4 py-2 bg-rose-500 text-white rounded-md hover:bg-rose-600">
+              Spiral
+            </button>
+          </div>
+          <pre className="bg-secondary/50 p-4 rounded-lg overflow-x-auto text-sm"><code>{`gsap.to(box, {
+  rotation: 720,
+  scale: 0.2,
+  duration: 1,
+  ease: 'power2.in',
+  yoyo: true,
+  repeat: 1
+});`}</code></pre>
+        </div>
+      </div>
+
+      <div className="topic-card p-6 mb-6">
+        <h2 className="text-2xl font-bold text-foreground mb-4">🎯 10. Elastic Bounce</h2>
+        <div className="grid md:grid-cols-2 gap-6">
+          <div className="flex flex-col items-center justify-center bg-secondary/30 rounded-lg p-6">
+            <div ref={elasticBoxRef} className="w-20 h-20 bg-amber-500 rounded-lg mb-4"></div>
+            <button onClick={handleElastic} className="px-4 py-2 bg-amber-500 text-white rounded-md hover:bg-amber-600">
+              Elastic
+            </button>
+          </div>
+          <pre className="bg-secondary/50 p-4 rounded-lg overflow-x-auto text-sm"><code>{`gsap.to(box, {
+  x: 200,
+  duration: 1.5,
+  ease: 'elastic.out(1, 0.3)'
+});
+gsap.to(box, {
+  x: 0,
+  delay: 1.5
+});`}</code></pre>
+        </div>
+      </div>
+
+      <div className="topic-card p-6 mb-6">
+        <h2 className="text-2xl font-bold text-foreground mb-4">🎨 11. Random Color</h2>
+        <div className="grid md:grid-cols-2 gap-6">
+          <div className="flex flex-col items-center justify-center bg-secondary/30 rounded-lg p-6">
+            <div ref={colorBoxRef} className="w-20 h-20 bg-violet-500 rounded-lg mb-4"></div>
+            <button onClick={handleColor} className="px-4 py-2 bg-violet-500 text-white rounded-md hover:bg-violet-600">
+              Color
+            </button>
+          </div>
+          <pre className="bg-secondary/50 p-4 rounded-lg overflow-x-auto text-sm"><code>{`gsap.to(box, {
+  backgroundColor: '#' + 
+    Math.floor(
+      Math.random()*16777215
+    ).toString(16),
+  duration: 0.5
+});`}</code></pre>
+        </div>
+      </div>
+
+      <div className="topic-card p-6 mb-6">
+        <h2 className="text-2xl font-bold text-foreground mb-4">↗️ 12. Skew Slide</h2>
+        <div className="grid md:grid-cols-2 gap-6">
+          <div className="flex flex-col items-center justify-center bg-secondary/30 rounded-lg p-6">
+            <div ref={skewBoxRef} className="w-20 h-20 bg-teal-500 rounded-lg mb-4"></div>
+            <button onClick={handleSkew} className="px-4 py-2 bg-teal-500 text-white rounded-md hover:bg-teal-600">
+              Skew
+            </button>
+          </div>
+          <pre className="bg-secondary/50 p-4 rounded-lg overflow-x-auto text-sm"><code>{`gsap.to(box, {
+  skewX: 20,
+  x: 100,
+  duration: 0.5,
+  ease: 'power2.out',
+  yoyo: true,
+  repeat: 1
+});`}</code></pre>
+        </div>
+      </div>
+
+
 
       <div className="topic-card p-6 mb-6">
         <h2 className="text-2xl font-bold text-foreground mb-4">⚡ Timeline Animations</h2>

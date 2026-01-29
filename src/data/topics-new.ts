@@ -222,7 +222,9 @@ export const topicsDataNew: TopicCategory[] = [
         id: 'animations',
         title: 'Animations & 3D',
         topics: [
-          { id: 'gsap', title: 'GSAP Animations', route: '/react/animations/gsap/', category: 'react', difficulty: 'advanced' },
+          { id: 'gsap-animations', title: 'GSAP Animations', route: '/animations/gsap-animations/', category: 'react', difficulty: 'advanced' },
+          { id: 'advanced-gsap', title: 'Advanced GSAP Showcase', route: '/animations/advanced-gsap/', category: 'react', difficulty: 'advanced' },
+          { id: 'creative-gsap', title: 'Creative GSAP Effects', route: '/animations/creative-gsap/', category: 'react', difficulty: 'advanced' },
           { id: 'threejs', title: 'Three.js in React', route: '/react/animations/threejs/', category: 'react', difficulty: 'advanced' },
         ],
       },
