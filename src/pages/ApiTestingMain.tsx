@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
-import { Code2, ArrowRight, Lightbulb, Zap, BookOpen, MessageSquare, Server, Globe, CheckCircle } from 'lucide-react';
+import { Code2, ArrowRight, Zap, Lightbulb, Rocket, CheckCircle, BookOpen } from 'lucide-react';
+import { useState } from 'react';
 
 const methods = [
   { name: 'GET', route: '/api-testing/get', color: 'bg-green-500', desc: 'Retrieve data from server', icon: '📥', example: 'Like reading a book', detail: 'Fetch information without changing anything' },
@@ -10,374 +11,358 @@ const methods = [
 ];
 
 const ApiTestingMain = () => {
+  const [activeTab, setActiveTab] = useState('restaurant');
+
   return (
-    <div className="animate-fade-in max-w-7xl mx-auto px-4 py-6">
-      {/* Hero Section */}
-      <div className="topic-card p-10 mb-12 bg-gradient-to-br from-primary/10 via-accent/5 to-primary/5">
-        <div className="flex items-center gap-3 mb-4">
-          <div className="p-3 bg-primary/20 rounded-lg">
-            <Code2 className="w-8 h-8 text-primary" />
-          </div>
-          <div>
-            <h1 className="text-4xl font-bold text-foreground">API Testing Lab</h1>
-            <p className="text-sm text-muted-foreground mt-1">Learn by doing - No coding required!</p>
-          </div>
+    <div className="animate-fade-in max-w-6xl mx-auto space-y-12">
+      {/* Hero */}
+      <div className="text-center space-y-6 py-12">
+        <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-primary/10 text-primary text-xs font-medium">
+          <Code2 className="w-3 h-3" />
+          Interactive Lab
         </div>
-        <p className="text-lg text-muted-foreground leading-relaxed">
-          Welcome to your interactive API playground! Here you'll learn how websites and apps communicate with servers.
-          Think of APIs as messengers that carry requests and bring back responses - just like ordering food through an app!
+        <h1 className="text-5xl font-bold">
+          API Testing <span className="bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent">Lab</span>
+        </h1>
+        <p className="text-lg text-muted-foreground max-w-2xl mx-auto leading-relaxed">
+          Learn how websites communicate with servers. Test real APIs with no coding required.
         </p>
       </div>
 
-      {/* What is an API Section */}
-      <div className="topic-card p-8 mb-12">
-        <h2 className="text-3xl font-bold text-foreground mb-6 flex items-center gap-2">
-          <Lightbulb className="w-7 h-7 text-primary" />
-          What is an API?
-        </h2>
-        <div className="space-y-6 text-muted-foreground">
-          <p className="text-base leading-relaxed">
-            <strong className="text-foreground">API (Application Programming Interface)</strong> is a set of rules that allows different software applications to communicate with each other.
-            Think of it as a <strong className="text-primary">messenger</strong> that takes your request, tells a system what you want, and brings back the response.
+      {/* What is API - Interactive */}
+      <div className="border border-border rounded-lg overflow-hidden">
+        <div className="bg-gradient-to-r from-primary/10 to-accent/10 p-6">
+          <h2 className="text-2xl font-bold flex items-center gap-2">
+            <Lightbulb className="w-6 h-6 text-primary" />
+            What is an API?
+          </h2>
+        </div>
+        <div className="p-6 space-y-6">
+          <p className="text-muted-foreground leading-relaxed">
+            <strong className="text-foreground">API (Application Programming Interface)</strong> is a set of rules that allows different software applications to communicate with each other. Think of it as a messenger that takes your request, tells a system what you want, and brings back the response.
           </p>
-          <div className="p-6 bg-gradient-to-r from-blue-500/10 to-purple-500/10 rounded-lg border border-blue-500/30">
-            <div className="font-semibold text-foreground mb-2">🏢 Restaurant Analogy:</div>
-            <p className="text-sm">Imagine ordering food at a restaurant. You (the customer) can't go into the kitchen and cook. Instead, you tell the waiter what you want, the waiter takes your order to the kitchen, and brings back your food. The waiter is the API!</p>
-          </div>
-          <div className="grid md:grid-cols-3 gap-6 mt-6">
-            <div className="p-6 bg-background/50 rounded-lg border-2 border-blue-500/20 hover:border-blue-500/40 transition-all">
-              <div className="text-4xl mb-3 text-center">👤</div>
-              <div className="font-bold text-base text-foreground mb-2 text-center">1. You (Client)</div>
-              <div className="text-sm text-center mb-3">You look at the menu and decide what you want</div>
-              <div className="text-xs bg-blue-500/10 p-2 rounded">Example: Opening Instagram app</div>
-            </div>
-            <div className="p-6 bg-background/50 rounded-lg border-2 border-purple-500/20 hover:border-purple-500/40 transition-all">
-              <div className="text-4xl mb-3 text-center">🍽️</div>
-              <div className="font-bold text-base text-foreground mb-2 text-center">2. Waiter (API)</div>
-              <div className="text-sm text-center mb-3">Takes your order to the kitchen and brings back food</div>
-              <div className="text-xs bg-purple-500/10 p-2 rounded">Example: API fetches your feed</div>
-            </div>
-            <div className="p-6 bg-background/50 rounded-lg border-2 border-green-500/20 hover:border-green-500/40 transition-all">
-              <div className="text-4xl mb-3 text-center">👨‍🍳</div>
-              <div className="font-bold text-base text-foreground mb-2 text-center">3. Kitchen (Server)</div>
-              <div className="text-sm text-center mb-3">Prepares your food and sends it back</div>
-              <div className="text-xs bg-green-500/10 p-2 rounded">Example: Server sends posts data</div>
-            </div>
-          </div>
-
-          <h3 className="text-2xl font-bold text-foreground mb-4 mt-10">🌐 Different Forms of APIs</h3>
-          <div className="grid md:grid-cols-2 gap-5">
-            <div className="p-5 bg-background/50 rounded-lg border border-border hover:border-primary/30 transition-all">
-              <div className="font-semibold text-foreground mb-2 flex items-center gap-2">
-                <span className="text-xl">🌍</span>
-                Web APIs (REST, GraphQL)
-              </div>
-              <p className="text-sm mb-2">Most common type. Used by websites and mobile apps to fetch data over the internet.</p>
-              <div className="text-xs bg-blue-500/10 p-2 rounded"><strong className="text-foreground">Example:</strong> Instagram loads posts using REST API</div>
-            </div>
-            <div className="p-5 bg-background/50 rounded-lg border border-border hover:border-primary/30 transition-all">
-              <div className="font-semibold text-foreground mb-2 flex items-center gap-2">
-                <span className="text-xl">📚</span>
-                Library/Framework APIs
-              </div>
-              <p className="text-sm mb-2">Functions provided by programming libraries like React, jQuery.</p>
-              <div className="text-xs bg-purple-500/10 p-2 rounded"><strong className="text-foreground">Example:</strong> React's useState() manages state</div>
-            </div>
-            <div className="p-5 bg-background/50 rounded-lg border border-border hover:border-primary/30 transition-all">
-              <div className="font-semibold text-foreground mb-2 flex items-center gap-2">
-                <span className="text-xl">💻</span>
-                Operating System APIs
-              </div>
-              <p className="text-sm mb-2">Allow programs to interact with computer hardware and OS features.</p>
-              <div className="text-xs bg-green-500/10 p-2 rounded"><strong className="text-foreground">Example:</strong> Windows API accesses files, printers</div>
-            </div>
-            <div className="p-5 bg-background/50 rounded-lg border border-border hover:border-primary/30 transition-all">
-              <div className="font-semibold text-foreground mb-2 flex items-center gap-2">
-                <span className="text-xl">🔌</span>
-                Hardware APIs
-              </div>
-              <p className="text-sm mb-2">Enable software to communicate with physical devices.</p>
-              <div className="text-xs bg-orange-500/10 p-2 rounded"><strong className="text-foreground">Example:</strong> Camera API lets apps take photos</div>
-            </div>
+          
+          {/* Interactive Tabs */}
+          <div className="flex gap-2 border-b border-border overflow-x-auto">
+            <button
+              onClick={() => setActiveTab('restaurant')}
+              className={`px-4 py-2 font-medium transition-colors border-b-2 whitespace-nowrap ${
+                activeTab === 'restaurant'
+                  ? 'border-primary text-primary'
+                  : 'border-transparent text-muted-foreground hover:text-foreground'
+              }`}
+            >
+              🍽️ Restaurant Analogy
+            </button>
+            <button
+              onClick={() => setActiveTab('realworld')}
+              className={`px-4 py-2 font-medium transition-colors border-b-2 whitespace-nowrap ${
+                activeTab === 'realworld'
+                  ? 'border-primary text-primary'
+                  : 'border-transparent text-muted-foreground hover:text-foreground'
+              }`}
+            >
+              🌍 Real Examples
+            </button>
+            <button
+              onClick={() => setActiveTab('types')}
+              className={`px-4 py-2 font-medium transition-colors border-b-2 whitespace-nowrap ${
+                activeTab === 'types'
+                  ? 'border-primary text-primary'
+                  : 'border-transparent text-muted-foreground hover:text-foreground'
+              }`}
+            >
+              📚 API Types
+            </button>
+            <button
+              onClick={() => setActiveTab('flow')}
+              className={`px-4 py-2 font-medium transition-colors border-b-2 whitespace-nowrap ${
+                activeTab === 'flow'
+                  ? 'border-primary text-primary'
+                  : 'border-transparent text-muted-foreground hover:text-foreground'
+              }`}
+            >
+              ⚡ How It Works
+            </button>
           </div>
 
-          <h3 className="text-2xl font-bold text-foreground mb-4 mt-10">💼 Common Use Cases</h3>
-          <div className="grid md:grid-cols-3 gap-4">
-            <div className="p-4 bg-green-500/10 rounded-lg border border-green-500/30 hover:border-green-500/50 transition-all">
-              <div className="font-semibold text-foreground mb-1 text-sm">📱 Social Media</div>
-              <div className="text-xs">Load posts, like content, post comments</div>
-            </div>
-            <div className="p-4 bg-blue-500/10 rounded-lg border border-blue-500/30 hover:border-blue-500/50 transition-all">
-              <div className="font-semibold text-foreground mb-1 text-sm">💳 Payment Processing</div>
-              <div className="text-xs">Stripe, PayPal handle transactions</div>
-            </div>
-            <div className="p-4 bg-purple-500/10 rounded-lg border border-purple-500/30 hover:border-purple-500/50 transition-all">
-              <div className="font-semibold text-foreground mb-1 text-sm">🗺️ Maps & Location</div>
-              <div className="text-xs">Google Maps shows directions, traffic</div>
-            </div>
-            <div className="p-4 bg-orange-500/10 rounded-lg border border-orange-500/30 hover:border-orange-500/50 transition-all">
-              <div className="font-semibold text-foreground mb-1 text-sm">☁️ Weather Data</div>
-              <div className="text-xs">Apps fetch forecasts from weather APIs</div>
-            </div>
-            <div className="p-4 bg-red-500/10 rounded-lg border border-red-500/30 hover:border-red-500/50 transition-all">
-              <div className="font-semibold text-foreground mb-1 text-sm">🔐 Authentication</div>
-              <div className="text-xs">"Sign in with Google" uses OAuth API</div>
-            </div>
-            <div className="p-4 bg-yellow-500/10 rounded-lg border border-yellow-500/30 hover:border-yellow-500/50 transition-all">
-              <div className="font-semibold text-foreground mb-1 text-sm">📧 Email Services</div>
-              <div className="text-xs">SendGrid, Mailchimp send emails</div>
-            </div>
-          </div>
+          {/* Tab Content */}
+          <div className="animate-fade-in">
+            {activeTab === 'restaurant' && (
+              <div className="space-y-4">
+                <div className="p-4 bg-gradient-to-r from-blue-500/10 to-purple-500/10 rounded-lg border border-blue-500/30">
+                  <p className="text-sm"><strong>🏢 Restaurant Analogy:</strong> Imagine ordering food at a restaurant. You can't go into the kitchen and cook. Instead, you tell the waiter what you want, the waiter takes your order to the kitchen, and brings back your food. The waiter is the API!</p>
+                </div>
+                <div className="grid md:grid-cols-3 gap-4">
+                  <div className="p-5 border border-border rounded-lg hover:border-primary/50 hover:shadow-lg transition-all">
+                    <div className="text-4xl mb-3">👤</div>
+                    <h3 className="font-semibold mb-2">1. You (Client)</h3>
+                    <p className="text-sm text-muted-foreground mb-3">Look at menu and decide what you want</p>
+                    <div className="text-xs bg-blue-500/10 text-blue-600 px-2 py-1 rounded">Example: Opening Instagram app</div>
+                  </div>
+                  <div className="p-5 border border-border rounded-lg hover:border-primary/50 hover:shadow-lg transition-all">
+                    <div className="text-4xl mb-3">🍽️</div>
+                    <h3 className="font-semibold mb-2">2. API (Waiter)</h3>
+                    <p className="text-sm text-muted-foreground mb-3">Takes order to kitchen and brings food back</p>
+                    <div className="text-xs bg-purple-500/10 text-purple-600 px-2 py-1 rounded">Example: API fetches your feed</div>
+                  </div>
+                  <div className="p-5 border border-border rounded-lg hover:border-primary/50 hover:shadow-lg transition-all">
+                    <div className="text-4xl mb-3">👨🍳</div>
+                    <h3 className="font-semibold mb-2">3. Server (Kitchen)</h3>
+                    <p className="text-sm text-muted-foreground mb-3">Prepares food and sends it back</p>
+                    <div className="text-xs bg-green-500/10 text-green-600 px-2 py-1 rounded">Example: Server sends posts data</div>
+                  </div>
+                </div>
+              </div>
+            )}
 
-          <h3 className="text-2xl font-bold text-foreground mb-4 mt-10">⚡ Why APIs are Integral to Modern Development</h3>
-          <div className="space-y-3">
-            <div className="flex items-start gap-4 p-4 bg-background/50 rounded-lg hover:bg-background/80 transition-all">
-              <div className="text-xl flex-shrink-0">🚀</div>
-              <div>
-                <div className="font-semibold text-foreground text-sm mb-1">Speed Up Development</div>
-                <div className="text-xs">Use existing APIs instead of building from scratch. Why build a payment system when Stripe API exists?</div>
+            {activeTab === 'realworld' && (
+              <div className="grid md:grid-cols-2 gap-4">
+                <div className="p-4 border border-border rounded-lg hover:border-green-500/50 transition-colors">
+                  <div className="flex items-center gap-2 mb-2">
+                    <span className="text-2xl">📱</span>
+                    <h3 className="font-semibold">Social Media</h3>
+                  </div>
+                  <p className="text-sm text-muted-foreground">Instagram, Twitter use APIs to load posts, comments, likes in real-time</p>
+                </div>
+                <div className="p-4 border border-border rounded-lg hover:border-blue-500/50 transition-colors">
+                  <div className="flex items-center gap-2 mb-2">
+                    <span className="text-2xl">💳</span>
+                    <h3 className="font-semibold">Payment Processing</h3>
+                  </div>
+                  <p className="text-sm text-muted-foreground">Stripe, PayPal APIs process transactions securely without storing card details</p>
+                </div>
+                <div className="p-4 border border-border rounded-lg hover:border-purple-500/50 transition-colors">
+                  <div className="flex items-center gap-2 mb-2">
+                    <span className="text-2xl">🗺️</span>
+                    <h3 className="font-semibold">Maps & Location</h3>
+                  </div>
+                  <p className="text-sm text-muted-foreground">Google Maps API shows directions, traffic, places in Uber, food delivery apps</p>
+                </div>
+                <div className="p-4 border border-border rounded-lg hover:border-orange-500/50 transition-colors">
+                  <div className="flex items-center gap-2 mb-2">
+                    <span className="text-2xl">☁️</span>
+                    <h3 className="font-semibold">Weather Data</h3>
+                  </div>
+                  <p className="text-sm text-muted-foreground">Apps fetch forecasts from weather APIs in real-time</p>
+                </div>
+                <div className="p-4 border border-border rounded-lg hover:border-red-500/50 transition-colors">
+                  <div className="flex items-center gap-2 mb-2">
+                    <span className="text-2xl">🔐</span>
+                    <h3 className="font-semibold">Authentication</h3>
+                  </div>
+                  <p className="text-sm text-muted-foreground">"Sign in with Google" uses OAuth API to login without sharing passwords</p>
+                </div>
+                <div className="p-4 border border-border rounded-lg hover:border-yellow-500/50 transition-colors">
+                  <div className="flex items-center gap-2 mb-2">
+                    <span className="text-2xl">📧</span>
+                    <h3 className="font-semibold">Email Services</h3>
+                  </div>
+                  <p className="text-sm text-muted-foreground">SendGrid, Mailchimp APIs send emails programmatically</p>
+                </div>
               </div>
-            </div>
-            <div className="flex items-start gap-4 p-4 bg-background/50 rounded-lg hover:bg-background/80 transition-all">
-              <div className="text-xl flex-shrink-0">🔗</div>
-              <div>
-                <div className="font-semibold text-foreground text-sm mb-1">Connect Different Systems</div>
-                <div className="text-xs">APIs let apps talk to each other. Your fitness app syncs with your health app via APIs.</div>
-              </div>
-            </div>
-            <div className="flex items-start gap-4 p-4 bg-background/50 rounded-lg hover:bg-background/80 transition-all">
-              <div className="text-xl flex-shrink-0">🔒</div>
-              <div>
-                <div className="font-semibold text-foreground text-sm mb-1">Security & Control</div>
-                <div className="text-xs">APIs control what data you can access. You can't see other users' passwords, only what the API allows.</div>
-              </div>
-            </div>
-            <div className="flex items-start gap-4 p-4 bg-background/50 rounded-lg hover:bg-background/80 transition-all">
-              <div className="text-xl flex-shrink-0">📈</div>
-              <div>
-                <div className="font-semibold text-foreground text-sm mb-1">Scalability</div>
-                <div className="text-xs">One API serves millions of users. Instagram's API handles billions of requests daily.</div>
-              </div>
-            </div>
-            <div className="flex items-start gap-4 p-4 bg-background/50 rounded-lg hover:bg-background/80 transition-all">
-              <div className="text-xl flex-shrink-0">🌍</div>
-              <div>
-                <div className="font-semibold text-foreground text-sm mb-1">Platform Independence</div>
-                <div className="text-xs">Same API works on web, mobile, desktop. Twitter's API serves all platforms.</div>
-              </div>
-            </div>
-            <div className="flex items-start gap-4 p-4 bg-background/50 rounded-lg hover:bg-background/80 transition-all">
-              <div className="text-xl flex-shrink-0">💰</div>
-              <div>
-                <div className="font-semibold text-foreground text-sm mb-1">Business Model</div>
-                <div className="text-xs">Companies monetize APIs. Google Maps API charges based on usage.</div>
-              </div>
-            </div>
-          </div>
+            )}
 
-          <div className="mt-10 p-6 bg-gradient-to-r from-primary/10 to-primary/5 rounded-lg border border-primary/30">
-            <div className="font-semibold text-foreground mb-2">💡 Bottom Line</div>
-            <div className="text-sm"><strong className="text-foreground">Every modern app uses APIs.</strong> When you check weather, order food, watch Netflix, or send a message - APIs work behind the scenes. Understanding APIs is essential because they're the backbone of how software communicates.</div>
+            {activeTab === 'types' && (
+              <div className="grid md:grid-cols-2 gap-4">
+                <div className="p-5 border border-border rounded-lg hover:border-primary/30 transition-all">
+                  <div className="flex items-center gap-2 mb-2">
+                    <span className="text-xl">🌍</span>
+                    <h3 className="font-semibold">Web APIs (REST, GraphQL)</h3>
+                  </div>
+                  <p className="text-sm text-muted-foreground mb-2">Most common type. Used by websites and mobile apps to fetch data over the internet.</p>
+                  <div className="text-xs bg-blue-500/10 px-2 py-1 rounded"><strong>Example:</strong> Instagram loads posts using REST API</div>
+                </div>
+                <div className="p-5 border border-border rounded-lg hover:border-primary/30 transition-all">
+                  <div className="flex items-center gap-2 mb-2">
+                    <span className="text-xl">📚</span>
+                    <h3 className="font-semibold">Library/Framework APIs</h3>
+                  </div>
+                  <p className="text-sm text-muted-foreground mb-2">Functions provided by programming libraries like React, jQuery.</p>
+                  <div className="text-xs bg-purple-500/10 px-2 py-1 rounded"><strong>Example:</strong> React's useState() manages state</div>
+                </div>
+                <div className="p-5 border border-border rounded-lg hover:border-primary/30 transition-all">
+                  <div className="flex items-center gap-2 mb-2">
+                    <span className="text-xl">💻</span>
+                    <h3 className="font-semibold">Operating System APIs</h3>
+                  </div>
+                  <p className="text-sm text-muted-foreground mb-2">Allow programs to interact with computer hardware and OS features.</p>
+                  <div className="text-xs bg-green-500/10 px-2 py-1 rounded"><strong>Example:</strong> Windows API accesses files, printers</div>
+                </div>
+                <div className="p-5 border border-border rounded-lg hover:border-primary/30 transition-all">
+                  <div className="flex items-center gap-2 mb-2">
+                    <span className="text-xl">🔌</span>
+                    <h3 className="font-semibold">Hardware APIs</h3>
+                  </div>
+                  <p className="text-sm text-muted-foreground mb-2">Enable software to communicate with physical devices.</p>
+                  <div className="text-xs bg-orange-500/10 px-2 py-1 rounded"><strong>Example:</strong> Camera API lets apps take photos</div>
+                </div>
+              </div>
+            )}
+
+            {activeTab === 'flow' && (
+              <div className="space-y-4">
+                <p className="text-muted-foreground">Every API interaction has 3 parts: <strong className="text-foreground">Request</strong>, <strong className="text-foreground">Processing</strong>, and <strong className="text-foreground">Response</strong></p>
+                <div className="flex items-start gap-4 p-4 bg-blue-500/5 border border-blue-500/20 rounded-lg">
+                  <div className="w-8 h-8 rounded-full bg-blue-500 text-white flex items-center justify-center font-bold flex-shrink-0">1</div>
+                  <div>
+                    <h3 className="font-semibold mb-1">📤 Request</h3>
+                    <p className="text-sm text-muted-foreground mb-2">You ask for something</p>
+                    <div className="text-xs bg-background/50 p-2 rounded font-mono">GET /posts</div>
+                  </div>
+                </div>
+                <div className="flex items-start gap-4 p-4 bg-purple-500/5 border border-purple-500/20 rounded-lg">
+                  <div className="w-8 h-8 rounded-full bg-purple-500 text-white flex items-center justify-center font-bold flex-shrink-0">2</div>
+                  <div>
+                    <h3 className="font-semibold mb-1">⚙️ Processing</h3>
+                    <p className="text-sm text-muted-foreground mb-2">Server works on it</p>
+                    <div className="text-xs bg-background/50 p-2 rounded">Finding posts in database...</div>
+                  </div>
+                </div>
+                <div className="flex items-start gap-4 p-4 bg-green-500/5 border border-green-500/20 rounded-lg">
+                  <div className="w-8 h-8 rounded-full bg-green-500 text-white flex items-center justify-center font-bold flex-shrink-0">3</div>
+                  <div>
+                    <h3 className="font-semibold mb-1">📥 Response</h3>
+                    <p className="text-sm text-muted-foreground mb-2">Server sends back data</p>
+                    <div className="text-xs bg-background/50 p-2 rounded font-mono">200 OK + posts data</div>
+                  </div>
+                </div>
+              </div>
+            )}
           </div>
         </div>
       </div>
 
-      {/* How API Communication Works */}
-      <div className="topic-card p-8 mb-12">
-        <h2 className="text-3xl font-bold text-foreground mb-6 flex items-center gap-2">
-          <MessageSquare className="w-7 h-7 text-primary" />
-          How Does API Communication Work?
+      {/* Why APIs Matter */}
+      <div className="border border-border rounded-lg p-6 bg-gradient-to-br from-secondary/30 to-transparent">
+        <h2 className="text-xl font-bold mb-4 flex items-center gap-2">
+          <Rocket className="w-5 h-5 text-primary" />
+          Why APIs are Integral to Modern Development
         </h2>
-        <div className="space-y-6">
-          <p className="text-muted-foreground text-lg">Every API interaction has 3 parts: <strong className="text-foreground">Request</strong>, <strong className="text-foreground">Processing</strong>, and <strong className="text-foreground">Response</strong></p>
-
-          <div className="grid md:grid-cols-3 gap-6">
-            <div className="p-5 bg-blue-500/10 rounded-lg border-2 border-blue-500/30 hover:border-blue-500/50 transition-all">
-              <div className="flex items-center gap-2 mb-2">
-                <Globe className="w-5 h-5 text-blue-500" />
-                <div className="font-bold text-foreground">1. REQUEST</div>
-              </div>
-              <div className="text-sm text-muted-foreground mb-2">You ask for something</div>
-              <div className="text-xs bg-background/50 p-2 rounded font-mono mb-1">GET /posts</div>
-              <div className="text-xs text-muted-foreground">"Give me all posts"</div>
-            </div>
-
-            <div className="p-5 bg-purple-500/10 rounded-lg border-2 border-purple-500/30 hover:border-purple-500/50 transition-all">
-              <div className="flex items-center gap-2 mb-2">
-                <Server className="w-5 h-5 text-purple-500" />
-                <div className="font-bold text-foreground">2. PROCESSING</div>
-              </div>
-              <div className="text-sm text-muted-foreground mb-2">Server works on it</div>
-              <div className="text-xs bg-background/50 p-2 rounded mb-1">⚙️ Finding posts...</div>
-              <div className="text-xs text-muted-foreground">Database query running</div>
-            </div>
-
-            <div className="p-5 bg-green-500/10 rounded-lg border-2 border-green-500/30 hover:border-green-500/50 transition-all">
-              <div className="flex items-center gap-2 mb-2">
-                <CheckCircle className="w-5 h-5 text-green-500" />
-                <div className="font-bold text-foreground">3. RESPONSE</div>
-              </div>
-              <div className="text-sm text-muted-foreground mb-2">Server sends back data</div>
-              <div className="text-xs bg-background/50 p-2 rounded font-mono mb-1">200 OK</div>
-              <div className="text-xs text-muted-foreground">✅ Here are 100 posts</div>
+        <div className="grid md:grid-cols-2 gap-4">
+          <div className="flex items-start gap-3">
+            <CheckCircle className="w-5 h-5 text-green-500 flex-shrink-0 mt-0.5" />
+            <div>
+              <h3 className="font-semibold text-sm mb-1">Speed Up Development</h3>
+              <p className="text-xs text-muted-foreground">Use existing APIs instead of building from scratch. Why build a payment system when Stripe API exists?</p>
             </div>
           </div>
-
-          <div className="grid md:grid-cols-2 gap-6 mt-8">
-            <div className="p-5 bg-background/50 rounded-lg border border-border">
-              <div className="font-semibold text-foreground mb-3">📤 What's in a Request?</div>
-              <ul className="space-y-2 text-sm text-muted-foreground">
-                <li>• <strong>Method:</strong> What action (GET, POST, etc.)</li>
-                <li>• <strong>URL:</strong> Where to send it</li>
-                <li>• <strong>Headers:</strong> Extra info (like authentication)</li>
-                <li>• <strong>Body:</strong> Data you're sending (for POST/PUT)</li>
-              </ul>
+          <div className="flex items-start gap-3">
+            <CheckCircle className="w-5 h-5 text-green-500 flex-shrink-0 mt-0.5" />
+            <div>
+              <h3 className="font-semibold text-sm mb-1">Connect Different Systems</h3>
+              <p className="text-xs text-muted-foreground">APIs let apps talk to each other. Your fitness app syncs with your health app via APIs.</p>
             </div>
-            <div className="p-5 bg-background/50 rounded-lg border border-border">
-              <div className="font-semibold text-foreground mb-3">📥 What's in a Response?</div>
-              <ul className="space-y-2 text-sm text-muted-foreground">
-                <li>• <strong>Status Code:</strong> Success or error (200, 404, etc.)</li>
-                <li>• <strong>Headers:</strong> Info about the response</li>
-                <li>• <strong>Body:</strong> The actual data you requested</li>
-                <li>• <strong>Time:</strong> How long it took</li>
-              </ul>
+          </div>
+          <div className="flex items-start gap-3">
+            <CheckCircle className="w-5 h-5 text-green-500 flex-shrink-0 mt-0.5" />
+            <div>
+              <h3 className="font-semibold text-sm mb-1">Security & Control</h3>
+              <p className="text-xs text-muted-foreground">APIs control what data you can access. You can't see other users' passwords, only what the API allows.</p>
+            </div>
+          </div>
+          <div className="flex items-start gap-3">
+            <CheckCircle className="w-5 h-5 text-green-500 flex-shrink-0 mt-0.5" />
+            <div>
+              <h3 className="font-semibold text-sm mb-1">Scalability</h3>
+              <p className="text-xs text-muted-foreground">One API serves millions of users. Instagram's API handles billions of requests daily.</p>
+            </div>
+          </div>
+          <div className="flex items-start gap-3">
+            <CheckCircle className="w-5 h-5 text-green-500 flex-shrink-0 mt-0.5" />
+            <div>
+              <h3 className="font-semibold text-sm mb-1">Platform Independence</h3>
+              <p className="text-xs text-muted-foreground">Same API works on web, mobile, desktop. Twitter's API serves all platforms.</p>
+            </div>
+          </div>
+          <div className="flex items-start gap-3">
+            <CheckCircle className="w-5 h-5 text-green-500 flex-shrink-0 mt-0.5" />
+            <div>
+              <h3 className="font-semibold text-sm mb-1">Business Model</h3>
+              <p className="text-xs text-muted-foreground">Companies monetize APIs. Google Maps API charges based on usage.</p>
             </div>
           </div>
         </div>
       </div>
 
-
-      {/* What You'll Learn Section */}
-      <div className="topic-card p-8 mb-12">
-        <h3 className="text-2xl font-bold text-foreground mb-6 flex items-center gap-2">
-          <BookOpen className="w-6 h-6 text-primary" />
-          What You'll Learn (Step by Step)
-        </h3>
-        <div className="grid md:grid-cols-2 gap-6">
-          <div className="space-y-4">
-            <div className="flex items-start gap-4">
-              <div className="w-8 h-8 rounded-full bg-primary/20 flex items-center justify-center flex-shrink-0 font-bold text-primary">1</div>
-              <div>
-                <div className="font-semibold text-sm text-foreground">Send Real Requests</div>
-                <div className="text-xs text-muted-foreground">Click buttons to send actual API requests to a real server</div>
-              </div>
-            </div>
-            <div className="flex items-start gap-4">
-              <div className="w-8 h-8 rounded-full bg-primary/20 flex items-center justify-center flex-shrink-0 font-bold text-primary">2</div>
-              <div>
-                <div className="font-semibold text-sm text-foreground">See Live Responses</div>
-                <div className="text-xs text-muted-foreground">Watch the server respond with data in real-time</div>
-              </div>
-            </div>
-            <div className="flex items-start gap-4">
-              <div className="w-8 h-8 rounded-full bg-primary/20 flex items-center justify-center flex-shrink-0 font-bold text-primary">3</div>
-              <div>
-                <div className="font-semibold text-sm text-foreground">Understand Status Codes</div>
-                <div className="text-xs text-muted-foreground">Learn what 200 (success), 404 (not found), 500 (error) mean</div>
-              </div>
-            </div>
-          </div>
-          <div className="space-y-4">
-            <div className="flex items-start gap-4">
-              <div className="w-8 h-8 rounded-full bg-primary/20 flex items-center justify-center flex-shrink-0 font-bold text-primary">4</div>
-              <div>
-                <div className="font-semibold text-sm text-foreground">Inspect Headers & Body</div>
-                <div className="text-xs text-muted-foreground">See the hidden information sent with every request</div>
-              </div>
-            </div>
-            <div className="flex items-start gap-4">
-              <div className="w-8 h-8 rounded-full bg-primary/20 flex items-center justify-center flex-shrink-0 font-bold text-primary">5</div>
-              <div>
-                <div className="font-semibold text-sm text-foreground">Practice with Forms</div>
-                <div className="text-xs text-muted-foreground">Fill out forms and send custom data to the server</div>
-              </div>
-            </div>
-            <div className="flex items-start gap-4">
-              <div className="w-8 h-8 rounded-full bg-primary/20 flex items-center justify-center flex-shrink-0 font-bold text-primary">6</div>
-              <div>
-                <div className="font-semibold text-sm text-foreground">Build Confidence</div>
-                <div className="text-xs text-muted-foreground">Understand how every app and website works behind the scenes</div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      {/* HTTP Methods Section */}
-      <div className="mb-12">
-        <h2 className="text-3xl font-bold text-foreground mb-6 flex items-center gap-2">
-          <Zap className="w-7 h-7 text-primary" />
-          5 Ways to Talk to a Server (HTTP Methods)
+      {/* What You'll Learn */}
+      <div className="border border-border rounded-lg p-6">
+        <h2 className="text-xl font-bold mb-4 flex items-center gap-2">
+          <BookOpen className="w-5 h-5 text-primary" />
+          What You'll Learn
         </h2>
-        <p className="text-muted-foreground mb-6 text-lg">
-          Just like you can read, write, edit, or delete a document, APIs have 5 main actions called <strong className="text-foreground">HTTP Methods</strong>:
-        </p>
-        <div className="p-6 bg-gradient-to-r from-orange-500/10 to-red-500/10 rounded-lg border border-orange-500/30 mb-8">
-          <div className="font-semibold text-foreground mb-3">💡 Think of it like a File Manager:</div>
-          <div className="grid grid-cols-5 gap-3 text-xs">
-            <div className="p-3 bg-background/50 rounded text-center">
-              <div className="font-bold text-green-500">GET</div>
-              <div className="text-muted-foreground">Open & Read</div>
+        <div className="grid md:grid-cols-2 gap-4">
+          {[
+            { num: 1, title: 'Send Real Requests', desc: 'Click buttons to send actual API requests to a real server' },
+            { num: 2, title: 'See Live Responses', desc: 'Watch the server respond with data in real-time' },
+            { num: 3, title: 'Understand Status Codes', desc: 'Learn what 200 (success), 404 (not found), 500 (error) mean' },
+            { num: 4, title: 'Inspect Headers & Body', desc: 'See the hidden information sent with every request' },
+            { num: 5, title: 'Practice with Forms', desc: 'Fill out forms and send custom data to the server' },
+            { num: 6, title: 'Build Confidence', desc: 'Understand how every app and website works behind the scenes' },
+          ].map((item) => (
+            <div key={item.num} className="flex items-start gap-3">
+              <div className="w-7 h-7 rounded-full bg-primary/20 flex items-center justify-center flex-shrink-0 font-bold text-primary text-sm">
+                {item.num}
+              </div>
+              <div>
+                <h3 className="font-semibold text-sm mb-1">{item.title}</h3>
+                <p className="text-xs text-muted-foreground">{item.desc}</p>
+              </div>
             </div>
-            <div className="p-3 bg-background/50 rounded text-center">
-              <div className="font-bold text-blue-500">POST</div>
-              <div className="text-muted-foreground">Create New</div>
-            </div>
-            <div className="p-3 bg-background/50 rounded text-center">
-              <div className="font-bold text-orange-500">PUT</div>
-              <div className="text-muted-foreground">Replace All</div>
-            </div>
-            <div className="p-3 bg-background/50 rounded text-center">
-              <div className="font-bold text-yellow-500">PATCH</div>
-              <div className="text-muted-foreground">Edit Part</div>
-            </div>
-            <div className="p-3 bg-background/50 rounded text-center">
-              <div className="font-bold text-red-500">DELETE</div>
-              <div className="text-muted-foreground">Remove</div>
-            </div>
-          </div>
+          ))}
+        </div>
+      </div>
+
+      {/* HTTP Methods */}
+      <div className="space-y-6">
+        <div className="text-center space-y-3">
+          <h2 className="text-2xl font-bold flex items-center justify-center gap-2">
+            <Zap className="w-6 h-6 text-primary" />
+            5 HTTP Methods to Master
+          </h2>
+          <p className="text-muted-foreground">
+            Different ways to interact with a server - like CRUD operations
+          </p>
         </div>
 
-        <div className="grid md:grid-cols-2 gap-6">
+        <div className="grid md:grid-cols-2 gap-4">
           {methods.map((method) => (
             <Link
               key={method.name}
               to={method.route}
-              className="topic-card p-7 group hover:scale-[1.02] transition-all hover:shadow-lg"
+              className="border border-border rounded-lg p-6 hover:border-primary/50 hover:scale-[1.02] hover:shadow-xl transition-all group"
             >
-              <div className="flex items-start justify-between">
-                <div className="flex items-start gap-3 flex-1">
-                  <div className={`w-14 h-14 ${method.color} rounded-lg flex items-center justify-center text-3xl shadow-lg flex-shrink-0`}>
-                    {method.icon}
-                  </div>
-                  <div className="flex-1">
-                    <h3 className="text-xl font-bold text-foreground group-hover:text-primary transition-colors">
-                      {method.name}
-                    </h3>
-                    <p className="text-sm text-muted-foreground mb-1">{method.desc}</p>
-                    <p className="text-xs text-muted-foreground italic mb-2">💡 {method.example}</p>
-                    <p className="text-xs text-foreground font-medium">{method.detail}</p>
-                  </div>
+              <div className="flex items-start gap-4">
+                <div className={`w-14 h-14 ${method.color} rounded-lg flex items-center justify-center text-3xl flex-shrink-0 shadow-lg`}>
+                  {method.icon}
                 </div>
-                <ArrowRight className="w-5 h-5 text-muted-foreground group-hover:text-primary group-hover:translate-x-1 transition-all flex-shrink-0 mt-2" />
+                <div className="flex-1">
+                  <h3 className="text-xl font-bold mb-1 group-hover:text-primary transition-colors">
+                    {method.name}
+                  </h3>
+                  <p className="text-sm text-muted-foreground mb-2">{method.desc}</p>
+                  <p className="text-xs text-muted-foreground italic mb-2">💡 {method.example}</p>
+                  <p className="text-xs font-medium">{method.detail}</p>
+                </div>
+                <ArrowRight className="w-5 h-5 text-muted-foreground group-hover:text-primary group-hover:translate-x-1 transition-all flex-shrink-0" />
               </div>
             </Link>
           ))}
         </div>
       </div>
 
-      {/* Getting Started */}
-      <div className="topic-card p-8 bg-gradient-to-r from-green-500/10 to-blue-500/10">
-        <h3 className="text-2xl font-bold text-foreground mb-4">🚀 Ready to Start?</h3>
-        <p className="text-muted-foreground mb-6 text-lg">
-          Click on any HTTP method above to start testing! We recommend starting with <strong className="text-foreground">GET</strong> -
-          it's the simplest and safest way to fetch data.
+      {/* CTA */}
+      <div className="border border-primary/30 rounded-lg p-8 bg-gradient-to-r from-primary/5 to-accent/5 text-center space-y-4">
+        <h3 className="text-xl font-bold">🚀 Ready to Start?</h3>
+        <p className="text-muted-foreground">
+          Click any method above to start testing! We recommend starting with <strong className="text-foreground">GET</strong> - it's the simplest and safest way to fetch data.
         </p>
-        <div className="flex gap-3">
-          <Link to="/api-testing/get" className="px-6 py-3 bg-green-500 text-white rounded-lg font-semibold hover:bg-green-600 transition-colors">
-            Start with GET →
-          </Link>
-        </div>
+        <Link
+          to="/api-testing/get"
+          className="inline-flex items-center gap-2 px-5 py-2.5 bg-primary text-primary-foreground rounded-lg font-medium hover:opacity-90 transition-opacity"
+        >
+          Start with GET <ArrowRight className="w-4 h-4" />
+        </Link>
       </div>
     </div>
   );
