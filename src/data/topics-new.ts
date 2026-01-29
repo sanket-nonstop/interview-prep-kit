@@ -156,6 +156,34 @@ export const topicsDataNew: TopicCategory[] = [
         ],
       },
     ],
+  }, {
+    id: 'typescript',
+    title: 'TypeScript',
+    icon: '🔷',
+    description: 'Add type safety to your JavaScript applications',
+    subcategories: [
+      {
+        id: 'basics',
+        title: 'Basics',
+        topics: [
+          { id: 'fundamentals', title: 'TypeScript Fundamentals', route: '/typescript/basics/fundamentals', category: 'typescript', difficulty: 'beginner' },
+        ],
+      },
+      {
+        id: 'advanced',
+        title: 'Advanced',
+        topics: [
+          { id: 'generics-mapped-types', title: 'Generics & Mapped Types', route: '/typescript/advanced/generics-mapped-types', category: 'typescript', difficulty: 'advanced' },
+        ],
+      },
+      {
+        id: 'react',
+        title: 'React + TypeScript',
+        topics: [
+          { id: 'patterns', title: 'React TypeScript Patterns', route: '/typescript/react/patterns', category: 'typescript', difficulty: 'intermediate' },
+        ],
+      },
+    ],
   },
   {
     id: 'react',
@@ -226,35 +254,6 @@ export const topicsDataNew: TopicCategory[] = [
           { id: 'advanced-gsap', title: 'Advanced GSAP Showcase', route: '/animations/advanced-gsap/', category: 'react', difficulty: 'advanced' },
           { id: 'creative-gsap', title: 'Creative GSAP Effects', route: '/animations/creative-gsap/', category: 'react', difficulty: 'advanced' },
           { id: 'threejs', title: 'Three.js in React', route: '/react/animations/threejs/', category: 'react', difficulty: 'advanced' },
-        ],
-      },
-    ],
-  },
-  {
-    id: 'typescript',
-    title: 'TypeScript',
-    icon: '🔷',
-    description: 'Add type safety to your JavaScript applications',
-    subcategories: [
-      {
-        id: 'basics',
-        title: 'Basics',
-        topics: [
-          { id: 'fundamentals', title: 'TypeScript Fundamentals', route: '/typescript/basics/fundamentals', category: 'typescript', difficulty: 'beginner' },
-        ],
-      },
-      {
-        id: 'advanced',
-        title: 'Advanced',
-        topics: [
-          { id: 'generics-mapped-types', title: 'Generics & Mapped Types', route: '/typescript/advanced/generics-mapped-types', category: 'typescript', difficulty: 'advanced' },
-        ],
-      },
-      {
-        id: 'react',
-        title: 'React + TypeScript',
-        topics: [
-          { id: 'patterns', title: 'React TypeScript Patterns', route: '/typescript/react/patterns', category: 'typescript', difficulty: 'intermediate' },
         ],
       },
     ],

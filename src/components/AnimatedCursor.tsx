@@ -11,8 +11,14 @@ const AnimatedCursor = () => {
     if (!cursor || !follower) return;
 
     const moveCursor = (e: MouseEvent) => {
-      gsap.to(cursor, { x: e.clientX, y: e.clientY, duration: 0 });
-      gsap.to(follower, { x: e.clientX, y: e.clientY, duration: 0.15 });
+      const x = e.clientX;
+      const y = e.clientY;
+      
+      cursor.style.left = `${x}px`;
+      cursor.style.top = `${y}px`;
+      
+      follower.style.left = `${x}px`;
+      follower.style.top = `${y}px`;
     };
 
     const hoverButton = () => {
@@ -45,10 +51,12 @@ const AnimatedCursor = () => {
       <div
         ref={cursorRef}
         className="fixed w-2 h-2 bg-primary rounded-full pointer-events-none z-[9999] -translate-x-1/2 -translate-y-1/2 mix-blend-difference"
+        style={{ left: 0, top: 0 }}
       />
       <div
         ref={followerRef}
         className="fixed w-6 h-6 border-2 border-primary rounded-full pointer-events-none z-[9999] -translate-x-1/2 -translate-y-1/2 mix-blend-difference"
+        style={{ left: 0, top: 0 }}
       />
     </>
   );
