@@ -77,7 +77,7 @@ const SEO: React.FC<SEOProps> = ({
   url,
   type = 'website'
 }) => {
-  const siteTitle = 'Frontend Interview Practice';
+  const siteTitle = 'Interview Practice';
   const fullTitle = title ? \`\${title} | \${siteTitle}\` : siteTitle;
   
   return (

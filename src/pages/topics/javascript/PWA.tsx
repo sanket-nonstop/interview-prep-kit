@@ -87,9 +87,9 @@ const useServiceWorker = () => {
 
 // ✅ Web App Manifest (public/manifest.json)
 const manifest = {
-  "name": "Frontend Interview Practice",
+  "name": "Interview Practice",
   "short_name": "Interview Ready",
-  "description": "Master frontend interviews with hands-on practice",
+  "description": "Master interviews with hands-on practice",
   "start_url": "/",
   "display": "standalone",
   "theme_color": "#007bff",
