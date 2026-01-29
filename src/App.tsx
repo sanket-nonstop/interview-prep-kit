@@ -35,6 +35,7 @@ import MetaTags from "./pages/topics/html/MetaTags";
 import Semantic from "./pages/topics/html/Semantic";
 import SemanticWithPreview from "./pages/topics/html/SemanticWithPreview";
 import WebApis from "./pages/topics/html/WebApis";
+import HtmlOverview from "./pages/topics/html/HtmlOverview";
 import ArrayMethods from "./pages/topics/javascript/ArrayMethods";
 import BrowserApis from "./pages/topics/javascript/BrowserApis";
 import Closures from "./pages/topics/javascript/Closures";
@@ -201,6 +202,7 @@ const App = () => (
             <Route path="/api-testing/delete/" element={<DeleteRequest />} />
             
             {/* HTML Topics */}
+            <Route path="/html/" element={<HtmlOverview />} />
             <Route path="/html/fundamentals/semantic/" element={<Semantic />} />
             <Route path="/html/semantic/" element={<Semantic />} />
             <Route path="/html/semantic-preview/" element={<SemanticWithPreview />} />
