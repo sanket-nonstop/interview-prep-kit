@@ -193,7 +193,7 @@ const ReactTypeScript = () => {
     <TopicLayout
       title="React + TypeScript Patterns"
       route="/typescript/react/patterns"
-      category="typescript"
+      category="javascript"
       explanation="Type-safe React patterns: component props, generic components, custom hooks, form handling, Context API, refs, and event handlers. TypeScript catches prop errors, provides autocomplete, and documents component APIs."
       code={reactTSCode}
       codeFilename="ReactTypeScript.tsx"

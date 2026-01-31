@@ -6,7 +6,7 @@ import { AlertTriangle, CheckCircle2, Target, Lightbulb } from 'lucide-react';
 interface TopicLayoutProps {
   title: string;
   route: string;
-  category: 'html' | 'css' | 'javascript' | 'react' | 'nextjs';
+  category: 'html' | 'css' | 'javascript' | 'react' | 'nextjs' | 'typescript' | 'testing';
   explanation: string;
   code: string;
   codeFilename?: string;

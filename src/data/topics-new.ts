@@ -393,6 +393,25 @@ export const topicsDataNew: TopicCategory[] = [
         title: 'Testing Basics',
         topics: [
           { id: 'fundamentals', title: 'Testing Fundamentals', route: '/testing/basics/fundamentals', category: 'testing', difficulty: 'intermediate' },
+          { id: 'unit-testing', title: 'Unit Testing', route: '/testing/basics/unit-testing', category: 'testing', difficulty: 'beginner' },
+          { id: 'integration-testing', title: 'Integration Testing', route: '/testing/basics/integration-testing', category: 'testing', difficulty: 'intermediate' },
+        ],
+      },
+      {
+        id: 'react-testing',
+        title: 'React Testing',
+        topics: [
+          { id: 'component-testing', title: 'Component Testing', route: '/testing/react/component-testing', category: 'testing', difficulty: 'intermediate' },
+          { id: 'hook-testing', title: 'Hook Testing', route: '/testing/react/hook-testing', category: 'testing', difficulty: 'advanced' },
+          { id: 'mocking', title: 'Mocking & Spies', route: '/testing/react/mocking', category: 'testing', difficulty: 'intermediate' },
+        ],
+      },
+      {
+        id: 'e2e',
+        title: 'E2E Testing',
+        topics: [
+          { id: 'cypress', title: 'Cypress', route: '/testing/e2e/cypress', category: 'testing', difficulty: 'intermediate' },
+          { id: 'playwright', title: 'Playwright', route: '/testing/e2e/playwright', category: 'testing', difficulty: 'intermediate' },
         ],
       },
     ],
