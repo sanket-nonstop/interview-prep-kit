@@ -151,7 +151,7 @@ const AdvancedTypeScript = () => {
     <TopicLayout
       title="Advanced TypeScript"
       route="/typescript/advanced/generics-mapped-types"
-      category="typescript"
+      category="javascript"
       explanation="Advanced TypeScript features: generic constraints, mapped types for transformations, conditional types for logic, template literals, recursive types, and branded types for nominal typing. These patterns enable type-safe, flexible APIs."
       code={advancedTSCode}
       codeFilename="AdvancedTypeScript.ts"
